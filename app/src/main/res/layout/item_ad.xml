@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    >
+<com.shunmai.zryp.view.RoundAngleImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:src="@mipmap/ic_launcher"
+    android:layout_width="345dp"
+    app:roundWidth="5dp"
+    app:roundHeight="5dp"
+    android:layout_height="138dp"
+    android:background="@drawable/shape_ad"
+    android:scaleType="centerCrop" />
+</layout>

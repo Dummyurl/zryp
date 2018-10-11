@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data >
+        <variable
+            name="handler"
+            type="com.shunmai.zryp.eventhandler.home.FirstPageHandler"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundColor"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="295dp">
+
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="205dp"
+                android:background="@color/withe"
+                app:delay_time="7000"
+                app:image_scale_type="fit_xy"
+                app:indicator_drawable_selected="@drawable/shape_circle_background"
+                app:indicator_drawable_unselected="@drawable/shape_indicator"
+                app:indicator_height="5dp"
+                app:indicator_margin="4dp"
+                app:indicator_width="12dp"
+                app:is_auto_play="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_shadow"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="3dp"
+                    android:drawableTop="@mipmap/icon_award"
+                    android:gravity="center"
+                    android:text="抽奖" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="3dp"
+                    android:drawableTop="@mipmap/icon_share"
+                    android:gravity="center"
+                    android:text="分享就赚" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="3dp"
+                    android:drawableTop="@mipmap/icon_jingdong"
+                    android:gravity="center"
+                    android:text="京东专区" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="3dp"
+                    android:drawableTop="@mipmap/icon_fuping"
+                    android:gravity="center"
+                    android:text="抚平专区" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_banner"
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:background="@color/backgroundColor"
+            android:scaleType="centerCrop"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#ffe9e9e9" />
+
+        <RelativeLayout
+            android:id="@+id/rl_recommend"
+            android:onClick='@{view->handler.toGoodsListAcitvity(view,5,"超值推荐")}'
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/backgroundColor">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:background="@mipmap/icon_title_bk1"
+                android:orientation="horizontal"
+                android:paddingLeft="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="超值"
+                    android:textColor="#EF9291"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="推荐"
+                    android:textColor="#666666"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_marginRight="18dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff666666"
+                android:text="更多 >"/>
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_act"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundColor" />
+
+        <View
+            android:id="@+id/dev_recommend"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#ffe9e9e9" />
+
+        <RelativeLayout
+            android:id="@+id/rl_group_buy"
+            android:layout_marginLeft="10dp"
+            android:onClick='@{view->handler.toGoodsListAcitvity(view,1,"智融拼团")}'
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/backgroundColor">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:background="@mipmap/icon_title_bk2"
+                android:orientation="horizontal"
+                android:paddingLeft="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="智融"
+                    android:textColor="#F87F4A"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="拼团"
+                    android:textColor="#666666"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_marginRight="18dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff666666"
+                android:text="更多 >"/>
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_group_buy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/backgroundColor"
+            android:paddingBottom="10dp"/>
+
+        <View
+            android:id="@+id/dev_group_buy"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#ffe9e9e9" />
+
+        <RelativeLayout
+            android:id="@+id/rl_flash_sale"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:onClick='@{view->handler.toGoodsListAcitvity(view,3,"限时购")}'
+            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundColor">
+
+            <LinearLayout
+                android:id="@+id/ll_xsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:background="@mipmap/icon_title_bk3"
+                android:orientation="horizontal"
+                android:paddingLeft="18dp">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="限时"
+                    android:textColor="#F6C400"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="购"
+                    android:textColor="#666666"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <com.shunmai.zryp.view.CountdownTextView
+                android:id="@+id/ct_xsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/ll_xsg"
+                android:background="@drawable/shape_xsg_time"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/withe"
+                android:textSize="16sp" />
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_marginRight="18dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff666666"
+                android:text="更多 >"/>
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_flash_sale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:id="@+id/dev_flash_sale"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#ffe9e9e9" />
+
+        <RelativeLayout
+            android:id="@+id/rl_new_goods"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="16dp"
+            android:onClick='@{view->handler.toGoodsListAcitvity(view,6,"新品首发")}'
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundColor">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+
+                android:background="@mipmap/icon_title_bk4"
+                android:orientation="horizontal"
+                android:paddingLeft="18dp">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="新品"
+                    android:textColor="#F09421"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="首发"
+                    android:textColor="#666666"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_marginRight="18dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff666666"
+                android:text="更多 >"/>
+        </RelativeLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_new_goods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.shunmai.zryp.view.MyBanner
+            android:id="@+id/banner1"
+            android:layout_width="match_parent"
+            android:layout_height="121dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/backgroundColor"
+            android:layout_marginBottom="15dp"
+            app:delay_time="7000"
+            app:image_scale_type="fit_xy"
+            app:indicator_drawable_selected="@mipmap/banner_red"
+            app:indicator_drawable_unselected="@mipmap/banner_grey"
+            app:indicator_height="9dp"
+            app:indicator_margin="3dp"
+            app:indicator_width="9dp"
+            app:is_auto_play="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#ffe9e9e9" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="204dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/icon_title_bk5"
+                android:gravity="center"
+                android:text="猜你喜欢"
+                android:textColor="@color/withe"
+                android:textSize="18sp" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

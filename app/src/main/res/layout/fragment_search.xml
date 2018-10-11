@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:titlebar="http://schemas.android.com/apk/res-auto">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <com.wuhenzhizao.titlebar.widget.CommonTitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        titlebar:showBottomLine="true"
+        titlebar:centerText="搜索"
+        titlebar:centerType="textView"
+        titlebar:fillStatusBar="false"
+        />
+
+    <TextView
+        android:id="@+id/tv_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_search"
+        android:drawableLeft="@mipmap/icon_search"
+        android:drawablePadding="13dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="8dp"
+        android:paddingTop="5dp"
+        android:text="请输入商品名称" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <ListView
+            android:id="@+id/lv_classify"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:scrollbars="none"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_classify"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"/>
+    </LinearLayout>
+</LinearLayout>
+</layout>

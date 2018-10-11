@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:titlebar="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/withe"
+        android:orientation="vertical">
+
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            titlebar:centerText="身份认证"
+            android:onBack="@{true}"
+            titlebar:centerType="textView"
+            titlebar:fillStatusBar="false"
+            titlebar:leftDrawable="@color/withe"
+            titlebar:leftType="imageButton"
+            titlebar:showBottomLine="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/withe"
+            android:divider="@drawable/shape_divider"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:showDividers="middle"
+            android:orientation="vertical">
+
+            <EditText
+                style="@style/eidttext_style"
+                android:hint="请输入正确的中文姓名" />
+
+            <EditText
+                style="@style/eidttext_style"
+                android:hint="请输入您的银行卡号" />
+
+            <EditText
+                style="@style/eidttext_style"
+                android:hint="请输入您的手机号" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp">
+
+                <EditText
+                    android:id="@+id/et_pass_code"
+                    style="@style/eidttext_style"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="3"
+                    android:hint="请输入验证码"
+                    android:paddingBottom="0dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="17dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="15dp"
+                    android:layout_toLeftOf="@+id/tv_get_code"
+                    android:background="#ffdddddd" />
+
+                <TextView
+                    android:id="@+id/tv_get_code"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="获取验证码"
+                    android:textColor="#FF7900" />
+            </LinearLayout>
+
+            <EditText
+                style="@style/eidttext_style"
+                android:hint="请输入您的身份证号" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:background="@mipmap/btn_approve" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

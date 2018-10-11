@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:background="@drawable/shape_shadow"
+    android:layout_marginRight="10dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_goods"
+            android:layout_width="match_parent"
+            android:layout_margin="6dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="155dp"
+            android:scaleType="centerCrop"
+            />
+
+        <ImageView
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@mipmap/icon_chaozhituijian" />
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ffDDDDDD"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+    <TextView
+        android:id="@+id/tv_goods"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" 碧螺春】茅台集团技开公司天朝上品（人）酒53度柔 和酱香型白酒 单瓶装"
+        android:textColor="@color/fontBlack"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="17dp"
+        android:textSize="14sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="6dp">
+        <TextView
+            android:id="@+id/tv_price"
+            android:textColor="@color/fontRed"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="17sp"
+            android:layout_marginLeft="17dp"
+            android:gravity="center"
+            android:text="¥500"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_marginRight="25dp"
+            android:layout_width="94dp"
+            android:layout_height="26dp"
+            android:src="@mipmap/btn_qqg"/>
+          <TextView
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</LinearLayout>
+</layout>

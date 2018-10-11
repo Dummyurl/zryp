@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.shunmai.zryp.ui.userinfo.account.AddressListActivity"
+        android:orientation="vertical">
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            titlebar:leftDrawable="@color/withe"
+            android:onBack="@{true}"
+            android:layout_marginTop="15dp"
+            titlebar:showBottomLine="true"
+            titlebar:centerText="编辑收货地址"
+            titlebar:centerType="textView"
+            titlebar:fillStatusBar="false"
+            titlebar:leftType="imageButton" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/withe"
+            android:divider="@drawable/shape_divider"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:showDividers="middle"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_name"
+                style="@style/eidttext_style"
+                android:hint="收货人姓名" />
+
+            <EditText
+                android:inputType="number"
+                android:id="@+id/et_phone"
+                style="@style/eidttext_style"
+                android:hint="收货人手机号码" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                style="@style/eidttext_style"
+                android:drawableRight="@mipmap/icon_arrow"
+                android:text="省、市、区"
+                />
+
+
+
+                <EditText
+                    android:id="@+id/et_address"
+                    android:layout_height="72dp"
+                    android:singleLine="false"
+                    android:gravity="top"
+                    android:layout_marginTop="22dp"
+                    style="@style/eidttext_style"
+                    android:hint="详细地址：如道路、门牌号、小区、楼栋号、单元室等" />
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_marginRight="23dp"
+                android:layout_marginLeft="23dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/shape_botton"
+                android:text="保 存"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+                <LinearLayout
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/withe"
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/ll_wheel"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <com.shunmai.zryp.view.wheel.WheelView
+                        android:id="@+id/id_province"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <com.shunmai.zryp.view.wheel.WheelView
+                        android:id="@+id/id_city"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <com.shunmai.zryp.view.wheel.WheelView
+                        android:id="@+id/id_district"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>
