@@ -35,7 +35,7 @@ import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 
 
 public class CircleImageView extends ImageView {

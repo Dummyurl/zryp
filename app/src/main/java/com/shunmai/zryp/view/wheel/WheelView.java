@@ -35,7 +35,7 @@ import android.widget.LinearLayout;
 
 
 import com.shunmai.zryp.view.wheel.adapters.WheelViewAdapter;
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -42,10 +42,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
+            android:layout_weight="1"
             android:layout_marginRight="8dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="阿斯顿撒的撒打算打算打算的撒大 v 擦拭翻炒撒的发生"
             android:textColor="#ff666666"
             android:textSize="14sp" />
 
@@ -61,7 +61,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginLeft="8dp"
-                android:text="¥14.2"
                 android:textColor="#E30D0D"
                 android:textSize="16sp" />
 
@@ -77,7 +76,6 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:text="¥14.2"
                 android:textColor="@color/fontNormal"
                 android:textSize="14sp" />
 

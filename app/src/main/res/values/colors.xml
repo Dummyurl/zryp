@@ -11,7 +11,7 @@
     <color name="divider">#ffdddddd</color>
     <color name="fontOrange">#FFFF7900</color>
     <!--页面背景的颜色-->
-    <color name="color_page_bg">#F1F3F4</color>
+    <color name="color_page_bg">#eaedef</color>
 
     <color name="colorWhite">#ffffffff</color>
 
@@ -82,5 +82,6 @@
 
     <color name="colorPrimaryHalf">#9003A9F4</color>
     <color name="colorAccentHalf">#9000E5FF</color>
-
+    <color name="gray_font_dark">#646464</color>
+    <color name="gray_light">#f2f2f2</color>
 </resources>

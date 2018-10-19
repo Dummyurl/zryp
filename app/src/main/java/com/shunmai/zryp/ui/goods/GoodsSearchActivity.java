@@ -13,8 +13,8 @@ import com.shunmai.zryp.bean.goods.GoodsHotWordBean;
 import com.shunmai.zryp.eventhandler.goods.GoodsSearchHandler;
 import com.shunmai.zryp.utils.ShareUtils;
 import com.shunmai.zryp.viewmodel.SearchActivityViewModel;
-import com.shunmai.zryp.zrypapp.R;
-import com.shunmai.zryp.zrypapp.databinding.ActivityGoodsSearchBinding;
+import com.shunmai.zryp.R;
+import com.shunmai.zryp.databinding.ActivityGoodsSearchBinding;
 
 import java.util.ArrayList;
 

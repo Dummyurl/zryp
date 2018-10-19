@@ -19,7 +19,7 @@ import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.signature.EmptySignature;
 import com.orhanobut.logger.Logger;
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -107,7 +107,7 @@ public class GlideCacheUtil {
      * @return size
      * @throws Exception
      */
-    private long getFolderSize(File file) throws Exception {
+    private long getFolderSize(File file) {
         long size = 0;
         try {
             File[] fileList = file.listFiles();
@@ -204,14 +204,23 @@ public class GlideCacheUtil {
 //    }
 
     public static void LoadImage(Context context, ImageView imageView, String url) {
-        Glide.with(context).load(url).apply(new RequestOptions().placeholder(R.mipmap.ic_launcher).skipMemoryCache(false).diskCacheStrategy(DiskCacheStrategy.ALL)).into(imageView);
+        Glide.with(context).load(url).apply(new RequestOptions().placeholder(R.mipmap.img_placeholder_loading_1).error(R.mipmap.img_placeholder_loading_1).skipMemoryCache(false).diskCacheStrategy(DiskCacheStrategy.ALL)).into(imageView);
     }
 
-    public static void LoadImage(Context context, ImageView imageView, String url, boolean isHead) {
-        if (isHead) {
-            Glide.with(context).load(url).apply(new RequestOptions().placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher)).into(imageView);
-        } else {
-            Glide.with(context).load(url).apply(new RequestOptions().placeholder(R.mipmap.ic_launcher)).into(imageView);
+    /**
+     *
+     * @param context
+     * @param imageView
+     * @param url
+     * @param type 0.head  1.正方形  2.长方形
+     */
+    public static void LoadImage(Context context, ImageView imageView, String url, int  type) {
+        if (type==0) {
+            Glide.with(context).load(url).apply(new RequestOptions().placeholder(R.mipmap.user).error(R.mipmap.user)).into(imageView);
+        } else if (type==1){
+            Glide.with(context).load(url).apply(new RequestOptions().placeholder(R.mipmap.img_placeholder_loading_1)).into(imageView);
+        }else{
+            Glide.with(context).load(url).apply(new RequestOptions().placeholder(R.mipmap.img_placeholder_loading_2)).into(imageView);
         }
     }
 

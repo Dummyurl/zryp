@@ -5,7 +5,7 @@ import android.arch.lifecycle.ViewModel;
 
 import com.shunmai.zryp.repository.SearchActivityRepository;
 import com.shunmai.zryp.bean.goods.GoodsHotWordBean;
-import com.shunmai.zryp.network.onResponseFailedListener;
+import com.shunmai.zryp.listener.onResponseFailedListener;
 
 /**
  * Created by yushengyang.

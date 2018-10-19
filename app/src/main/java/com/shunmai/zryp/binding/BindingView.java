@@ -1,8 +1,16 @@
 package com.shunmai.zryp.binding;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.databinding.BindingAdapter;
+import android.graphics.Bitmap;
 import android.graphics.Paint;
+import android.graphics.PointF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,17 +21,35 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
+import com.davemorrissey.labs.subscaleview.ImageSource;
+import com.davemorrissey.labs.subscaleview.ImageViewState;
+import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.google.gson.Gson;
 import com.shunmai.zryp.bean.goods.GoodsDetailBean;
 import com.shunmai.zryp.bean.goods.GoodsHotWordBean;
+import com.shunmai.zryp.ui.userinfo.order.UserApproveActivity;
+import com.shunmai.zryp.utils.BigImageUtils;
 import com.shunmai.zryp.utils.GlideCacheUtil;
 import com.shunmai.zryp.utils.ShareUtils;
 import com.shunmai.zryp.view.AutoFlowLayout;
 import com.shunmai.zryp.view.AutoSizeImageView;
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 import com.wuhenzhizao.titlebar.widget.CommonTitleBar;
 
+import java.io.File;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by yushengyang.
@@ -31,9 +57,21 @@ import java.util.List;
  */
 
 public class BindingView {
+    private static final int MAX_SIZE = 4096;
+    private static final int MAX_SCALE = 8;
+
     @BindingAdapter({"android:setVisibility"})
     public static void setVisibility(View view, String content) {
         if (content == null || content.equals("")) {
+            view.setVisibility(View.GONE);
+        } else {
+            view.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @BindingAdapter({"android:setListVisibility"})
+    public static void setVisibility(View view, int size) {
+        if (size == 0) {
             view.setVisibility(View.GONE);
         } else {
             view.setVisibility(View.VISIBLE);
@@ -52,6 +90,11 @@ public class BindingView {
     @BindingAdapter({"android:displayImg"})
     public static void displayImg(ImageView imageView, String url) {
         GlideCacheUtil.LoadImage(imageView.getContext(), imageView, url);
+    }
+
+    @BindingAdapter({"android:displayHeadImg"})
+    public static void displayHeadImg(ImageView imageView, String url) {
+        GlideCacheUtil.LoadImage(imageView.getContext(), imageView, url, 0);
     }
 
     @BindingAdapter({"android:setprice", "android:textline"})
@@ -83,11 +126,52 @@ public class BindingView {
     @BindingAdapter({"android:loadImages"})
     public static void loadImages(LinearLayout linearLayout, List<GoodsDetailBean.DataBean.GoodsBean.SeekGoodsImgsVOSBean> images) {
         for (int i = 0; images != null && i < images.size(); i++) {
-//            ((Activity) linearLayout.getContext()).getLayoutInflater().inflate()
-            AutoSizeImageView imageView = new AutoSizeImageView(linearLayout.getContext());
-            imageView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            linearLayout.addView(imageView);
-            GlideCacheUtil.LoadImage(linearLayout.getContext(), imageView, images.get(i).getPhotoUrl());
+//            ((Activity) linearLayout.getContext()).getLayoutInflater().inflate(
+            String url = images.get(i).getPhotoUrl();
+            SubsamplingScaleImageView scaleImageView = new SubsamplingScaleImageView(linearLayout.getContext());
+            scaleImageView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            scaleImageView.setZoomEnabled(false);
+            linearLayout.addView(scaleImageView);
+//            GlideCacheUtil.LoadImage(linearLayout.getContext(), imageView, images.get(i).getPhotoUrl());
+            scaleImageView.setMaxScale(10.0F);
+            RequestManager manager = Glide.with(linearLayout.getContext());
+            manager.load(url).into(new SimpleTarget<Drawable>() {
+                @Override
+                public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                    Bitmap bitmap = ((BitmapDrawable) resource).getBitmap();
+                    int h = bitmap.getHeight();
+                    int w = bitmap.getWidth();
+                    if (h >= MAX_SIZE || h / w > MAX_SCALE) {
+                        manager.load(url)
+                                .downloadOnly(new SimpleTarget<File>() {
+                                    @Override
+                                    public void onResourceReady(@NonNull File resource, @Nullable Transition<? super File> transition) {
+                                        float scale = BigImageUtils.getImageScale(linearLayout.getContext(), resource.getAbsolutePath());
+                                        scaleImageView.setImage(ImageSource.uri(resource.getAbsolutePath()),
+                                                new ImageViewState(scale, new PointF(0, 0), 0));
+                                    }
+                                });
+                    }else{
+                        scaleImageView.setImage(ImageSource.bitmap(bitmap));
+                    }
+
+                }
+            });
+
         }
     }
+
+    @BindingAdapter({"android:clickToActivity"})
+    public static void clickToActivity(View view, String clz) {
+        view.setOnClickListener(v -> {
+            Intent intent = null;
+            try {
+                intent = new Intent(view.getContext(), Class.forName(clz));
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            view.getContext().startActivity(intent);
+        });
+    }
+
 }

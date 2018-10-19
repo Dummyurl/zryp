@@ -8,7 +8,7 @@ import com.shunmai.zryp.adapter.ViewHolder;
 import com.shunmai.zryp.bean.goods.GoodsBean;
 import com.shunmai.zryp.bean.home.HomePageBean;
 import com.shunmai.zryp.utils.GlideCacheUtil;
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 
 import java.util.List;
 

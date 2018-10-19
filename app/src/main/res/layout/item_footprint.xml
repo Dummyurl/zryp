@@ -2,26 +2,30 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
+        android:id="@+id/ll_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/withe"
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/iv_goods"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:layout_margin="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginRight="12dp"
             android:src="@mipmap/ic_launcher" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_goods_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="freeplus芙丽芳丝净润洗面霜氨基酸洗面奶女日本洁面乳"
@@ -36,6 +40,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/tv_goods_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
@@ -44,6 +49,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/tv_goods_price_post"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"

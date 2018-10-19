@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 
 import com.shunmai.zryp.bean.Bean;
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 
 import java.util.ArrayList;
 

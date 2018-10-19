@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
 
+    </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -66,7 +68,7 @@
                     android:background="#ffdddddd" />
 
                 <TextView
-                    android:id="@+id/btn_login_getcode"
+                    android:id="@+id/tv_register_get_code"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginRight="5dp"
@@ -82,12 +84,13 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="22dp"
                 android:background="@color/white"
-                android:digits="0123456789"
+
+android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:drawableLeft="@mipmap/icon_text_lock"
                 android:drawablePadding="8dp"
                 android:hint="请输入密码"
-                android:inputType="number"
-                android:maxLength="11"
+                android:inputType="textPassword"
+                android:maxLength="20"
                 android:paddingBottom="15dp"
                 android:paddingLeft="15dp"
                 android:paddingTop="15dp"
@@ -100,6 +103,7 @@
                 android:orientation="horizontal">
 
                 <CheckBox
+                    android:id="@+id/cb_user_rule"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@drawable/selector_checkbox"
@@ -144,6 +148,7 @@
                 android:textColor="@color/fontNormal" />
 
             <TextView
+                android:id="@+id/tv_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="立即登录"

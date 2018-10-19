@@ -1,4 +1,4 @@
-package com.shunmai.zryp.network;
+package com.shunmai.zryp.listener;
 
 /**
  * Created by yushengyang.
@@ -9,4 +9,5 @@ public interface onResponseListener<T> {
     void onSuccess(T t);
 
     void onFailed(Throwable throwable);
+
 }

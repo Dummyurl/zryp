@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:titlebar="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:titlebar="http://schemas.android.com/apk/res-auto"
         android:background="@color/white"
         android:orientation="vertical">
 
@@ -11,48 +12,53 @@
             android:id="@+id/title_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onBack="@{true}"
-            titlebar:leftDrawable="@color/withe"
             android:layout_marginTop="15dp"
-            titlebar:showBottomLine="true"
+            android:onBack="@{true}"
             titlebar:centerText="登录"
             titlebar:centerType="textView"
             titlebar:fillStatusBar="false"
-            titlebar:leftType="imageButton" />
+            titlebar:leftDrawable="@color/withe"
+            titlebar:leftType="imageButton"
+            titlebar:showBottomLine="true" />
 
 
         <ViewStub
-            android:visibility="gone"
-            android:layout_marginLeft="23dp"
-            android:layout_marginRight="23dp"
             android:id="@+id/vs_register"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout="@layout/layout_regist"
-            />
-        <ViewStub
             android:layout_marginLeft="23dp"
             android:layout_marginRight="23dp"
-            android:visibility="gone"
+            android:layout="@layout/layout_register"
+            android:visibility="gone" />
+
+        <ViewStub
             android:id="@+id/vs_find_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout="@layout/layout_find_password"/>
-        <ViewStub
             android:layout_marginLeft="23dp"
             android:layout_marginRight="23dp"
-            android:visibility="gone"
+            android:layout_marginTop="30dp"
+            android:layout="@layout/layout_find_password"
+            android:visibility="gone" />
+
+        <ViewStub
             android:id="@+id/vs_bind"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout="@layout/layout_bind_phone"/>
-        <ViewStub
             android:layout_marginLeft="23dp"
             android:layout_marginRight="23dp"
-            android:visibility="gone"
+            android:layout_marginTop="30dp"
+            android:layout="@layout/layout_bind_phone"
+            android:visibility="gone" />
+
+        <ViewStub
             android:id="@+id/vs_set_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout="@layout/layout_set_password"/>
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginTop="30dp"
+            android:layout="@layout/layout_set_password"
+            android:visibility="gone" />
     </LinearLayout>
 </layout>

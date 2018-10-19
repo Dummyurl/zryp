@@ -8,7 +8,7 @@ import com.shunmai.zryp.adapter.ViewHolder;
 import com.shunmai.zryp.bean.goods.GoodsBean;
 import com.shunmai.zryp.bean.home.HomePageBean;
 import com.shunmai.zryp.utils.GlideCacheUtil;
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 
 import java.util.List;
 
@@ -29,6 +29,6 @@ public class NewGoodsRecAdapter extends CommonViewAdapter<GoodsBean>{
         ((TextView) holder.getView(R.id.tv_title)).setText(item.getGoodsName());
 //        ((TextView) holder.getView(R.id.tv_second_title)).setText(item.getGoodsNote());
         ((TextView) holder.getView(R.id.tv_price)).setText("¥"+item.getMarketPrice());
-        GlideCacheUtil.LoadImage(mContext,holder.getView(R.id.iv_goods),item.getDefalutPhotourl(),false);
+        GlideCacheUtil.LoadImage(mContext,holder.getView(R.id.iv_goods),item.getDefalutPhotourl(),1);
     }
 }

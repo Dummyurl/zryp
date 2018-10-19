@@ -93,14 +93,13 @@ public class GoodsDetailBean extends TResponse<GoodsDetailBean.DataBean>{
             private int goodsType;
             private int goodsPropery;
             private long catlaogMobileId;
-            private int catalogPcId;
             private int brandId;
             private double price;
             private double marketPrice;
             private double mscore;
             private double weight;
             private String keywords;
-            private int sortOrder;
+            private long sortOrder;
             private long upcarriageTime;
             private long lastupdateTime;
             private boolean isFronthidden;
@@ -114,7 +113,6 @@ public class GoodsDetailBean extends TResponse<GoodsDetailBean.DataBean>{
             private String sysDataFrom;
             private int limit;
             private String description;
-            private int freightMode;
             private String goodsTitle;
             private String appDetails;
             private String miniDetails;
@@ -185,13 +183,6 @@ public class GoodsDetailBean extends TResponse<GoodsDetailBean.DataBean>{
                 this.catlaogMobileId = catlaogMobileId;
             }
 
-            public int getCatalogPcId() {
-                return catalogPcId;
-            }
-
-            public void setCatalogPcId(int catalogPcId) {
-                this.catalogPcId = catalogPcId;
-            }
 
             public int getBrandId() {
                 return brandId;
@@ -241,11 +232,11 @@ public class GoodsDetailBean extends TResponse<GoodsDetailBean.DataBean>{
                 this.keywords = keywords;
             }
 
-            public int getSortOrder() {
+            public long getSortOrder() {
                 return sortOrder;
             }
 
-            public void setSortOrder(int sortOrder) {
+            public void setSortOrder(long sortOrder) {
                 this.sortOrder = sortOrder;
             }
 
@@ -353,13 +344,6 @@ public class GoodsDetailBean extends TResponse<GoodsDetailBean.DataBean>{
                 this.description = description;
             }
 
-            public int getFreightMode() {
-                return freightMode;
-            }
-
-            public void setFreightMode(int freightMode) {
-                this.freightMode = freightMode;
-            }
 
             public String getGoodsTitle() {
                 return goodsTitle;

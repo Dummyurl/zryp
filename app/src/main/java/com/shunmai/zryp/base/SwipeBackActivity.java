@@ -17,8 +17,8 @@ import android.widget.RelativeLayout;
 
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.shunmai.zryp.listener.PerfectClickListener;
-import com.shunmai.zryp.zrypapp.R;
-import com.shunmai.zryp.zrypapp.databinding.ActivityBaseBinding;
+import com.shunmai.zryp.R;
+import com.shunmai.zryp.databinding.ActivityBaseBinding;
 
 /**
  * Created by liufei on 2017/12/18.
@@ -33,14 +33,12 @@ public abstract class SwipeBackActivity<SV extends ViewDataBinding> extends Base
     private AnimationDrawable mAnimationDrawable;
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
-
         mBaseBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.activity_base, null, false);
         bindingView = DataBindingUtil.inflate(getLayoutInflater(), layoutResID, null, false);
-
         // content
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         bindingView.getRoot().setLayoutParams(params);
-        RelativeLayout mContainer = (RelativeLayout) mBaseBinding.getRoot().findViewById(R.id.container);
+        RelativeLayout mContainer = mBaseBinding.getRoot().findViewById(R.id.container);
         mContainer.addView(bindingView.getRoot());
         getWindow().setContentView(mBaseBinding.getRoot());
 
@@ -126,6 +124,9 @@ public abstract class SwipeBackActivity<SV extends ViewDataBinding> extends Base
         }
         if (refresh.getVisibility() != View.GONE) {
             refresh.setVisibility(View.GONE);
+        }
+        if (emptyView.getVisibility() != View.GONE) {
+            emptyView.setVisibility(View.GONE);
         }
     }
 

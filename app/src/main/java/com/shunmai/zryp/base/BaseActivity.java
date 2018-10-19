@@ -16,7 +16,7 @@ import com.shunmai.zryp.event.Event;
 import com.shunmai.zryp.rx.RxHelper;
 import com.shunmai.zryp.utils.DevicesUtils;
 import com.shunmai.zryp.utils.Utils;
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;

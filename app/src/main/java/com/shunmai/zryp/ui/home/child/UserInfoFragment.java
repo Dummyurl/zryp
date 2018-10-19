@@ -2,27 +2,26 @@ package com.shunmai.zryp.ui.home.child;
 
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.View;
 
-import com.shunmai.zryp.adapter.account.AddressListAdapter;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.shunmai.zryp.base.BaseFragment;
+import com.shunmai.zryp.bean.TResponse;
+import com.shunmai.zryp.bean.UserInfoBean;
 import com.shunmai.zryp.eventhandler.home.UserInfoHandler;
-import com.shunmai.zryp.ui.userinfo.account.AddressListActivity;
-import com.shunmai.zryp.ui.userinfo.account.LoginActivity;
-import com.shunmai.zryp.ui.userinfo.order.OrderActivity;
-import com.shunmai.zryp.ui.userinfo.order.ScoreActivity;
+import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.viewmodel.UserInfoFragmentViewModel;
-import com.shunmai.zryp.zrypapp.R;
-import com.shunmai.zryp.zrypapp.databinding.FragmentUserinfoBinding;
+import com.shunmai.zryp.R;
+import com.shunmai.zryp.databinding.FragmentUserinfoBinding;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UserInfoFragment extends BaseFragment<FragmentUserinfoBinding>{
+public class UserInfoFragment extends BaseFragment<FragmentUserinfoBinding> implements onResponseListener<TResponse<UserInfoBean>>, OnRefreshListener {
 
 
     private UserInfoFragmentViewModel viewModel;
@@ -37,9 +36,13 @@ public class UserInfoFragment extends BaseFragment<FragmentUserinfoBinding>{
         super.onActivityCreated(savedInstanceState);
         viewModel = ViewModelProviders.of(this).get(UserInfoFragmentViewModel.class);
         bindingView.setHandler(new UserInfoHandler());
+        initRefresh();
         showContentView();
 
+    }
 
+    private void initRefresh() {
+        bindingView.refreshLayout.setOnRefreshListener(this);
     }
 
 
@@ -48,5 +51,31 @@ public class UserInfoFragment extends BaseFragment<FragmentUserinfoBinding>{
         return R.layout.fragment_userinfo;
     }
 
+    @Override
+    protected void loadData() {
+        viewModel.getUserInfo(this);
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadData();
+    }
+
+    @Override
+    public void onSuccess(TResponse<UserInfoBean> userInfoBean) {
+        bindingView.refreshLayout.finishRefresh();
+       bindingView.setBean(userInfoBean.getData());
+    }
+
+    @Override
+    public void onFailed(Throwable throwable) {
+        bindingView.refreshLayout.finishRefresh(false);
+    }
+
+
+    @Override
+    public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+        loadData();
+    }
 }

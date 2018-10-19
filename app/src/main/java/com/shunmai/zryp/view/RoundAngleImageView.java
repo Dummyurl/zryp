@@ -13,7 +13,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 
 /**
  * Created by yushengyang.

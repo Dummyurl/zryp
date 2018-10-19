@@ -12,8 +12,8 @@ import com.shunmai.zryp.base.BaseActivity;
 import com.shunmai.zryp.ui.home.child.UserInfoFragment;
 import com.shunmai.zryp.ui.home.child.HomePageFragment;
 import com.shunmai.zryp.ui.home.child.SearchFragment;
-import com.shunmai.zryp.zrypapp.R;
-import com.shunmai.zryp.zrypapp.databinding.ActivityHomeBinding;
+import com.shunmai.zryp.R;
+import com.shunmai.zryp.databinding.ActivityHomeBinding;
 
 import java.util.ArrayList;
 

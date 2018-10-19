@@ -21,7 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.BannerScroller;
 import com.youth.banner.WeakHandler;

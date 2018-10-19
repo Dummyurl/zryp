@@ -10,6 +10,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_wechat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="您的微信账号 XX 通过验证"
@@ -34,16 +35,17 @@
             android:showDividers="middle">
 
             <EditText
+                android:id="@+id/et_bind_phone"
                 style="@style/editstyle"
-                android:id="@+id/et_login_phone"
                 android:layout_width="match_parent"
                 android:layout_marginTop="22dp"
                 android:digits="0123456789"
-                android:drawableLeft="@mipmap/icon_text_phone"
+                android:drawableStart="@mipmap/icon_text_phone"
                 android:drawablePadding="8dp"
                 android:hint="请输入手机号"
-                android:inputType="number"
+                android:inputType="phone"
                 android:maxLength="11"
+                android:maxLines="1"
                 android:paddingBottom="15dp"
                 android:paddingLeft="15dp"
                 android:paddingTop="15dp"
@@ -62,8 +64,8 @@
                 android:paddingTop="15dp">
 
                 <EditText
+                    android:id="@+id/et_bind_code"
                     style="@style/editstyle"
-                    android:id="@+id/et_login_code"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:digits="0123456789"
@@ -82,7 +84,7 @@
                     android:background="#ffdddddd" />
 
                 <TextView
-                    android:id="@+id/btn_login_getcode"
+                    android:id="@+id/btn_bind_getcode"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginRight="5dp"
@@ -93,13 +95,13 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/btn_login"
+                android:id="@+id/btn_bind"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/shape_botton"
-                android:text="登 录"
+                android:text="绑 定"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
         </LinearLayout>

@@ -2,27 +2,19 @@ package com.shunmai.zryp.adapter.account;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.util.SparseArray;
-import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.shunmai.zryp.adapter.CommonViewAdapter;
 import com.shunmai.zryp.adapter.ViewHolder;
 import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.bean.userinfo.AddressListBean;
-import com.shunmai.zryp.network.onResponseListener;
+import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.utils.ToastUtils;
 import com.shunmai.zryp.viewmodel.AddressListViewModel;
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 import com.zyao89.view.zloading.ZLoadingDialog;
 import com.zyao89.view.zloading.Z_TYPE;
 
@@ -39,7 +31,7 @@ public class AddressListAdapter extends CommonViewAdapter<AddressListBean.DataBe
     private AddressListViewModel viewModel;
     public int checked_position = 0;
 
-    public AddressListAdapter(Context context, List<AddressListBean.DataBean> datas, addressChangeListener listener, AddressListViewModel viewModel) {
+    public AddressListAdapter(Context context, List<AddressListBean.DataBean> datas, AddressListViewModel viewModel) {
         super(context, datas, R.layout.item_address_list);
         this.viewModel = viewModel;
         dialog = new ZLoadingDialog(mContext);
@@ -53,6 +45,7 @@ public class AddressListAdapter extends CommonViewAdapter<AddressListBean.DataBe
                 .setCanceledOnTouchOutside(false)
                  ;
         handler = new Handler();
+        setCanShowEmpty(true);
     }
 
     @Override
@@ -77,7 +70,7 @@ public class AddressListAdapter extends CommonViewAdapter<AddressListBean.DataBe
                 @Override
                 public void onSuccess(TResponse<String> stringTResponse) {
                     mDatas.remove(item);
-                    v.postDelayed(runnable, 1000);
+                    v.postDelayed(runnable, 0);
                     notifyDataSetChanged();
                 }
 
@@ -114,7 +107,7 @@ public class AddressListAdapter extends CommonViewAdapter<AddressListBean.DataBe
                     @Override
                     public void onSuccess(TResponse<String> stringTResponse) {
                         box.removeCallbacks(runnable);
-                        box.postDelayed(runnable, 1000);
+                        box.postDelayed(runnable, 0);
                     }
                     @Override
                     public void onFailed(Throwable throwable) {
@@ -135,28 +128,5 @@ public class AddressListAdapter extends CommonViewAdapter<AddressListBean.DataBe
         }
     };
 
-//    private void setCheck(CheckBox box, int position) {
-//        box.setTag(position);
-//        box.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//            if (isChecked) {
-//                if ((int) box.getTag() != checked_position){
-//                    dialog.show();
-//                    checked_position = position;
-//                    specialUpdate();
-//                }
-//                box.removeCallbacks(runnable);
-//                box.postDelayed(runnable, 1000);
-//            } else if (((int) box.getTag()) == checked_position) {
-//                box.setChecked(true);
-//            }
-//        });
-//    }
 
-    public interface addressChangeListener {
-        void onChange();
-
-        void onDelete();
-
-        void onDefaultChange();
-    }
 }

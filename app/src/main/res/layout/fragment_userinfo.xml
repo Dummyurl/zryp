@@ -1,10 +1,16 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
+
+        <variable
+            name="bean"
+            type="com.shunmai.zryp.bean.UserInfoBean" />
 
         <variable
             name="handler"
             type="com.shunmai.zryp.eventhandler.home.UserInfoHandler" />
     </data>
+
     <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:titlebar="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
@@ -87,8 +93,8 @@
                                     android:layout_height="42dp"
                                     android:layout_centerVertical="true"
                                     android:layout_marginLeft="5dp"
-                                    android:padding="8dp"
                                     android:gravity="center"
+                                    android:padding="8dp"
                                     android:text="我的订单"
                                     android:textColor="@color/black"
                                     android:textSize="14sp" />
@@ -112,56 +118,55 @@
                                 <TextView
                                     android:id="@+id/tv_payment"
                                     android:layout_width="0dp"
-                                    android:onClick="@{view->handler.toOerderAcitvity(view,1)}"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:drawablePadding="4dp"
                                     android:drawableTop="@mipmap/icon_order_1"
                                     android:gravity="center"
+                                    android:onClick="@{view->handler.toOerderAcitvity(view,1)}"
                                     android:text="待付款"
                                     android:textColor="@color/black" />
 
                                 <TextView
-                                    android:onClick="@{view->handler.toOerderAcitvity(view,2)}"
-
                                     android:id="@+id/tv_share"
+
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:drawablePadding="4dp"
                                     android:drawableTop="@mipmap/icon_order_2"
                                     android:gravity="center"
+                                    android:onClick="@{view->handler.toOerderAcitvity(view,2)}"
                                     android:text="待分享"
                                     android:textColor="@color/black" />
 
                                 <TextView
-                                    android:onClick="@{view->handler.toOerderAcitvity(view,3)}"
-
                                     android:id="@+id/tv_express"
+
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:drawablePadding="4dp"
                                     android:drawableTop="@mipmap/icon_order_3"
                                     android:gravity="center"
+                                    android:onClick="@{view->handler.toOerderAcitvity(view,3)}"
                                     android:text="待发货"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/tv_traffic"
-                                    android:onClick="@{view->handler.toOerderAcitvity(view,4)}"
-
                                     android:layout_width="0dp"
+
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:drawablePadding="4dp"
                                     android:drawableTop="@mipmap/icon_order_4"
                                     android:gravity="center"
+                                    android:onClick="@{view->handler.toOerderAcitvity(view,4)}"
                                     android:text="已发货"
                                     android:textColor="@color/black" />
 
                                 <TextView
-                                    android:onClick="@{view->handler.toOerderAcitvity(view,5)}"
                                     android:id="@+id/tv_complete"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -169,6 +174,7 @@
                                     android:drawablePadding="4dp"
                                     android:drawableTop="@mipmap/icon_order_5"
                                     android:gravity="center"
+                                    android:onClick="@{view->handler.toOerderAcitvity(view,5)}"
                                     android:text="已完成"
                                     android:textColor="@color/black" />
                             </LinearLayout>
@@ -177,18 +183,20 @@
 
                         <RelativeLayout
                             android:id="@+id/rl_user"
-                           android:onClick='@{view->handler.toAcitvity(view,"com.shunmai.zryp.ui.userinfo.account.LoginActivity")}'
-
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
-                            android:layout_marginTop="30dp">
+                            android:layout_marginTop="30dp"
+                            android:clickToActivity='@{"com.shunmai.zryp.ui.userinfo.account.LoginActivity"}'>
 
                             <com.shunmai.zryp.view.CircleImageView
-                                android:id="@+id/iv_user_incon"
+                                android:id="@+id/iv_user_icon"
                                 android:layout_width="51dp"
                                 android:layout_height="51dp"
-                                android:layout_marginLeft="10dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginStart="14dp"
+                                android:displayHeadImg="@{bean.getPic()}"
                                 android:src="@mipmap/user" />
 
                             <LinearLayout
@@ -197,46 +205,81 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="15dp"
-                                android:layout_toRightOf="@+id/iv_user_incon"
+                                android:layout_toRightOf="@+id/iv_user_icon"
                                 android:orientation="vertical">
 
                                 <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_toRightOf="@id/iv_user_incon"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content">
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/iv_user_icon"
+                                    android:orientation="horizontal">
 
-                                <TextView
-                                    android:id="@+id/tv_user_name"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="UserName"
-                                    android:textColor="#fff"
-                                    android:textSize="18sp" />
-                                    <ImageView
-                                        android:src="@mipmap/icon_unapprove"
+                                    <TextView
+                                        android:id="@+id/tv_user_name"
                                         android:layout_width="wrap_content"
-                                        android:layout_marginLeft="8dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="@{bean.getNickname()}"
+                                        android:textColor="#fff"
+                                        android:textSize="18sp" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
-                                        android:layout_gravity="center"/>
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="8dp"
+                                        android:src="@mipmap/icon_unapprove" />
                                 </LinearLayout>
-                                <TextView
-                                    android:id="@+id/tv_user_id"
+
+                                <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_alignLeft="@id/tv_user_name"
-                                    android:layout_marginTop="6dp"
-                                    android:text="ID:UserId  所持积分：12345"
-                                    android:textColor="#fff"
-                                    android:textSize="13sp" />
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignLeft="@id/tv_user_name"
+                                        android:layout_marginTop="6dp"
+                                        android:text="ID:"
+                                        android:textColor="#fff"
+                                        android:textSize="13sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignLeft="@id/tv_user_name"
+                                        android:layout_marginTop="6dp"
+                                        android:text='@{bean.getUserId()+""}'
+                                        android:textColor="#fff"
+                                        android:textSize="13sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignLeft="@id/tv_user_name"
+                                        android:layout_marginLeft="8dp"
+                                        android:layout_marginTop="6dp"
+                                        android:text="所持积分："
+                                        android:textColor="#fff"
+                                        android:textSize="13sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignLeft="@id/tv_user_name"
+                                        android:layout_marginTop="6dp"
+                                        android:text='@{bean.getTotalbscore()+""}'
+                                        android:textColor="#fff"
+                                        android:textSize="13sp" />
+                                </LinearLayout>
                             </LinearLayout>
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
                                 android:layout_alignParentTop="true"
+                                android:layout_centerVertical="true"
                                 android:layout_marginRight="8dp"
                                 android:src="@mipmap/btn_toapprove" />
                         </RelativeLayout>
@@ -262,8 +305,8 @@
                             style="@style/mimecenterbt"
                             android:layout_marginTop="10dp"
                             android:drawableLeft="@mipmap/icon_userinfo_1"
-                            android:padding="0dp"
                             android:onClick='@{view->handler.toAcitvity(view,"com.shunmai.zryp.ui.userinfo.order.ScoreActivity")}'
+                            android:padding="0dp"
                             android:paddingBottom="10dp"
                             android:paddingTop="10dp"
                             android:text="  我的积分"
@@ -281,10 +324,10 @@
 
                         <TextView
                             android:id="@+id/tv_address"
-                            android:onClick='@{view->handler.toAcitvity(view,"com.shunmai.zryp.ui.userinfo.account.AddressListActivity")}'
                             style="@style/mimecenterbt"
                             android:layout_marginTop="1dp"
                             android:drawableLeft="@mipmap/icon_userinfo_3"
+                            android:onClick='@{view->handler.toAcitvity(view,"com.shunmai.zryp.ui.userinfo.account.AddressListActivity")}'
                             android:padding="0dp"
                             android:paddingBottom="10dp"
                             android:paddingTop="10dp"
@@ -309,8 +352,9 @@
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/shape_shadow"
-                        android:drawableLeft="@mipmap/icon_userinfo_5"
-                        android:text="  我推荐的人"
+                        android:drawableLeft='@mipmap/icon_userinfo_5'
+                        android:onClick="@{view->handler.toUnderlingActivity(view,bean.getUserType(),bean.getUserId())}"
+                        android:text='@{bean.getUserType()>2?"  我推荐的人":"  我的下属"}'
                         android:textColor="@color/black" />
 
                     <TextView
@@ -320,6 +364,7 @@
                         android:layout_marginTop="8dp"
                         android:background="@drawable/shape_shadow"
                         android:drawableLeft="@mipmap/icon_userinfo_6"
+                        android:onClick="@{view->handler.toFootprintActivity(view)}"
                         android:text="  我的足迹"
                         android:textColor="@color/black" />
 

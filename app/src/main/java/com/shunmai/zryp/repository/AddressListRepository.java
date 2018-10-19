@@ -4,7 +4,7 @@ import com.shunmai.zryp.base.BaseRepository;
 import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.bean.userinfo.AddressListBean;
 import com.shunmai.zryp.network.RetrofitClient;
-import com.shunmai.zryp.network.onResponseListener;
+import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.network.service.HttpService;
 
 import java.util.HashMap;

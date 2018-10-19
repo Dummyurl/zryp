@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.shunmai.zryp.adapter.home.HomeFavouriteRecAdapter;
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 
 import java.util.LinkedList;
 import java.util.List;

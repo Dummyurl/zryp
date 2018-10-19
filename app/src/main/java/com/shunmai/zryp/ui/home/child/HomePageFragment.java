@@ -1,7 +1,6 @@
 package com.shunmai.zryp.ui.home.child;
 
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -27,13 +26,13 @@ import com.shunmai.zryp.adapter.home.NewGoodsRecAdapter;
 import com.shunmai.zryp.adapter.home.RecommendRecAdapter;
 import com.shunmai.zryp.base.BaseFragment;
 import com.shunmai.zryp.bean.home.HomePageBean;
+import com.shunmai.zryp.eventhandler.home.FirstPageHandler;
 import com.shunmai.zryp.network.RetrofitClient;
 import com.shunmai.zryp.network.service.HttpService;
-import com.shunmai.zryp.ui.goods.GoodsListActivity;
 import com.shunmai.zryp.utils.GlideCacheUtil;
-import com.shunmai.zryp.zrypapp.R;
-import com.shunmai.zryp.zrypapp.databinding.FragmentHomePageBinding;
-import com.shunmai.zryp.zrypapp.databinding.HeaderFirstpageBinding;
+import com.shunmai.zryp.R;
+import com.shunmai.zryp.databinding.FragmentHomePageBinding;
+import com.shunmai.zryp.databinding.HeaderFirstpageBinding;
 import com.youth.banner.BannerConfig;
 
 import java.util.ArrayList;
@@ -44,7 +43,7 @@ import io.reactivex.Observable;
 /**
  * 首页Fragment
  */
-public class HomePageFragment extends BaseFragment<FragmentHomePageBinding> implements View.OnClickListener {
+public class HomePageFragment extends BaseFragment<FragmentHomePageBinding> {
 
 
     private HeaderFirstpageBinding firstpageBinding;
@@ -62,16 +61,9 @@ public class HomePageFragment extends BaseFragment<FragmentHomePageBinding> impl
         super.onActivityCreated(savedInstanceState);
         initRefresh();
         initHeader();
-        initListener();
         getData();
     }
 
-    private void initListener() {
-        firstpageBinding.rlRecommend.setOnClickListener(this);
-        firstpageBinding.rlGroupBuy.setOnClickListener(this);
-        firstpageBinding.rlFlashSale.setOnClickListener(this);
-        firstpageBinding.rlNewGoods.setOnClickListener(this);
-    }
 
     protected void getData() {
         Observable<HomePageBean> observable = RetrofitClient.getInstance().getService(HttpService.class).HomePageInfo();
@@ -79,7 +71,7 @@ public class HomePageFragment extends BaseFragment<FragmentHomePageBinding> impl
                     refreshLayout.getLayout().postDelayed(() -> refreshLayout.finishRefresh(), 1000);
                     topImages.clear();
                     centerImages.clear();
-                    if (homePageBean.getData()==null){
+                    if (homePageBean.getData() == null) {
                         showError();
                         return;
                     }
@@ -96,15 +88,14 @@ public class HomePageFragment extends BaseFragment<FragmentHomePageBinding> impl
                         firstpageBinding.rlNewGoods.setVisibility(View.GONE);
                     }
                     if (homePageBean.getData().getGroupBuying() != null && homePageBean.getData().getGroupBuying().getPromotionGoodsList().size() != 0) {
-                        groupBuyAdapter.setData(homePageBean.getData().getGroupBuying().getPromotionGoodsList(),homePageBean.getData().getGroupBuying().getPrGroupnum());
+                        groupBuyAdapter.setData(homePageBean.getData().getGroupBuying().getPromotionGoodsList(), homePageBean.getData().getGroupBuying().getPrGroupnum());
                     } else {
                         firstpageBinding.rlGroupBuy.setVisibility(View.GONE);
                         firstpageBinding.devGroupBuy.setVisibility(View.GONE);
                     }
-                    if (homePageBean.getData().getFlashSale()!=null&&homePageBean.getData().getFlashSale().getPromotionGoodsList() != null) {
+                    if (homePageBean.getData().getFlashSale() != null && homePageBean.getData().getFlashSale().getPromotionGoodsList() != null) {
                         flashSaleRecAdapter.setData(homePageBean.getData().getFlashSale().getPromotionGoodsList());
-                        firstpageBinding.ctXsg.mSeconds=(homePageBean.getData().getFlashSale().getPrEnd() - System.currentTimeMillis())/1000;
-//                        flashSaleRecAdapter.setData(homePageBean.getData().getFlashSale());
+                        firstpageBinding.ctXsg.mSeconds = (homePageBean.getData().getFlashSale().getPrEnd() - System.currentTimeMillis()) / 1000;
                     } else {
                         firstpageBinding.rlFlashSale.setVisibility(View.GONE);
                         firstpageBinding.devFlashSale.setVisibility(View.GONE);
@@ -133,7 +124,7 @@ public class HomePageFragment extends BaseFragment<FragmentHomePageBinding> impl
                     if (homePageBean.getData().getSpecial() != null) {
                         firstpageBinding.ivBanner.setVisibility(View.VISIBLE);
                         GlideCacheUtil.LoadImage(getActivity(), firstpageBinding.ivBanner, homePageBean.getData().getSpecial().getImgUrl());
-                    }else{
+                    } else {
                         firstpageBinding.ivBanner.setVisibility(View.GONE);
                     }
                     showContentView();
@@ -163,6 +154,7 @@ public class HomePageFragment extends BaseFragment<FragmentHomePageBinding> impl
         firstpageBinding.ctXsg.init("%s", (3600));
         firstpageBinding.ctXsg.start(0);
         intiBottomRec(bindingView.recHome);
+        firstpageBinding.setHandler(new FirstPageHandler());
     }
 
     private void intiBottomRec(RecyclerView recHome) {
@@ -178,8 +170,9 @@ public class HomePageFragment extends BaseFragment<FragmentHomePageBinding> impl
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 View viewByPosition = gridLayoutManager.findViewByPosition(0);
-                if (viewByPosition!=null){
-                bindingView.viewBackground.setAlpha(-(float) viewByPosition.getTop()/(float)firstpageBinding.banner.getHeight());}
+                if (viewByPosition != null) {
+                    bindingView.viewBackground.setAlpha(-(float) viewByPosition.getTop() / (float) firstpageBinding.banner.getHeight());
+                }
             }
 
 
@@ -196,9 +189,7 @@ public class HomePageFragment extends BaseFragment<FragmentHomePageBinding> impl
             rec.setLayoutManager(new GridLayoutManager(getActivity(), spanCount));
         } else {
             if (!isVertical) {
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-                linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-                rec.setLayoutManager(linearLayoutManager);
+                rec.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
             } else {
                 rec.addItemDecoration(new SpaceItemDecoration(0, dividerSize));
                 rec.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -218,18 +209,6 @@ public class HomePageFragment extends BaseFragment<FragmentHomePageBinding> impl
             Toast.makeText(getActivity(), "底部添加", Toast.LENGTH_SHORT).show();
 
         }, 2000));
-//        //触发自动刷新
-//        refreshLayout.autoRefresh();
-//        //点击测试
-//        RefreshFooter footer = refreshLayout.getRefreshFooter();
-//        if (footer != null) {
-//            refreshLayout.getRefreshFooter().getView().findViewById(ClassicsFooter.ID_TEXT_TITLE).setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Toast.makeText(getActivity().getBaseContext(), "点击测试", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        }
     }
 
     @Override
@@ -238,31 +217,4 @@ public class HomePageFragment extends BaseFragment<FragmentHomePageBinding> impl
     }
 
 
-    @Override
-    public void onClick(View v) {
-        Intent intent=new Intent(getActivity(), GoodsListActivity.class);
-        switch (v.getId()){
-            case R.id.rl_new_goods:{
-                intent.putExtra("title","新品首发");
-                intent.putExtra("key","NewProduct");
-                break;
-            }
-            case R.id.rl_recommend:{
-                intent.putExtra("title","超值推荐");
-                intent.putExtra("key","recommend");
-                break;
-            }
-            case R.id.rl_group_buy:{
-                intent.putExtra("title","智融拼团");
-                intent.putExtra("key","GroupBuying");
-                break;
-            }
-            case R.id.rl_flash_sale:{
-                intent.putExtra("title","限时抢购");
-                intent.putExtra("key","FlashSale");
-                break;
-            }
-        }
-        startActivity(intent);
-    }
 }

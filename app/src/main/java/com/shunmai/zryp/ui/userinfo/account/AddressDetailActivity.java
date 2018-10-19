@@ -1,19 +1,16 @@
 package com.shunmai.zryp.ui.userinfo.account;
 
 import android.app.Activity;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.shunmai.zryp.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.TResponse;
-import com.shunmai.zryp.network.onResponseListener;
+import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.utils.StringUtils;
 import com.shunmai.zryp.utils.ToastUtils;
 import com.shunmai.zryp.view.wheel.OnWheelChangedListener;
@@ -25,8 +22,8 @@ import com.shunmai.zryp.view.wheel.adapters.DistrictModel;
 import com.shunmai.zryp.view.wheel.adapters.ProvinceModel;
 import com.shunmai.zryp.view.wheel.adapters.RevertAddressEntity;
 import com.shunmai.zryp.viewmodel.AddressDetailViewModel;
-import com.shunmai.zryp.zrypapp.R;
-import com.shunmai.zryp.zrypapp.databinding.ActivityAddressDetailBinding;
+import com.shunmai.zryp.R;
+import com.shunmai.zryp.databinding.ActivityAddressDetailBinding;
 
 import java.io.InputStream;
 import java.util.HashMap;
@@ -305,7 +302,7 @@ public class AddressDetailActivity extends SwipeBackActivity<ActivityAddressDeta
                         hashMap.put("cityCode", 0);
                         hashMap.put("countryCode", 0);
                         hashMap.put("towmCode", 0);
-                        hashMap.put("userid", 18720);
+                        hashMap.put("userid", 15598);
                         return hashMap;
                     } else {
                         ToastUtils.showToast("请选择收货地区！");

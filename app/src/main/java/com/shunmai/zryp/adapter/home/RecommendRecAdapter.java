@@ -7,7 +7,7 @@ import com.shunmai.zryp.adapter.CommonViewAdapter;
 import com.shunmai.zryp.adapter.ViewHolder;
 import com.shunmai.zryp.bean.goods.GoodsBean;
 import com.shunmai.zryp.utils.GlideCacheUtil;
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class RecommendRecAdapter extends CommonViewAdapter<GoodsBean> {
     public void convert(ViewHolder holder,GoodsBean item) {
         ((TextView)holder.getView(R.id.tv_goods)).setText(item.getGoodsName());
         ((TextView)holder.getView(R.id.tv_price)).setText("¥"+item.getMarketPrice());
-        GlideCacheUtil.LoadImage(mContext,holder.getView(R.id.iv_goods),item.getDefalutPhotourl(),false);
+        GlideCacheUtil.LoadImage(mContext,holder.getView(R.id.iv_goods),item.getDefalutPhotourl(),2);
 
     }
 }

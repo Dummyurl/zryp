@@ -6,7 +6,7 @@ import android.arch.lifecycle.MutableLiveData;
 import com.shunmai.zryp.base.BaseRepository;
 import com.shunmai.zryp.bean.goods.CategoryBean;
 import com.shunmai.zryp.network.RetrofitClient;
-import com.shunmai.zryp.network.onResponseFailedListener;
+import com.shunmai.zryp.listener.onResponseFailedListener;
 import com.shunmai.zryp.network.service.HttpService;
 
 

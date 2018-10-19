@@ -12,7 +12,7 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.shunmai.zryp.bean.Bean;
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 
 import java.util.ArrayList;
 

@@ -12,7 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 
 import java.io.IOException;
 import java.lang.reflect.Field;

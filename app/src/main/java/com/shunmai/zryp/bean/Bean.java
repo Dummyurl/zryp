@@ -14,11 +14,6 @@ public class Bean {
     public Bean() {
     }
 
-    public Bean(String title, List<GoodsBean> goods) {
-        this.title = title;
-        this.goods = goods;
-    }
-
     public String getTitle() {
         return title;
     }

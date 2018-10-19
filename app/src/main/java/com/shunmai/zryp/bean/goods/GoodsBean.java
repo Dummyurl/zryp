@@ -3,7 +3,7 @@ package com.shunmai.zryp.bean.goods;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
-import com.shunmai.zryp.zrypapp.BR;
+import com.shunmai.zryp.BR;
 
 import java.util.List;
 

@@ -6,26 +6,23 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.shunmai.zryp.base.SwipeBackActivity;
-import com.shunmai.zryp.zrypapp.R;
-import com.shunmai.zryp.zrypapp.databinding.ActivityScoreBinding;
+import com.shunmai.zryp.R;
+import com.shunmai.zryp.databinding.ActivityScoreBinding;
 
-public class ScoreActivity extends SwipeBackActivity {
-    ActivityScoreBinding biding;
+public class ScoreActivity extends SwipeBackActivity<ActivityScoreBinding> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        biding=  DataBindingUtil.setContentView(this,R.layout.activity_score);
+        setContentView(R.layout.activity_score);
         initWindow(this);
         initView();
+        showContentView();
     }
 
     private void initView() {
-       biding.layoutScoreA.getRoot().findViewById(R.id.tv_expense).setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent=new Intent(ScoreActivity.this,UserApproveActivity.class);
-               startActivity(intent);
-           }
+       bindingView.layoutScoreA.getRoot().findViewById(R.id.tv_expense).setOnClickListener(v -> {
+           Intent intent=new Intent(ScoreActivity.this,UserApproveActivity.class);
+           startActivity(intent);
        });
 
     }

@@ -4,6 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
+
+import com.google.gson.Gson;
+import com.shunmai.zryp.bean.UserInfoBean;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -32,6 +36,24 @@ public class ShareUtils {
     public static void putString(String key, String value) {
         editor.putString(key, value);
         editor.commit();
+    }
+
+    public static void putUserInfo(UserInfoBean bean){
+        if (bean!=null){
+        putString("userInfo",new Gson().toJson(bean));
+        }
+    }
+
+    public static void clearUserInfo(){
+        putString("userInfo","");
+    }
+
+    public static UserInfoBean getUserInfo(){
+        if (getString("userInfo")==null||getString("userInfo").equals("")){
+            return null;
+        }else{
+            return new Gson().fromJson(getString("userInfo"),UserInfoBean.class);
+        }
     }
 
     public static int getInt(String key) {

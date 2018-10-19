@@ -12,8 +12,8 @@ import com.shunmai.zryp.base.BaseFragment;
 import com.shunmai.zryp.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.userinfo.TabEntity;
 import com.shunmai.zryp.ui.userinfo.child.OrderFragment;
-import com.shunmai.zryp.zrypapp.R;
-import com.shunmai.zryp.zrypapp.databinding.ActivityOrderBinding;
+import com.shunmai.zryp.R;
+import com.shunmai.zryp.databinding.ActivityOrderBinding;
 
 import java.util.ArrayList;
 
@@ -32,6 +32,7 @@ public class OrderActivity extends SwipeBackActivity<ActivityOrderBinding>
         initView();
         bindingView.tablayout.setCurrentTab(getIntent().getIntExtra("position",0));
         bindingView.viewPager.setCurrentItem(getIntent().getIntExtra("position",0));
+        showContentView();
     }
 
     @Override

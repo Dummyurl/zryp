@@ -7,8 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.shunmai.zryp.adapter.home.HomeFavouriteRecAdapter;
 import com.shunmai.zryp.base.BaseFragment;
-import com.shunmai.zryp.zrypapp.R;
-import com.shunmai.zryp.zrypapp.databinding.FragmentOrderBinding;
+import com.shunmai.zryp.R;
+import com.shunmai.zryp.databinding.FragmentOrderBinding;
 
 import java.util.ArrayList;
 

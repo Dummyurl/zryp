@@ -6,6 +6,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.event.Event;
 import com.shunmai.zryp.listener.PerfectClickListener;
 import com.shunmai.zryp.rx.RxHelper;
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
@@ -61,9 +62,9 @@ public abstract class BaseFragment<SV extends ViewDataBinding> extends NetFragme
      * 在这里实现Fragment数据的缓加载.
      */
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (getUserVisibleHint()) {
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
             mIsVisible = true;
             onVisible();
         } else {

@@ -3,7 +3,7 @@ package com.shunmai.zryp.ui.open;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 
 public class GuideActivity extends AppCompatActivity {
 

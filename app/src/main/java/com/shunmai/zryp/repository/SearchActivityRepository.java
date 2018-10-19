@@ -6,7 +6,7 @@ import com.google.gson.Gson;
 import com.shunmai.zryp.base.BaseRepository;
 import com.shunmai.zryp.bean.goods.GoodsHotWordBean;
 import com.shunmai.zryp.network.RetrofitClient;
-import com.shunmai.zryp.network.onResponseFailedListener;
+import com.shunmai.zryp.listener.onResponseFailedListener;
 import com.shunmai.zryp.network.service.HttpService;
 import com.shunmai.zryp.utils.ShareUtils;
 

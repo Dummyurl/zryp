@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.shunmai.zryp.zrypapp">
+    package="com.shunmai.zryp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -69,7 +69,14 @@
         <activity
             android:name="com.shunmai.zryp.ui.userinfo.account.FootPrintActivity"
             android:launchMode="singleTask" />
-        <activity android:name="com.shunmai.zryp.ui.userinfo.underling.MyUnderlingActivity"></activity>
+        <activity android:name="com.shunmai.zryp.ui.userinfo.underling.MyUnderlingActivity"/>
+        <!-- 微信登录 begin -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
     </application>
 
 </manifest>

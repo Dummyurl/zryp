@@ -3,7 +3,6 @@ package com.shunmai.zryp.app;
 import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDelegate;
 
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -12,14 +11,14 @@ import com.orhanobut.logger.LogcatLogStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
-import com.scwang.smartrefresh.layout.api.DefaultRefreshInitializer;
-import com.scwang.smartrefresh.layout.api.RefreshHeader;
+import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
+import com.scwang.smartrefresh.layout.api.RefreshFooter;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.shunmai.zryp.utils.DynamicTimeFormat;
 import com.shunmai.zryp.utils.ShareUtils;
-import com.shunmai.zryp.zrypapp.R;
+import com.shunmai.zryp.R;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
@@ -35,27 +34,24 @@ public class MyApplication extends Application {
         //启用矢量图兼容
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         //设置全局默认配置（优先级最低，会被其他设置覆盖）
-        SmartRefreshLayout.setDefaultRefreshInitializer(new DefaultRefreshInitializer() {
-            @Override
-            public void initialize(@NonNull Context context, @NonNull RefreshLayout layout) {
-                //全局设置（优先级最低）
-                layout.setEnableLoadMore(false);
-                layout.setEnableAutoLoadMore(true);
-                layout.setEnableOverScrollDrag(false);
-                layout.setEnableOverScrollBounce(true);
-                layout.setEnableLoadMoreWhenContentNotFull(true);
-                layout.setEnableScrollContentWhenRefreshed(true);
-            }
+        SmartRefreshLayout.setDefaultRefreshInitializer((context, layout) -> {
+            //全局设置（优先级最低）
+            layout.setEnableLoadMore(false);
+            layout.setEnableAutoLoadMore(true);
+            layout.setEnableOverScrollDrag(false);
+            layout.setEnableOverScrollBounce(true);
+            layout.setEnableLoadMoreWhenContentNotFull(true);
+            layout.setEnableScrollContentWhenRefreshed(true);
         });
-        SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
-            @NonNull
-            @Override
-            public RefreshHeader createRefreshHeader(@NonNull Context context, @NonNull RefreshLayout layout) {
-                //全局设置主题颜色（优先级第二低，可以覆盖 DefaultRefreshInitializer 的配置，与下面的ClassicsHeader绑定）
-                layout.setPrimaryColorsId(R.color.withe, android.R.color.black);
-
-                return new ClassicsHeader(context).setTimeFormat(new DynamicTimeFormat("更新于 %s"));
-            }
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator((context, layout) -> {
+            //全局设置主题颜色（优先级第二低，可以覆盖 DefaultRefreshInitializer 的配置，与下面的ClassicsHeader绑定）
+            layout.setPrimaryColorsId(R.color.withe, android.R.color.black);
+            return new ClassicsHeader(context).setTimeFormat(new DynamicTimeFormat("更新于 %s"));
+        });
+        //设置全局的Footer构建器
+        SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) -> {
+            //指定为经典Footer，默认是 BallPulseFooter
+            return new ClassicsFooter(context).setDrawableSize(20);
         });
     }
 
@@ -110,7 +106,6 @@ public class MyApplication extends Application {
                 .logStrategy(new LogcatLogStrategy()) // (Optional) Changes the log strategy to print out. Default LogCat
                 .tag("OkHttp")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
                 .build();
-
         Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
 
     }

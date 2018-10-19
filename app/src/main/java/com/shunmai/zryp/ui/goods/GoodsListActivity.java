@@ -2,18 +2,24 @@ package com.shunmai.zryp.ui.goods;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.shunmai.zryp.repository.GoodsListRepository;
 import com.shunmai.zryp.adapter.goods.RecGoodsListAdapter;
 import com.shunmai.zryp.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.TitleBean;
+import com.shunmai.zryp.utils.ToastUtils;
 import com.shunmai.zryp.viewmodel.GoodsListActivityViewModel;
-import com.shunmai.zryp.zrypapp.R;
-import com.shunmai.zryp.zrypapp.databinding.ActivityGoodsListBinding;
+import com.shunmai.zryp.R;
+import com.shunmai.zryp.databinding.ActivityGoodsListBinding;
 
 import java.util.ArrayList;
 
@@ -46,9 +52,32 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
         type = getIntent().getIntExtra("type", -1);
         catlaogMobileId = getIntent().getLongExtra("catlaogMobileId", -1);
         HomePage = getIntent().getIntExtra("HomePage", -1);
-        initRec();
+//        initRec(false);
+        goodsListAdapter= new RecGoodsListAdapter(this, new ArrayList<>());
+        bindingView.rvGoodsList.setAdapter(goodsListAdapter);
         initRefresh();
-        getData(false);
+        initRadio();
+        getData(true);
+    }
+
+    private void initRadio() {
+        bindingView.rgList.setOnCheckedChangeListener((group, checkedId) -> {
+            switch (checkedId) {
+                case R.id.rb_1: {
+                    sortType = 1;
+                    break;
+                }
+                case R.id.rb_2: {
+                    sortType = 2;
+                    break;
+                }
+                case R.id.rb_3: {
+                    sortType = 3;
+                    break;
+                }
+            }
+            getData(true);
+        });
     }
 
 
@@ -57,16 +86,14 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
         refreshLayout.setEnableAutoLoadMore(true);//开启自动加载功能（非必须）
         refreshLayout.setEnableLoadMore(true);
         refreshLayout.setOnRefreshListener(refreshLayout -> {
-            page = 1;
             getData(true);
         });
-        refreshLayout.setOnLoadMoreListener(refreshLayout -> refreshLayout.getLayout().postDelayed(new Runnable() {
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
-            public void run() {
-                refreshLayout.finishLoadMore();
-                Toast.makeText(GoodsListActivity.this, "底部添加", Toast.LENGTH_SHORT).show();
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                getData(false);
             }
-        }, 2000));
+        });
 //        //触发自动刷新
 //        refreshLayout.autoRefresh();
 //        //点击测试
@@ -82,29 +109,49 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
     }
 
     private void getData(boolean refresh) {
+        if (refresh){
+            page=1;
+            refreshLayout.setNoMoreData(false);
+        }
         switch (type) {
             case CATEGORY: {
                 viewModel.getCategoryList(page++, catlaogMobileId, sortType).observe(this, goodsListBean -> {
+                    refreshLayout.finishRefresh();
                     if (goodsListBean != null) {
+                        if(goodsListBean.getPageNum()==goodsListBean.getPageCount()){
+                            refreshLayout.setNoMoreData(true);
+                            refreshLayout.finishLoadMoreWithNoMoreData();
+                        }else{
+                            refreshLayout.finishLoadMore();
+                        }
                         if (refresh) {
-                                refreshLayout.finishRefresh();
-                                goodsListAdapter.setData(goodsListBean.getData());
+                            goodsListAdapter.setData(goodsListBean.getData());
                         } else {
                             goodsListAdapter.add(goodsListBean.getData());
                         }
+                    }
+                    if (refresh){
+                        checkEmpty();
                     }
                 });
                 break;
             }
             case FIRSTPAGE: {
                 viewModel.getFistPageData(page++, sortType, HomePage).observe(this, goodsListBean -> {
+                    refreshLayout.finishRefresh();
+                    refreshLayout.finishLoadMore();
                     if (goodsListBean != null) {
+                        if(goodsListBean.getPageNum()==goodsListBean.getPageCount()){
+                            refreshLayout.setNoMoreData(true);
+                        }
                         if (refresh) {
-                            refreshLayout.finishRefresh();
                             goodsListAdapter.setData(goodsListBean.getData());
                         } else {
                             goodsListAdapter.add(goodsListBean.getData());
                         }
+                    }
+                    if (refresh){
+                        checkEmpty();
                     }
                 });
                 break;
@@ -113,18 +160,28 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
                 break;
             }
         }
-        if (goodsListAdapter.getItemCount()==0){
-            showEmpty();
-        }else{
+    }
+
+    private void checkEmpty() {
+        if (goodsListAdapter.getDataSize() == 0) {
+//            showEmpty();
+            initRec(true);
+            bindingView.rvGoodsList.setLayoutManager(new LinearLayoutManager(this));
+            showContentView();
+        } else {
+            initRec(false);
+//            bindingView.rvGoodsList.setLayoutManager(new GridLayoutManager(this, 2));
             showContentView();
         }
     }
 
-    private void initRec() {
-        RecyclerView rvGoodsList = bindingView.rvGoodsList;
-        rvGoodsList.setLayoutManager(new GridLayoutManager(this, 2));
-        goodsListAdapter = new RecGoodsListAdapter(this, new ArrayList<>());
-        rvGoodsList.setAdapter(goodsListAdapter);
+    private void initRec(boolean isEmpty) {
+        if (isEmpty) {
+            bindingView.rvGoodsList.setLayoutManager(new LinearLayoutManager(this));
+        } else {
+            bindingView.rvGoodsList.setLayoutManager(new GridLayoutManager(this, 2));
+        }
+
     }
 
     @Override

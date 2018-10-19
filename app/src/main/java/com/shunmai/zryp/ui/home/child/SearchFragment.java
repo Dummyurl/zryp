@@ -19,8 +19,8 @@ import com.shunmai.zryp.bean.GoodsBean;
 import com.shunmai.zryp.bean.goods.CategoryBean;
 import com.shunmai.zryp.ui.goods.GoodsSearchActivity;
 import com.shunmai.zryp.viewmodel.SearchFragmentViewModel;
-import com.shunmai.zryp.zrypapp.R;
-import com.shunmai.zryp.zrypapp.databinding.FragmentSearchBinding;
+import com.shunmai.zryp.R;
+import com.shunmai.zryp.databinding.FragmentSearchBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +48,7 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> implemen
         searchViewModel = ViewModelProviders.of(this).get(SearchFragmentViewModel.class);
         searchViewModel.init(new CategoryRepository());
         searchViewModel.getCategoryBean(throwable -> showError()).observe(this, bean -> {
-                initData(bean.getData());
+            initData(bean.getData());
                 showContentView();
         });
     }
@@ -138,5 +138,14 @@ public class SearchFragment extends BaseFragment<FragmentSearchBinding> implemen
                 break;
             }
         }
+    }
+
+    @Override
+    protected void onRefresh() {
+        super.onRefresh();
+        searchViewModel.getCategoryBean(throwable -> showError()).observe(this, bean -> {
+            initData(bean.getData());
+            showContentView();
+        });
     }
 }

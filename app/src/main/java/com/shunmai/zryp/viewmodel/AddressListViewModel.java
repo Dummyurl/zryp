@@ -5,7 +5,7 @@ import android.arch.lifecycle.ViewModel;
 import com.shunmai.zryp.repository.AddressListRepository;
 import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.bean.userinfo.AddressListBean;
-import com.shunmai.zryp.network.onResponseListener;
+import com.shunmai.zryp.listener.onResponseListener;
 
 import java.util.List;
 
