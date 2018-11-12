@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">智融优品</string>
+    <string name="title">Title</string>
+    <string name="confirm">Confirm</string>
+    <string name="updateNow">update Now</string>
+    <string name="laterSay">Later Say</string>
+    <string name="ignorable">Ignorable</string>
+
+
+</resources>
