@@ -37,6 +37,7 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
     <style name="eidttext_style" parent="Theme.AppCompat.Light">
         <item name="android:background">@color/withe</item>
         <item name="android:paddingBottom">10dp</item>
@@ -57,6 +58,7 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:drawableRight">@mipmap/btn_right_on_pressed</item>
     </style>
+
     <style name="editstyle">
         <item name="android:textColorHint">@color/colorHint</item>
         <item name="android:background">@color/withe</item>
@@ -85,6 +87,7 @@
         <!--正常状态下字体颜色和icon颜色-->
         <!--<item name="android:textColorPrimary">@color/colorTheme</item>-->
     </style>
+
     <style name="BottomDialog">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -95,11 +98,14 @@
         <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
         <item name="android:gravity">bottom</item>
     </style>
+
     <style name="DialogAnimation">
         <item name="android:windowEnterAnimation">@anim/slide_up</item>
         <item name="android:windowExitAnimation">@anim/slide_down</item>
     </style>
+
     <style name="Button" parent="Base.Widget.AppCompat.Button.Borderless" />
+
     <style name="Title">
         <item name="android:textSize">@dimen/font_larger</item>
         <item name="android:textColor">@color/black</item>
@@ -107,4 +113,31 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="AlertDialogStyle" parent="@android:style/Theme.Holo.DialogWhenLarge">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="NotificationTitle" parent="android:TextAppearance.StatusBar.EventContent.Title" />
+    <style name="NotificationContent" parent="android:TextAppearance.StatusBar.EventContent" />
+    <style name="view_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#eaeaea</item>
+    </style>
+    <style name="tab">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:text">请选择</item>
+        <item name="android:textColor">@drawable/selector_text_color_tab</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:visibility">gone</item>
+    </style>
 </resources>

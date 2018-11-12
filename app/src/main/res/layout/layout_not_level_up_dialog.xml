@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="327dp"
+            android:layout_height="450.5dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="12.5dp"
+            >
+
+            <ImageView
+                android:id="@+id/iv_bac"
+                android:layout_marginTop="12.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@mipmap/img_dialog_bac" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:src="@mipmap/icon_close" />
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:clipChildren="false"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="252dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:clipChildren="false"
+                android:layout_height="0dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="38dp"
+                    android:layout_height="wrap_content"
+                    android:text="有效推荐人:"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="55dp"
+                    android:clipChildren="false"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" android:background="@drawable/shape_progress_bar_dialog_bac"
+                        android:padding="2dp"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pb_flash_sale"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="6dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@mipmap/progress_bac"
+                            android:max="100"
+                            android:progress="30"
+                            android:progressDrawable="@drawable/progress_horizontal_mine" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="30" />
+
+                        <TextView
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="-20dp"
+                            android:layout_marginStart="-20dp"
+                            android:background="@mipmap/icon_prop_red"
+                            android:gravity="center"
+                            android:paddingBottom="3dp"
+                            android:paddingTop="8dp"
+                            android:text="30%"
+                            android:textColor="@color/withe"
+                            android:textSize="12dp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="70" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clipChildren="false"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="38dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="个人\n消费总金额:"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="55dp"
+                    android:clipChildren="false"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/shape_progress_bar_dialog_bac"
+                        android:padding="2dp">
+
+                        <ProgressBar
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="6dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@mipmap/progress_bac"
+                            android:max="100"
+                            android:progress="100"
+                            android:progressDrawable="@drawable/progress_horizontal_mine" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="100" />
+
+                        <TextView
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="-20dp"
+                            android:layout_marginStart="-20dp"
+                            android:background="@mipmap/icon_prop_red"
+                            android:gravity="center"
+                            android:paddingBottom="3dp"
+                            android:paddingTop="8dp"
+                            android:text="100%"
+                            android:textColor="@color/withe"
+                            android:textSize="12dp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="0" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:clipChildren="false"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="38dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="团队\n消费总金额:"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="55dp"
+                    android:clipChildren="false"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/shape_progress_bar_dialog_bac"
+                        android:padding="2dp"
+                        >
+
+                        <ProgressBar
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="6dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@mipmap/progress_bac"
+                            android:max="100"
+                            android:progress="50"
+                            android:progressDrawable="@drawable/progress_horizontal_mine" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="50" />
+
+                        <TextView
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="-20dp"
+                            android:layout_marginStart="-20dp"
+                            android:background="@mipmap/icon_prop_red"
+                            android:gravity="center"
+                            android:paddingBottom="3dp"
+                            android:paddingTop="8dp"
+                            android:text="50%"
+                            android:textColor="@color/withe"
+                            android:textSize="12dp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="50" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="23dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="38dp"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/btn_cancel_dialog" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/btn_share_dialog" />
+            </LinearLayout>
+        </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="115dp"
+                android:textSize="13dp"
+                android:gravity="center"
+                android:paddingLeft="65dp"
+                android:textColor="#666666"
+                android:paddingRight="65dp"
+                android:text="购物，增加有效推荐人，即可加速升级噢~"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+</layout>

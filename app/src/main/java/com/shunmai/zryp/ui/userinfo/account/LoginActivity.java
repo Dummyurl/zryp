@@ -13,6 +13,8 @@ import com.shunmai.zryp.databinding.ActivityLoginBinding;
 import com.shunmai.zryp.eventhandler.userinfo.LoginHandler;
 import com.shunmai.zryp.viewmodel.LoginViewModel;
 
+import javax.inject.Inject;
+
 public class LoginActivity extends SwipeBackActivity<ActivityLoginBinding> {
     private LoginHandler handler;
     private LoginViewModel viewModel;
@@ -50,5 +52,6 @@ public class LoginActivity extends SwipeBackActivity<ActivityLoginBinding> {
             onBackPressed();
         }
     }
+
 }
 

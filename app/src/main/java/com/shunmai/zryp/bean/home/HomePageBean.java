@@ -1,7 +1,6 @@
 package com.shunmai.zryp.bean.home;
 
 import com.shunmai.zryp.bean.TResponse;
-import com.shunmai.zryp.bean.goods.GoodsBean;
 
 import java.util.List;
 
@@ -10,317 +9,90 @@ import java.util.List;
  * Date: 2018/8/29.
  */
 
-public class HomePageBean extends TResponse<HomePageBean.DataBean>{
+public class HomePageBean{
 
 
+    /**
+     * goodInfo : {"recPro":{"prId":597,"isPriceType":1,"prGroupnum":10,"promotionGoods":[{"goodsId":276,"goodsName":"宝宝金水驱蚊喷雾 蚊怕水套装 宝宝驱蚊水婴儿防蚊水","keywords":"宝宝金水驱蚊喷雾 蚊怕水套装 宝宝驱蚊水婴儿防蚊水","goodsTitle":"宝宝金水驱蚊喷雾 蚊怕水套装 宝宝驱蚊水婴儿防蚊水","defalutPhotoURL":"http://pic.gzcfe.net/brand/2018/0426/5148605869525243310.jpg","price":55,"mscore":231,"promotionPrice":55,"skuId":199},{"goodsId":575,"goodsName":"心相印卷纸3层BT110有芯卷纸208节/卷 20卷","keywords":"心相印卷纸3层BT110有芯卷纸208节/卷 20卷","goodsTitle":"心相印卷纸3层BT110有芯卷纸208节/卷 20卷(偏远地区不发)","defalutPhotoURL":"http://pic.gzcfe.net/brand/2018/0510/5563432220609251155.jpg","price":43,"mscore":181,"promotionPrice":43,"skuId":498}]},"groupPro":{"prId":522,"isPriceType":0,"prGroupnum":2,"promotionGoods":[]},"secKillAndScorePro":[{"prId":361,"prType":3,"imgUrl":"http://pic0.gzcfe.net/brand/2018/1030/5377282265775853573.jpg","prStart":"2018-11-02 11:32:22","prEnd":"2018-11-17 11:32:22","countDown":876869510,"points":"11"},{"prId":595,"prType":4,"imgUrl":"https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/whfpf%3D268%2C152%2C50/sign=be8973a6ba4543a9f54ea98c782ab8b4/32fa828ba61ea8d3f08fd9569a0a304e251f5836.jpg","prStart":"2018-11-07 00:00:00","prEnd":"2018-11-12 23:59:59"}],"topicPro":{"prId":599,"isPriceType":1,"prGroupnum":10,"promotionGoods":[]}}
+     * guessYouLike : [{"price":1169,"defalutPhotourl":"http://pic.gzcfe.net/brand/2018/0509/5094349447918821571.jpg","marketPrice":1286,"sysIdString":"10090961176431434","goodsName":"电动跑步机家用免安装多功能迷你超静音小型跑步机健身器材","goodsTitle":"电动跑步机家用免安装多功能迷你超静音小型跑步机健身器材","platgoodsId":"","goodsPropery":1,"goodsId":512},{"price":31,"defalutPhotourl":"http://pic.gzcfe.net/brand/2018/0425/5054298421654484464.jpg","marketPrice":34,"sysIdString":"10090961176431179","goodsName":"小白丫4支装细毛牙刷创意软毛防出血细毛牙刷","goodsTitle":"小白丫4支装细毛牙刷创意软毛防出血细毛牙刷","platgoodsId":"","goodsPropery":1,"goodsId":257},{"price":54,"defalutPhotourl":"http://pic.gzcfe.net/brand/2018/0425/5033730483638163018.jpg","marketPrice":59,"sysIdString":"10090961176431180","goodsName":"折叠袖珍遮阳伞超轻防紫外线黑胶纯色迷你口袋雨伞","goodsTitle":"折叠袖珍遮阳伞超轻防紫外线黑胶纯色迷你口袋雨伞","platgoodsId":"","goodsPropery":1,"goodsId":258},{"price":567,"defalutPhotourl":"http://pic.gzcfe.net/brand/2018/0509/5516431925719550568.jpg","marketPrice":623,"sysIdString":"10090961176431436","goodsName":"跑步机家用迷你静音加长折叠健身器材 多功能机械跑步机送扭腰盘","goodsTitle":"跑步机家用迷你静音加长折叠健身器材 多功能机械跑步机送扭腰盘","platgoodsId":"","goodsPropery":1,"goodsId":514},{"price":152,"defalutPhotourl":"http://pic.gzcfe.net/brand/2018/0425/5513089663142265338.jpg","marketPrice":167,"sysIdString":"10090961176431181","goodsName":"韩国VVC正品遮阳帽百搭太阳帽遮脸防紫外线防晒","goodsTitle":"韩国VVC正品遮阳帽百搭太阳帽遮脸防紫外线防晒","platgoodsId":"","goodsPropery":1,"goodsId":259},{"price":51,"defalutPhotourl":"http://pic.gzcfe.net/brand/2018/0509/5622104889710532986.jpg","marketPrice":56,"sysIdString":"10090961176431437","goodsName":"夏拓瑜伽垫加厚加宽加长瑜伽垫环保健身10mm厚","goodsTitle":"夏拓瑜伽垫加厚加宽加长瑜伽垫环保健身10mm厚","platgoodsId":"","goodsPropery":1,"goodsId":515},{"price":21.5,"defalutPhotourl":"http://img13.360buyimg.com/n1/g13/M09/0F/18/rBEhUlLGEIMIAAAAAAH7Iw_XaJoAAHisQCE4eoAAfs7979.jpg","marketPrice":0,"sysIdString":"29300058147131392","goodsName":"正北 无糖方糖 咖啡伴侣调糖 木糖醇代糖","goodsTitle":"正北 无糖方糖 咖啡伴侣调糖 木糖醇代糖 200g","platgoodsId":"003a4b1e-9f93-4e4c-bfc0-95eb85ab2678","goodsPropery":2,"goodsId":65108},{"price":39.9,"defalutPhotourl":"http://shopcdn.chuchujie.com/Uploads/detail_url/201608/57abdff815b06.jpg?imageView2/2/w/480","marketPrice":0,"sysIdString":"26333969192718336","goodsName":" 4条装暖宫口袋经期防漏生理内裤","goodsTitle":" 4条装暖宫口袋经期防漏生理内裤","platgoodsId":"10000266339","goodsPropery":2,"goodsId":32936},{"price":25.9,"defalutPhotourl":"http://shopcdn.chuchujie.com/Uploads/detail_url/201702/589adad14ef73.jpg?imageView2/2/w/480","marketPrice":32.93,"sysIdString":"26333994056552448","goodsName":"4条装加肥加大高腰收腹糖果棉质女内裤","goodsTitle":"4条装加肥加大高腰收腹糖果棉质女内裤","platgoodsId":"10000266421","goodsPropery":2,"goodsId":32937},{"price":29.9,"defalutPhotourl":"http://shopcdn.chuchujie.com/Uploads/detail_url/201704/58ec6bae3bc62.jpg?imageView2/2/w/480","marketPrice":36.45,"sysIdString":"26334005490225152","goodsName":"初愫4双装薄款蕾丝硅胶防滑隐形船袜子","goodsTitle":"初愫4双装薄款蕾丝硅胶防滑隐形船袜子","platgoodsId":"10000266446","goodsPropery":2,"goodsId":32938},{"price":39.9,"defalutPhotourl":"http://shopcdn.chuchujie.com/Uploads/detail_url/201705/59191e6ac64e0.jpg?imageView2/2/w/480","marketPrice":48.91,"sysIdString":"26334008266854400","goodsName":"初愫4条装经期防侧漏中腰棉质女士生理内裤","goodsTitle":"初愫4条装经期防侧漏中腰棉质女士生理内裤","platgoodsId":"10000266465","goodsPropery":2,"goodsId":32939},{"price":29.9,"defalutPhotourl":"https://image-shop.chuchujie.com/culiu.cdn/image/201705/17/6d3392d8c4d9f1028fa4a13ce1c76e711495002284_800_800.jpg","marketPrice":37.5,"sysIdString":"26334013203550208","goodsName":"2条装新款口袋女式三分防走光安全内裤","goodsTitle":"2条装新款口袋女式三分防走光安全内裤","platgoodsId":"10000266469","goodsPropery":2,"goodsId":32940}]
+     */
 
+    private GoodInfoBean goodInfo;
+    private List<GuessYouLikeBean> guessYouLike;
 
-    public static class DataBean {
+    public GoodInfoBean getGoodInfo() {
+        return goodInfo;
+    }
 
-        private FlashSaleBean flashSale;
-        private GroupBuyingBean groupBuying;
-        private SpecialBean special;
-        private TopPostionBean topPostion;
-        private CenterPostionBean centerPostion;
-        private List<GoodsBean> theNewGoods;
-        private List<GoodsBean> recommendGoods;
-        private List<GoodsBean> guessGoods;
+    public void setGoodInfo(GoodInfoBean goodInfo) {
+        this.goodInfo = goodInfo;
+    }
 
-        public FlashSaleBean getFlashSale() {
-            return flashSale;
+    public List<GuessYouLikeBean> getGuessYouLike() {
+        return guessYouLike;
+    }
+
+    public void setGuessYouLike(List<GuessYouLikeBean> guessYouLike) {
+        this.guessYouLike = guessYouLike;
+    }
+
+    public static class GoodInfoBean {
+        /**
+         * recPro : {"prId":597,"isPriceType":1,"prGroupnum":10,"promotionGoods":[{"goodsId":276,"goodsName":"宝宝金水驱蚊喷雾 蚊怕水套装 宝宝驱蚊水婴儿防蚊水","keywords":"宝宝金水驱蚊喷雾 蚊怕水套装 宝宝驱蚊水婴儿防蚊水","goodsTitle":"宝宝金水驱蚊喷雾 蚊怕水套装 宝宝驱蚊水婴儿防蚊水","defalutPhotoURL":"http://pic.gzcfe.net/brand/2018/0426/5148605869525243310.jpg","price":55,"mscore":231,"promotionPrice":55,"skuId":199},{"goodsId":575,"goodsName":"心相印卷纸3层BT110有芯卷纸208节/卷 20卷","keywords":"心相印卷纸3层BT110有芯卷纸208节/卷 20卷","goodsTitle":"心相印卷纸3层BT110有芯卷纸208节/卷 20卷(偏远地区不发)","defalutPhotoURL":"http://pic.gzcfe.net/brand/2018/0510/5563432220609251155.jpg","price":43,"mscore":181,"promotionPrice":43,"skuId":498}]}
+         * groupPro : {"prId":522,"isPriceType":0,"prGroupnum":2,"promotionGoods":[]}
+         * secKillAndScorePro : [{"prId":361,"prType":3,"imgUrl":"http://pic0.gzcfe.net/brand/2018/1030/5377282265775853573.jpg","prStart":"2018-11-02 11:32:22","prEnd":"2018-11-17 11:32:22","countDown":876869510,"points":"11"},{"prId":595,"prType":4,"imgUrl":"https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/whfpf%3D268%2C152%2C50/sign=be8973a6ba4543a9f54ea98c782ab8b4/32fa828ba61ea8d3f08fd9569a0a304e251f5836.jpg","prStart":"2018-11-07 00:00:00","prEnd":"2018-11-12 23:59:59"}]
+         * topicPro : {"prId":599,"isPriceType":1,"prGroupnum":10,"promotionGoods":[]}
+         */
+
+        private RecProBean recPro;
+        private GroupProBean groupPro;
+        private TopicProBean topicPro;
+        private List<SecKillAndScoreProBean> secKillAndScorePro;
+
+        public RecProBean getRecPro() {
+            return recPro;
         }
 
-        public void setFlashSale(FlashSaleBean flashSale) {
-            this.flashSale = flashSale;
+        public void setRecPro(RecProBean recPro) {
+            this.recPro = recPro;
         }
 
-        public GroupBuyingBean getGroupBuying() {
-            return groupBuying;
+        public GroupProBean getGroupPro() {
+            return groupPro;
         }
 
-        public void setGroupBuying(GroupBuyingBean groupBuying) {
-            this.groupBuying = groupBuying;
+        public void setGroupPro(GroupProBean groupPro) {
+            this.groupPro = groupPro;
         }
 
-        public SpecialBean getSpecial() {
-            return special;
+        public TopicProBean getTopicPro() {
+            return topicPro;
         }
 
-        public void setSpecial(SpecialBean special) {
-            this.special = special;
+        public void setTopicPro(TopicProBean topicPro) {
+            this.topicPro = topicPro;
         }
 
-        public TopPostionBean getTopPostion() {
-            return topPostion;
+        public List<SecKillAndScoreProBean> getSecKillAndScorePro() {
+            return secKillAndScorePro;
         }
 
-        public void setTopPostion(TopPostionBean topPostion) {
-            this.topPostion = topPostion;
+        public void setSecKillAndScorePro(List<SecKillAndScoreProBean> secKillAndScorePro) {
+            this.secKillAndScorePro = secKillAndScorePro;
         }
 
-        public CenterPostionBean getCenterPostion() {
-            return centerPostion;
-        }
-
-        public void setCenterPostion(CenterPostionBean centerPostion) {
-            this.centerPostion = centerPostion;
-        }
-
-        public List<GoodsBean> getTheNewGoods() {
-            return theNewGoods;
-        }
-
-        public void setTheNewGoods(List<GoodsBean> theNewGoods) {
-            this.theNewGoods = theNewGoods;
-        }
-
-        public List<GoodsBean> getRecommendGoods() {
-            return recommendGoods;
-        }
-
-        public void setRecommendGoods(List<GoodsBean> recommendGoods) {
-            this.recommendGoods = recommendGoods;
-        }
-
-        public List<GoodsBean> getGuessGoods() {
-            return guessGoods;
-        }
-
-        public void setGuessGoods(List<GoodsBean> guessGoods) {
-            this.guessGoods = guessGoods;
-        }
-
-        public static class FlashSaleBean {
-
+        public static class RecProBean {
             /**
-             * prStart : 1537511135000
-             * prEnd : 1538288737000
-             * promotionGoodsList : [{"goSalenum":9999,"sellRate":"100%","seekGoodsVO":{"goodsId":1,"channelId":0,"platgoodsId":"12345678ghgs","goodsName":"阿达迪斯","goodsNote":"就是牛","goodsType":1,"catlaogMobileId":11090961178431024,"brandId":0,"price":25.5,"marketPrice":24.2,"mscore":14,"weight":1.6,"keywords":"关键字","isFronthidden":false,"defalutPhotourl":"https://rabc2.iteye.com/4j/s=7bfnpwv67a,grrx3zbce&x8=14?we6icl=xsqxns_9con8_yeg","sysSpaceNo":"B0CD0050CF0BF01B","sysIdString":10750656398888960,"description":"商品描述1","freightMode":1,"goodsTitle":"商品标题1","appDetails":"app端商品详情1","miniDetails":"小程序商品详情1","seekGoodsImgsVOS":null},"sysCreateTime":1537511139000}]
+             * prId : 597
+             * isPriceType : 1
+             * prGroupnum : 10
+             * promotionGoods : [{"goodsId":276,"goodsName":"宝宝金水驱蚊喷雾 蚊怕水套装 宝宝驱蚊水婴儿防蚊水","keywords":"宝宝金水驱蚊喷雾 蚊怕水套装 宝宝驱蚊水婴儿防蚊水","goodsTitle":"宝宝金水驱蚊喷雾 蚊怕水套装 宝宝驱蚊水婴儿防蚊水","defalutPhotoURL":"http://pic.gzcfe.net/brand/2018/0426/5148605869525243310.jpg","price":55,"mscore":231,"promotionPrice":55,"skuId":199},{"goodsId":575,"goodsName":"心相印卷纸3层BT110有芯卷纸208节/卷 20卷","keywords":"心相印卷纸3层BT110有芯卷纸208节/卷 20卷","goodsTitle":"心相印卷纸3层BT110有芯卷纸208节/卷 20卷(偏远地区不发)","defalutPhotoURL":"http://pic.gzcfe.net/brand/2018/0510/5563432220609251155.jpg","price":43,"mscore":181,"promotionPrice":43,"skuId":498}]
              */
 
-            private long prStart;
-            private long prEnd;
-            private List<PromotionGoodsListBean> promotionGoodsList;
-
-            public long getPrStart() {
-                return prStart;
-            }
-
-            public void setPrStart(long prStart) {
-                this.prStart = prStart;
-            }
-
-            public long getPrEnd() {
-                return prEnd;
-            }
-
-            public void setPrEnd(long prEnd) {
-                this.prEnd = prEnd;
-            }
-
-            public List<PromotionGoodsListBean> getPromotionGoodsList() {
-                return promotionGoodsList;
-            }
-
-            public void setPromotionGoodsList(List<PromotionGoodsListBean> promotionGoodsList) {
-                this.promotionGoodsList = promotionGoodsList;
-            }
-
-            public static class PromotionGoodsListBean {
-                /**
-                 * goSalenum : 9999
-                 * sellRate : 100%
-                 * seekGoodsVO : {"goodsId":1,"channelId":0,"platgoodsId":"12345678ghgs","goodsName":"阿达迪斯","goodsNote":"就是牛","goodsType":1,"catlaogMobileId":11090961178431024,"brandId":0,"price":25.5,"marketPrice":24.2,"mscore":14,"weight":1.6,"keywords":"关键字","isFronthidden":false,"defalutPhotourl":"https://rabc2.iteye.com/4j/s=7bfnpwv67a,grrx3zbce&x8=14?we6icl=xsqxns_9con8_yeg","sysSpaceNo":"B0CD0050CF0BF01B","sysIdString":10750656398888960,"description":"商品描述1","freightMode":1,"goodsTitle":"商品标题1","appDetails":"app端商品详情1","miniDetails":"小程序商品详情1","seekGoodsImgsVOS":null}
-                 * sysCreateTime : 1537511139000
-                 */
-
-                private int goSalenum;
-                private String sellRate;
-                private GoodsBean seekGoodsVO;
-                private long sysCreateTime;
-
-                public int getGoSalenum() {
-                    return goSalenum;
-                }
-
-                public void setGoSalenum(int goSalenum) {
-                    this.goSalenum = goSalenum;
-                }
-
-                public String getSellRate() {
-                    return sellRate;
-                }
-
-                public void setSellRate(String sellRate) {
-                    this.sellRate = sellRate;
-                }
-
-                public GoodsBean getSeekGoodsVO() {
-                    return seekGoodsVO;
-                }
-
-                public void setSeekGoodsVO(GoodsBean seekGoodsVO) {
-                    this.seekGoodsVO = seekGoodsVO;
-                }
-
-                public long getSysCreateTime() {
-                    return sysCreateTime;
-                }
-
-                public void setSysCreateTime(long sysCreateTime) {
-                    this.sysCreateTime = sysCreateTime;
-                }
-            }
-        }
-
-        public static class GroupBuyingBean {
-            /**
-             * prGroupnum : 3
-             * promotionGoodsList : [{"seekGoodsVO":{"goodsId":1,"channelId":0,"platgoodsId":"12345678ghgs","goodsName":"阿达迪斯","goodsNote":"就是牛","goodsType":1,"catlaogMobileId":11090961178431024,"brandId":0,"price":25.5,"marketPrice":24.2,"mscore":14,"weight":1.6,"keywords":"关键字","isFronthidden":false,"defalutPhotourl":"https://rabc2.iteye.com/4j/s=7bfnpwv67a,grrx3zbce&x8=14?we6icl=xsqxns_9con8_yeg","sysSpaceNo":"B0CD0050CF0BF01B","sysIdString":10750656398888960,"description":"商品描述1","freightMode":1,"goodsTitle":"商品标题1","appDetails":"app端商品详情1","miniDetails":"小程序商品详情1","seekGoodsImgsVOS":null},"sysCreateTime":1537929680000}]
-             */
-
-            private int prGroupnum;
-            private List<PromotionGoodsListBean> promotionGoodsList;
-
-            public int getPrGroupnum() {
-                return prGroupnum;
-            }
-
-            public void setPrGroupnum(int prGroupnum) {
-                this.prGroupnum = prGroupnum;
-            }
-
-            public List<PromotionGoodsListBean> getPromotionGoodsList() {
-                return promotionGoodsList;
-            }
-
-            public void setPromotionGoodsList(List<PromotionGoodsListBean> promotionGoodsList) {
-                this.promotionGoodsList = promotionGoodsList;
-            }
-
-            public static class PromotionGoodsListBean {
-                private GoodsBean seekGoodsVO;
-
-                public GoodsBean getSeekGoodsVO() {
-                    return seekGoodsVO;
-                }
-
-                public void setSeekGoodsVO(GoodsBean seekGoodsVO) {
-                    this.seekGoodsVO = seekGoodsVO;
-                }
-            }
-        }
-
-        public static class SpecialBean {
-
-
-            private String prTimeStateDesc;
-            private int prTimeState;
-            private String timePrEnd;
-            private String timePrStart;
-            private String timeCreateStart;
-            private String timeCreateEnd;
-            private long sysCreateTimeStart;
-            private long sysCreateTimeEnd;
-            private String imgUrl;
             private int prId;
-            private String prName;
-            private long prStart;
-            private long prEnd;
-            private String prConent;
-            private int prType;
+            private int isPriceType;
             private int prGroupnum;
-            private int scoreTime;
-            private int isEnableAll;
-            private String scoreType;
-            private Object promotionGoodsList;
-            private long sysCreateTime;
-            private long sysEditTime;
-            private String sysCreateUser;
-            private String sysEditUser;
-            private String sysSpaceNo;
-            private int sysVersionNo;
-            private int sysIsEnable;
-            private int sysIdString;
-            private int sysDataFrom;
-            private String attr1;
-            private String attr2;
-            private String attr3;
-            private String attr4;
-            private String attr5;
-            private List<PromotionTopicListBean> promotionTopicList;
-
-            public String getPrTimeStateDesc() {
-                return prTimeStateDesc;
-            }
-
-            public void setPrTimeStateDesc(String prTimeStateDesc) {
-                this.prTimeStateDesc = prTimeStateDesc;
-            }
-
-            public int getPrTimeState() {
-                return prTimeState;
-            }
-
-            public void setPrTimeState(int prTimeState) {
-                this.prTimeState = prTimeState;
-            }
-
-            public String getTimePrEnd() {
-                return timePrEnd;
-            }
-
-            public void setTimePrEnd(String timePrEnd) {
-                this.timePrEnd = timePrEnd;
-            }
-
-            public String getTimePrStart() {
-                return timePrStart;
-            }
-
-            public void setTimePrStart(String timePrStart) {
-                this.timePrStart = timePrStart;
-            }
-
-            public String getTimeCreateStart() {
-                return timeCreateStart;
-            }
-
-            public void setTimeCreateStart(String timeCreateStart) {
-                this.timeCreateStart = timeCreateStart;
-            }
-
-            public String getTimeCreateEnd() {
-                return timeCreateEnd;
-            }
-
-            public void setTimeCreateEnd(String timeCreateEnd) {
-                this.timeCreateEnd = timeCreateEnd;
-            }
-
-            public long getSysCreateTimeStart() {
-                return sysCreateTimeStart;
-            }
-
-            public void setSysCreateTimeStart(long sysCreateTimeStart) {
-                this.sysCreateTimeStart = sysCreateTimeStart;
-            }
-
-            public long getSysCreateTimeEnd() {
-                return sysCreateTimeEnd;
-            }
-
-            public void setSysCreateTimeEnd(long sysCreateTimeEnd) {
-                this.sysCreateTimeEnd = sysCreateTimeEnd;
-            }
-
-            public String getImgUrl() {
-                return imgUrl;
-            }
-
-            public void setImgUrl(String imgUrl) {
-                this.imgUrl = imgUrl;
-            }
+            private List<PromotionGoodsBean> promotionGoods;
 
             public int getPrId() {
                 return prId;
@@ -330,36 +102,244 @@ public class HomePageBean extends TResponse<HomePageBean.DataBean>{
                 this.prId = prId;
             }
 
-            public String getPrName() {
-                return prName;
+            public int getIsPriceType() {
+                return isPriceType;
             }
 
-            public void setPrName(String prName) {
-                this.prName = prName;
+            public void setIsPriceType(int isPriceType) {
+                this.isPriceType = isPriceType;
             }
 
-            public long getPrStart() {
-                return prStart;
+            public int getPrGroupnum() {
+                return prGroupnum;
             }
 
-            public void setPrStart(long prStart) {
-                this.prStart = prStart;
+            public void setPrGroupnum(int prGroupnum) {
+                this.prGroupnum = prGroupnum;
             }
 
-            public long getPrEnd() {
-                return prEnd;
+            public List<PromotionGoodsBean> getPromotionGoods() {
+                return promotionGoods;
             }
 
-            public void setPrEnd(long prEnd) {
-                this.prEnd = prEnd;
+            public void setPromotionGoods(List<PromotionGoodsBean> promotionGoods) {
+                this.promotionGoods = promotionGoods;
             }
 
-            public String getPrConent() {
-                return prConent;
+            public static class PromotionGoodsBean {
+                /**
+                 * goodsId : 276
+                 * goodsName : 宝宝金水驱蚊喷雾 蚊怕水套装 宝宝驱蚊水婴儿防蚊水
+                 * keywords : 宝宝金水驱蚊喷雾 蚊怕水套装 宝宝驱蚊水婴儿防蚊水
+                 * goodsTitle : 宝宝金水驱蚊喷雾 蚊怕水套装 宝宝驱蚊水婴儿防蚊水
+                 * defalutPhotoURL : http://pic.gzcfe.net/brand/2018/0426/5148605869525243310.jpg
+                 * price : 55.0
+                 * mscore : 231
+                 * promotionPrice : 55.0
+                 * skuId : 199
+                 */
+
+                private int goodsId;
+                private String goodsName;
+                private String keywords;
+                private String goodsTitle;
+                private String defalutPhotoURL;
+                private double price;
+                private int mscore;
+                private double promotionPrice;
+                private int skuId;
+
+                public int getGoodsId() {
+                    return goodsId;
+                }
+
+                public void setGoodsId(int goodsId) {
+                    this.goodsId = goodsId;
+                }
+
+                public String getGoodsName() {
+                    return goodsName;
+                }
+
+                public void setGoodsName(String goodsName) {
+                    this.goodsName = goodsName;
+                }
+
+                public String getKeywords() {
+                    return keywords;
+                }
+
+                public void setKeywords(String keywords) {
+                    this.keywords = keywords;
+                }
+
+                public String getGoodsTitle() {
+                    return goodsTitle;
+                }
+
+                public void setGoodsTitle(String goodsTitle) {
+                    this.goodsTitle = goodsTitle;
+                }
+
+                public String getDefalutPhotoURL() {
+                    return defalutPhotoURL;
+                }
+
+                public void setDefalutPhotoURL(String defalutPhotoURL) {
+                    this.defalutPhotoURL = defalutPhotoURL;
+                }
+
+                public double getPrice() {
+                    return price;
+                }
+
+                public void setPrice(double price) {
+                    this.price = price;
+                }
+
+                public int getMscore() {
+                    return mscore;
+                }
+
+                public void setMscore(int mscore) {
+                    this.mscore = mscore;
+                }
+
+                public double getPromotionPrice() {
+                    return promotionPrice;
+                }
+
+                public void setPromotionPrice(double promotionPrice) {
+                    this.promotionPrice = promotionPrice;
+                }
+
+                public int getSkuId() {
+                    return skuId;
+                }
+
+                public void setSkuId(int skuId) {
+                    this.skuId = skuId;
+                }
+            }
+        }
+
+        public static class GroupProBean {
+            /**
+             * prId : 522
+             * isPriceType : 0
+             * prGroupnum : 2
+             * promotionGoods : []
+             */
+
+            private int prId;
+            private int isPriceType;
+            private int prGroupnum;
+            private List<?> promotionGoods;
+
+            public int getPrId() {
+                return prId;
             }
 
-            public void setPrConent(String prConent) {
-                this.prConent = prConent;
+            public void setPrId(int prId) {
+                this.prId = prId;
+            }
+
+            public int getIsPriceType() {
+                return isPriceType;
+            }
+
+            public void setIsPriceType(int isPriceType) {
+                this.isPriceType = isPriceType;
+            }
+
+            public int getPrGroupnum() {
+                return prGroupnum;
+            }
+
+            public void setPrGroupnum(int prGroupnum) {
+                this.prGroupnum = prGroupnum;
+            }
+
+            public List<?> getPromotionGoods() {
+                return promotionGoods;
+            }
+
+            public void setPromotionGoods(List<?> promotionGoods) {
+                this.promotionGoods = promotionGoods;
+            }
+        }
+
+        public static class TopicProBean {
+            /**
+             * prId : 599
+             * isPriceType : 1
+             * prGroupnum : 10
+             * promotionGoods : []
+             */
+
+            private int prId;
+            private int isPriceType;
+            private int prGroupnum;
+            private List<?> promotionGoods;
+
+            public int getPrId() {
+                return prId;
+            }
+
+            public void setPrId(int prId) {
+                this.prId = prId;
+            }
+
+            public int getIsPriceType() {
+                return isPriceType;
+            }
+
+            public void setIsPriceType(int isPriceType) {
+                this.isPriceType = isPriceType;
+            }
+
+            public int getPrGroupnum() {
+                return prGroupnum;
+            }
+
+            public void setPrGroupnum(int prGroupnum) {
+                this.prGroupnum = prGroupnum;
+            }
+
+            public List<?> getPromotionGoods() {
+                return promotionGoods;
+            }
+
+            public void setPromotionGoods(List<?> promotionGoods) {
+                this.promotionGoods = promotionGoods;
+            }
+        }
+
+        public static class SecKillAndScoreProBean {
+            /**
+             * prId : 361
+             * prType : 3
+             * imgUrl : http://pic0.gzcfe.net/brand/2018/1030/5377282265775853573.jpg
+             * prStart : 2018-11-02 11:32:22
+             * prEnd : 2018-11-17 11:32:22
+             * countDown : 876869510
+             * points : 11
+             */
+
+            private int prId;
+            private int prType;
+            private String imgUrl;
+            private String prStart;
+            private String prEnd;
+            private int countDown;
+            private String points;
+
+            public int getPrId() {
+                return prId;
+            }
+
+            public void setPrId(int prId) {
+                this.prId = prId;
             }
 
             public int getPrType() {
@@ -370,1543 +350,141 @@ public class HomePageBean extends TResponse<HomePageBean.DataBean>{
                 this.prType = prType;
             }
 
-            public int getPrGroupnum() {
-                return prGroupnum;
+            public String getImgUrl() {
+                return imgUrl;
             }
 
-            public void setPrGroupnum(int prGroupnum) {
-                this.prGroupnum = prGroupnum;
+            public void setImgUrl(String imgUrl) {
+                this.imgUrl = imgUrl;
             }
 
-            public int getScoreTime() {
-                return scoreTime;
+            public String getPrStart() {
+                return prStart;
             }
 
-            public void setScoreTime(int scoreTime) {
-                this.scoreTime = scoreTime;
+            public void setPrStart(String prStart) {
+                this.prStart = prStart;
             }
 
-            public int getIsEnableAll() {
-                return isEnableAll;
+            public String getPrEnd() {
+                return prEnd;
             }
 
-            public void setIsEnableAll(int isEnableAll) {
-                this.isEnableAll = isEnableAll;
+            public void setPrEnd(String prEnd) {
+                this.prEnd = prEnd;
             }
 
-            public String getScoreType() {
-                return scoreType;
+            public int getCountDown() {
+                return countDown;
             }
 
-            public void setScoreType(String scoreType) {
-                this.scoreType = scoreType;
+            public void setCountDown(int countDown) {
+                this.countDown = countDown;
             }
 
-            public Object getPromotionGoodsList() {
-                return promotionGoodsList;
+            public String getPoints() {
+                return points;
             }
 
-            public void setPromotionGoodsList(Object promotionGoodsList) {
-                this.promotionGoodsList = promotionGoodsList;
-            }
-
-            public long getSysCreateTime() {
-                return sysCreateTime;
-            }
-
-            public void setSysCreateTime(long sysCreateTime) {
-                this.sysCreateTime = sysCreateTime;
-            }
-
-            public long getSysEditTime() {
-                return sysEditTime;
-            }
-
-            public void setSysEditTime(long sysEditTime) {
-                this.sysEditTime = sysEditTime;
-            }
-
-            public String getSysCreateUser() {
-                return sysCreateUser;
-            }
-
-            public void setSysCreateUser(String sysCreateUser) {
-                this.sysCreateUser = sysCreateUser;
-            }
-
-            public String getSysEditUser() {
-                return sysEditUser;
-            }
-
-            public void setSysEditUser(String sysEditUser) {
-                this.sysEditUser = sysEditUser;
-            }
-
-            public String getSysSpaceNo() {
-                return sysSpaceNo;
-            }
-
-            public void setSysSpaceNo(String sysSpaceNo) {
-                this.sysSpaceNo = sysSpaceNo;
-            }
-
-            public int getSysVersionNo() {
-                return sysVersionNo;
-            }
-
-            public void setSysVersionNo(int sysVersionNo) {
-                this.sysVersionNo = sysVersionNo;
-            }
-
-            public int getSysIsEnable() {
-                return sysIsEnable;
-            }
-
-            public void setSysIsEnable(int sysIsEnable) {
-                this.sysIsEnable = sysIsEnable;
-            }
-
-            public int getSysIdString() {
-                return sysIdString;
-            }
-
-            public void setSysIdString(int sysIdString) {
-                this.sysIdString = sysIdString;
-            }
-
-            public int getSysDataFrom() {
-                return sysDataFrom;
-            }
-
-            public void setSysDataFrom(int sysDataFrom) {
-                this.sysDataFrom = sysDataFrom;
-            }
-
-            public String getAttr1() {
-                return attr1;
-            }
-
-            public void setAttr1(String attr1) {
-                this.attr1 = attr1;
-            }
-
-            public String getAttr2() {
-                return attr2;
-            }
-
-            public void setAttr2(String attr2) {
-                this.attr2 = attr2;
-            }
-
-            public String getAttr3() {
-                return attr3;
-            }
-
-            public void setAttr3(String attr3) {
-                this.attr3 = attr3;
-            }
-
-            public String getAttr4() {
-                return attr4;
-            }
-
-            public void setAttr4(String attr4) {
-                this.attr4 = attr4;
-            }
-
-            public String getAttr5() {
-                return attr5;
-            }
-
-            public void setAttr5(String attr5) {
-                this.attr5 = attr5;
-            }
-
-            public List<PromotionTopicListBean> getPromotionTopicList() {
-                return promotionTopicList;
-            }
-
-            public void setPromotionTopicList(List<PromotionTopicListBean> promotionTopicList) {
-                this.promotionTopicList = promotionTopicList;
-            }
-
-            public static class PromotionTopicListBean {
-
-                private int toId;
-                private String toName;
-                private int toPrId;
-                private int pageNum;
-                private int pageCount;
-                private long sysCreateTime;
-                private long sysEditTime;
-                private String sysCreateUser;
-                private String sysEditUser;
-                private String sysSpaceNo;
-                private int sysVersionNo;
-                private int sysIsEnable;
-                private int sysIdString;
-                private int sysDataFrom;
-                private String attr1;
-                private String attr2;
-                private String attr3;
-                private String attr4;
-                private String attr5;
-                private List<PromotionGoodsListBeanXX> promotionGoodsList;
-
-                public int getToId() {
-                    return toId;
-                }
-
-                public void setToId(int toId) {
-                    this.toId = toId;
-                }
-
-                public String getToName() {
-                    return toName;
-                }
-
-                public void setToName(String toName) {
-                    this.toName = toName;
-                }
-
-                public int getToPrId() {
-                    return toPrId;
-                }
-
-                public void setToPrId(int toPrId) {
-                    this.toPrId = toPrId;
-                }
-
-                public int getPageNum() {
-                    return pageNum;
-                }
-
-                public void setPageNum(int pageNum) {
-                    this.pageNum = pageNum;
-                }
-
-                public int getPageCount() {
-                    return pageCount;
-                }
-
-                public void setPageCount(int pageCount) {
-                    this.pageCount = pageCount;
-                }
-
-                public long getSysCreateTime() {
-                    return sysCreateTime;
-                }
-
-                public void setSysCreateTime(long sysCreateTime) {
-                    this.sysCreateTime = sysCreateTime;
-                }
-
-                public long getSysEditTime() {
-                    return sysEditTime;
-                }
-
-                public void setSysEditTime(long sysEditTime) {
-                    this.sysEditTime = sysEditTime;
-                }
-
-                public String getSysCreateUser() {
-                    return sysCreateUser;
-                }
-
-                public void setSysCreateUser(String sysCreateUser) {
-                    this.sysCreateUser = sysCreateUser;
-                }
-
-                public String getSysEditUser() {
-                    return sysEditUser;
-                }
-
-                public void setSysEditUser(String sysEditUser) {
-                    this.sysEditUser = sysEditUser;
-                }
-
-                public String getSysSpaceNo() {
-                    return sysSpaceNo;
-                }
-
-                public void setSysSpaceNo(String sysSpaceNo) {
-                    this.sysSpaceNo = sysSpaceNo;
-                }
-
-                public int getSysVersionNo() {
-                    return sysVersionNo;
-                }
-
-                public void setSysVersionNo(int sysVersionNo) {
-                    this.sysVersionNo = sysVersionNo;
-                }
-
-                public int getSysIsEnable() {
-                    return sysIsEnable;
-                }
-
-                public void setSysIsEnable(int sysIsEnable) {
-                    this.sysIsEnable = sysIsEnable;
-                }
-
-                public int getSysIdString() {
-                    return sysIdString;
-                }
-
-                public void setSysIdString(int sysIdString) {
-                    this.sysIdString = sysIdString;
-                }
-
-                public int getSysDataFrom() {
-                    return sysDataFrom;
-                }
-
-                public void setSysDataFrom(int sysDataFrom) {
-                    this.sysDataFrom = sysDataFrom;
-                }
-
-                public String getAttr1() {
-                    return attr1;
-                }
-
-                public void setAttr1(String attr1) {
-                    this.attr1 = attr1;
-                }
-
-                public String getAttr2() {
-                    return attr2;
-                }
-
-                public void setAttr2(String attr2) {
-                    this.attr2 = attr2;
-                }
-
-                public String getAttr3() {
-                    return attr3;
-                }
-
-                public void setAttr3(String attr3) {
-                    this.attr3 = attr3;
-                }
-
-                public String getAttr4() {
-                    return attr4;
-                }
-
-                public void setAttr4(String attr4) {
-                    this.attr4 = attr4;
-                }
-
-                public String getAttr5() {
-                    return attr5;
-                }
-
-                public void setAttr5(String attr5) {
-                    this.attr5 = attr5;
-                }
-
-                public List<PromotionGoodsListBeanXX> getPromotionGoodsList() {
-                    return promotionGoodsList;
-                }
-
-                public void setPromotionGoodsList(List<PromotionGoodsListBeanXX> promotionGoodsList) {
-                    this.promotionGoodsList = promotionGoodsList;
-                }
-
-                public static class PromotionGoodsListBeanXX {
-
-                    private int goId;
-                    private int goStock;
-                    private int goLimit;
-                    private double goPrPrice;
-                    private int goSalenum;
-                    private int goPrId;
-                    private int goToId;
-                    private int goodsNum;
-                    private GoodsBean goods;
-                    private long sysCreateTime;
-                    private int sysEditTime;
-                    private String sysCreateUser;
-                    private String sysEditUser;
-                    private String sysSpaceNo;
-                    private int sysVersionNo;
-                    private int sysIsEnable;
-                    private int sysIdString;
-                    private int sysDataFrom;
-                    private String attr1;
-                    private String attr2;
-                    private String attr3;
-                    private String attr4;
-                    private String attr5;
-
-                    public int getGoId() {
-                        return goId;
-                    }
-
-                    public void setGoId(int goId) {
-                        this.goId = goId;
-                    }
-
-                    public int getGoStock() {
-                        return goStock;
-                    }
-
-                    public void setGoStock(int goStock) {
-                        this.goStock = goStock;
-                    }
-
-                    public int getGoLimit() {
-                        return goLimit;
-                    }
-
-                    public void setGoLimit(int goLimit) {
-                        this.goLimit = goLimit;
-                    }
-
-                    public double getGoPrPrice() {
-                        return goPrPrice;
-                    }
-
-                    public void setGoPrPrice(double goPrPrice) {
-                        this.goPrPrice = goPrPrice;
-                    }
-
-                    public int getGoSalenum() {
-                        return goSalenum;
-                    }
-
-                    public void setGoSalenum(int goSalenum) {
-                        this.goSalenum = goSalenum;
-                    }
-
-                    public int getGoPrId() {
-                        return goPrId;
-                    }
-
-                    public void setGoPrId(int goPrId) {
-                        this.goPrId = goPrId;
-                    }
-
-                    public int getGoToId() {
-                        return goToId;
-                    }
-
-                    public void setGoToId(int goToId) {
-                        this.goToId = goToId;
-                    }
-
-                    public int getGoodsNum() {
-                        return goodsNum;
-                    }
-
-                    public void setGoodsNum(int goodsNum) {
-                        this.goodsNum = goodsNum;
-                    }
-
-                    public GoodsBean getGoods() {
-                        return goods;
-                    }
-
-                    public void setGoods(GoodsBean goods) {
-                        this.goods = goods;
-                    }
-
-                    public long getSysCreateTime() {
-                        return sysCreateTime;
-                    }
-
-                    public void setSysCreateTime(long sysCreateTime) {
-                        this.sysCreateTime = sysCreateTime;
-                    }
-
-                    public int getSysEditTime() {
-                        return sysEditTime;
-                    }
-
-                    public void setSysEditTime(int sysEditTime) {
-                        this.sysEditTime = sysEditTime;
-                    }
-
-                    public String getSysCreateUser() {
-                        return sysCreateUser;
-                    }
-
-                    public void setSysCreateUser(String sysCreateUser) {
-                        this.sysCreateUser = sysCreateUser;
-                    }
-
-                    public String getSysEditUser() {
-                        return sysEditUser;
-                    }
-
-                    public void setSysEditUser(String sysEditUser) {
-                        this.sysEditUser = sysEditUser;
-                    }
-
-                    public String getSysSpaceNo() {
-                        return sysSpaceNo;
-                    }
-
-                    public void setSysSpaceNo(String sysSpaceNo) {
-                        this.sysSpaceNo = sysSpaceNo;
-                    }
-
-                    public int getSysVersionNo() {
-                        return sysVersionNo;
-                    }
-
-                    public void setSysVersionNo(int sysVersionNo) {
-                        this.sysVersionNo = sysVersionNo;
-                    }
-
-                    public int getSysIsEnable() {
-                        return sysIsEnable;
-                    }
-
-                    public void setSysIsEnable(int sysIsEnable) {
-                        this.sysIsEnable = sysIsEnable;
-                    }
-
-                    public int getSysIdString() {
-                        return sysIdString;
-                    }
-
-                    public void setSysIdString(int sysIdString) {
-                        this.sysIdString = sysIdString;
-                    }
-
-                    public int getSysDataFrom() {
-                        return sysDataFrom;
-                    }
-
-                    public void setSysDataFrom(int sysDataFrom) {
-                        this.sysDataFrom = sysDataFrom;
-                    }
-
-                    public String getAttr1() {
-                        return attr1;
-                    }
-
-                    public void setAttr1(String attr1) {
-                        this.attr1 = attr1;
-                    }
-
-                    public String getAttr2() {
-                        return attr2;
-                    }
-
-                    public void setAttr2(String attr2) {
-                        this.attr2 = attr2;
-                    }
-
-                    public String getAttr3() {
-                        return attr3;
-                    }
-
-                    public void setAttr3(String attr3) {
-                        this.attr3 = attr3;
-                    }
-
-                    public String getAttr4() {
-                        return attr4;
-                    }
-
-                    public void setAttr4(String attr4) {
-                        this.attr4 = attr4;
-                    }
-
-                    public String getAttr5() {
-                        return attr5;
-                    }
-
-                    public void setAttr5(String attr5) {
-                        this.attr5 = attr5;
-                    }
-
-                }
+            public void setPoints(String points) {
+                this.points = points;
             }
         }
-
-        public static class TopPostionBean {
-
-
-            private long spoStarttime;
-            private long spoEndtime;
-            private int poId;
-            private String poName;
-            private int poDefault;
-            private String poStarttime;
-            private String poEndtime;
-            private String poPostion;
-            private String poDesc;
-            private long sysCreateTime;
-            private int sysEditTime;
-            private String sysCreateUser;
-            private String sysEditUser;
-            private String sysSpaceNo;
-            private int sysVersionNo;
-            private int sysIsEnable;
-            private int sysIdString;
-            private int sysDataFrom;
-            private String attr1;
-            private String attr2;
-            private String attr3;
-            private String attr4;
-            private String attr5;
-            private List<ImgsListBean> imgsList;
-
-            public long getSpoStarttime() {
-                return spoStarttime;
-            }
-
-            public void setSpoStarttime(long spoStarttime) {
-                this.spoStarttime = spoStarttime;
-            }
-
-            public long getSpoEndtime() {
-                return spoEndtime;
-            }
-
-            public void setSpoEndtime(long spoEndtime) {
-                this.spoEndtime = spoEndtime;
-            }
-
-            public int getPoId() {
-                return poId;
-            }
-
-            public void setPoId(int poId) {
-                this.poId = poId;
-            }
-
-            public String getPoName() {
-                return poName;
-            }
-
-            public void setPoName(String poName) {
-                this.poName = poName;
-            }
-
-            public int getPoDefault() {
-                return poDefault;
-            }
-
-            public void setPoDefault(int poDefault) {
-                this.poDefault = poDefault;
-            }
-
-            public String getPoStarttime() {
-                return poStarttime;
-            }
-
-            public void setPoStarttime(String poStarttime) {
-                this.poStarttime = poStarttime;
-            }
-
-            public String getPoEndtime() {
-                return poEndtime;
-            }
-
-            public void setPoEndtime(String poEndtime) {
-                this.poEndtime = poEndtime;
-            }
-
-            public String getPoPostion() {
-                return poPostion;
-            }
-
-            public void setPoPostion(String poPostion) {
-                this.poPostion = poPostion;
-            }
-
-            public String getPoDesc() {
-                return poDesc;
-            }
-
-            public void setPoDesc(String poDesc) {
-                this.poDesc = poDesc;
-            }
-
-            public long getSysCreateTime() {
-                return sysCreateTime;
-            }
-
-            public void setSysCreateTime(long sysCreateTime) {
-                this.sysCreateTime = sysCreateTime;
-            }
-
-            public int getSysEditTime() {
-                return sysEditTime;
-            }
-
-            public void setSysEditTime(int sysEditTime) {
-                this.sysEditTime = sysEditTime;
-            }
-
-            public String getSysCreateUser() {
-                return sysCreateUser;
-            }
-
-            public void setSysCreateUser(String sysCreateUser) {
-                this.sysCreateUser = sysCreateUser;
-            }
-
-            public String getSysEditUser() {
-                return sysEditUser;
-            }
-
-            public void setSysEditUser(String sysEditUser) {
-                this.sysEditUser = sysEditUser;
-            }
-
-            public String getSysSpaceNo() {
-                return sysSpaceNo;
-            }
-
-            public void setSysSpaceNo(String sysSpaceNo) {
-                this.sysSpaceNo = sysSpaceNo;
-            }
-
-            public int getSysVersionNo() {
-                return sysVersionNo;
-            }
-
-            public void setSysVersionNo(int sysVersionNo) {
-                this.sysVersionNo = sysVersionNo;
-            }
-
-            public int getSysIsEnable() {
-                return sysIsEnable;
-            }
-
-            public void setSysIsEnable(int sysIsEnable) {
-                this.sysIsEnable = sysIsEnable;
-            }
-
-            public int getSysIdString() {
-                return sysIdString;
-            }
-
-            public void setSysIdString(int sysIdString) {
-                this.sysIdString = sysIdString;
-            }
-
-            public int getSysDataFrom() {
-                return sysDataFrom;
-            }
-
-            public void setSysDataFrom(int sysDataFrom) {
-                this.sysDataFrom = sysDataFrom;
-            }
-
-            public String getAttr1() {
-                return attr1;
-            }
-
-            public void setAttr1(String attr1) {
-                this.attr1 = attr1;
-            }
-
-            public String getAttr2() {
-                return attr2;
-            }
-
-            public void setAttr2(String attr2) {
-                this.attr2 = attr2;
-            }
-
-            public String getAttr3() {
-                return attr3;
-            }
-
-            public void setAttr3(String attr3) {
-                this.attr3 = attr3;
-            }
-
-            public String getAttr4() {
-                return attr4;
-            }
-
-            public void setAttr4(String attr4) {
-                this.attr4 = attr4;
-            }
-
-            public String getAttr5() {
-                return attr5;
-            }
-
-            public void setAttr5(String attr5) {
-                this.attr5 = attr5;
-            }
-
-            public List<ImgsListBean> getImgsList() {
-                return imgsList;
-            }
-
-            public void setImgsList(List<ImgsListBean> imgsList) {
-                this.imgsList = imgsList;
-            }
-
-            public static class ImgsListBean {
-                /**
-                 * imgId : 1
-                 * postionId : 9
-                 * imgSort : 1
-                 * imgPrimary : 0
-                 * imgSrc : https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535630468023&di=fca1100d0ba1b1c023ab570532a6d549&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F3%2F592927a508132.jpg
-                 * imgUrlMini :
-                 * imgUrlAndroid :
-                 * imgUrlIos :
-                 * imgUrlM :
-                 * imgUrlpc :
-                 * imgUrlDefault :
-                 * sysCreateTime : 1535455636000
-                 * sysEditTime : 0
-                 * sysCreateUser :
-                 * sysEditUser :
-                 * sysSpaceNo :
-                 * sysVersionNo : 0
-                 * sysIsEnable : 1
-                 * sysIdString : 0
-                 * sysDataFrom : 0
-                 * attr1 :
-                 * attr2 :
-                 * attr3 :
-                 * attr4 :
-                 * attr5 :
-                 */
-
-                private int imgId;
-                private int postionId;
-                private int imgSort;
-                private int imgPrimary;
-                private String imgSrc;
-                private String imgUrlMini;
-                private String imgUrlAndroid;
-                private String imgUrlIos;
-                private String imgUrlM;
-                private String imgUrlpc;
-                private String imgUrlDefault;
-                private long sysCreateTime;
-                private int sysEditTime;
-                private String sysCreateUser;
-                private String sysEditUser;
-                private String sysSpaceNo;
-                private int sysVersionNo;
-                private int sysIsEnable;
-                private int sysIdString;
-                private int sysDataFrom;
-                private String attr1;
-                private String attr2;
-                private String attr3;
-                private String attr4;
-                private String attr5;
-
-                public int getImgId() {
-                    return imgId;
-                }
-
-                public void setImgId(int imgId) {
-                    this.imgId = imgId;
-                }
-
-                public int getPostionId() {
-                    return postionId;
-                }
-
-                public void setPostionId(int postionId) {
-                    this.postionId = postionId;
-                }
-
-                public int getImgSort() {
-                    return imgSort;
-                }
-
-                public void setImgSort(int imgSort) {
-                    this.imgSort = imgSort;
-                }
-
-                public int getImgPrimary() {
-                    return imgPrimary;
-                }
-
-                public void setImgPrimary(int imgPrimary) {
-                    this.imgPrimary = imgPrimary;
-                }
-
-                public String getImgSrc() {
-                    return imgSrc;
-                }
-
-                public void setImgSrc(String imgSrc) {
-                    this.imgSrc = imgSrc;
-                }
-
-                public String getImgUrlMini() {
-                    return imgUrlMini;
-                }
-
-                public void setImgUrlMini(String imgUrlMini) {
-                    this.imgUrlMini = imgUrlMini;
-                }
-
-                public String getImgUrlAndroid() {
-                    return imgUrlAndroid;
-                }
-
-                public void setImgUrlAndroid(String imgUrlAndroid) {
-                    this.imgUrlAndroid = imgUrlAndroid;
-                }
-
-                public String getImgUrlIos() {
-                    return imgUrlIos;
-                }
-
-                public void setImgUrlIos(String imgUrlIos) {
-                    this.imgUrlIos = imgUrlIos;
-                }
-
-                public String getImgUrlM() {
-                    return imgUrlM;
-                }
-
-                public void setImgUrlM(String imgUrlM) {
-                    this.imgUrlM = imgUrlM;
-                }
-
-                public String getImgUrlpc() {
-                    return imgUrlpc;
-                }
-
-                public void setImgUrlpc(String imgUrlpc) {
-                    this.imgUrlpc = imgUrlpc;
-                }
-
-                public String getImgUrlDefault() {
-                    return imgUrlDefault;
-                }
-
-                public void setImgUrlDefault(String imgUrlDefault) {
-                    this.imgUrlDefault = imgUrlDefault;
-                }
-
-                public long getSysCreateTime() {
-                    return sysCreateTime;
-                }
-
-                public void setSysCreateTime(long sysCreateTime) {
-                    this.sysCreateTime = sysCreateTime;
-                }
-
-                public int getSysEditTime() {
-                    return sysEditTime;
-                }
-
-                public void setSysEditTime(int sysEditTime) {
-                    this.sysEditTime = sysEditTime;
-                }
-
-                public String getSysCreateUser() {
-                    return sysCreateUser;
-                }
-
-                public void setSysCreateUser(String sysCreateUser) {
-                    this.sysCreateUser = sysCreateUser;
-                }
-
-                public String getSysEditUser() {
-                    return sysEditUser;
-                }
-
-                public void setSysEditUser(String sysEditUser) {
-                    this.sysEditUser = sysEditUser;
-                }
-
-                public String getSysSpaceNo() {
-                    return sysSpaceNo;
-                }
-
-                public void setSysSpaceNo(String sysSpaceNo) {
-                    this.sysSpaceNo = sysSpaceNo;
-                }
-
-                public int getSysVersionNo() {
-                    return sysVersionNo;
-                }
-
-                public void setSysVersionNo(int sysVersionNo) {
-                    this.sysVersionNo = sysVersionNo;
-                }
-
-                public int getSysIsEnable() {
-                    return sysIsEnable;
-                }
-
-                public void setSysIsEnable(int sysIsEnable) {
-                    this.sysIsEnable = sysIsEnable;
-                }
-
-                public int getSysIdString() {
-                    return sysIdString;
-                }
-
-                public void setSysIdString(int sysIdString) {
-                    this.sysIdString = sysIdString;
-                }
-
-                public int getSysDataFrom() {
-                    return sysDataFrom;
-                }
-
-                public void setSysDataFrom(int sysDataFrom) {
-                    this.sysDataFrom = sysDataFrom;
-                }
-
-                public String getAttr1() {
-                    return attr1;
-                }
-
-                public void setAttr1(String attr1) {
-                    this.attr1 = attr1;
-                }
-
-                public String getAttr2() {
-                    return attr2;
-                }
-
-                public void setAttr2(String attr2) {
-                    this.attr2 = attr2;
-                }
-
-                public String getAttr3() {
-                    return attr3;
-                }
-
-                public void setAttr3(String attr3) {
-                    this.attr3 = attr3;
-                }
-
-                public String getAttr4() {
-                    return attr4;
-                }
-
-                public void setAttr4(String attr4) {
-                    this.attr4 = attr4;
-                }
-
-                public String getAttr5() {
-                    return attr5;
-                }
-
-                public void setAttr5(String attr5) {
-                    this.attr5 = attr5;
-                }
-            }
+    }
+
+    public static class GuessYouLikeBean {
+        /**
+         * price : 1169.0
+         * defalutPhotourl : http://pic.gzcfe.net/brand/2018/0509/5094349447918821571.jpg
+         * marketPrice : 1286.0
+         * sysIdString : 10090961176431434
+         * goodsName : 电动跑步机家用免安装多功能迷你超静音小型跑步机健身器材
+         * goodsTitle : 电动跑步机家用免安装多功能迷你超静音小型跑步机健身器材
+         * platgoodsId :
+         * goodsPropery : 1
+         * goodsId : 512
+         */
+
+        private double price;
+        private String defalutPhotourl;
+        private double marketPrice;
+        private String sysIdString;
+        private String goodsName;
+        private String goodsTitle;
+        private String platgoodsId;
+        private int goodsPropery;
+        private int goodsId;
+
+        public double getPrice() {
+            return price;
         }
 
-        public static class CenterPostionBean {
-            /**
-             * spoStarttime : -62135596800
-             * spoEndtime : -62135596800
-             * poId : 1
-             * poName : 测试广告位
-             * poDefault : 1
-             * poStarttime : 0001-01-01 00:00:00
-             * poEndtime : 0001-01-01 00:00:00
-             * poPostion : center
-             * poDesc :
-             * imgsList : [{"imgId":2,"postionId":1,"imgSort":2,"imgPrimary":0,"imgSrc":"http://p1.music.126.net/VWvhIXDT0nAO-skBKVLRgg==/109951163523560327.jpg","imgUrlMini":"","imgUrlAndroid":"","imgUrlIos":"","imgUrlM":"","imgUrlpc":"","imgUrlDefault":"","sysCreateTime":0,"sysEditTime":0,"sysCreateUser":"","sysEditUser":"","sysSpaceNo":"","sysVersionNo":0,"sysIsEnable":1,"sysIdString":0,"sysDataFrom":0,"attr1":"","attr2":"","attr3":"","attr4":"","attr5":""},{"imgId":3,"postionId":1,"imgSort":3,"imgPrimary":0,"imgSrc":"http://p3.music.126.net/6DW9zp8Z9lhMlzeu638zEw==/109951163391421089.jpg","imgUrlMini":"","imgUrlAndroid":"","imgUrlIos":"","imgUrlM":"","imgUrlpc":"","imgUrlDefault":"","sysCreateTime":0,"sysEditTime":0,"sysCreateUser":"","sysEditUser":"","sysSpaceNo":"","sysVersionNo":0,"sysIsEnable":1,"sysIdString":0,"sysDataFrom":0,"attr1":"","attr2":"","attr3":"","attr4":"","attr5":""},{"imgId":5,"postionId":1,"imgSort":5,"imgPrimary":0,"imgSrc":"http://c.hiphotos.baidu.com/image/pic/item/8694a4c27d1ed21b3c778fdda06eddc451da3f4f.jpg","imgUrlMini":"","imgUrlAndroid":"","imgUrlIos":"","imgUrlM":"","imgUrlpc":"","imgUrlDefault":"","sysCreateTime":0,"sysEditTime":0,"sysCreateUser":"","sysEditUser":"","sysSpaceNo":"","sysVersionNo":0,"sysIsEnable":1,"sysIdString":0,"sysDataFrom":0,"attr1":"","attr2":"","attr3":"","attr4":"","attr5":""}]
-             * sysCreateTime : 1535454817000
-             * sysEditTime : 0
-             * sysCreateUser :
-             * sysEditUser :
-             * sysSpaceNo :
-             * sysVersionNo : 0
-             * sysIsEnable : 1
-             * sysIdString : 0
-             * sysDataFrom : 0
-             * attr1 :
-             * attr2 :
-             * attr3 :
-             * attr4 :
-             * attr5 :
-             */
-
-            private long spoStarttime;
-            private long spoEndtime;
-            private int poId;
-            private String poName;
-            private int poDefault;
-            private String poStarttime;
-            private String poEndtime;
-            private String poPostion;
-            private String poDesc;
-            private long sysCreateTime;
-            private int sysEditTime;
-            private String sysCreateUser;
-            private String sysEditUser;
-            private String sysSpaceNo;
-            private int sysVersionNo;
-            private int sysIsEnable;
-            private int sysIdString;
-            private int sysDataFrom;
-            private String attr1;
-            private String attr2;
-            private String attr3;
-            private String attr4;
-            private String attr5;
-            private List<ImgsListBean> imgsList;
-
-            public long getSpoStarttime() {
-                return spoStarttime;
-            }
-
-            public void setSpoStarttime(long spoStarttime) {
-                this.spoStarttime = spoStarttime;
-            }
-
-            public long getSpoEndtime() {
-                return spoEndtime;
-            }
-
-            public void setSpoEndtime(long spoEndtime) {
-                this.spoEndtime = spoEndtime;
-            }
-
-            public int getPoId() {
-                return poId;
-            }
-
-            public void setPoId(int poId) {
-                this.poId = poId;
-            }
-
-            public String getPoName() {
-                return poName;
-            }
-
-            public void setPoName(String poName) {
-                this.poName = poName;
-            }
-
-            public int getPoDefault() {
-                return poDefault;
-            }
-
-            public void setPoDefault(int poDefault) {
-                this.poDefault = poDefault;
-            }
-
-            public String getPoStarttime() {
-                return poStarttime;
-            }
-
-            public void setPoStarttime(String poStarttime) {
-                this.poStarttime = poStarttime;
-            }
-
-            public String getPoEndtime() {
-                return poEndtime;
-            }
-
-            public void setPoEndtime(String poEndtime) {
-                this.poEndtime = poEndtime;
-            }
-
-            public String getPoPostion() {
-                return poPostion;
-            }
-
-            public void setPoPostion(String poPostion) {
-                this.poPostion = poPostion;
-            }
-
-            public String getPoDesc() {
-                return poDesc;
-            }
-
-            public void setPoDesc(String poDesc) {
-                this.poDesc = poDesc;
-            }
-
-            public long getSysCreateTime() {
-                return sysCreateTime;
-            }
-
-            public void setSysCreateTime(long sysCreateTime) {
-                this.sysCreateTime = sysCreateTime;
-            }
-
-            public int getSysEditTime() {
-                return sysEditTime;
-            }
-
-            public void setSysEditTime(int sysEditTime) {
-                this.sysEditTime = sysEditTime;
-            }
-
-            public String getSysCreateUser() {
-                return sysCreateUser;
-            }
-
-            public void setSysCreateUser(String sysCreateUser) {
-                this.sysCreateUser = sysCreateUser;
-            }
-
-            public String getSysEditUser() {
-                return sysEditUser;
-            }
-
-            public void setSysEditUser(String sysEditUser) {
-                this.sysEditUser = sysEditUser;
-            }
-
-            public String getSysSpaceNo() {
-                return sysSpaceNo;
-            }
-
-            public void setSysSpaceNo(String sysSpaceNo) {
-                this.sysSpaceNo = sysSpaceNo;
-            }
-
-            public int getSysVersionNo() {
-                return sysVersionNo;
-            }
-
-            public void setSysVersionNo(int sysVersionNo) {
-                this.sysVersionNo = sysVersionNo;
-            }
-
-            public int getSysIsEnable() {
-                return sysIsEnable;
-            }
-
-            public void setSysIsEnable(int sysIsEnable) {
-                this.sysIsEnable = sysIsEnable;
-            }
-
-            public int getSysIdString() {
-                return sysIdString;
-            }
-
-            public void setSysIdString(int sysIdString) {
-                this.sysIdString = sysIdString;
-            }
-
-            public int getSysDataFrom() {
-                return sysDataFrom;
-            }
-
-            public void setSysDataFrom(int sysDataFrom) {
-                this.sysDataFrom = sysDataFrom;
-            }
-
-            public String getAttr1() {
-                return attr1;
-            }
-
-            public void setAttr1(String attr1) {
-                this.attr1 = attr1;
-            }
-
-            public String getAttr2() {
-                return attr2;
-            }
-
-            public void setAttr2(String attr2) {
-                this.attr2 = attr2;
-            }
-
-            public String getAttr3() {
-                return attr3;
-            }
-
-            public void setAttr3(String attr3) {
-                this.attr3 = attr3;
-            }
-
-            public String getAttr4() {
-                return attr4;
-            }
-
-            public void setAttr4(String attr4) {
-                this.attr4 = attr4;
-            }
-
-            public String getAttr5() {
-                return attr5;
-            }
-
-            public void setAttr5(String attr5) {
-                this.attr5 = attr5;
-            }
-
-            public List<ImgsListBean> getImgsList() {
-                return imgsList;
-            }
-
-            public void setImgsList(List<ImgsListBean> imgsList) {
-                this.imgsList = imgsList;
-            }
-
-            public static class ImgsListBean {
-                /**
-                 * imgId : 2
-                 * postionId : 1
-                 * imgSort : 2
-                 * imgPrimary : 0
-                 * imgSrc : http://p1.music.126.net/VWvhIXDT0nAO-skBKVLRgg==/109951163523560327.jpg
-                 * imgUrlMini :
-                 * imgUrlAndroid :
-                 * imgUrlIos :
-                 * imgUrlM :
-                 * imgUrlpc :
-                 * imgUrlDefault :
-                 * sysCreateTime : 0
-                 * sysEditTime : 0
-                 * sysCreateUser :
-                 * sysEditUser :
-                 * sysSpaceNo :
-                 * sysVersionNo : 0
-                 * sysIsEnable : 1
-                 * sysIdString : 0
-                 * sysDataFrom : 0
-                 * attr1 :
-                 * attr2 :
-                 * attr3 :
-                 * attr4 :
-                 * attr5 :
-                 */
-
-                private int imgId;
-                private int postionId;
-                private int imgSort;
-                private int imgPrimary;
-                private String imgSrc;
-                private String imgUrlMini;
-                private String imgUrlAndroid;
-                private String imgUrlIos;
-                private String imgUrlM;
-                private String imgUrlpc;
-                private String imgUrlDefault;
-                private long sysCreateTime;
-                private long sysEditTime;
-                private String sysCreateUser;
-                private String sysEditUser;
-                private String sysSpaceNo;
-                private int sysVersionNo;
-                private int sysIsEnable;
-                private int sysIdString;
-                private int sysDataFrom;
-                private String attr1;
-                private String attr2;
-                private String attr3;
-                private String attr4;
-                private String attr5;
-
-                public int getImgId() {
-                    return imgId;
-                }
-
-                public void setImgId(int imgId) {
-                    this.imgId = imgId;
-                }
-
-                public int getPostionId() {
-                    return postionId;
-                }
-
-                public void setPostionId(int postionId) {
-                    this.postionId = postionId;
-                }
-
-                public int getImgSort() {
-                    return imgSort;
-                }
-
-                public void setImgSort(int imgSort) {
-                    this.imgSort = imgSort;
-                }
-
-                public int getImgPrimary() {
-                    return imgPrimary;
-                }
-
-                public void setImgPrimary(int imgPrimary) {
-                    this.imgPrimary = imgPrimary;
-                }
-
-                public String getImgSrc() {
-                    return imgSrc;
-                }
-
-                public void setImgSrc(String imgSrc) {
-                    this.imgSrc = imgSrc;
-                }
-
-                public String getImgUrlMini() {
-                    return imgUrlMini;
-                }
-
-                public void setImgUrlMini(String imgUrlMini) {
-                    this.imgUrlMini = imgUrlMini;
-                }
-
-                public String getImgUrlAndroid() {
-                    return imgUrlAndroid;
-                }
-
-                public void setImgUrlAndroid(String imgUrlAndroid) {
-                    this.imgUrlAndroid = imgUrlAndroid;
-                }
-
-                public String getImgUrlIos() {
-                    return imgUrlIos;
-                }
-
-                public void setImgUrlIos(String imgUrlIos) {
-                    this.imgUrlIos = imgUrlIos;
-                }
-
-                public String getImgUrlM() {
-                    return imgUrlM;
-                }
-
-                public void setImgUrlM(String imgUrlM) {
-                    this.imgUrlM = imgUrlM;
-                }
-
-                public String getImgUrlpc() {
-                    return imgUrlpc;
-                }
-
-                public void setImgUrlpc(String imgUrlpc) {
-                    this.imgUrlpc = imgUrlpc;
-                }
-
-                public String getImgUrlDefault() {
-                    return imgUrlDefault;
-                }
-
-                public void setImgUrlDefault(String imgUrlDefault) {
-                    this.imgUrlDefault = imgUrlDefault;
-                }
-
-                public long getSysCreateTime() {
-                    return sysCreateTime;
-                }
-
-                public void setSysCreateTime(long sysCreateTime) {
-                    this.sysCreateTime = sysCreateTime;
-                }
-
-                public long getSysEditTime() {
-                    return sysEditTime;
-                }
-
-                public void setSysEditTime(long sysEditTime) {
-                    this.sysEditTime = sysEditTime;
-                }
-
-                public String getSysCreateUser() {
-                    return sysCreateUser;
-                }
-
-                public void setSysCreateUser(String sysCreateUser) {
-                    this.sysCreateUser = sysCreateUser;
-                }
-
-                public String getSysEditUser() {
-                    return sysEditUser;
-                }
-
-                public void setSysEditUser(String sysEditUser) {
-                    this.sysEditUser = sysEditUser;
-                }
-
-                public String getSysSpaceNo() {
-                    return sysSpaceNo;
-                }
-
-                public void setSysSpaceNo(String sysSpaceNo) {
-                    this.sysSpaceNo = sysSpaceNo;
-                }
-
-                public int getSysVersionNo() {
-                    return sysVersionNo;
-                }
-
-                public void setSysVersionNo(int sysVersionNo) {
-                    this.sysVersionNo = sysVersionNo;
-                }
-
-                public int getSysIsEnable() {
-                    return sysIsEnable;
-                }
-
-                public void setSysIsEnable(int sysIsEnable) {
-                    this.sysIsEnable = sysIsEnable;
-                }
-
-                public int getSysIdString() {
-                    return sysIdString;
-                }
-
-                public void setSysIdString(int sysIdString) {
-                    this.sysIdString = sysIdString;
-                }
-
-                public int getSysDataFrom() {
-                    return sysDataFrom;
-                }
-
-                public void setSysDataFrom(int sysDataFrom) {
-                    this.sysDataFrom = sysDataFrom;
-                }
-
-                public String getAttr1() {
-                    return attr1;
-                }
-
-                public void setAttr1(String attr1) {
-                    this.attr1 = attr1;
-                }
-
-                public String getAttr2() {
-                    return attr2;
-                }
-
-                public void setAttr2(String attr2) {
-                    this.attr2 = attr2;
-                }
-
-                public String getAttr3() {
-                    return attr3;
-                }
-
-                public void setAttr3(String attr3) {
-                    this.attr3 = attr3;
-                }
-
-                public String getAttr4() {
-                    return attr4;
-                }
-
-                public void setAttr4(String attr4) {
-                    this.attr4 = attr4;
-                }
-
-                public String getAttr5() {
-                    return attr5;
-                }
-
-                public void setAttr5(String attr5) {
-                    this.attr5 = attr5;
-                }
-            }
+        public void setPrice(double price) {
+            this.price = price;
         }
 
+        public String getDefalutPhotourl() {
+            return defalutPhotourl;
+        }
 
+        public void setDefalutPhotourl(String defalutPhotourl) {
+            this.defalutPhotourl = defalutPhotourl;
+        }
 
+        public double getMarketPrice() {
+            return marketPrice;
+        }
+
+        public void setMarketPrice(double marketPrice) {
+            this.marketPrice = marketPrice;
+        }
+
+        public String getSysIdString() {
+            return sysIdString;
+        }
+
+        public void setSysIdString(String sysIdString) {
+            this.sysIdString = sysIdString;
+        }
+
+        public String getGoodsName() {
+            return goodsName;
+        }
+
+        public void setGoodsName(String goodsName) {
+            this.goodsName = goodsName;
+        }
+
+        public String getGoodsTitle() {
+            return goodsTitle;
+        }
+
+        public void setGoodsTitle(String goodsTitle) {
+            this.goodsTitle = goodsTitle;
+        }
+
+        public String getPlatgoodsId() {
+            return platgoodsId;
+        }
+
+        public void setPlatgoodsId(String platgoodsId) {
+            this.platgoodsId = platgoodsId;
+        }
+
+        public int getGoodsPropery() {
+            return goodsPropery;
+        }
+
+        public void setGoodsPropery(int goodsPropery) {
+            this.goodsPropery = goodsPropery;
+        }
+
+        public int getGoodsId() {
+            return goodsId;
+        }
+
+        public void setGoodsId(int goodsId) {
+            this.goodsId = goodsId;
+        }
     }
 }

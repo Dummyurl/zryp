@@ -2,6 +2,8 @@ package com.shunmai.zryp.app;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Handler;
 import android.support.v7.app.AppCompatDelegate;
 
@@ -30,6 +32,7 @@ public class MyApplication extends Application {
     private static MyApplication myApplication;
     protected static int mainThreadId;
     protected static Handler handler;
+
     static {
         //启用矢量图兼容
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -67,9 +70,10 @@ public class MyApplication extends Application {
         initStetho();
         ShareUtils.init(this);
         LeakCanary.install(this);
-        mainThreadId=android.os.Process.myTid();
+        mainThreadId = android.os.Process.myTid();
         handler = new Handler();
     }
+
     /**
      * 获取全局handler
      *
@@ -87,6 +91,7 @@ public class MyApplication extends Application {
     public static int getMainThreadId() {
         return mainThreadId;
     }
+
     public static MyApplication getInstance() {
         return myApplication;
     }
@@ -109,4 +114,6 @@ public class MyApplication extends Application {
         Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
 
     }
+
+
 }

@@ -18,7 +18,7 @@ public class UserHandleRepository extends BaseRepository<Object> {
     public void getCode(int type, String phoneNum, onResponseListener<TResponse<String>> listener){
         sendRequest(RetrofitClient.getInstance().getService(HttpService.class).GetSmsCode(type, phoneNum), stringTResponse -> listener.onSuccess(stringTResponse), throwable -> listener.onFailed(throwable));
     }
-    public void bindPhone(HashMap<String,String> map,String code,onResponseListener<TResponse<UserInfoBean>> listener){
+    public void bindPhone(HashMap<String,Object> map,String code,onResponseListener<TResponse<UserInfoBean>> listener){
         sendRequest(RetrofitClient.getInstance().getService(HttpService.class).bindPhone(map, code), wechatLoginBean -> listener.onSuccess(wechatLoginBean), throwable -> listener.onFailed(throwable));
     }
     public void setPassword(HashMap<String,String> map,onResponseListener<TResponse<UserInfoBean>> listener){

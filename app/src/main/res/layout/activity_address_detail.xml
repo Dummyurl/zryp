@@ -42,14 +42,16 @@
                 android:hint="收货人姓名" />
 
             <EditText
-                android:inputType="number"
                 android:id="@+id/et_phone"
                 style="@style/eidttext_style"
-                android:hint="收货人手机号码" />
+                android:hint="收货人手机号码"
+                android:inputType="number"
+                android:maxLength="11"/>
 
             <TextView
                 android:id="@+id/tv_address"
                 style="@style/eidttext_style"
+                android:ellipsize="middle"
                 android:drawableRight="@mipmap/icon_arrow"
                 android:text="省、市、区"
                 />
@@ -72,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/shape_botton"
+                android:background="#F11717"
                 android:text="保 存"
                 android:textColor="@color/white"
                 android:textSize="20sp" />

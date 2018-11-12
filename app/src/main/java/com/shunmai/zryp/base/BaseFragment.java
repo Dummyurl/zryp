@@ -73,6 +73,16 @@ public abstract class BaseFragment<SV extends ViewDataBinding> extends NetFragme
         }
     }
 
+    @Override
+    public boolean getUserVisibleHint() {
+        return super.getUserVisibleHint();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+    }
+
     protected void onInvisible() {
     }
 

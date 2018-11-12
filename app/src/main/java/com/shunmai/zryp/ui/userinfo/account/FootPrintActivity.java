@@ -46,11 +46,7 @@ public class FootPrintActivity extends SwipeBackActivity<ActivityFootPrintBindin
 
             @Override
             public void onGroupFirstStr(String title) {
-//                for (int i = 0; i < titleList.size(); i++) {
-//                    if (!mCurTitle.equals(title) && title.equals(titleList.get(i))) {
-//                        mCurTitle = title;
-//                    }
-//                }
+
             }
         }));
     }

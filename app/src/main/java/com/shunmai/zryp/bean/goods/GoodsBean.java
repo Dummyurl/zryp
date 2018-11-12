@@ -39,7 +39,9 @@ public class GoodsBean extends BaseObservable {
      * miniDetails : null
      * seekGoodsImgsVOS : null
      */
+    private int goodsId;
     private double price;
+    private int channelId;
     private String defalutPhotourl;
     private double marketPrice;
     private long sysIdString;
@@ -47,6 +49,25 @@ public class GoodsBean extends BaseObservable {
     private String goodsTitle;
     private String platgoodsId;
     private int goodsPropery;
+    private double mscore;
+    private String description;
+    private List<SeekGoodsImgsVOSBean> seekGoodsImgsVOS;
+
+    public int getChannelId() {
+        return channelId;
+    }
+
+    public void setChannelId(int channelId) {
+        this.channelId = channelId;
+    }
+
+    public int getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(int goodsId) {
+        this.goodsId = goodsId;
+    }
 
     @Bindable
     public String getGoodsName() {
@@ -57,7 +78,6 @@ public class GoodsBean extends BaseObservable {
         this.goodsName = goodsName;
         notifyPropertyChanged(BR.goodsName);
     }
-
 
 
     @Bindable
@@ -79,7 +99,6 @@ public class GoodsBean extends BaseObservable {
         this.marketPrice = marketPrice;
         notifyPropertyChanged(BR.marketPrice);
     }
-
 
 
     public String getDefalutPhotourl() {
@@ -120,5 +139,61 @@ public class GoodsBean extends BaseObservable {
 
     public void setGoodsPropery(int goodsPropery) {
         this.goodsPropery = goodsPropery;
+    }
+
+    public double getMscore() {
+        return mscore;
+    }
+
+    public void setMscore(double mscore) {
+        this.mscore = mscore;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<SeekGoodsImgsVOSBean> getSeekGoodsImgsVOS() {
+        return seekGoodsImgsVOS;
+    }
+
+    public void setSeekGoodsImgsVOS(List<SeekGoodsImgsVOSBean> seekGoodsImgsVOS) {
+        this.seekGoodsImgsVOS = seekGoodsImgsVOS;
+    }
+
+    public static class SeekGoodsImgsVOSBean {
+//                /**
+//                 * goodsPhotoId : 8
+//                 * goodsPhotoName : 测试图片3
+//                 * isDefaultPhoto : false
+//                 * goodsId : 10750656398888960
+//                 * photoUrl : http://b0cd0050cf0bf01b.oss-cn-beijing.aliyuncs.com/2018/9/f13cc5a3-e6a8-4a16-8339-f35c90a0b219.gif
+//                 * sortOrder : 0
+//                 * createTime : 1.537500884E12
+//                 * updateTime : null
+//                 * photoType : 1
+//                 * dataStatus : 0
+//                 * sysCreateTime : 1.537500884E12
+//                 * sysVersionNo : 0
+//                 * sysIsEnable : 1
+//                 * sysIdString : 11771250796007424
+//                 */
+//
+
+        private String photoUrl;
+
+        public String getPhotoUrl() {
+            return photoUrl;
+        }
+
+        public void setPhotoUrl(String photoUrl) {
+            this.photoUrl = photoUrl;
+        }
+
+
     }
 }

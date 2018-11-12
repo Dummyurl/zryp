@@ -60,8 +60,6 @@ public class StringUtils {
     }
 
 
-
-
     public static Spanned htmlFontClor(Map<String, String> map) {
         return Html.fromHtml(convertToHtml("<font color='#145A14'>text</font>"));
     }
@@ -98,7 +96,12 @@ public class StringUtils {
         }
         return builder.toString();
     }
+
     public static String buildTransaction(final String type) {
         return (type == null) ? String.valueOf(System.currentTimeMillis()) : type + System.currentTimeMillis();
+    }
+
+    public static String DoubleFormat(double num) {
+        return String.format("%.2f", num);
     }
 }

@@ -20,18 +20,16 @@ import java.util.Map;
 
 public class WechatShareLoginRepository extends BaseRepository<Response_Wechat> {
     public void getUseInfo(Map<String, String> map, onResponseListener listener) {
-        Log.i("login_data","request");
         sendRequest(RetrofitClient.getInstance().getService(HttpService.class).WeChatToken(map), data -> {
-            Log.i("login_data",new Gson().toJson(data));
-            WechatLoginHelper.openid=data.getOpenid();
+            Log.i("login_data", new Gson().toJson(data));
+            WechatLoginHelper.openid = data.getOpenid();
             HashMap<String, String> toaken_map = new HashMap<>();
             toaken_map.put("access_token", data.getAccess_token());
             toaken_map.put("openid", data.getOpenid());
             toaken_map.put("lang", "zh_CN");
             sendRequest(RetrofitClient.getInstance().getService(HttpService.class).WeChatUserInfo(toaken_map), userInfo -> {
-                Log.i("login_data",new Gson().toJson(userInfo));
-                WechatLoginHelper.loginCallBack.onSuccess(userInfo);
                 listener.onSuccess("");
+                WechatLoginHelper.loginCallBack.onSuccess(userInfo);
             }, throwable -> {
                 WechatLoginHelper.loginCallBack.onFailure();
                 listener.onFailed(throwable);

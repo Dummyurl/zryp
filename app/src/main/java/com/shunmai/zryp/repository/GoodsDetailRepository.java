@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.shunmai.zryp.base.BaseRepository;
 import com.shunmai.zryp.bean.goods.GoodsDetailBean;
+import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.network.RetrofitClient;
 import com.shunmai.zryp.listener.onResponseFailedListener;
 import com.shunmai.zryp.network.service.HttpService;
@@ -33,15 +34,16 @@ public class GoodsDetailRepository extends BaseRepository<GoodsDetailBean>
 
     }
     public final String Key="goodsDetail";
-    public void getGoodsDetail(MutableLiveData<GoodsDetailBean> liveData, long goodsId, onResponseFailedListener listener){
-        if (dataCache.get(Key+goodsId)!=null){
-            liveData.setValue(dataCache.get(Key+goodsId));
-            Log.e("NetWork","缓存");
-            return;
-        }
+    public void getGoodsDetail(long goodsId, onResponseListener<GoodsDetailBean> listener){
+//        if (dataCache.get(Key+goodsId)!=null){
+//            liveData.setValue(dataCache.get(Key+goodsId));
+//            Log.e("NetWork","缓存");
+//            return;
+//        }
         sendRequest(RetrofitClient.getInstance().getService(HttpService.class).GetGoodsDetail(goodsId), goodsDetailBean -> {
-            dataCache.put(Key+goodsId,goodsDetailBean);
-            liveData.setValue(goodsDetailBean);
+            listener.onSuccess(goodsDetailBean);
+//            dataCache.put(Key+goodsId,goodsDetailBean);
+//            liveData.setValue(goodsDetailBean);
         }, throwable -> listener.onFailed(throwable));
     }
     public void SaveMyFootprint(long goodid){
@@ -50,5 +52,11 @@ public class GoodsDetailRepository extends BaseRepository<GoodsDetailBean>
         sendRequest(RetrofitClient.getInstance().getService(HttpService.class).SaveMyFootprint(map), stringTResponse -> {
         }, throwable -> {
         });
+    }
+    public void DeleteCollectItem(int collectId, onResponseListener<String> listener) {
+        sendRequest(RetrofitClient.getInstance().getService(HttpService.class).DeleteCollectItem(collectId), stringTResponse -> listener.onSuccess(stringTResponse.getData()), throwable -> listener.onFailed(throwable));
+    }
+    public void CollectGoodsItem(int goodsid,int skuid,int userid, onResponseListener<String> listener) {
+        sendRequest(RetrofitClient.getInstance().getService(HttpService.class).CollectGoodsItem(goodsid,skuid,userid), stringTResponse -> listener.onSuccess(stringTResponse.getData()), throwable -> listener.onFailed(throwable));
     }
 }

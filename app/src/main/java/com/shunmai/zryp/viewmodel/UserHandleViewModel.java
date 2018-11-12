@@ -19,7 +19,7 @@ public class UserHandleViewModel extends ViewModel {
     public void getCode(int type, String phoneNum, onResponseListener<TResponse<String>> listener){
         repository.getCode(type,phoneNum,listener);
     }
-    public void bindPhone(HashMap<String,String> map, String code, onResponseListener<TResponse<UserInfoBean>> listener){
+    public void bindPhone(HashMap<String,Object> map, String code, onResponseListener<TResponse<UserInfoBean>> listener){
         repository.bindPhone(map,code,listener);
     }
     public void setPassword(HashMap<String,String> map,onResponseListener<TResponse<UserInfoBean>> listener){

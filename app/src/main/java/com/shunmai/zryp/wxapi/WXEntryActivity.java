@@ -3,6 +3,7 @@ package com.shunmai.zryp.wxapi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.repository.WechatShareLoginRepository;
@@ -60,6 +61,7 @@ public class WXEntryActivity extends FragmentActivity implements IWXAPIEventHand
         SendAuth.Resp resp = new SendAuth.Resp(bundle);
         System.out.println("***************************************************************=" + resp.errCode);
         //获取到code之后，需要调用接口获取到access_token
+        Log.i("errCode",resp.errCode+"");
         if (resp.errCode == BaseResp.ErrCode.ERR_OK) {
             if (resp.code!=null) {
                 HashMap<String, String> map = new HashMap<>();
@@ -70,7 +72,6 @@ public class WXEntryActivity extends FragmentActivity implements IWXAPIEventHand
                 new WechatShareLoginRepository().getUseInfo(map, new onResponseListener() {
                     @Override
                     public void onSuccess(Object o) {
-//                        ToastUtils.showToast("登录成功！");
                     }
                     @Override
                     public void onFailed(Throwable throwable) {
@@ -84,7 +85,7 @@ public class WXEntryActivity extends FragmentActivity implements IWXAPIEventHand
                 finish();
             }
         } else {
-            ToastUtils.showToast("未授权登录！");
+            ToastUtils.showToast("未授权！");
             finish();
         }
     }

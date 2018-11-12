@@ -39,7 +39,7 @@
         android:id="@+id/btn_add_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_botton"
+        android:background="#F11717"
         android:text="新增收货地址"
         android:textColor="@color/white"
         android:textSize="20sp" />

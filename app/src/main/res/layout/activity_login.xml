@@ -100,6 +100,7 @@
                 android:orientation="horizontal">
 
                 <CheckBox
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@drawable/selector_checkbox"
@@ -117,7 +118,7 @@
                     android:onClick="@{view->handler.toUserHandler(1)}"
                     android:layout_height="wrap_content"
                     android:text="忘记密码？"
-                    android:textColor="@color/orange" />
+                    android:textColor="@color/fontRed" />
             </LinearLayout>
         </LinearLayout>
 
@@ -154,7 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="@{view->handler.toUserHandler(0)}"
-                android:textColor="@color/fontOrange"
+                android:textColor="@color/fontRed"
                 android:text="立即注册" />
 
             <View
@@ -184,6 +185,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="23dp"
                 android:orientation="horizontal">
 
                 <View
@@ -191,40 +193,32 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <TextView
-                    android:drawableTop="@mipmap/button_sz_fxweibo"
+                <ImageView
+                    android:src="@mipmap/button_sz_fxweibo"
                     android:id="@+id/tv_login_weibo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_marginRight="35dp"
-                    android:onClick="@{view->handler.doWeiBoLogin()}"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="@color/withe"
-                    android:textSize="18sp" />
+                    android:onClick="@{view->handler.doWeiBoLogin(view)}"
+                    />
 
-                <TextView
+                <ImageView
                     android:id="@+id/tv_login_qq"
-                    android:onClick="@{view->handler.doQQLogin()}"
+                    android:onClick="@{view->handler.doQQLogin(view)}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableTop="@mipmap/button_sz_fxqq"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="@color/withe"
-                    android:textSize="18sp" />
+                    android:visibility="gone"
+                    android:src="@mipmap/button_sz_fxqq"
+                    />
 
-                <TextView
+                <ImageView
                     android:id="@+id/tv_login_wechat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="@{view->handler.doWechatLogin()}"
-                    android:layout_marginLeft="35dp"
-                    android:drawableTop="@mipmap/button_sz_fxweixin"
-                    android:gravity="center"
-                    android:text=""
-                    android:textColor="@color/withe"
-                    android:textSize="18sp" />
+                    android:onClick="@{view->handler.doWechatLogin(view)}"
+                    android:src="@mipmap/button_sz_fxweixin"
+                    />
 
                 <View
                     android:layout_width="0dp"

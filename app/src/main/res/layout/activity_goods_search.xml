@@ -1,103 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
+
         <variable
             name="bean"
-            type="com.shunmai.zryp.bean.goods.GoodsHotWordBean"/>
+            type="com.shunmai.zryp.bean.goods.GoodsHotWordBean" />
+
         <variable
             name="history"
-            type="com.shunmai.zryp.bean.goods.GoodsHotWordBean"/>
+            type="com.shunmai.zryp.bean.goods.GoodsHotWordBean" />
+
         <variable
             name="handler"
-            type="com.shunmai.zryp.eventhandler.goods.GoodsSearchHandler"/>
+            type="com.shunmai.zryp.eventhandler.goods.GoodsSearchHandler" />
     </data>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:fitsSystemWindows="true"
-    >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/et_search"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:layout_margin="10dp"
-        android:layout_weight="1"
-        android:background="@drawable/shape_search"
-        android:drawableLeft="@mipmap/icon_search"
-        android:drawablePadding="13dp"
-        android:gravity="center_vertical"
-        android:paddingBottom="5dp"
-        android:paddingLeft="8dp"
-        android:singleLine="true"
-        android:cursorVisible="true"
-        android:imeOptions="actionSearch"
-        android:paddingTop="5dp"
-        android:hint="请输入商品名称" />
-    <TextView
-        android:layout_marginLeft="4dp"
-        android:onClick="@{view->handler.close(view)}"
-        android:layout_width="wrap_content"
-        android:textSize="15sp"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="13dp"
-        android:layout_gravity="center_vertical"
-        android:text="取消"/>
-</LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorLineItem"/>
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_width="wrap_content"
-        android:textSize="15sp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="热门搜索"/>
-    <com.shunmai.zryp.view.AutoFlowLayout
-        android:id="@+id/afl_hot"
-        android:setFlowContent="@{bean.getData()}"
-        android:layout_marginTop="15dp"
-        android:layout_width="match_parent"
-
-        android:layout_height="wrap_content"/>
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-    <TextView
-        android:layout_marginLeft="10dp"
-        android:layout_width="wrap_content"
-        android:textSize="15sp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="历史搜索"/>
+        android:layout_height="match_parent"
+        xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical">
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:onBack="@{true}"
+            titlebar:centerText="搜索"
+            titlebar:centerType="textView"
+            titlebar:fillStatusBar="false"
+            titlebar:leftDrawable="@color/withe"
+            titlebar:leftType="imageButton"
+            titlebar:showBottomLine="false" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_search"
+                android:cursorVisible="true"
+                android:drawableLeft="@mipmap/icon_search"
+                android:drawablePadding="13dp"
+                android:gravity="center_vertical"
+                android:hint="请输入商品名称"
+                android:textSize="14dp"
+                android:imeOptions="actionSearch"
+                android:paddingBottom="5dp"
+                android:paddingLeft="8dp"
+                android:paddingTop="5dp"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/tv_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="13dp"
+                android:background="@drawable/shape_botton"
+                android:paddingBottom="4dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="4dp"
+                android:text="搜索"
+                android:textColor="@color/withe"
+                android:textSize="15sp" />
+        </LinearLayout>
+
         <View
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"/>
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginRight="10dp"
-            android:onClick="@{view->handler.clickClear()}"
-            android:src="@mipmap/icon_close"
-            android:layout_gravity="center"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLineItem" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="热门搜索"
+            android:textSize="15sp"
+            android:visibility="gone" />
+
+        <com.shunmai.zryp.view.AutoFlowLayout
+            android:id="@+id/afl_hot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:setFlowContent="@{bean.getData()}"
+
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:textColor="#222222"
+                android:text="历史搜索"
+                android:textSize="18dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+                android:onClick="@{view->handler.clickClear(view)}"
+                android:text="清除"
+                android:textColor="@color/fontRed"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <com.shunmai.zryp.view.AutoFlowLayout
+            android:id="@+id/afl_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:setFlowContent="@{history.getData()}" />
     </LinearLayout>
-    <com.shunmai.zryp.view.AutoFlowLayout
-        android:id="@+id/afl_history"
-        android:layout_marginTop="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:setFlowContent="@{history.getData()}"/>
-</LinearLayout>
 </layout>

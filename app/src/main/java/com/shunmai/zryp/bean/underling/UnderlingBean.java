@@ -11,9 +11,6 @@ import java.util.List;
 
 public class UnderlingBean extends TResponse<List<UnderlingBean.DataBean>> {
 
-
-    private int totalCount;
-    private int count;
     public static class DataBean {
         /**
          * cardId : 0
@@ -97,21 +94,5 @@ public class UnderlingBean extends TResponse<List<UnderlingBean.DataBean>> {
         public void setPic(String pic) {
             this.pic = pic;
         }
-    }
-
-    public int getTotalCount() {
-        return totalCount;
-    }
-
-    public void setTotalCount(int totalCount) {
-        this.totalCount = totalCount;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
     }
 }

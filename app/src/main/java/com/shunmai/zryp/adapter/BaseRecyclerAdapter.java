@@ -166,6 +166,8 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
             return;
         }
         mItemLists.remove(index);
+        notifyItemRemoved(index);
+        notifyDataSetChanged();
     }
 
     /**

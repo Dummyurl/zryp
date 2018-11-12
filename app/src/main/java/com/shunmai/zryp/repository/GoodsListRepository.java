@@ -29,5 +29,9 @@ public class GoodsListRepository extends BaseRepository<GoodsListBean> {
         sendRequest(RetrofitClient.getInstance().getService(HttpService.class).GoodsList(page, sortType,prType), goodsListBean -> data.setValue(goodsListBean), throwable -> data.setValue(null));
         return data;
     }
-
+    public LiveData<GoodsListBean> searchGoods(String keyword,String goodsName,int page,int sortType) {
+        MutableLiveData<GoodsListBean>  data = new MutableLiveData<>();
+        sendRequest(RetrofitClient.getInstance().getService(HttpService.class).SearchGoods(page, keyword,goodsName,sortType), goodsListBean -> data.setValue(goodsListBean), throwable -> data.setValue(null));
+        return data;
+    }
 }

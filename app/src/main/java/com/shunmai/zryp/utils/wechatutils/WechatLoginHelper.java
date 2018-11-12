@@ -14,8 +14,8 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
  */
 public class WechatLoginHelper {
     // APP_ID 替换为你的应用从官方网站申请到的合法appId
-    public static String APP_ID = "wxf17af5473c2719fb";
-    public static String SECRET_KEY = "e0a524c12ae4cbd40a062b00d1821316";
+    public static String APP_ID = "wxf7813412fcdf9a26";
+    public static String SECRET_KEY = "50789bfa5028e4f12f99fe933b92872b";
     public static IWXAPI weixinAPI = null;
     public static String openid = null;
     public static String nickName = null;

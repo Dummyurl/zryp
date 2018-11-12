@@ -16,8 +16,8 @@ import java.util.List;
  */
 
 public class AddressListRepository extends BaseRepository<List<AddressListBean.DataBean>>{
-    public void getAddressList(onResponseListener<List<AddressListBean.DataBean>> listener,int userId,int page){
-        sendRequest(RetrofitClient.getInstance().getService(HttpService.class).GetAddressList(userId,page,20), addressListBean -> listener.onSuccess(addressListBean.getData()), throwable -> listener.onFailed(throwable));
+    public void getAddressList(onResponseListener<List<AddressListBean.DataBean>> listener,int userId,int page,int isOutAddress){
+        sendRequest(RetrofitClient.getInstance().getService(HttpService.class).GetAddressList(userId,page,20,isOutAddress), addressListBean -> listener.onSuccess(addressListBean.getData()), throwable -> listener.onFailed(throwable));
     }
     public void deleteAddress(onResponseListener<TResponse<String>> listener,int id){
         sendRequest(RetrofitClient.getInstance().getService(HttpService.class).DeleteAddress(id), stringTResponse -> listener.onSuccess(stringTResponse), throwable -> listener.onFailed(throwable));

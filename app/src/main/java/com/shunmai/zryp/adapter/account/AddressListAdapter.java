@@ -1,18 +1,25 @@
 package com.shunmai.zryp.adapter.account;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.shunmai.zryp.adapter.CommonViewAdapter;
 import com.shunmai.zryp.adapter.ViewHolder;
 import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.bean.userinfo.AddressListBean;
 import com.shunmai.zryp.listener.onResponseListener;
+import com.shunmai.zryp.ui.goods.GoodsDetailActivity;
+import com.shunmai.zryp.ui.userinfo.account.AddressDetailActivity;
 import com.shunmai.zryp.utils.ToastUtils;
+import com.shunmai.zryp.view.MyAlertDialog;
 import com.shunmai.zryp.viewmodel.AddressListViewModel;
 import com.shunmai.zryp.R;
 import com.zyao89.view.zloading.ZLoadingDialog;
@@ -30,8 +37,9 @@ public class AddressListAdapter extends CommonViewAdapter<AddressListBean.DataBe
     private final Handler handler;
     private AddressListViewModel viewModel;
     public int checked_position = 0;
+    private int type;
 
-    public AddressListAdapter(Context context, List<AddressListBean.DataBean> datas, AddressListViewModel viewModel) {
+    public AddressListAdapter(Context context, List<AddressListBean.DataBean> datas, AddressListViewModel viewModel, int type) {
         super(context, datas, R.layout.item_address_list);
         this.viewModel = viewModel;
         dialog = new ZLoadingDialog(mContext);
@@ -43,16 +51,23 @@ public class AddressListAdapter extends CommonViewAdapter<AddressListBean.DataBe
                 .setDurationTime(0.5) // 设置动画时间百分比 - 0.5倍
                 .setDialogBackgroundColor(Color.parseColor("#aaffffff")) // 设置背景色，默认白色;
                 .setCanceledOnTouchOutside(false)
-                 ;
+        ;
         handler = new Handler();
         setCanShowEmpty(true);
+        this.type = type;
     }
 
     @Override
     public void convert(ViewHolder holder, AddressListBean.DataBean item) {
+        String[] split = item.getAddr().split(",");
+        StringBuffer addressDetail = new StringBuffer();
+        for (String str : split) {
+            addressDetail.append(str);
+        }
+        addressDetail.append(item.getDetailAddress());
         ((TextView) holder.getView(R.id.tv_user_name)).setText(item.getUsername());
         ((TextView) holder.getView(R.id.tv_user_phone)).setText(item.getMobile());
-        ((TextView) holder.getView(R.id.tv_user_address)).setText(item.getAddr());
+        ((TextView) holder.getView(R.id.tv_user_address)).setText(addressDetail.toString());
         setCheck(holder.getView(R.id.cb_address), mDatas.indexOf(item));
         if ((int) holder.getView(R.id.cb_address).getTag() == checked_position) {
             ((CheckBox) holder.getView(R.id.cb_address)).setChecked(true);
@@ -62,29 +77,44 @@ public class AddressListAdapter extends CommonViewAdapter<AddressListBean.DataBe
             }
         }
         holder.getView(R.id.tv_address_delete).setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-            builder.setTitle("删除地址").setMessage("是否删除" + item.getUsername() + "收货地址？").setNegativeButton("确定", (itemDialog, which) -> {
-                v.removeCallbacks(runnable);
-                dialog.show();
+            MyAlertDialog alertDialog = new MyAlertDialog(mContext, "是否删除\"" + item.getUsername() + "\"收货地址？");
+            alertDialog.setPositiveListener(v1 -> {
+                v1.removeCallbacks(runnable);
                 viewModel.deleteAddress(new onResponseListener<TResponse<String>>() {
-                @Override
-                public void onSuccess(TResponse<String> stringTResponse) {
-                    mDatas.remove(item);
-                    v.postDelayed(runnable, 0);
-                    notifyDataSetChanged();
-                }
+                    @Override
+                    public void onSuccess(TResponse<String> stringTResponse) {
+                        mDatas.remove(item);
+                        v1.postDelayed(runnable, 0);
+                        dialog.dismiss();
+                        notifyDataSetChanged();
+                    }
 
-                @Override
-                public void onFailed(Throwable throwable) {
-                    ToastUtils.showToast(throwable.getMessage());
-                    dialog.dismiss();
-                    throwable.printStackTrace();
-                }
-            }, item.getId());
-        }).setPositiveButton("取消", (dialog, which) -> dialog.dismiss());
-            builder.show();
-
+                    @Override
+                    public void onFailed(Throwable throwable) {
+                        ToastUtils.showToast(throwable.getMessage());
+                        dialog.dismiss();
+                        throwable.printStackTrace();
+                    }
+                }, item.getId());
+                alertDialog.dismiss();
+                dialog.show();
+            });
+            alertDialog.show();
         });
+        holder.getView(R.id.tv_address_edit).setOnClickListener(v -> {
+            Intent intent = new Intent(mContext, AddressDetailActivity.class);
+            intent.putExtra("data", new Gson().toJson(item));
+            intent.putExtra("regionType", item.getIsOutAddress());
+            ((Activity) mContext).startActivityForResult(intent, 200);
+        });
+        if (type == 1) {
+            holder.getView(R.id.ll_item).setOnClickListener(v -> {
+                Intent intent = new Intent();
+                intent.putExtra("address", new Gson().toJson(item));
+                ((Activity) mContext).setResult(200, intent);
+                ((Activity) mContext).finish();
+            });
+        }
     }
 
     final Runnable r = () -> notifyDataSetChanged();
@@ -109,6 +139,7 @@ public class AddressListAdapter extends CommonViewAdapter<AddressListBean.DataBe
                         box.removeCallbacks(runnable);
                         box.postDelayed(runnable, 0);
                     }
+
                     @Override
                     public void onFailed(Throwable throwable) {
                         dialog.dismiss();

@@ -28,7 +28,7 @@ public class RecommendRecAdapter extends CommonViewAdapter<GoodsBean> {
     public void convert(ViewHolder holder,GoodsBean item) {
         ((TextView)holder.getView(R.id.tv_goods)).setText(item.getGoodsName());
         ((TextView)holder.getView(R.id.tv_price)).setText("¥"+item.getMarketPrice());
-        GlideCacheUtil.LoadImage(mContext,holder.getView(R.id.iv_goods),item.getDefalutPhotourl(),2);
+        GlideCacheUtil.LoadImage(mContext,holder.getView(R.id.iv_goods),item.getDefalutPhotourl(),2,0);
 
     }
 }

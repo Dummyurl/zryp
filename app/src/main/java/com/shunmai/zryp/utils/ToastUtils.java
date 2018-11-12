@@ -111,4 +111,8 @@ public class ToastUtils {
             }
         });
     }
+
+    public static void showLoginFirst(){
+        showToast("请先登录！");
+    }
 }

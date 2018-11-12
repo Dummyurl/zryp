@@ -1,0 +1,19 @@
+package com.shunmai.zryp.viewmodel;
+
+import android.arch.lifecycle.ViewModel;
+
+import com.shunmai.zryp.bean.home.HomePageBean;
+import com.shunmai.zryp.listener.onResponseListener;
+import com.shunmai.zryp.repository.HomePageRepository;
+
+/**
+ * Created by yushengyang.
+ * Date: 2018/11/12.
+ */
+
+public class HomePageViewModel extends ViewModel {
+    HomePageRepository repository=new HomePageRepository();
+    public void HomePageInfo(onResponseListener<HomePageBean> listener){
+        repository.HomePageInfo(listener);
+    }
+}

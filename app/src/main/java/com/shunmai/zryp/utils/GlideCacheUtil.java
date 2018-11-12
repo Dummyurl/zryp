@@ -208,18 +208,21 @@ public class GlideCacheUtil {
     }
 
     /**
-     *
      * @param context
      * @param imageView
      * @param url
-     * @param type 0.head  1.正方形  2.长方形
+     * @param type      0.head  1.正方形  2.长方形
      */
-    public static void LoadImage(Context context, ImageView imageView, String url, int  type) {
-        if (type==0) {
-            Glide.with(context).load(url).apply(new RequestOptions().placeholder(R.mipmap.user).error(R.mipmap.user)).into(imageView);
-        } else if (type==1){
+    public static void LoadImage(Context context, ImageView imageView, String url, int type, int gender) {
+        if (type == 0) {
+            if (gender == 1) {
+                Glide.with(context).load(url).apply(new RequestOptions().placeholder(R.mipmap.icon_header_man).error(R.mipmap.icon_header_man)).into(imageView);
+            } else {
+                Glide.with(context).load(url).apply(new RequestOptions().placeholder(R.mipmap.icon_header_woman).error(R.mipmap.icon_header_woman)).into(imageView);
+            }
+        } else if (type == 1) {
             Glide.with(context).load(url).apply(new RequestOptions().placeholder(R.mipmap.img_placeholder_loading_1)).into(imageView);
-        }else{
+        } else {
             Glide.with(context).load(url).apply(new RequestOptions().placeholder(R.mipmap.img_placeholder_loading_2)).into(imageView);
         }
     }
@@ -287,7 +290,6 @@ public class GlideCacheUtil {
             signature.updateDiskCacheKey(messageDigest);
         }
     }
-
 
 
 }

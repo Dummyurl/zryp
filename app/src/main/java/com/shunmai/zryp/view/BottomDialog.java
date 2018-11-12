@@ -32,7 +32,6 @@ import java.util.List;
 
 public class BottomDialog {
     public static final int HORIZONTAL = OrientationHelper.HORIZONTAL;
-    public static final int VERTICAL = OrientationHelper.VERTICAL;
 
     public static final int LINEAR = 0;
     public static final int GRID = 1;
@@ -125,15 +124,10 @@ public class BottomDialog {
             getWindow().setGravity(Gravity.BOTTOM);
             getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
 
-            background = (LinearLayout) findViewById(R.id.background);
-            titleView = (TextView) findViewById(R.id.title);
-            container = (LinearLayout) findViewById(R.id.container);
-            findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dismiss();
-                }
-            });
+            background = findViewById(R.id.background);
+            titleView = findViewById(R.id.title);
+            container = findViewById(R.id.container);
+            findViewById(R.id.cancel).setOnClickListener(view -> dismiss());
         }
 
         void addItems(List<Item> items, OnItemClickListener onItemClickListener) {

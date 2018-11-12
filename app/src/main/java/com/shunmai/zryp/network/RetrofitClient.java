@@ -30,7 +30,7 @@ public final class RetrofitClient {
                 BASE_URL = "http://47.94.145.183:8780/";
                 break;
             case AppConfig.RELEASE:
-                BASE_URL = "http://gym.kunleen.com/boss-web/";
+                BASE_URL = "https://api.gzcfe.net/";
                 break;
             default:
                 BASE_URL = "https://www.baidu.com/";

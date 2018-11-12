@@ -12,4 +12,5 @@
     <string name="title_activity_score">ScoreActivity</string>
     <string name="title_activity_user_approve">UserApproveActivity</string>
     <string name="transition_book_img">transition_book_img</string>
+    <string name="title_activity_score_detail">ScoreDetailActivity</string>
 </resources>

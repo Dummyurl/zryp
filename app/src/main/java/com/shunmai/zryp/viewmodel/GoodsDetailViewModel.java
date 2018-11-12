@@ -3,6 +3,10 @@ package com.shunmai.zryp.viewmodel;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
+import com.shunmai.zryp.bean.goods.GoodsDetailBean;
+import com.shunmai.zryp.listener.onResponseListener;
+import com.shunmai.zryp.network.RetrofitClient;
+import com.shunmai.zryp.network.service.HttpService;
 import com.shunmai.zryp.repository.GoodsDetailRepository;
 import com.shunmai.zryp.listener.onResponseFailedListener;
 
@@ -20,11 +24,20 @@ public class GoodsDetailViewModel extends ViewModel {
         }
     }
 
-    public void getGoodsDetail(MutableLiveData liveData, long goodsId, onResponseFailedListener
+    public void getGoodsDetail( long goodsId,  onResponseListener<GoodsDetailBean>
             listener) {
-        repsotiry.getGoodsDetail(liveData, goodsId, listener);
+        repsotiry.getGoodsDetail( goodsId, listener);
     }
-    public void SaveMyFootprint(long goodsId){
+
+    public void SaveMyFootprint(long goodsId) {
         repsotiry.SaveMyFootprint(goodsId);
+    }
+
+    public void DeleteCollectItem(int collectId, onResponseListener<String> listener) {
+        repsotiry.DeleteCollectItem(collectId, listener);
+    }
+
+    public void CollectGoodsItem(int goodsid, int skuid, int userid, onResponseListener<String> listener) {
+        repsotiry.CollectGoodsItem(goodsid, skuid, userid, listener);
     }
 }

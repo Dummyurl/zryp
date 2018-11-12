@@ -2,6 +2,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="bean"
             type="com.shunmai.zryp.bean.UserInfoBean" />
@@ -15,6 +17,8 @@
         xmlns:titlebar="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:background="@color/withe"
         android:orientation="vertical">
 
@@ -37,6 +41,8 @@
 
             <ScrollView
                 android:layout_width="match_parent"
+                android:scrollbars="none"
+                android:overScrollMode="never"
                 android:layout_height="match_parent">
 
                 <LinearLayout
@@ -46,165 +52,237 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
+                        android:id="@+id/rl_background"
                         android:layout_width="wrap_content"
-                        android:layout_height="238dp">
+                        android:layout_height="300dp"
+                        >
 
                         <View
-                            android:id="@+id/v_head"
+                            android:id="@+id/v_bac"
                             android:layout_width="match_parent"
-                            android:layout_height="120dp"
+                            android:layout_height="240dp"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
-                            android:background="@drawable/shape_background_mine" />
-
+                            android:background="@mipmap/img_user_background" />
+                        <TextView
+                            android:id="@+id/tv_login"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="登录/注册"
+                            android:textSize="24dp"
+                            android:visibility="@{bean==null?View.VISIBLE:View.GONE}"
+                            android:clickToActivity='@{"com.shunmai.zryp.ui.userinfo.account.LoginActivity"}'
+                            android:paddingStart="13dp"
+                            android:paddingTop="42dp"
+                            android:textColor="@color/withe"/>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
-                            android:layout_marginBottom="3dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/shape_shadow"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginRight="13dp"
+                            android:background="@mipmap/background_mine_score"
                             android:orientation="vertical"
                             android:padding="4dp">
 
-                            <RelativeLayout
-                                android:id="@+id/rl_order"
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="50dp"
-                                android:background="@color/withe"
-                                android:onClick="@{view->handler.toOerderAcitvity(view,0)}"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="11dp"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="16dp"
                                 android:orientation="horizontal">
 
-                                <TextView
-                                    android:id="@+id/bt_pay"
+                                <LinearLayout
                                     android:layout_width="wrap_content"
-                                    android:layout_height="30dp"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginRight="10dp"
-                                    android:gravity="center"
-                                    android:text="全部订单>>"
-                                    android:textColor="@color/fontRed" />
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
 
-                                <TextView
-                                    android:id="@+id/tv_info"
+                                    <TextView
+                                        android:id="@+id/tv_score"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="可用积分"
+  android:maxLines="1"                                      android:drawableLeft="@mipmap/icon_true_gold"
+                                        android:textColor="#E9CB97"
+                                        android:textSize="15dp" />
+
+                                    <TextView
+                                        android:id="@+id/tv_score_count"
+                                        android:focusable="false"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/tv_score"
+                                        android:layout_marginTop="2dp"
+                                        android:text='@{bean.getCashbscore()+""}'
+                                        android:textColor="#E9CB97"
+                                        android:textSize="28dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:onClick='@{view->handler.toExchangeScoreActivity(view)}'
                                     android:layout_width="wrap_content"
-                                    android:layout_height="42dp"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginLeft="5dp"
-                                    android:gravity="center"
-                                    android:padding="8dp"
-                                    android:text="我的订单"
-                                    android:textColor="@color/black"
-                                    android:textSize="14sp" />
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_marginStart="23dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_weight="5"
+                                    android:background="@drawable/shape_circular_bead_gold"
+                                    android:orientation="vertical">
 
-
-                            </RelativeLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/colorLineItem" />
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center"
+                                        android:drawablePadding="6dp"
+                                        android:drawableRight="@mipmap/icon_double_arrow"
+                                        android:gravity="center"
+                                        android:text="积分兑换"
+                                        android:textColor="#E9CB97"
+                                        android:textSize="16dp" />
+                                </LinearLayout>
+                            </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="56dp"
-                                android:layout_marginTop="8dp"
-                                android:background="@color/withe"
-                                android:orientation="horizontal"
-                                android:paddingTop="5dp">
+                                android:layout_height="0dp"
+                                android:layout_marginBottom="21dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="11dp"
+                                android:layout_marginTop="24dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="14dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:text='@{bean.getTotalbscore()+""}'
+                                        android:textColor="#E9CB97"
+                                        android:textSize="14dp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:text="累计总积分"
+                                        android:textColor="#E9CB97"
+                                        android:textSize="14dp" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="15dp"
+                                    android:layout_gravity="center"
+                                    android:background="#AD8648" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="14dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:text='@{bean.getFrozenBscore()+""}'
+                                        android:textColor="#E9CB97"
+                                        android:textSize="14dp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:text="冻结积分"
+                                        android:textColor="#E9CB97"
+                                        android:textSize="14dp" />
+                                </LinearLayout>
 
                                 <TextView
-                                    android:id="@+id/tv_payment"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="16dp"
                                     android:layout_weight="1"
-                                    android:drawablePadding="4dp"
-                                    android:drawableTop="@mipmap/icon_order_1"
+                                    android:background="@drawable/shape_circular_bead_white"
+                                    android:drawableRight="@mipmap/icon_arrow_gold"
                                     android:gravity="center"
-                                    android:onClick="@{view->handler.toOerderAcitvity(view,1)}"
-                                    android:text="待付款"
-                                    android:textColor="@color/black" />
+                                   android:padding="3dp"
+                                    android:scaleType="fitXY"
+                                    android:src="@mipmap/btn_score_explain"
+                                    android:text="兑换说明"
+                                    android:textColor="#E9CB97"
+                                    android:textSize="10dp" />
 
                                 <TextView
-                                    android:id="@+id/tv_share"
-
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
+                                    android:onClick='@{view->handler.toExchangeScoreActivity(view)}'
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="13dp"
                                     android:layout_weight="1"
-                                    android:drawablePadding="4dp"
-                                    android:drawableTop="@mipmap/icon_order_2"
+                                    android:background="@drawable/shape_circular_bead_white"
+                                    android:drawableRight="@mipmap/icon_arrow_gold"
                                     android:gravity="center"
-                                    android:onClick="@{view->handler.toOerderAcitvity(view,2)}"
-                                    android:text="待分享"
-                                    android:textColor="@color/black" />
+                                    android:padding="3dp"
+                                    android:scaleType="fitXY"
+                                    android:src="@mipmap/btn_score_explain"
+                                    android:text="兑换明细"
+                                    android:textColor="#E9CB97"
+                                    android:textSize="10dp" />
 
-                                <TextView
-                                    android:id="@+id/tv_express"
-
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:drawablePadding="4dp"
-                                    android:drawableTop="@mipmap/icon_order_3"
-                                    android:gravity="center"
-                                    android:onClick="@{view->handler.toOerderAcitvity(view,3)}"
-                                    android:text="待发货"
-                                    android:textColor="@color/black" />
-
-                                <TextView
-                                    android:id="@+id/tv_traffic"
-                                    android:layout_width="0dp"
-
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:drawablePadding="4dp"
-                                    android:drawableTop="@mipmap/icon_order_4"
-                                    android:gravity="center"
-                                    android:onClick="@{view->handler.toOerderAcitvity(view,4)}"
-                                    android:text="已发货"
-                                    android:textColor="@color/black" />
-
-                                <TextView
-                                    android:id="@+id/tv_complete"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:drawablePadding="4dp"
-                                    android:drawableTop="@mipmap/icon_order_5"
-                                    android:gravity="center"
-                                    android:onClick="@{view->handler.toOerderAcitvity(view,5)}"
-                                    android:text="已完成"
-                                    android:textColor="@color/black" />
                             </LinearLayout>
-
                         </LinearLayout>
+
 
                         <RelativeLayout
                             android:id="@+id/rl_user"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
+                            android:layout_height="160dp"
+                            android:layout_marginLeft="8dp"
+                            android:visibility="@{bean==null?View.GONE:View.VISIBLE}"
                             android:layout_marginTop="30dp"
-                            android:clickToActivity='@{"com.shunmai.zryp.ui.userinfo.account.LoginActivity"}'>
+                            >
 
                             <com.shunmai.zryp.view.CircleImageView
                                 android:id="@+id/iv_user_icon"
-                                android:layout_width="51dp"
-                                android:layout_height="51dp"
+                                android:layout_width="62dp"
+                                android:layout_height="62dp"
                                 android:layout_alignParentStart="true"
                                 android:layout_alignParentTop="true"
                                 android:layout_marginStart="14dp"
                                 android:displayHeadImg="@{bean.getPic()}"
+                                android:setGender="@{bean.getGender()}"
                                 android:src="@mipmap/user" />
+                            <TextView
+                                android:layout_marginTop="6dp"
+                                android:layout_width="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_height="wrap_content"
+                                android:text='@{"ID:"+bean.getUserId()}'
+                                android:textColor="#fff"
+                                android:layout_below="@+id/iv_user_icon"
+                                android:textSize="13dp" />
 
                             <LinearLayout
                                 android:id="@+id/ll_user"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
                                 android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
                                 android:layout_toRightOf="@+id/iv_user_icon"
                                 android:orientation="vertical">
 
@@ -220,57 +298,64 @@
                                         android:layout_height="wrap_content"
                                         android:text="@{bean.getNickname()}"
                                         android:textColor="#fff"
-                                        android:textSize="18sp" />
+                                        android:textSize="18dp" />
 
-                                    <ImageView
+                                    <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
                                         android:layout_gravity="center"
                                         android:layout_marginLeft="8dp"
-                                        android:src="@mipmap/icon_unapprove" />
+                                        android:background="@mipmap/icon_type_bac"
+                                        android:gravity="center"
+                                        android:padding="5dp"
+                                        android:text="Lv潜力用户"
+                                        android:textColor="@color/withe"
+                                        android:textSize="10dp"
+                                        android:visibility="@{bean.getUserType()==0?View.VISIBLE : View.GONE}" />
                                 </LinearLayout>
+
+
+
+
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignLeft="@id/tv_user_name"
+                                    android:layout_marginTop="6dp"
+                                    android:setVisibility="@{bean.getInviteMe()}"
+                                    android:text='@{"我的推荐人："+bean.getInviteMe()}'
+                                    android:textColor="#fff"
+                                    android:textSize="13dp" />
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
                                     android:orientation="horizontal">
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_alignLeft="@id/tv_user_name"
-                                        android:layout_marginTop="6dp"
-                                        android:text="ID:"
+
+                                        android:text='@{"邀请码："+bean.getInviteCode}'
                                         android:textColor="#fff"
-                                        android:textSize="13sp" />
+                                        android:textSize="13dp" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_alignLeft="@id/tv_user_name"
-                                        android:layout_marginTop="6dp"
-                                        android:text='@{bean.getUserId()+""}'
+                                        android:layout_marginLeft="15dp"
+                                        android:background="@drawable/shape_radius_gray"
+                                        android:onClick="@{view->handler.copyInviteCode(view)}"
+                                        android:paddingBottom="1dp"
+                                        android:paddingLeft="15dp"
+                                        android:paddingRight="15dp"
+                                        android:paddingTop="1dp"
+                                        android:text="复制"
                                         android:textColor="#fff"
-                                        android:textSize="13sp" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignLeft="@id/tv_user_name"
-                                        android:layout_marginLeft="8dp"
-                                        android:layout_marginTop="6dp"
-                                        android:text="所持积分："
-                                        android:textColor="#fff"
-                                        android:textSize="13sp" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignLeft="@id/tv_user_name"
-                                        android:layout_marginTop="6dp"
-                                        android:text='@{bean.getTotalbscore()+""}'
-                                        android:textColor="#fff"
-                                        android:textSize="13sp" />
+                                        android:textSize="13dp" />
                                 </LinearLayout>
                             </LinearLayout>
 
@@ -278,12 +363,414 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
-                                android:layout_alignParentTop="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginRight="8dp"
-                                android:src="@mipmap/btn_toapprove" />
+                                android:layout_marginTop="28dp"
+                                android:src="@mipmap/img_tequan"
+                                android:visibility="gone" />
+
+                            <LinearLayout
+                                android:id="@+id/ll_level_up"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginEnd="13dp"
+                                android:layout_marginStart="13dp"
+                                android:clipChildren="false"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:visibility="gone">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center"
+                                    android:text="Lv.潜力用户"
+                                    android:textColor="#fff"
+                                    android:textSize="13dp" />
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="6dp"
+                                    android:layout_weight="1"
+                                    android:clipChildren="false"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="9dp"
+                                        android:paddingStart="2dp" android:background="@drawable/shape_progress_bar_bac"
+                                        android:paddingTop="2dp"
+                                        android:paddingBottom="2dp"
+                                        >
+
+                                        <ProgressBar
+                                            android:id="@+id/pb_flash_sale"
+                                            style="?android:attr/progressBarStyleHorizontal"
+                                            android:layout_width="0dp"
+                                            android:layout_height="6dp"
+                                            android:layout_gravity="center"
+                                            android:layout_weight="1"
+                                            android:background="@mipmap/progress_bac"
+                                            android:max="100"
+                                            android:progress='@{bean.getUpgradePercent()}'
+                                            android:progressDrawable="@drawable/progress_horizontal_mine" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <View
+                                            android:layout_width="0dp"
+                                            android:layout_height="1dp"
+                                            android:setWeightPercent="@{bean.getUpgradePercent()}" />
+
+                                        <TextView
+                                            android:layout_width="40dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="-20dp"
+                                            android:layout_marginStart="-20dp"
+                                            android:background="@mipmap/icon_prop_red"
+                                            android:gravity="center"
+                                            android:paddingBottom="3dp"
+                                            android:paddingTop="8dp"
+                                            android:text='@{bean.getUpgradePercent()+"%"}'
+                                            android:textColor="@color/withe"
+                                            android:textSize="12dp" />
+
+                                        <View
+                                            android:layout_width="0dp"
+                                            android:layout_height="1dp"
+                                            android:setWeightPercent='@{100-bean.getUpgradePercent()}' />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center"
+                                    android:text="Lv.经理"
+                                    android:textColor="#fff"
+                                    android:textSize="13dp" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top"
+                                    android:layout_marginStart="6dp"
+                                    android:onClick="@{view->handler.showDialog(view)}"
+                                    android:src="@mipmap/img_level_up"
+                                    android:visibility="@{bean.getUpgradePercent()==100? View.GONE : View.VISIBLE}" />
+                                />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top"
+                                    android:layout_marginStart="6dp"
+                                    android:onClick="@{view->handler.showLightDialog(view)}"
+                                    android:src="@mipmap/btn_level_up_light"
+                                    android:visibility="@{bean.getUpgradePercent()==100? View.VISIBLE : View.GONE}" />
+                            </LinearLayout>
                         </RelativeLayout>
                     </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginRight="13dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/shape_shadow"
+                        android:orientation="vertical"
+                        android:padding="4dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="42dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:text="我的业绩"
+                            android:textColor="@color/black"
+                            android:textSize="18dp" />
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorLineItem" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="115dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/withe"
+                            android:orientation="horizontal"
+                            android:paddingBottom="15dp"
+                            android:paddingTop="5dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text='@{bean.getMeInvitedPeople()+""}'
+                                    android:textColor="@color/black"
+                                    android:textSize="22dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="13dp"
+                                    android:layout_weight="1"
+                                    android:text="有效"
+                                    android:textColor="@color/fontNormal"
+                                    android:textSize="13dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:text="推荐人"
+                                    android:textColor="@color/fontNormal"
+                                    android:textSize="13dp" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:background="#ffe8e8e8" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text='@{bean.getPersonalConsumeAgent()+""}'
+                                    android:textColor="@color/black"
+                                    android:textSize="22dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="13dp"
+                                    android:layout_weight="1"
+                                    android:text="个人"
+                                    android:textColor="@color/fontNormal"
+                                    android:textSize="13dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:text="消费总金额"
+                                    android:textColor="@color/fontNormal"
+                                    android:textSize="13dp" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:background="#ffe8e8e8" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text='@{bean.getTeamConsumeAgent()+""}'
+                                    android:textColor="@color/black"
+                                    android:textSize="22dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="13dp"
+                                    android:layout_weight="1"
+                                    android:text="团队"
+                                    android:textColor="@color/fontNormal"
+                                    android:textSize="13dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:text="消费总金额"
+                                    android:textColor="@color/fontNormal"
+                                    android:textSize="13dp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginRight="13dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/shape_shadow"
+                        android:baselineAligned="false"
+                        android:orientation="vertical"
+                        android:padding="4dp">
+
+                        <RelativeLayout
+                            android:id="@+id/rl_order"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@color/withe"
+                            android:onClick="@{view->handler.toOerderAcitvity(view,0)}"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/bt_pay"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_toLeftOf="@+id/iv_arrow"
+                                android:gravity="center"
+                                android:text="全部订单"
+                                android:textColor="#808080" />
+
+                            <ImageView
+                                android:id="@+id/iv_arrow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:src="@mipmap/icon_arrow_grey" />
+
+                            <TextView
+                                android:id="@+id/tv_info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="42dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center"
+                                android:padding="8dp"
+                                android:text="我的订单"
+                                android:textColor="@color/black"
+                                android:textSize="16dp" />
+
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorLineItem" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/withe"
+                            android:orientation="horizontal"
+                            android:paddingBottom="15dp"
+                            android:paddingTop="5dp">
+
+                            <TextView
+                                android:id="@+id/tv_payment"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawablePadding="-8dp"
+                                android:drawableTop="@mipmap/icon_order_1"
+                                android:gravity="center"
+                                android:onClick="@{view->handler.toOerderAcitvity(view,1)}"
+                                android:text="待付款"
+                                android:textColor="@color/fontNormal"
+                                android:textSize="14dp" />
+
+
+                            <TextView
+                                android:id="@+id/tv_express"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawablePadding="-8dp"
+                                android:drawableTop="@mipmap/icon_order_2"
+                                android:gravity="center"
+                                android:onClick="@{view->handler.toOerderAcitvity(view,2)}"
+                                android:text="待发货"
+                                android:textColor="@color/fontNormal" />
+
+                            <TextView
+                                android:id="@+id/tv_traffic"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawablePadding="-8dp"
+                                android:drawableTop="@mipmap/icon_order_3"
+                                android:gravity="center"
+                                android:onClick="@{view->handler.toOerderAcitvity(view,3)}"
+                                android:text="已发货"
+                                android:textColor="@color/fontNormal" />
+
+                            <TextView
+                                android:id="@+id/tv_complete"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawablePadding="-8dp"
+                                android:drawableTop="@mipmap/icon_order_4"
+                                android:gravity="center"
+                                android:onClick="@{view->handler.toOerderAcitvity(view,4)}"
+                                android:text="已完成"
+                                android:textColor="@color/fontNormal" />
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -296,90 +783,68 @@
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:orientation="vertical"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
+                        android:paddingLeft="13dp"
+                        android:paddingRight="13dp"
                         android:showDividers="middle">
-
                         <TextView
-                            android:id="@+id/btn_my_score"
-                            style="@style/mimecenterbt"
+                            android:padding="0dp"
+                            android:paddingTop="10dp"
                             android:layout_marginTop="10dp"
-                            android:drawableLeft="@mipmap/icon_userinfo_1"
-                            android:onClick='@{view->handler.toAcitvity(view,"com.shunmai.zryp.ui.userinfo.order.ScoreActivity")}'
-                            android:padding="0dp"
-                            android:paddingBottom="10dp"
-                            android:paddingTop="10dp"
-                            android:text="  我的积分"
+                            style="@style/mimecenterbt"
+                            android:drawableLeft='@mipmap/icon_userinfo_5'
+                            android:onClick="@{view->handler.toUnderlingActivity(view)}"
+                            android:text="  我推荐的人"
                             android:textColor="@color/black" />
 
                         <TextView
-                            style="@style/mimecenterbt"
-                            android:layout_marginTop="1dp"
-                            android:drawableLeft="@mipmap/icon_userinfo_2"
                             android:padding="0dp"
-                            android:paddingBottom="10dp"
                             android:paddingTop="10dp"
-                            android:text="  兑换记录"
+                            android:layout_marginTop="10dp"
+                            style="@style/mimecenterbt"
+                            android:drawableLeft='@mipmap/icon_collect_userinfo'
+                            android:onClick="@{view->handler.toCollectActivity(view)}"
+                            android:text="  我的收藏"
                             android:textColor="@color/black" />
+
 
                         <TextView
                             android:id="@+id/tv_address"
                             style="@style/mimecenterbt"
                             android:layout_marginTop="1dp"
                             android:drawableLeft="@mipmap/icon_userinfo_3"
-                            android:onClick='@{view->handler.toAcitvity(view,"com.shunmai.zryp.ui.userinfo.account.AddressListActivity")}'
+                            android:onClick='@{view->handler.toAddressListActivity(view)}'
                             android:padding="0dp"
                             android:paddingBottom="10dp"
                             android:paddingTop="10dp"
                             android:text="  地址管理"
                             android:textColor="@color/black" />
 
+
                         <TextView
                             style="@style/mimecenterbt"
-                            android:layout_marginTop="1dp"
-                            android:drawableLeft="@mipmap/icon_userinfo_4"
                             android:padding="0dp"
                             android:paddingBottom="10dp"
                             android:paddingTop="10dp"
-                            android:text="  关于积分"
+                            android:layout_marginTop="8dp"
+                            android:drawableLeft="@mipmap/icon_userinfo_6"
+                            android:onClick="@{view->handler.toFootprintActivity(view)}"
+                            android:text="  我的足迹"
                             android:textColor="@color/black" />
+
                     </LinearLayout>
 
-                    <TextView
-                        style="@style/mimecenterbt"
-                        contentPaddingLeft="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/shape_shadow"
-                        android:drawableLeft='@mipmap/icon_userinfo_5'
-                        android:onClick="@{view->handler.toUnderlingActivity(view,bean.getUserType(),bean.getUserId())}"
-                        android:text='@{bean.getUserType()>2?"  我推荐的人":"  我的下属"}'
-                        android:textColor="@color/black" />
 
                     <TextView
                         style="@style/mimecenterbt"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_margin="10dp"
                         android:background="@drawable/shape_shadow"
-                        android:drawableLeft="@mipmap/icon_userinfo_6"
-                        android:onClick="@{view->handler.toFootprintActivity(view)}"
-                        android:text="  我的足迹"
+                        android:drawableLeft="@mipmap/icon_userinfo_8"
+                        android:onClick="@{view->handler.callPhone(view)}"
+                        android:text="  联系客服"
                         android:textColor="@color/black" />
 
-                    <Button
-                        android:id="@+id/btn_login"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/shape_botton"
-                        android:text="联系客服"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
+
+
                 </LinearLayout>
             </ScrollView>
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>

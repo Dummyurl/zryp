@@ -24,24 +24,30 @@ public class AddressListActivity extends SwipeBackActivity<ActivityAddressListBi
     private AddressListViewModel viewModel;
     private AddressListAdapter adapter;
     private SmartRefreshLayout refreshLayout;
-    private int page=1;
+    private int page = 1;
+    private int type = 0;
+    private int isOutAddress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address_list);
         viewModel = ViewModelProviders.of(this).get(AddressListViewModel.class);
+        type = getIntent().getIntExtra("type", -1);
+        isOutAddress = getIntent().getIntExtra("isOutAddress", 1);
         initRec();
         initRefresh();
         getData(page++);
+
     }
 
     private void initRefresh() {
         refreshLayout = bindingView.refreshLayout;
         refreshLayout.setEnableAutoLoadMore(true);//开启自动加载功能（非必须）
         refreshLayout.setEnableLoadMore(true);
-        refreshLayout.setOnRefreshListener(refreshLayout ->{
-            adapter.checked_position=0;
-            page=1;
+        refreshLayout.setOnRefreshListener(refreshLayout -> {
+            adapter.checked_position = 0;
+            page = 1;
             adapter.clear();
             getData(page++);
             refreshLayout.setNoMoreData(false);
@@ -52,15 +58,20 @@ public class AddressListActivity extends SwipeBackActivity<ActivityAddressListBi
     }
 
     private void initRec() {
-        RecyclerView rcAddress =bindingView.rcAddress;
+        RecyclerView rcAddress = bindingView.rcAddress;
         rcAddress.setLayoutManager(new LinearLayoutManager(this));
-        adapter=new AddressListAdapter(this,new ArrayList(),viewModel);
+        adapter = new AddressListAdapter(this, new ArrayList(), viewModel, type);
         rcAddress.setAdapter(adapter);
         rcAddress.addItemDecoration(new SpaceItemDecoration(0, 10));
-        bindingView.btnAddAddress.setOnClickListener(v -> startActivityForResult(new Intent(AddressListActivity.this, AddressDetailActivity.class),200));
+        bindingView.btnAddAddress.setOnClickListener(v -> {
+            Intent intent = new Intent(AddressListActivity.this, AddressDetailActivity.class);
+            intent.putExtra("regionType", isOutAddress);
+            startActivityForResult(intent, 200);
+        });
+
     }
 
-    private void getData(int page){
+    private void getData(int page) {
         viewModel.getAddressList(new onResponseListener<List<AddressListBean.DataBean>>() {
             @Override
             public void onSuccess(List<AddressListBean.DataBean> dataBeans) {
@@ -68,21 +79,22 @@ public class AddressListActivity extends SwipeBackActivity<ActivityAddressListBi
                 refreshLayout.finishRefresh();
                 adapter.add(dataBeans);
                 showContentView();
-                if (dataBeans.size()<20){
+                if (dataBeans.size() < 20) {
                     refreshLayout.setNoMoreData(true);
                 }
             }
+
             @Override
             public void onFailed(Throwable throwable) {
                 showError();
             }
-        },0,page);
+        }, 0, page, isOutAddress);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode==RESULT_OK){
-            page=1;
+        if (resultCode == RESULT_OK) {
+            page = 1;
             adapter.clear();
             getData(page++);
             refreshLayout.setEnableLoadMore(true);

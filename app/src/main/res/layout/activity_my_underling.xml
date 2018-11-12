@@ -31,62 +31,34 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="13dp"
             android:orientation="horizontal">
-
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="13dp"
-                android:textSize="18dp"
-                android:text="总人数"
-                android:textColor="@color/black" />
-
             <TextView
                 android:id="@+id/tv_total_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginRight="13dp"
-                android:textColor="@color/fontRed"
-                android:textSize="22sp" />
+                android:textColor="#F11717"
+                android:text="23"
+                android:textSize="46sp" />
 
-
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="7dp"
+                android:layout_gravity="bottom"
+                android:textSize="18dp"
+                android:paddingBottom="10dp"
+                android:text="我推荐的人"
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginRight="13dp"
-            android:background="@color/divider" />
-        <LinearLayout
-            android:id="@+id/ll_underling"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="5dp"
+            android:background="#F2F2F2" />
 
-            <TextView
-                android:id="@+id/tv_underling_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="18dp"
-                android:padding="13dp"
-                android:text="总监人数"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/tv_underling_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="13dp"
-                android:textColor="@color/fontRed"
-                android:textSize="22sp" />
-
-        </LinearLayout>
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
@@ -98,9 +70,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_underling"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="13dp"
                 android:overScrollMode="never"
-                android:layout_marginRight="13dp"
                 android:layout_height="match_parent"
                 />
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>

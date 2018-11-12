@@ -31,11 +31,18 @@ public class RecGoodsListAdapter extends CommonViewAdapter<GoodsBean> {
     @Override
     public void convert(ViewHolder holder, GoodsBean item) {
         ((TextView) holder.getView(R.id.tv_goods_name)).setText(item.getGoodsName());
-        ((TextView) holder.getView(R.id.tv_price)).setText("¥"+item.getMarketPrice());
-        ((TextView) holder.getView(R.id.tv_past_price)).setText("原价"+item.getPrice());
+        ((TextView) holder.getView(R.id.tv_price)).setText("¥"+item.getPrice());
+        ((TextView) holder.getView(R.id.tv_past_price)).setText("原价"+item.getMarketPrice());
         ((TextView) holder.getView(R.id.tv_past_price)).getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG);  // 设置中划线并加清晰 ;
         GlideCacheUtil.LoadImage(mContext,holder.getView(R.id.iv_goods),item.getDefalutPhotourl());
-        holder.getView(R.id.ll_item).setOnClickListener(v -> GoodsDetailActivity.navigate((AppCompatActivity) mContext,holder.getView(R.id.iv_goods),item.getSysIdString(),item.getDefalutPhotourl(),item.getPrice(),item.getMarketPrice(),item.getGoodsTitle()));
+        holder.getView(R.id.ll_item).setOnClickListener(v -> GoodsDetailActivity.navigate(mContext,item.getSysIdString()));
+        if (item.getGoodsPropery()==2&&item.getChannelId()==1){
+            ((TextView) holder.getView(R.id.tv_self_support)).setText("京东");
+        }else if(item.getGoodsPropery()==2&&item.getChannelId()==2){
+            ((TextView) holder.getView(R.id.tv_self_support)).setText("楚楚街");
+        }else{
+            ((TextView) holder.getView(R.id.tv_self_support)).setText("自营");
+        }
 
     }
 }

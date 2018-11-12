@@ -22,23 +22,24 @@ import java.util.List;
  * 限时购adapter
  */
 
-public class FlashSaleRecAdapter extends CommonViewAdapter<HomePageBean.DataBean.FlashSaleBean.PromotionGoodsListBean>{
-    public FlashSaleRecAdapter(Context context, List<HomePageBean.DataBean.FlashSaleBean.PromotionGoodsListBean> datas) {
-        super(context, datas, R.layout.item_flash_sale);
-    }
-
-    @Override
-    public void convert(ViewHolder holder,HomePageBean.DataBean.FlashSaleBean.PromotionGoodsListBean item) {
-        ((TextView) holder.getView(R.id.tv_goods_name)).setText(item.getSeekGoodsVO().getGoodsName());
-        GlideCacheUtil.LoadImage(mContext,holder.getView(R.id.iv_goods), item.getSeekGoodsVO().getDefalutPhotourl());
-        ((TextView) holder.getView(R.id.tv_price_post)).setText("¥"+item.getSeekGoodsVO().getMarketPrice());
-        ((TextView) holder.getView(R.id.tv_price_post)).getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG);  // 设置中划线并加清晰 ;
-        ((TextView) holder.getView(R.id.tv_price)).setText("¥"+item.getSeekGoodsVO().getPrice());
-        ProgressBar bar = holder.getView(R.id.pb_flash_sale);
-        bar.setMax(100);
-        bar.setProgress(((int) Double.parseDouble(item.getSellRate().split("%")[0])));
-        ((TextView) holder.getView(R.id.tv_sale_count)).setText("已抢"+item.getGoSalenum()+"件");
-        ((TextView) holder.getView(R.id.tv_sale_per)).setText(item.getSellRate());
-        holder.getView(R.id.ll_item).setOnClickListener(v -> GoodsDetailActivity.navigate((AppCompatActivity) mContext,holder.getView(R.id.iv_goods), item.getSeekGoodsVO().getSysIdString(),item.getSeekGoodsVO().getDefalutPhotourl(),item.getSeekGoodsVO().getPrice(),item.getSeekGoodsVO().getMarketPrice(),item.getSeekGoodsVO().getGoodsTitle()));
-    }
-}
+public class FlashSaleRecAdapter {}
+//        extends CommonViewAdapter<HomePageBean.DataBean.FlashSaleBean.PromotionGoodsListBean>{
+//    public FlashSaleRecAdapter(Context context, List<HomePageBean.DataBean.FlashSaleBean.PromotionGoodsListBean> datas) {
+//        super(context, datas, R.layout.item_flash_sale);
+//    }
+//
+//    @Override
+//    public void convert(ViewHolder holder,HomePageBean.DataBean.FlashSaleBean.PromotionGoodsListBean item) {
+//        ((TextView) holder.getView(R.id.tv_goods_name)).setText(item.getSeekGoodsVO().getGoodsName());
+//        GlideCacheUtil.LoadImage(mContext,holder.getView(R.id.iv_goods), item.getSeekGoodsVO().getDefalutPhotourl());
+//        ((TextView) holder.getView(R.id.tv_price_post)).setText("¥"+item.getSeekGoodsVO().getMarketPrice());
+//        ((TextView) holder.getView(R.id.tv_price_post)).getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG);  // 设置中划线并加清晰 ;
+//        ((TextView) holder.getView(R.id.tv_price)).setText("¥"+item.getSeekGoodsVO().getPrice());
+//        ProgressBar bar = holder.getView(R.id.pb_flash_sale);
+//        bar.setMax(100);
+//        bar.setProgress(((int) Double.parseDouble(item.getSellRate().split("%")[0])));
+//        ((TextView) holder.getView(R.id.tv_sale_count)).setText("已抢"+item.getGoSalenum()+"件");
+//        ((TextView) holder.getView(R.id.tv_sale_per)).setText(item.getSellRate());
+//        holder.getView(R.id.ll_item).setOnClickListener(v -> GoodsDetailActivity.navigate(mContext,item.getSeekGoodsVO().getSysIdString()));
+//    }
+//}

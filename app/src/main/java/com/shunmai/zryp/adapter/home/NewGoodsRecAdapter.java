@@ -29,6 +29,6 @@ public class NewGoodsRecAdapter extends CommonViewAdapter<GoodsBean>{
         ((TextView) holder.getView(R.id.tv_title)).setText(item.getGoodsName());
 //        ((TextView) holder.getView(R.id.tv_second_title)).setText(item.getGoodsNote());
         ((TextView) holder.getView(R.id.tv_price)).setText("¥"+item.getMarketPrice());
-        GlideCacheUtil.LoadImage(mContext,holder.getView(R.id.iv_goods),item.getDefalutPhotourl(),1);
+        GlideCacheUtil.LoadImage(mContext,holder.getView(R.id.iv_goods),item.getDefalutPhotourl(),1,0);
     }
 }

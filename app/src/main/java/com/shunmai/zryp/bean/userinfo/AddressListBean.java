@@ -1,5 +1,6 @@
 package com.shunmai.zryp.bean.userinfo;
 
+
 import com.shunmai.zryp.bean.TResponse;
 
 import java.util.List;
@@ -15,12 +16,20 @@ public class AddressListBean extends TResponse<List<AddressListBean.DataBean>> {
 
     public static class DataBean {
         /**
-         * id : 5120
-         * md5key : 26f534a672c38bd4f9e2c1c6c5f5338a
-         * addr : 山东省青岛市莱西市山东省青岛莱西市姜山镇后庞村
-         * postcode : 266600
-         * username : 赵克忠
-         * mobile : 15263039780
+         * id : 5449
+         * md5key :
+         * addr : 北京,朝阳区,四环到五环之间
+         * postcode : 000000
+         * username : 董荣
+         * mobile : 18210054154
+         * isDefault : 0
+         * userId : 15604
+         * isOutAddress : 0
+         * provinceCode : 1
+         * cityCode : 72
+         * countryCode : 2839
+         * townCode : 0
+         * detailAddress : 鸿博家园二期C期
          */
 
         private int id;
@@ -30,6 +39,14 @@ public class AddressListBean extends TResponse<List<AddressListBean.DataBean>> {
         private String username;
         private String mobile;
         private int isDefault;
+        private int userId;
+        private int isOutAddress;
+        private int provinceCode;
+        private int cityCode;
+        private int countryCode;
+        private int townCode;
+        private String detailAddress;
+
         public int getId() {
             return id;
         }
@@ -84,6 +101,62 @@ public class AddressListBean extends TResponse<List<AddressListBean.DataBean>> {
 
         public void setIsDefault(int isDefault) {
             this.isDefault = isDefault;
+        }
+
+        public int getUserId() {
+            return userId;
+        }
+
+        public void setUserId(int userId) {
+            this.userId = userId;
+        }
+
+        public int getIsOutAddress() {
+            return isOutAddress;
+        }
+
+        public void setIsOutAddress(int isOutAddress) {
+            this.isOutAddress = isOutAddress;
+        }
+
+        public int getProvinceCode() {
+            return provinceCode;
+        }
+
+        public void setProvinceCode(int provinceCode) {
+            this.provinceCode = provinceCode;
+        }
+
+        public int getCityCode() {
+            return cityCode;
+        }
+
+        public void setCityCode(int cityCode) {
+            this.cityCode = cityCode;
+        }
+
+        public int getCountryCode() {
+            return countryCode;
+        }
+
+        public void setCountryCode(int countryCode) {
+            this.countryCode = countryCode;
+        }
+
+        public int getTownCode() {
+            return townCode;
+        }
+
+        public void setTownCode(int townCode) {
+            this.townCode = townCode;
+        }
+
+        public String getDetailAddress() {
+            return detailAddress;
+        }
+
+        public void setDetailAddress(String detailAddress) {
+            this.detailAddress = detailAddress;
         }
     }
 }

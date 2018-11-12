@@ -16,8 +16,8 @@ import java.util.List;
 
 public class AddressListViewModel extends ViewModel {
     AddressListRepository repository=new AddressListRepository();
-    public void getAddressList(onResponseListener<List<AddressListBean.DataBean>> listener,int userId,int page){
-        repository.getAddressList(listener,userId,page);
+    public void getAddressList(onResponseListener<List<AddressListBean.DataBean>> listener,int userId,int page,int isOutAddress){
+        repository.getAddressList(listener,userId,page,isOutAddress);
     }
     public void deleteAddress(onResponseListener<TResponse<String>> listener,int id){
         repository.deleteAddress(listener,id);

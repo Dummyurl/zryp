@@ -21,15 +21,22 @@ import java.util.List;
 public class GuessGoodsAdapter extends CommonViewAdapter<GoodsBean> {
     public GuessGoodsAdapter(Context context, List<GoodsBean> datas) {
         super(context, datas, R.layout.item_guess_goods);
+        setCanShowEmpty(false);
+
     }
 
     @Override
     public void convert(ViewHolder holder, GoodsBean item) {
-        GlideCacheUtil.LoadImage(mContext, holder.getView(R.id.iv_goods), item.getDefalutPhotourl(),1);
+        GlideCacheUtil.LoadImage(mContext, holder.getView(R.id.iv_goods), item.getDefalutPhotourl(), 1, 0);
 //        if (item.get)
 //        ImageSpan imageSpan=new ImageSpan(getContext(),R.menu)
         ((TextView) holder.getView(R.id.tv_goods_name)).setText(item.getGoodsName());
         ((TextView) holder.getView(R.id.tv_price)).setText("¥" + item.getMarketPrice());
-        holder.getView(R.id.ll_item).setOnClickListener(v -> GoodsDetailActivity.navigate((AppCompatActivity) mContext,holder.getView(R.id.iv_goods), item.getSysIdString(),item.getDefalutPhotourl(),item.getPrice(),item.getMarketPrice(),item.getGoodsTitle()));
+        holder.getView(R.id.ll_item).setOnClickListener(v -> GoodsDetailActivity.navigate(mContext, item.getSysIdString()));
+        if (item.getGoodsPropery() == 2&&item.getChannelId()==1) {
+            ((TextView) holder.getView(R.id.tv_self_support)).setText("京东");
+        }else if (item.getGoodsPropery() == 2&&item.getChannelId()==2){
+            ((TextView) holder.getView(R.id.tv_self_support)).setText("楚楚街");
+        }
     }
 }

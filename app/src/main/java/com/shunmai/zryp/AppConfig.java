@@ -16,4 +16,12 @@ public class AppConfig {
 
     public static final int ONLINE_SERVER = DEBUG;
 
+    public static final String PaySuccess = "com.shunmai.zryp.PAYSUCCESS";
+
+    public static final String PayFailed = "com.shunmai.zryp.PAYFAILED";
+
+    /**
+     * 客服电话
+     */
+    public static final String ServiceTel="01053673568";
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:id="@+id/ll_empty_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffdddddd"/>
+        <TextView
+            android:id="@+id/sku_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/fontNormal"
+            android:layout_marginBottom="15dp"
+            android:text="尺码"/>
+        <com.shunmai.zryp.view.FlowRadioGroup
+            android:id="@+id/rg_sku"
+            android:layout_width="match_parent"
+            android:clipChildren="false"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</layout>

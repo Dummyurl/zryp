@@ -5,14 +5,22 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.google.gson.Gson;
 import com.shunmai.zryp.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.TResponse;
+import com.shunmai.zryp.bean.addrbean.RegionBean;
+import com.shunmai.zryp.bean.userinfo.AddressListBean;
 import com.shunmai.zryp.listener.onResponseListener;
+import com.shunmai.zryp.utils.ShareUtils;
 import com.shunmai.zryp.utils.StringUtils;
 import com.shunmai.zryp.utils.ToastUtils;
+import com.shunmai.zryp.view.addressdialog.AddressSelector;
+import com.shunmai.zryp.view.addressdialog.BottomDialog;
+import com.shunmai.zryp.view.addressdialog.OnAddressSelectedListener;
 import com.shunmai.zryp.view.wheel.OnWheelChangedListener;
 import com.shunmai.zryp.view.wheel.WheelView;
 import com.shunmai.zryp.view.wheel.XmlParserHandler;
@@ -33,7 +41,7 @@ import java.util.Map;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-public class AddressDetailActivity extends SwipeBackActivity<ActivityAddressDetailBinding> implements OnWheelChangedListener, View.OnClickListener {
+public class AddressDetailActivity extends SwipeBackActivity<ActivityAddressDetailBinding> implements OnWheelChangedListener, View.OnClickListener, onResponseListener<TResponse<String>>, OnAddressSelectedListener, AddressSelector.OnDialogCloseListener, AddressSelector.onSelectorAreaPositionListener {
     /**
      * 所有省
      */
@@ -70,8 +78,24 @@ public class AddressDetailActivity extends SwipeBackActivity<ActivityAddressDeta
      */
     protected String mCurrentZipCode = "";
 
+    /**
+     * 是否为修改地址
+     */
+    private boolean isChange = false;
+
+    private int regionType = 1;
+    private RegionBean province;
+    private RegionBean city;
+    private RegionBean county;
+    private RegionBean street;
+    private String provinceName;
+    private String cityName;
+    private String countyName;
+    private String streetName;
     private RevertAddressEntity addressEntity = new RevertAddressEntity();
     private AddressDetailViewModel viewModel;
+    private AddressListBean.DataBean dataBean;
+    private BottomDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +106,16 @@ public class AddressDetailActivity extends SwipeBackActivity<ActivityAddressDeta
         showContentView();
         bindingView.tvAddress.setOnClickListener(this);
         bindingView.btnSubmit.setOnClickListener(this::onClick);
+        String data = getIntent().getStringExtra("data");
+        regionType = getIntent().getIntExtra("regionType", 1);
+        if (data != null && !data.equals("")) {
+            dataBean = new Gson().fromJson(data, AddressListBean.DataBean.class);
+            bindingView.etName.setText(dataBean.getUsername());
+            bindingView.etPhone.setText(dataBean.getMobile());
+            bindingView.tvAddress.setText(dataBean.getAddr());
+            bindingView.etAddress.setText(dataBean.getDetailAddress());
+            isChange = true;
+        }
     }
 
     private void initData() {
@@ -253,30 +287,39 @@ public class AddressDetailActivity extends SwipeBackActivity<ActivityAddressDeta
         switch (v.getId()) {
             case R.id.tv_address: {
                 hideKeyboard(this);
-                if (bindingView.llWheel.getVisibility() == View.VISIBLE) {
-                    bindingView.llWheel.setVisibility(View.GONE);
+//                if (bindingView.llWheel.getVisibility() == View.VISIBLE) {
+//                    bindingView.llWheel.setVisibility(View.GONE);
+//                } else {
+//                    bindingView.llWheel.setVisibility(View.VISIBLE);
+//                }
+                if (dialog != null) {
+                    dialog.show();
                 } else {
-                    bindingView.llWheel.setVisibility(View.VISIBLE);
+                    dialog = new BottomDialog(this, viewModel, regionType);
+                    dialog.setOnAddressSelectedListener(this);
+                    dialog.setDialogDismisListener(this);
+                    dialog.setTextSize(14);//设置字体的大小
+                    dialog.setIndicatorBackgroundColor(R.color.fontRed);//设置指示器的颜色
+                    dialog.setTextSelectedColor(R.color.fontNormal);//设置字体获得焦点的颜色
+                    dialog.setTextUnSelectedColor(R.color.fontRed);//设置字体没有获得焦点的颜色
+//            dialog.setDisplaySelectorArea("31",1,"2704",1,"2711",0,"15582",1);//设置已选中的地区
+                    dialog.setSelectorAreaPositionListener(this);
+                    dialog.show();
+//                    if (dataBean!=null&&canSelect){
+//                        dialog.setDisplaySelectorArea(provinceName,dataBean.getProvinceCode(),cityName,dataBean.getCityCode(),countyName,dataBean.getCountryCode(),streetName,dataBean.getTownCode());
+//                        canSelect=false;
+//                    }
                 }
                 break;
             }
             case R.id.btn_submit: {
                 HashMap<String, Object> data = checkEmpty();
                 if (data != null) {
-                    viewModel.addAddress(data, new onResponseListener<TResponse<String>>() {
-                        @Override
-                        public void onSuccess(TResponse<String> stringTResponse) {
-                            ToastUtils.showToast("提交成功！");
-                            setResult(RESULT_OK);
-                            onBackPressed();
-                        }
-
-                        @Override
-                        public void onFailed(Throwable throwable) {
-                            ToastUtils.showToast("地址提交错误");
-                            throwable.printStackTrace();
-                        }
-                    });
+                    if (!isChange) {
+                        viewModel.addAddress(data, this);
+                    } else {
+                        viewModel.changeAddress(data, this);
+                    }
                 }
             }
         }
@@ -291,19 +334,32 @@ public class AddressDetailActivity extends SwipeBackActivity<ActivityAddressDeta
             if (!phone.equals("")) {
                 if (!address_detail.equals("")) {
                     if (!address.equals("省、市、区")) {
-                        HashMap<String, Object> hashMap = new HashMap<>();
-                        hashMap.put("username", name);
-                        hashMap.put("mobile", phone);
-                        hashMap.put("addr", address + address_detail);
-                        hashMap.put("postcode", mCurrentZipCode);
-                        hashMap.put("detailAddress", address_detail);
-                        hashMap.put("isDefault", 0);
-                        hashMap.put("provinceCode", 0);
-                        hashMap.put("cityCode", 0);
-                        hashMap.put("countryCode", 0);
-                        hashMap.put("towmCode", 0);
-                        hashMap.put("userid", 15598);
-                        return hashMap;
+                        if (province != null && city != null && county != null) {
+                            HashMap<String, Object> hashMap = new HashMap<>();
+                            hashMap.put("username", name);
+                            hashMap.put("mobile", phone);
+                            hashMap.put("postcode", mCurrentZipCode);
+                            hashMap.put("detailAddress", address_detail);
+                            hashMap.put("isDefault", 0);
+                            hashMap.put("provinceCode", province.getId());
+                            hashMap.put("cityCode", city.getId());
+                            hashMap.put("countryCode", county.getId());
+                            hashMap.put("isOutAddress", regionType);
+                            if (street == null) {
+                                hashMap.put("townCode", 0);
+                                hashMap.put("addr", province.getName() + " " + city.getName() + " " + county.getName() + " ");
+                            } else {
+                                hashMap.put("townCode", street.getId());
+                                hashMap.put("addr", province.getName() + " " + city.getName() + " " + county.getName() + " " + street.getName() + " ");
+                            }
+                            hashMap.put("userid", ShareUtils.getUserInfo().getUserId());
+                            if (isChange) {
+                                hashMap.put("id", dataBean.getId());
+                            }
+                            return hashMap;
+                        } else {
+                            ToastUtils.showToast("请重新选择收货地区！");
+                        }
                     } else {
                         ToastUtils.showToast("请选择收货地区！");
                     }
@@ -331,4 +387,46 @@ public class AddressDetailActivity extends SwipeBackActivity<ActivityAddressDeta
     }
 
 
+    @Override
+    public void onSuccess(TResponse<String> stringTResponse) {
+        ToastUtils.showToast("提交成功！");
+        setResult(RESULT_OK);
+        onBackPressed();
+    }
+
+    @Override
+    public void onFailed(Throwable throwable) {
+        ToastUtils.showToast("地址提交错误");
+        throwable.printStackTrace();
+    }
+
+    @Override
+    public void onAddressSelected(RegionBean province, RegionBean city, RegionBean county, RegionBean street) {
+        this.province = province;
+        this.city = city;
+        this.county = county;
+        this.street = street;
+        String addrStr="";
+        if (this.street != null) {
+            addrStr = province.getName() + " " + city.getName() + " " + county.getName() + " " + street.getName() + " ";
+        } else if (province != null && city != null && county != null) {
+            addrStr = province.getName() + " " + city.getName() + " " + county.getName() + " ";
+        }
+        if (dialog != null) {
+            dialog.dismiss();
+        }
+        bindingView.tvAddress.setText(addrStr);
+    }
+
+    @Override
+    public void dialogclose() {
+        if (dialog != null) {
+            dialog.dismiss();
+        }
+    }
+
+    @Override
+    public void selectorAreaPosition(int provincePosition, int cityPosition, int countyPosition, int streetPosition) {
+
+    }
 }

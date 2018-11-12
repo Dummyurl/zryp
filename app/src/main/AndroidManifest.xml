@@ -7,9 +7,11 @@
     //用于硬盘缓存和读取
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
-        android:name="com.shunmai.zryp.app.MyApplication"
+        android:name=".app.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,17 +19,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.shunmai.zryp.ui.open.GuideActivity"
-            android:label="@string/title_activity_guide"
+            android:name=".ui.open.GuideActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.shunmai.zryp.ui.open.WelcomeActivity"
-            android:label="@string/title_activity_welcome"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="com.shunmai.zryp.ui.home.HomeActivity"
-            android:label="@string/title_activity_home"
-            android:launchMode="singleTask"
+            android:name=".ui.open.WelcomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,40 +31,51 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.shunmai.zryp.ui.goods.GoodsDetailActivity"
-            android:label="@string/title_activity_goods_detail"
+            android:name=".ui.home.HomeActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.goods.GoodsDetailActivity"
+            android:hardwareAccelerated="true"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="com.shunmai.zryp.ui.goods.GoodsListActivity"
+            android:name=".ui.goods.GoodsListActivity"
             android:label="@string/title_activity_goods_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.shunmai.zryp.ui.userinfo.order.OrderActivity"
+            android:name=".ui.userinfo.order.OrderActivity"
             android:label="@string/title_activity_order"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.shunmai.zryp.ui.userinfo.order.ScoreActivity"
+            android:name=".ui.userinfo.order.ScoreActivity"
             android:label="@string/title_activity_score"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.shunmai.zryp.ui.userinfo.order.UserApproveActivity"
+            android:name=".ui.userinfo.order.UserApproveActivity"
             android:label="@string/title_activity_user_approve"
             android:theme="@style/AppTheme" />
-        <activity android:name="com.shunmai.zryp.ui.goods.GoodsOrderActivity" />
-        <activity android:name="com.shunmai.zryp.ui.userinfo.account.LoginActivity" />
-        <activity android:name="com.shunmai.zryp.ui.userinfo.account.UserHandleActivity" />
-        <activity android:name="com.shunmai.zryp.ui.goods.GoodsSearchActivity" />
         <activity
-            android:name="com.shunmai.zryp.ui.userinfo.account.AddressListActivity"
-            android:hardwareAccelerated="false"
+            android:name=".ui.goods.GoodsOrderActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.shunmai.zryp.ui.userinfo.account.AddressDetailActivity"
+            android:name=".ui.userinfo.account.LoginActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".ui.userinfo.account.UserHandleActivity" />
+        <activity
+            android:name=".ui.goods.GoodsSearchActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".ui.userinfo.account.AddressListActivity"
+            android:hardwareAccelerated="true"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.shunmai.zryp.ui.userinfo.account.FootPrintActivity"
+            android:name=".ui.userinfo.account.AddressDetailActivity"
             android:launchMode="singleTask" />
-        <activity android:name="com.shunmai.zryp.ui.userinfo.underling.MyUnderlingActivity"/>
+        <activity
+            android:name=".ui.userinfo.account.FootPrintActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".ui.userinfo.underling.MyUnderlingActivity" />
         <!-- 微信登录 begin -->
         <activity
             android:name=".wxapi.WXEntryActivity"
@@ -77,6 +83,30 @@
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        <activity android:name=".ui.userinfo.score.ExchangeScoreActivity" />
+        <!-- 微信支付 -->
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        <activity
+            android:name=".ui.userinfo.score.ScoreDetailActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme" />
+
+        <provider
+            android:name=".ApkUpdateFileProvider"
+            android:authorities="com.shunmai.zryp.updateFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".ui.userinfo.account.CollectActivity" />
+        <activity android:name=".GoodsPromotionActivity"></activity>
     </application>
 
 </manifest>

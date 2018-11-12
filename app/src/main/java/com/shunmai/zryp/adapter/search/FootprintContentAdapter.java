@@ -32,6 +32,6 @@ public class FootprintContentAdapter extends CommonViewAdapter<FootprintBean.Dat
         ((TextView) holder.getView(R.id.tv_goods_price)).setText("￥"+item.getPrice());
         ((TextView) holder.getView(R.id.tv_goods_price_post)).setText("￥"+item.getMarketPrice());
         ((TextView) holder.getView(R.id.tv_goods_price_post)).getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
-        holder.getView(R.id.ll_item).setOnClickListener(v -> GoodsDetailActivity.navigate((AppCompatActivity) mContext,holder.getView(R.id.iv_goods),item.getSysIdString(),item.getDefalutPhotourl(),item.getPrice(),item.getMarketPrice(),""));
+        holder.getView(R.id.ll_item).setOnClickListener(v -> GoodsDetailActivity.navigate(mContext,item.getSysIdString()));
          }
 }

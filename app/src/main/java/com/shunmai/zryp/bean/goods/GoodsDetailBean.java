@@ -1,5 +1,9 @@
 package com.shunmai.zryp.bean.goods;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
+import com.shunmai.zryp.BR;
 import com.shunmai.zryp.bean.TResponse;
 
 import java.util.List;
@@ -11,7 +15,7 @@ import java.util.List;
 
 public class GoodsDetailBean extends TResponse<GoodsDetailBean.DataBean>{
 
-    public static class DataBean {
+    public static class DataBean extends BaseObservable {
         /**
          * goods : {"goodsId":1,"channelId":0,"platgoodsId":"12345678ghgs","goodsName":"阿达迪斯","goodsNote":"就是牛","goodsType":1,"goodsPropery":1,"catlaogMobileId":11090961178431024,"catalogPcId":0,"brandId":0,"price":25.5,"marketPrice":24.2,"mscore":15,"weight":1.6,"keywords":"阿迪","sortOrder":0,"upcarriageTime":1537222283000,"lastupdateTime":1537222283000,"isFronthidden":false,"createtime":1.537222283E12,"dataStatus":0,"defalutPhotourl":"https://rabc2.iteye.com/4j/s=7bfnpwv67a,grrx3zbce&x8=14?we6icl=xsqxns_9con8_yeg","sysSpaceNo":"B0CD0050CF0BF01B","sysVersionNo":"3","sysIsEnable":"1","sysIdString":10750656398888960,"sysDataFrom":"ios","limit":0,"description":"商品描述1","freightMode":1,"goodsTitle":"商品标题1","appDetails":"app端商品详情1","miniDetails":"小程序商品详情1","addTime":null,"seekGoodsImgsVOS":[{"goodsPhotoId":8,"goodsPhotoName":"测试图片3","isDefaultPhoto":false,"goodsId":10750656398888960,"photoUrl":"http://b0cd0050cf0bf01b.oss-cn-beijing.aliyuncs.com/2018/9/f13cc5a3-e6a8-4a16-8339-f35c90a0b219.gif","sortOrder":0,"createTime":1.537500884E12,"updateTime":null,"photoType":1,"dataStatus":0,"sysCreateTime":1.537500884E12,"sysVersionNo":0,"sysIsEnable":1,"sysIdString":11771250796007424}]}
          * sku : {"sysIdString":0,"seekGoodsSkuVOS":[],"seekGoodsItemVOS":[]}
@@ -19,6 +23,7 @@ public class GoodsDetailBean extends TResponse<GoodsDetailBean.DataBean>{
          */
 
         private GoodsBean goods;
+        @Bindable
         private SkuBean sku;
         private List<com.shunmai.zryp.bean.goods.GoodsBean> list;
 
@@ -36,458 +41,125 @@ public class GoodsDetailBean extends TResponse<GoodsDetailBean.DataBean>{
 
         public void setSku(SkuBean sku) {
             this.sku = sku;
+            notifyPropertyChanged(BR.sku);
         }
 
-        public List<com.shunmai.zryp.bean.goods.GoodsBean> getList() {
+        public List<GoodsBean> getList() {
             return list;
         }
 
-        public void setList(List<com.shunmai.zryp.bean.goods.GoodsBean> list) {
+        public void setList(List<GoodsBean> list) {
             this.list = list;
         }
 
-        public static class GoodsBean {
-            /**
-             * goodsId : 1
-             * channelId : 0
-             * platgoodsId : 12345678ghgs
-             * goodsName : 阿达迪斯
-             * goodsNote : 就是牛
-             * goodsType : 1
-             * goodsPropery : 1
-             * catlaogMobileId : 11090961178431024
-             * catalogPcId : 0
-             * brandId : 0
-             * price : 25.5
-             * marketPrice : 24.2
-             * mscore : 15.0
-             * weight : 1.6
-             * keywords : 阿迪
-             * sortOrder : 0
-             * upcarriageTime : 1537222283000
-             * lastupdateTime : 1537222283000
-             * isFronthidden : false
-             * createtime : 1.537222283E12
-             * dataStatus : 0
-             * defalutPhotourl : https://rabc2.iteye.com/4j/s=7bfnpwv67a,grrx3zbce&x8=14?we6icl=xsqxns_9con8_yeg
-             * sysSpaceNo : B0CD0050CF0BF01B
-             * sysVersionNo : 3
-             * sysIsEnable : 1
-             * sysIdString : 10750656398888960
-             * sysDataFrom : ios
-             * limit : 0
-             * description : 商品描述1
-             * freightMode : 1
-             * goodsTitle : 商品标题1
-             * appDetails : app端商品详情1
-             * miniDetails : 小程序商品详情1
-             * addTime : null
-             * seekGoodsImgsVOS : [{"goodsPhotoId":8,"goodsPhotoName":"测试图片3","isDefaultPhoto":false,"goodsId":10750656398888960,"photoUrl":"http://b0cd0050cf0bf01b.oss-cn-beijing.aliyuncs.com/2018/9/f13cc5a3-e6a8-4a16-8339-f35c90a0b219.gif","sortOrder":0,"createTime":1.537500884E12,"updateTime":null,"photoType":1,"dataStatus":0,"sysCreateTime":1.537500884E12,"sysVersionNo":0,"sysIsEnable":1,"sysIdString":11771250796007424}]
-             */
 
-            private int goodsId;
-            private int channelId;
-            private String platgoodsId;
-            private String goodsName;
-            private String goodsNote;
-            private int goodsType;
-            private int goodsPropery;
-            private long catlaogMobileId;
-            private int brandId;
-            private double price;
-            private double marketPrice;
-            private double mscore;
-            private double weight;
-            private String keywords;
-            private long sortOrder;
-            private long upcarriageTime;
-            private long lastupdateTime;
-            private boolean isFronthidden;
-            private double createtime;
-            private int dataStatus;
-            private String defalutPhotourl;
-            private String sysSpaceNo;
-            private String sysVersionNo;
-            private String sysIsEnable;
+        public static class SkuBean {
+            private String collectId;
             private long sysIdString;
-            private String sysDataFrom;
-            private int limit;
-            private String description;
-            private String goodsTitle;
-            private String appDetails;
-            private String miniDetails;
-            private Object addTime;
-            private List<SeekGoodsImgsVOSBean> seekGoodsImgsVOS;
+            private List<SeekGoodsSkuVOSBean> seekGoodsSkuVOS;
+            private List<SeekGoodsItemVOSBean> seekGoodsItemVOS;
 
-            public int getGoodsId() {
-                return goodsId;
+            public String getCollectId() {
+                return collectId;
             }
 
-            public void setGoodsId(int goodsId) {
-                this.goodsId = goodsId;
+            public void setCollectId(String collectId) {
+                this.collectId = collectId;
             }
 
-            public int getChannelId() {
-                return channelId;
+            public List<SeekGoodsSkuVOSBean> getSeekGoodsSkuVOS() {
+                return seekGoodsSkuVOS;
             }
 
-            public void setChannelId(int channelId) {
-                this.channelId = channelId;
+            public void setSeekGoodsSkuVOS(List<SeekGoodsSkuVOSBean> seekGoodsSkuVOS) {
+                this.seekGoodsSkuVOS = seekGoodsSkuVOS;
             }
 
-            public String getPlatgoodsId() {
-                return platgoodsId;
+            public List<SeekGoodsItemVOSBean> getSeekGoodsItemVOS() {
+                return seekGoodsItemVOS;
             }
 
-            public void setPlatgoodsId(String platgoodsId) {
-                this.platgoodsId = platgoodsId;
+            public void setSeekGoodsItemVOS(List<SeekGoodsItemVOSBean> seekGoodsItemVOS) {
+                this.seekGoodsItemVOS = seekGoodsItemVOS;
             }
 
-            public String getGoodsName() {
-                return goodsName;
-            }
-
-            public void setGoodsName(String goodsName) {
-                this.goodsName = goodsName;
-            }
-
-            public String getGoodsNote() {
-                return goodsNote;
-            }
-
-            public void setGoodsNote(String goodsNote) {
-                this.goodsNote = goodsNote;
-            }
-
-            public int getGoodsType() {
-                return goodsType;
-            }
-
-            public void setGoodsType(int goodsType) {
-                this.goodsType = goodsType;
-            }
-
-            public int getGoodsPropery() {
-                return goodsPropery;
-            }
-
-            public void setGoodsPropery(int goodsPropery) {
-                this.goodsPropery = goodsPropery;
-            }
-
-            public long getCatlaogMobileId() {
-                return catlaogMobileId;
-            }
-
-            public void setCatlaogMobileId(long catlaogMobileId) {
-                this.catlaogMobileId = catlaogMobileId;
-            }
-
-
-            public int getBrandId() {
-                return brandId;
-            }
-
-            public void setBrandId(int brandId) {
-                this.brandId = brandId;
-            }
-
-            public double getPrice() {
-                return price;
-            }
-
-            public void setPrice(double price) {
-                this.price = price;
-            }
-
-            public double getMarketPrice() {
-                return marketPrice;
-            }
-
-            public void setMarketPrice(double marketPrice) {
-                this.marketPrice = marketPrice;
-            }
-
-            public double getMscore() {
-                return mscore;
-            }
-
-            public void setMscore(double mscore) {
-                this.mscore = mscore;
-            }
-
-            public double getWeight() {
-                return weight;
-            }
-
-            public void setWeight(double weight) {
-                this.weight = weight;
-            }
-
-            public String getKeywords() {
-                return keywords;
-            }
-
-            public void setKeywords(String keywords) {
-                this.keywords = keywords;
-            }
-
-            public long getSortOrder() {
-                return sortOrder;
-            }
-
-            public void setSortOrder(long sortOrder) {
-                this.sortOrder = sortOrder;
-            }
-
-            public long getUpcarriageTime() {
-                return upcarriageTime;
-            }
-
-            public void setUpcarriageTime(long upcarriageTime) {
-                this.upcarriageTime = upcarriageTime;
-            }
-
-            public long getLastupdateTime() {
-                return lastupdateTime;
-            }
-
-            public void setLastupdateTime(long lastupdateTime) {
-                this.lastupdateTime = lastupdateTime;
-            }
-
-            public boolean isIsFronthidden() {
-                return isFronthidden;
-            }
-
-            public void setIsFronthidden(boolean isFronthidden) {
-                this.isFronthidden = isFronthidden;
-            }
-
-            public double getCreatetime() {
-                return createtime;
-            }
-
-            public void setCreatetime(double createtime) {
-                this.createtime = createtime;
-            }
-
-            public int getDataStatus() {
-                return dataStatus;
-            }
-
-            public void setDataStatus(int dataStatus) {
-                this.dataStatus = dataStatus;
-            }
-
-            public String getDefalutPhotourl() {
-                return defalutPhotourl;
-            }
-
-            public void setDefalutPhotourl(String defalutPhotourl) {
-                this.defalutPhotourl = defalutPhotourl;
-            }
-
-            public String getSysSpaceNo() {
-                return sysSpaceNo;
-            }
-
-            public void setSysSpaceNo(String sysSpaceNo) {
-                this.sysSpaceNo = sysSpaceNo;
-            }
-
-            public String getSysVersionNo() {
-                return sysVersionNo;
-            }
-
-            public void setSysVersionNo(String sysVersionNo) {
-                this.sysVersionNo = sysVersionNo;
-            }
-
-            public String getSysIsEnable() {
-                return sysIsEnable;
-            }
-
-            public void setSysIsEnable(String sysIsEnable) {
-                this.sysIsEnable = sysIsEnable;
-            }
-
-            public long getSysIdString() {
-                return sysIdString;
-            }
-
-            public void setSysIdString(long sysIdString) {
-                this.sysIdString = sysIdString;
-            }
-
-            public String getSysDataFrom() {
-                return sysDataFrom;
-            }
-
-            public void setSysDataFrom(String sysDataFrom) {
-                this.sysDataFrom = sysDataFrom;
-            }
-
-            public int getLimit() {
-                return limit;
-            }
-
-            public void setLimit(int limit) {
-                this.limit = limit;
-            }
-
-            public String getDescription() {
-                return description;
-            }
-
-            public void setDescription(String description) {
-                this.description = description;
-            }
-
-
-            public String getGoodsTitle() {
-                return goodsTitle;
-            }
-
-            public void setGoodsTitle(String goodsTitle) {
-                this.goodsTitle = goodsTitle;
-            }
-
-            public String getAppDetails() {
-                return appDetails;
-            }
-
-            public void setAppDetails(String appDetails) {
-                this.appDetails = appDetails;
-            }
-
-            public String getMiniDetails() {
-                return miniDetails;
-            }
-
-            public void setMiniDetails(String miniDetails) {
-                this.miniDetails = miniDetails;
-            }
-
-            public Object getAddTime() {
-                return addTime;
-            }
-
-            public void setAddTime(Object addTime) {
-                this.addTime = addTime;
-            }
-
-            public List<SeekGoodsImgsVOSBean> getSeekGoodsImgsVOS() {
-                return seekGoodsImgsVOS;
-            }
-
-            public void setSeekGoodsImgsVOS(List<SeekGoodsImgsVOSBean> seekGoodsImgsVOS) {
-                this.seekGoodsImgsVOS = seekGoodsImgsVOS;
-            }
-
-            public static class SeekGoodsImgsVOSBean {
+            public static class SeekGoodsSkuVOSBean {
                 /**
-                 * goodsPhotoId : 8
-                 * goodsPhotoName : 测试图片3
-                 * isDefaultPhoto : false
-                 * goodsId : 10750656398888960
-                 * photoUrl : http://b0cd0050cf0bf01b.oss-cn-beijing.aliyuncs.com/2018/9/f13cc5a3-e6a8-4a16-8339-f35c90a0b219.gif
-                 * sortOrder : 0
-                 * createTime : 1.537500884E12
-                 * updateTime : null
-                 * photoType : 1
+                 * skuId : 43936
+                 * goodsId : 30904
+                 * barCode : 0
+                 * mallPrice : 0
+                 * defaultPhotoId : 0
+                 * defaultPhotoPath : http://pic0.gzcfe.net/brand/2018/1015/5321501927926584729.jpg
                  * dataStatus : 0
-                 * sysCreateTime : 1.537500884E12
-                 * sysVersionNo : 0
+                 * normText : [{"itemSystemId":"2784","normId":9353,"itemName":"大小","normName":"中","sysIdString":25962197897318400,"normSort":4},{"itemSystemId":"2785","normId":9342,"itemName":"颜色","normName":"红","sysIdString":25954880623611904,"normSort":1}]
+                 * normIds : 25962197897318400-25954880623611904
+                 * stock : 0
                  * sysIsEnable : 1
-                 * sysIdString : 11771250796007424
+                 * sysIdString : 25962198224474112
+                 * price : 0
                  */
 
-                private int goodsPhotoId;
-                private String goodsPhotoName;
-                private boolean isDefaultPhoto;
-                private long goodsId;
-                private String photoUrl;
-                private int sortOrder;
-                private double createTime;
-                private Object updateTime;
-                private int photoType;
+                private int skuId;
+                private int goodsId;
+                private String barCode;
+                private double mallPrice;
+                private long defaultPhotoId;
+                private String defaultPhotoPath;
                 private int dataStatus;
-                private double sysCreateTime;
-                private int sysVersionNo;
+                private String normText;
+                private String normIds;
+                private int stock;
                 private int sysIsEnable;
-                private long sysIdString;
+                private String sysIdString;
+                private double price;
 
-                public int getGoodsPhotoId() {
-                    return goodsPhotoId;
+                public int getSkuId() {
+                    return skuId;
                 }
 
-                public void setGoodsPhotoId(int goodsPhotoId) {
-                    this.goodsPhotoId = goodsPhotoId;
+                public void setSkuId(int skuId) {
+                    this.skuId = skuId;
                 }
 
-                public String getGoodsPhotoName() {
-                    return goodsPhotoName;
-                }
-
-                public void setGoodsPhotoName(String goodsPhotoName) {
-                    this.goodsPhotoName = goodsPhotoName;
-                }
-
-                public boolean isIsDefaultPhoto() {
-                    return isDefaultPhoto;
-                }
-
-                public void setIsDefaultPhoto(boolean isDefaultPhoto) {
-                    this.isDefaultPhoto = isDefaultPhoto;
-                }
-
-                public long getGoodsId() {
+                public int getGoodsId() {
                     return goodsId;
                 }
 
-                public void setGoodsId(long goodsId) {
+                public void setGoodsId(int goodsId) {
                     this.goodsId = goodsId;
                 }
 
-                public String getPhotoUrl() {
-                    return photoUrl;
+                public String getBarCode() {
+                    return barCode;
                 }
 
-                public void setPhotoUrl(String photoUrl) {
-                    this.photoUrl = photoUrl;
+                public void setBarCode(String barCode) {
+                    this.barCode = barCode;
                 }
 
-                public int getSortOrder() {
-                    return sortOrder;
+                public double getMallPrice() {
+                    return mallPrice;
                 }
 
-                public void setSortOrder(int sortOrder) {
-                    this.sortOrder = sortOrder;
+                public void setMallPrice(double mallPrice) {
+                    this.mallPrice = mallPrice;
                 }
 
-                public double getCreateTime() {
-                    return createTime;
+                public long getDefaultPhotoId() {
+                    return defaultPhotoId;
                 }
 
-                public void setCreateTime(double createTime) {
-                    this.createTime = createTime;
+                public void setDefaultPhotoId(long defaultPhotoId) {
+                    this.defaultPhotoId = defaultPhotoId;
                 }
 
-                public Object getUpdateTime() {
-                    return updateTime;
+                public String getDefaultPhotoPath() {
+                    return defaultPhotoPath;
                 }
 
-                public void setUpdateTime(Object updateTime) {
-                    this.updateTime = updateTime;
-                }
-
-                public int getPhotoType() {
-                    return photoType;
-                }
-
-                public void setPhotoType(int photoType) {
-                    this.photoType = photoType;
+                public void setDefaultPhotoPath(String defaultPhotoPath) {
+                    this.defaultPhotoPath = defaultPhotoPath;
                 }
 
                 public int getDataStatus() {
@@ -498,20 +170,28 @@ public class GoodsDetailBean extends TResponse<GoodsDetailBean.DataBean>{
                     this.dataStatus = dataStatus;
                 }
 
-                public double getSysCreateTime() {
-                    return sysCreateTime;
+                public String getNormText() {
+                    return normText;
                 }
 
-                public void setSysCreateTime(double sysCreateTime) {
-                    this.sysCreateTime = sysCreateTime;
+                public void setNormText(String normText) {
+                    this.normText = normText;
                 }
 
-                public int getSysVersionNo() {
-                    return sysVersionNo;
+                public String getNormIds() {
+                    return normIds;
                 }
 
-                public void setSysVersionNo(int sysVersionNo) {
-                    this.sysVersionNo = sysVersionNo;
+                public void setNormIds(String normIds) {
+                    this.normIds = normIds;
+                }
+
+                public int getStock() {
+                    return stock;
+                }
+
+                public void setStock(int stock) {
+                    this.stock = stock;
                 }
 
                 public int getSysIsEnable() {
@@ -522,49 +202,191 @@ public class GoodsDetailBean extends TResponse<GoodsDetailBean.DataBean>{
                     this.sysIsEnable = sysIsEnable;
                 }
 
-                public long getSysIdString() {
+                public String getSysIdString() {
                     return sysIdString;
                 }
 
-                public void setSysIdString(long sysIdString) {
+                public void setSysIdString(String sysIdString) {
                     this.sysIdString = sysIdString;
                 }
+
+                public double getPrice() {
+                    return price;
+                }
+
+                public void setPrice(double price) {
+                    this.price = price;
+                }
             }
-        }
 
-        public static class SkuBean {
-            /**
-             * sysIdString : 0
-             * seekGoodsSkuVOS : []
-             * seekGoodsItemVOS : []
-             */
+            public static class SeekGoodsItemVOSBean {
+                /**
+                 * itemName : 大小
+                 * itemSort : 1
+                 * isShow : true
+                 * norms : [{"normId":9341,"goodsId":30904,"sysGoodsId":"23458564135849984","itemSystemId":"25954880455839744","itemName":"大小","normName":"大","normValue":"大","isShow":true,"normSort":1,"sysIdString":"25954880594251776"},{"normId":9352,"goodsId":30904,"sysGoodsId":"23458564135849984","itemSystemId":"25954880455839744","itemName":"大小","normName":"贼小","normValue":"贼小","isShow":true,"normSort":3,"sysIdString":"25962197872152576"},{"normId":9353,"goodsId":30904,"sysGoodsId":"23458564135849984","itemSystemId":"25954880455839744","itemName":"大小","normName":"中","normValue":"中","isShow":true,"normSort":4,"sysIdString":"25962197897318400"},{"normId":9354,"goodsId":30904,"sysGoodsId":"23458564135849984","itemSystemId":"25954880455839744","itemName":"大小","normName":"小","normValue":"小","isShow":true,"normSort":5,"sysIdString":"25962197926678528"}]
+                 * itemSystemId : 25954880455839744
+                 */
 
-            private int sysIdString;
-            private List<?> seekGoodsSkuVOS;
-            private List<?> seekGoodsItemVOS;
+                private String itemName;
+                private int itemSort;
+                private boolean isShow;
+                private long itemSystemId;
+                private List<NormsBean> norms;
 
-            public int getSysIdString() {
+                public String getItemName() {
+                    return itemName;
+                }
+
+                public void setItemName(String itemName) {
+                    this.itemName = itemName;
+                }
+
+                public int getItemSort() {
+                    return itemSort;
+                }
+
+                public void setItemSort(int itemSort) {
+                    this.itemSort = itemSort;
+                }
+
+                public boolean isIsShow() {
+                    return isShow;
+                }
+
+                public void setIsShow(boolean isShow) {
+                    this.isShow = isShow;
+                }
+
+                public long getItemSystemId() {
+                    return itemSystemId;
+                }
+
+                public void setItemSystemId(long itemSystemId) {
+                    this.itemSystemId = itemSystemId;
+                }
+
+                public List<NormsBean> getNorms() {
+                    return norms;
+                }
+
+                public void setNorms(List<NormsBean> norms) {
+                    this.norms = norms;
+                }
+
+                public static class NormsBean {
+                    /**
+                     * normId : 9341
+                     * goodsId : 30904
+                     * sysGoodsId : 23458564135849984
+                     * itemSystemId : 25954880455839744
+                     * itemName : 大小
+                     * normName : 大
+                     * normValue : 大
+                     * isShow : true
+                     * normSort : 1
+                     * sysIdString : 25954880594251776
+                     */
+
+                    private int normId;
+                    private int goodsId;
+                    private String sysGoodsId;
+                    private String itemSystemId;
+                    private String itemName;
+                    private String normName;
+                    private String normValue;
+                    private boolean isShow;
+                    private int normSort;
+                    private String sysIdString;
+
+                    public int getNormId() {
+                        return normId;
+                    }
+
+                    public void setNormId(int normId) {
+                        this.normId = normId;
+                    }
+
+                    public int getGoodsId() {
+                        return goodsId;
+                    }
+
+                    public void setGoodsId(int goodsId) {
+                        this.goodsId = goodsId;
+                    }
+
+                    public String getSysGoodsId() {
+                        return sysGoodsId;
+                    }
+
+                    public void setSysGoodsId(String sysGoodsId) {
+                        this.sysGoodsId = sysGoodsId;
+                    }
+
+                    public String getItemSystemId() {
+                        return itemSystemId;
+                    }
+
+                    public void setItemSystemId(String itemSystemId) {
+                        this.itemSystemId = itemSystemId;
+                    }
+
+                    public String getItemName() {
+                        return itemName;
+                    }
+
+                    public void setItemName(String itemName) {
+                        this.itemName = itemName;
+                    }
+
+                    public String getNormName() {
+                        return normName;
+                    }
+
+                    public void setNormName(String normName) {
+                        this.normName = normName;
+                    }
+
+                    public String getNormValue() {
+                        return normValue;
+                    }
+
+                    public void setNormValue(String normValue) {
+                        this.normValue = normValue;
+                    }
+
+                    public boolean isIsShow() {
+                        return isShow;
+                    }
+
+                    public void setIsShow(boolean isShow) {
+                        this.isShow = isShow;
+                    }
+
+                    public int getNormSort() {
+                        return normSort;
+                    }
+
+                    public void setNormSort(int normSort) {
+                        this.normSort = normSort;
+                    }
+
+                    public String getSysIdString() {
+                        return sysIdString;
+                    }
+
+                    public void setSysIdString(String sysIdString) {
+                        this.sysIdString = sysIdString;
+                    }
+                }
+            }
+
+            public long getSysIdString() {
                 return sysIdString;
             }
 
-            public void setSysIdString(int sysIdString) {
+            public void setSysIdString(long sysIdString) {
                 this.sysIdString = sysIdString;
-            }
-
-            public List<?> getSeekGoodsSkuVOS() {
-                return seekGoodsSkuVOS;
-            }
-
-            public void setSeekGoodsSkuVOS(List<?> seekGoodsSkuVOS) {
-                this.seekGoodsSkuVOS = seekGoodsSkuVOS;
-            }
-
-            public List<?> getSeekGoodsItemVOS() {
-                return seekGoodsItemVOS;
-            }
-
-            public void setSeekGoodsItemVOS(List<?> seekGoodsItemVOS) {
-                this.seekGoodsItemVOS = seekGoodsItemVOS;
             }
         }
 

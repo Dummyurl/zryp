@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.shunmai.zryp.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.bean.UserInfoBean;
+import com.shunmai.zryp.bean.userinfo.Response_WechatUserInfo;
 import com.shunmai.zryp.databinding.LayoutBindPhoneBinding;
 import com.shunmai.zryp.databinding.LayoutRegisterBinding;
 import com.shunmai.zryp.databinding.LayoutSetPasswordBinding;
@@ -43,8 +44,10 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
     private Disposable disposable;
     private UserHandleViewModel viewModel;
     private String logonAccount;
+    private String userId;
     private LayoutSetPasswordBinding setPasswordBinding;
     private LayoutRegisterBinding regBinding;
+    private Response_WechatUserInfo wechatUserInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,7 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
                 View inflate = bindingView.vsSetPassword.getViewStub().inflate();
                 inflate.setVisibility(View.VISIBLE);
                 logonAccount = getIntent().getStringExtra("logonAccount");
+                userId=getIntent().getStringExtra("userId");
                 setPasswordBinding = DataBindingUtil.bind(bindingView.vsSetPassword.getRoot());
                 setPasswordBinding.btnSetPasswordSubmit.setOnClickListener(this);
                 break;
@@ -84,7 +88,8 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
                 bindingView.titleBar.getCenterTextView().setText("绑定手机");
                 bindingView.vsBind.getViewStub().inflate().setVisibility(View.VISIBLE);
                 bindPhoneBinding = DataBindingUtil.bind(bindingView.vsBind.getRoot());
-                bindPhoneBinding.tvWechat.setText("您的微信账号" + getIntent().getStringExtra("weChatName") + "通过验证");
+                wechatUserInfo = new Gson().fromJson(getIntent().getStringExtra("data"), Response_WechatUserInfo.class);
+                bindPhoneBinding.tvWechat.setText("您的微信账号" + wechatUserInfo.getNickname() + "通过验证");
                 bindPhoneBinding.btnBindGetcode.setOnClickListener(this);
                 bindPhoneBinding.btnBind.setOnClickListener(this);
                 break;
@@ -104,17 +109,18 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
             }
             //
             case R.id.btn_set_password_submit: {
-                if (!PatternUtils.isPassword(setPasswordBinding.etSetPassword.getText().toString().trim())){
+                if (!PatternUtils.isPassword(setPasswordBinding.etSetPassword.getText().toString().trim())) {
                     ToastUtils.showToast("密码由6-20位字符组成，使用数字、字母的组合！");
                     return;
                 }
-                if (!setPasswordBinding.etSetPassword.getText().toString().trim().equals(setPasswordBinding.etVerifySetPassword.getText().toString().trim())){
+                if (!setPasswordBinding.etSetPassword.getText().toString().trim().equals(setPasswordBinding.etVerifySetPassword.getText().toString().trim())) {
                     ToastUtils.showToast("两次密码不一致！");
                     return;
                 }
-                HashMap<String,String> map=new HashMap<>();
-                map.put("logonPassword",setPasswordBinding.etVerifySetPassword.getText().toString().trim());
-                map.put("logonAccount",logonAccount);
+                HashMap<String, String> map = new HashMap<>();
+                map.put("logonPassword", setPasswordBinding.etVerifySetPassword.getText().toString().trim());
+                map.put("logonAccount", logonAccount);
+                map.put("userId",userId);
                 viewModel.setPassword(map, new onResponseListener<TResponse<UserInfoBean>>() {
                     @Override
                     public void onSuccess(TResponse<UserInfoBean> data) {
@@ -127,7 +133,7 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
                         ToastUtils.showToast(throwable.getMessage());
                     }
                 });
-                ShareUtils.clearUserInfo();
+
                 break;
             }
             case R.id.btn_bind_getcode: {
@@ -149,6 +155,7 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
                 break;
             }
             case R.id.btn_bind: {
+                //验证输入数据格式
                 if (!PatternUtils.isChinaPhoneLegal(bindPhoneBinding.etBindPhone.getText().toString().trim())) {
                     ToastUtils.showToast("电话号码格式错误，请检查后再输入！");
                     return;
@@ -157,25 +164,30 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
                     ToastUtils.showToast("验证码格式错误！");
                     return;
                 }
-                HashMap<String, String> map = new HashMap<>();
+                HashMap<String, Object> map = new HashMap<>();
                 map.put("mobile", bindPhoneBinding.etBindPhone.getText().toString().trim());
-                map.put("unionId", getIntent().getStringExtra("unionId"));
+                map.put("unionId", wechatUserInfo.getUnionid());
+                map.put("pic", wechatUserInfo.getHeadimgurl());
+                map.put("nickname", wechatUserInfo.getNickname());
+                map.put("gopenId", wechatUserInfo.getOpenid());
+                map.put("gender", wechatUserInfo.getSex());
                 viewModel.bindPhone(map, bindPhoneBinding.etBindCode.getText().toString().trim(), new onResponseListener<TResponse<UserInfoBean>>() {
                     @Override
                     public void onSuccess(TResponse<UserInfoBean> bean) {
-                        if (bean.getCode()==200){
-                        //微信绑定成功，但是绑定账号未设置密码！
-                        ToastUtils.showToast("该手机未注册，请设置密码！");
-                        Intent intent = new Intent(UserHandleActivity.this, UserHandleActivity.class);
-                        intent.putExtra("type", 2);
-                        intent.putExtra("logonAccount", bean.getData().getLogonAccount());
-                        startActivity(intent);
-                       }else if(bean.getCode()==201){
-                            //如果为201则绑定账号成功，而且绑定账号已设置密码，直接退出
+                        if (bean.getCode() == 201) {
+                            //微信绑定成功，但是绑定账号未设置密码！
+                            ToastUtils.showToast("该手机未注册，请设置密码！");
+                            Intent intent = new Intent(UserHandleActivity.this, UserHandleActivity.class);
+                            intent.putExtra("type", 2);
+                            intent.putExtra("logonAccount", bean.getData().getLogonAccount());
+                            intent.putExtra("userId",bean.getData().getUserId());
+                            startActivity(intent);
+                        } else if (bean.getCode() == 200) {
+                            //如果为200则绑定账号成功，而且绑定账号已设置密码，直接退出
                             ShareUtils.putUserInfo(bean.getData());
                             ToastUtils.showToast("微信绑定成功！");
                         }
-                       finish();
+                        finish();
                     }
 
                     @Override
@@ -185,12 +197,13 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
                 });
                 break;
             }
-            case R.id.tv_register_get_code:{
+            case R.id.tv_register_get_code: {
                 if (!PatternUtils.isChinaPhoneLegal(regBinding.etRegisterPhone.getText().toString().trim())) {
                     ToastUtils.showToast("电话号码格式错误，请检查后再输入！");
                     return;
                 }
                 viewModel.getCode(1, regBinding.etRegisterPhone.getText().toString().trim(), new onResponseListener<TResponse<String>>() {
+
                     @Override
                     public void onSuccess(TResponse<String> stringTResponse) {
                         codeTime((TextView) v);
@@ -203,8 +216,8 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
                 });
                 break;
             }
-            case R.id.btn_register:{
-                if (!regBinding.cbUserRule.isChecked()){
+            case R.id.btn_register: {
+                if (!regBinding.cbUserRule.isChecked()) {
                     ToastUtils.showToast("请先阅读《智融优品用户协议》");
                     return;
                 }
@@ -216,13 +229,13 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
                     ToastUtils.showToast("验证码格式错误！");
                     return;
                 }
-                if (!PatternUtils.isPassword(regBinding.etRegisterPassword.getText().toString().trim())){
+                if (!PatternUtils.isPassword(regBinding.etRegisterPassword.getText().toString().trim())) {
                     ToastUtils.showToast("密码由6-20位字符组成，使用数字、字母的组合！");
                     return;
                 }
-                HashMap<String,String> map=new HashMap<>();
-                map.put("mobile",regBinding.etRegisterPhone.getText().toString().trim());
-                map.put("logonPassword",regBinding.etRegisterPassword.getText().toString().trim());
+                HashMap<String, String> map = new HashMap<>();
+                map.put("mobile", regBinding.etRegisterPhone.getText().toString().trim());
+                map.put("logonPassword", regBinding.etRegisterPassword.getText().toString().trim());
                 viewModel.register(map, regBinding.etRegisterCode.getText().toString().trim(), new onResponseListener<TResponse<UserInfoBean>>() {
                     @Override
                     public void onSuccess(TResponse<UserInfoBean> data) {
@@ -239,8 +252,8 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
 
                 break;
             }
-            case R.id.tv_login:{
-               onBackPressed();
+            case R.id.tv_login: {
+                onBackPressed();
                 break;
             }
 

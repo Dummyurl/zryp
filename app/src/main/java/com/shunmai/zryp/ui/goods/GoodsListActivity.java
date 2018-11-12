@@ -1,8 +1,13 @@
 package com.shunmai.zryp.ui.goods;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +17,7 @@ import android.widget.Toast;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.shunmai.zryp.AppConfig;
 import com.shunmai.zryp.repository.GoodsListRepository;
 import com.shunmai.zryp.adapter.goods.RecGoodsListAdapter;
 import com.shunmai.zryp.base.SwipeBackActivity;
@@ -41,6 +47,9 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
     private int type;
     //首页进入界面类型
     private int HomePage;
+    private String keyword;
+    private String goodsName;
+    private PayBroadcastReceiver mReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +62,20 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
         catlaogMobileId = getIntent().getLongExtra("catlaogMobileId", -1);
         HomePage = getIntent().getIntExtra("HomePage", -1);
 //        initRec(false);
-        goodsListAdapter= new RecGoodsListAdapter(this, new ArrayList<>());
+        keyword = getIntent().getStringExtra("keyword");
+        goodsName = getIntent().getStringExtra("goodsName");
+        goodsListAdapter = new RecGoodsListAdapter(this, new ArrayList<>());
         bindingView.rvGoodsList.setAdapter(goodsListAdapter);
         initRefresh();
         initRadio();
         getData(true);
+        initListener();
+    }
+
+    private void initListener() {
+        mReceiver = new PayBroadcastReceiver();
+        IntentFilter intentFilter = new IntentFilter(AppConfig.PaySuccess);
+        LocalBroadcastManager.getInstance(this).registerReceiver(mReceiver, intentFilter);
     }
 
     private void initRadio() {
@@ -109,8 +127,8 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
     }
 
     private void getData(boolean refresh) {
-        if (refresh){
-            page=1;
+        if (refresh) {
+            page = 1;
             refreshLayout.setNoMoreData(false);
         }
         switch (type) {
@@ -118,10 +136,10 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
                 viewModel.getCategoryList(page++, catlaogMobileId, sortType).observe(this, goodsListBean -> {
                     refreshLayout.finishRefresh();
                     if (goodsListBean != null) {
-                        if(goodsListBean.getPageNum()==goodsListBean.getPageCount()){
+                        if (goodsListBean.getPageNum() == goodsListBean.getPageCount()) {
                             refreshLayout.setNoMoreData(true);
                             refreshLayout.finishLoadMoreWithNoMoreData();
-                        }else{
+                        } else {
                             refreshLayout.finishLoadMore();
                         }
                         if (refresh) {
@@ -130,7 +148,7 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
                             goodsListAdapter.add(goodsListBean.getData());
                         }
                     }
-                    if (refresh){
+                    if (refresh) {
                         checkEmpty();
                     }
                 });
@@ -141,7 +159,7 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
                     refreshLayout.finishRefresh();
                     refreshLayout.finishLoadMore();
                     if (goodsListBean != null) {
-                        if(goodsListBean.getPageNum()==goodsListBean.getPageCount()){
+                        if (goodsListBean.getPageNum() == goodsListBean.getPageCount()) {
                             refreshLayout.setNoMoreData(true);
                         }
                         if (refresh) {
@@ -150,13 +168,32 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
                             goodsListAdapter.add(goodsListBean.getData());
                         }
                     }
-                    if (refresh){
+                    if (refresh) {
                         checkEmpty();
                     }
                 });
                 break;
             }
             case SEARCH: {
+                viewModel.searchGoods(page++, keyword, goodsName, sortType).observe(this, goodsListBean -> {
+                    refreshLayout.finishRefresh();
+                    if (goodsListBean != null) {
+                        if (goodsListBean.getPageNum() == goodsListBean.getPageCount()) {
+                            refreshLayout.setNoMoreData(true);
+                            refreshLayout.finishLoadMoreWithNoMoreData();
+                        } else {
+                            refreshLayout.finishLoadMore();
+                        }
+                        if (refresh) {
+                            goodsListAdapter.setData(goodsListBean.getData());
+                        } else {
+                            goodsListAdapter.add(goodsListBean.getData());
+                        }
+                    }
+                    if (refresh) {
+                        checkEmpty();
+                    }
+                });
                 break;
             }
         }
@@ -164,13 +201,11 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
 
     private void checkEmpty() {
         if (goodsListAdapter.getDataSize() == 0) {
-//            showEmpty();
             initRec(true);
             bindingView.rvGoodsList.setLayoutManager(new LinearLayoutManager(this));
             showContentView();
         } else {
             initRec(false);
-//            bindingView.rvGoodsList.setLayoutManager(new GridLayoutManager(this, 2));
             showContentView();
         }
     }
@@ -187,5 +222,15 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
     @Override
     protected void onRefresh() {
         getData(true);
+    }
+
+    private class PayBroadcastReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(AppConfig.PaySuccess)) {
+                finish();
+            }
+        }
     }
 }
