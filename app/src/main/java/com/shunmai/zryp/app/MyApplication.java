@@ -76,9 +76,7 @@ public class MyApplication extends Application{
         mainThreadId = android.os.Process.myTid();
         handler = new Handler();
 
-//        DaggerAppCompone
-//        DaggerAppCompatActivity
-//        DaggerappCompon
+
     }
 
     /**

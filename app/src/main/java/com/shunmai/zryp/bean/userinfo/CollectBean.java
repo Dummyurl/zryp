@@ -15,8 +15,8 @@ public class CollectBean {
      * sys_create_time : 0001-01-01 00:00:00
      * isEnable : true
      * starNum : 2
-     * goodsName : 一叶子天才面膜30片
-     * keywords : 一叶子天才面膜30片
+     * goodsName : 一叶子天才面膜30]片
+     * keywords : 一叶子天才面膜30\片
      * defalutPhotoURL : http://pic.gzcfe.net/brand/2018/0420/5021997715361457625.jpg
      * price : 152.9
      */
