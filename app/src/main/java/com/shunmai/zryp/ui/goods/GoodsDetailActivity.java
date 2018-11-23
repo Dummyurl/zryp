@@ -1,27 +1,21 @@
 package com.shunmai.zryp.ui.goods;
 
-import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Paint;
-import android.os.Build;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
-import com.google.gson.Gson;
 import com.shunmai.zryp.AppConfig;
 import com.shunmai.zryp.R;
 import com.shunmai.zryp.adapter.home.GuessGoodsAdapter;
@@ -32,11 +26,10 @@ import com.shunmai.zryp.databinding.ActivityGoodsDetailBinding;
 import com.shunmai.zryp.eventhandler.goods.GoodsDetailHandler;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.repository.GoodsDetailRepository;
-import com.shunmai.zryp.ui.userinfo.child.OrderFragment;
-import com.shunmai.zryp.utils.GlideCacheUtil;
 import com.shunmai.zryp.utils.GoodsDetailActivityManager;
 import com.shunmai.zryp.utils.ShareUtils;
 import com.shunmai.zryp.utils.ToastUtils;
+import com.shunmai.zryp.utils.Utils;
 import com.shunmai.zryp.viewmodel.GoodsDetailViewModel;
 import com.xiasuhuei321.loadingdialog.view.LoadingDialog;
 
@@ -84,44 +77,47 @@ public class GoodsDetailActivity extends SwipeBackActivity<ActivityGoodsDetailBi
                         guessGoodsAdapter.setData(goodsDetailBean.getData().getList());
                     }
                     handler.setDataBean(goodsDetailBean.getData());
-                    if (!goodsDetailBean.getData().getSku().getCollectId().equals("0")) {
+                    if (goodsDetailBean.getData().getSku().getCollectId() != null && !goodsDetailBean.getData().getSku().getCollectId().equals("0")) {
                         bindingView.cbCollect.setChecked(true);
                     }
                     bindingView.cbCollect.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                        dialog = new LoadingDialog(GoodsDetailActivity.this);
-                        dialog.setInterceptBack(true)
-                                .setLoadingText("加载中...")
-                                .setLoadStyle(LoadingDialog.STYLE_LINE).show();
-                        if (isChecked) {
-                            viewModel.CollectGoodsItem(bindingView.getDetailBean().getData().getGoods().getGoodsId(), bindingView.getDetailBean().getData().getSku().getSeekGoodsSkuVOS().get(0).getSkuId(), ShareUtils.getUserInfo().getUserId(), new onResponseListener<String>() {
-                                @Override
-                                public void onSuccess(String str) {
-                                    dialog.close();
-                                    bindingView.getDetailBean().getData().getSku().setCollectId(str);
-                                }
+                        if (Utils.checkLogin(GoodsDetailActivity.this)) {
+                            dialog = new LoadingDialog(GoodsDetailActivity.this);
+                            dialog.setInterceptBack(true)
+                                    .setLoadingText("加载中...")
+                                    .setLoadStyle(LoadingDialog.STYLE_LINE).show();
+                            if (isChecked) {
+                                viewModel.CollectGoodsItem(bindingView.getDetailBean().getData().getGoods().getGoodsId(), bindingView.getDetailBean().getData().getSku().getSeekGoodsSkuVOS().get(0).getSkuId(), ShareUtils.getUserInfo().getUserId(), new onResponseListener<String>() {
+                                    @Override
+                                    public void onSuccess(String str) {
+                                        dialog.close();
+                                        bindingView.getDetailBean().getData().getSku().setCollectId(str);
+                                    }
 
-                                @Override
-                                public void onFailed(Throwable throwable) {
-                                    bindingView.cbCollect.setChecked(false);
-                                    ToastUtils.showToast(throwable.getMessage());
-                                    dialog.close();
-                                }
-                            });
-                        } else {
-                            viewModel.DeleteCollectItem(Integer.parseInt(bindingView.getDetailBean().getData().getSku().getCollectId()), new onResponseListener<String>() {
-                                @Override
-                                public void onSuccess(String s) {
-                                    dialog.close();
-                                    bindingView.getDetailBean().getData().getSku().setCollectId("0");
-                                }
-
-                                @Override
-                                public void onFailed(Throwable throwable) {
-                                    dialog.close();
-                                    bindingView.cbCollect.setChecked(true);
-                                    ToastUtils.showToast(throwable.getMessage());
-                                }
-                            });
+                                    @Override
+                                    public void onFailed(Throwable throwable) {
+                                        bindingView.cbCollect.setChecked(false);
+                                        ToastUtils.showToast(throwable.getMessage());
+                                        dialog.close();
+                                    }
+                                });
+                            } else {
+                                viewModel.DeleteCollectItem(Integer.parseInt(bindingView.getDetailBean().getData().getSku().getCollectId()), new onResponseListener<String>() {
+                                    @Override
+                                    public void onSuccess(String s) {
+                                        dialog.close();
+                                        bindingView.getDetailBean().getData().getSku().setCollectId("0");
+                                    }
+                                    @Override
+                                    public void onFailed(Throwable throwable) {
+                                        dialog.close();
+                                        bindingView.cbCollect.setChecked(true);
+                                        ToastUtils.showToast(throwable.getMessage());
+                                    }
+                                });
+                            }
+                        }else{
+                            bindingView.cbCollect.setChecked(false);
                         }
                     });
                     showContentView();
@@ -133,7 +129,8 @@ public class GoodsDetailActivity extends SwipeBackActivity<ActivityGoodsDetailBi
             @Override
             public void onFailed(Throwable throwable) {
                 showError();
-                Toast.makeText(GoodsDetailActivity.this, "网络错误", Toast.LENGTH_SHORT).show();
+                Toast.makeText(GoodsDetailActivity.this, "商品信息错误！", Toast.LENGTH_SHORT).show();
+                throwable.printStackTrace();
             }
         });
     }
@@ -185,17 +182,17 @@ public class GoodsDetailActivity extends SwipeBackActivity<ActivityGoodsDetailBi
 
             }
         });
-        bindingView.svGoodsDetail.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                Log.i("NestedScrollView", "scrollY:" + scrollY + "::::oldScrollY:" + oldScrollY + ";;;bindingView.tvGoodsGuessLike.getTop():" + bindingView.tvGoodsGuessLike.getTop() + "::bindingView.tvGoodsGuessLike.getTop():" + bindingView.tvGoodsGuessLike.getTop());
-                if (scrollY > bindingView.tvGoodsGuessLike.getTop()-100) {
-                    bindingView.tlGoods.setCurrentTab(2);
-                } else if (scrollY > bindingView.tvGoodsIntroduce.getTop()-100) {
-                    bindingView.tlGoods.setCurrentTab(1);
-                } else {
-                    bindingView.tlGoods.setCurrentTab(0);
-                }
+        bindingView.svGoodsDetail.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+
+            bindingView.svGoodsDetail.getChildAt(bindingView.svGoodsDetail.getChildCount() - 2);
+            Rect scrollBounds = new Rect();
+            bindingView.svGoodsDetail.getHitRect(scrollBounds);
+            if (scrollY > bindingView.tvGoodsGuessLike.getTop() - 100 || bindingView.tvGoodsGuessLike.getLocalVisibleRect(scrollBounds)) {
+                bindingView.tlGoods.setCurrentTab(2);
+            } else if (scrollY > bindingView.tvGoodsIntroduce.getTop() - 100) {
+                bindingView.tlGoods.setCurrentTab(1);
+            } else {
+                bindingView.tlGoods.setCurrentTab(0);
             }
         });
 

@@ -22,7 +22,7 @@ public class UserHandleViewModel extends ViewModel {
     public void bindPhone(HashMap<String,Object> map, String code, onResponseListener<TResponse<UserInfoBean>> listener){
         repository.bindPhone(map,code,listener);
     }
-    public void setPassword(HashMap<String,String> map,onResponseListener<TResponse<UserInfoBean>> listener){
+    public void setPassword(HashMap<String,Object> map,onResponseListener<TResponse<UserInfoBean>> listener){
         repository.setPassword(map,listener);
     }
     public void register(HashMap<String,String> map,String code,onResponseListener<TResponse<UserInfoBean>> listener){

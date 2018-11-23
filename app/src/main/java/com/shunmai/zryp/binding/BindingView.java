@@ -108,7 +108,10 @@ public class BindingView {
     public static void displayImg(ImageView imageView, String url) {
         GlideCacheUtil.LoadImage(imageView.getContext(), imageView, url);
     }
-
+    @BindingAdapter({"android:displayImgEmpty"})
+    public static void displayImgEmpty(ImageView imageView, String url) {
+        GlideCacheUtil.LoadImageWithEmpty(imageView.getContext(), imageView, url);
+    }
     @BindingAdapter({"android:displayHeadImg","android:setGender"})
     public static void displayHeadImg(ImageView imageView, String url,int gender) {
         GlideCacheUtil.LoadImage(imageView.getContext(), imageView, url, 0,gender);

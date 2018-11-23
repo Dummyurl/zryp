@@ -11,8 +11,9 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.shunmai.zryp.bean.Bean;
+import com.shunmai.zryp.bean.GoodsCategoryBean;
 import com.shunmai.zryp.R;
+import com.shunmai.zryp.utils.DevicesUtils;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class ItemDecoration extends RecyclerView.ItemDecoration {
 
     private static final String TAG = ItemDecoration.class.getSimpleName();
     private Context mContext;
-    private ArrayList<Bean> mDataList = new ArrayList<>();
+    private ArrayList<GoodsCategoryBean> mDataList = new ArrayList<>();
     private OnDecorationCallback mOnDecorationCallback;
 
     private Paint mPaint;
@@ -32,10 +33,10 @@ public class ItemDecoration extends RecyclerView.ItemDecoration {
     private TextPaint mTextPaint1;
 
     private int mTopGap = 60;          // 吸顶高
-    private int mAlignBottom = 10;
+    private int mAlignBottom = 20;
 
 
-    public ItemDecoration(Context context, ArrayList<Bean> dataList, OnDecorationCallback onDecorationCallback) {
+    public ItemDecoration(Context context, ArrayList<GoodsCategoryBean> dataList, OnDecorationCallback onDecorationCallback) {
         this.mContext = context;
         this.mDataList = dataList;
         this.mOnDecorationCallback = onDecorationCallback;
@@ -144,7 +145,7 @@ public class ItemDecoration extends RecyclerView.ItemDecoration {
             }
             c.drawRect(left, textY - mTopGap, right, textY, mPaint);
             c.drawText(textLine, left + 2 * mAlignBottom, textY - mAlignBottom, mTextPaint);
-            c.drawText("全部>",right,textY - mAlignBottom,mTextPaint1);
+            c.drawText("全部>",right- DevicesUtils.dip2px(mContext,13),textY - mAlignBottom,mTextPaint1);
         }
     }
 

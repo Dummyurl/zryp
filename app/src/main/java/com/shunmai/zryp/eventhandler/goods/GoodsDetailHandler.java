@@ -123,14 +123,20 @@ public class GoodsDetailHandler extends BaseEventHandler {
 
     private void WechatShare(Context context, String url, boolean isFriend) {
         WechatLoginHelper.weixinAPI = WXAPIFactory.createWXAPI(context, null);
+
         WechatLoginHelper.weixinAPI.registerApp(WechatLoginHelper.APP_ID);
+
         if (!WechatLoginHelper.weixinAPI.isWXAppInstalled()) {
             ToastUtils.showToast("您还未安装微信客户端，无法进行微信分享！");
             return;
         }
+
         WXWebpageObject webpage = new WXWebpageObject();
+
         webpage.webpageUrl = url;
+
         WXMediaMessage msg = new WXMediaMessage(webpage);
+
         msg.title = context.getResources().getString(R.string.app_name);
 
         msg.description = context.getResources().getString(R.string.app_name);

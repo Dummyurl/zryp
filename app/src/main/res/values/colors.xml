@@ -5,10 +5,10 @@
     <color name="colorAccent">#FF4081</color>
     <color name="withe">#FFFFFF</color>
     <color name="fontRed"> #FFF82933</color>
-    <color name="fontBlack"> #FF000000</color>
     <color name="backgroundColor">#FFF2F2F2</color>
     <color name="fontNormal">#ff333333</color>
     <color name="fontGrey">#ff999999</color>
+    <color name="fontBlack">#ff222222</color>
     <color name="divider">#ffdddddd</color>
     <color name="fontOrange">#FFFF7900</color>
     <!--页面背景的颜色-->
@@ -85,4 +85,7 @@
     <color name="colorAccentHalf">#9000E5FF</color>
     <color name="gray_font_dark">#646464</color>
     <color name="gray_light">#f2f2f2</color>
+    <color name="appColorPrimary">#FFD022</color>
+    <color name="appColorPrimaryDark">#FFD022</color>
+    <color name="appColorAccent">#FFD022</color>
 </resources>

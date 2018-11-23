@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/ll_item"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/shape_shadow_promotion"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+            <com.shunmai.zryp.view.RoundAngleImageView
+                android:id="@+id/iv_goods"
+                android:layout_width="match_parent"
+                android:layout_height="118dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/shape_shadow_img"
+                />
+
+            <LinearLayout
+                android:id="@+id/ll_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/icon_promotion_score"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_score_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:text="300"
+                    android:textColor="#FFF552"
+                    android:textSize="8dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:text="积分"
+                    android:textColor="@color/withe"
+                    android:textSize="7dp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_goods_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:ellipsize="end"
+            android:textColor="@color/fontNormal"
+            android:textSize="14dp"
+            android:text="SHISEIDO资生堂 洗颜专科 洁净保湿..."/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/fontRed"
+                android:textSize="10dp"
+                android:text="包邮价 ￥ "/>
+            <TextView
+                android:id="@+id/tv_goods_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/fontRed"
+                android:textSize="16dp"
+                android:text="269.9"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_buy"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_margin="8dp"
+            android:clickable="false"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:background="@drawable/shape_botton_background"
+            android:text="立即购买"
+            android:textColor="@color/withe"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</layout>

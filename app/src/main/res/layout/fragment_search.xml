@@ -35,13 +35,23 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
+        <android.support.v7.widget.RecyclerView
+            android:background="@color/withe"
+            android:id="@+id/rv_sort"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+
         <ListView
+            android:visibility="gone"
             android:id="@+id/lv_classify"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:scrollbars="none"/>
 
         <android.support.v7.widget.RecyclerView
+            android:visibility="visible"
             android:id="@+id/rv_classify"
             android:layout_width="0dp"
             android:layout_height="match_parent"

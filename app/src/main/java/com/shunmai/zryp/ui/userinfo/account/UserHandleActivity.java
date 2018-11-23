@@ -44,7 +44,7 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
     private Disposable disposable;
     private UserHandleViewModel viewModel;
     private String logonAccount;
-    private String userId;
+    private int userId;
     private LayoutSetPasswordBinding setPasswordBinding;
     private LayoutRegisterBinding regBinding;
     private Response_WechatUserInfo wechatUserInfo;
@@ -79,7 +79,7 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
                 View inflate = bindingView.vsSetPassword.getViewStub().inflate();
                 inflate.setVisibility(View.VISIBLE);
                 logonAccount = getIntent().getStringExtra("logonAccount");
-                userId=getIntent().getStringExtra("userId");
+                userId = getIntent().getIntExtra("userId", 0);
                 setPasswordBinding = DataBindingUtil.bind(bindingView.vsSetPassword.getRoot());
                 setPasswordBinding.btnSetPasswordSubmit.setOnClickListener(this);
                 break;
@@ -87,6 +87,7 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
             case 3: {
                 bindingView.titleBar.getCenterTextView().setText("绑定手机");
                 bindingView.vsBind.getViewStub().inflate().setVisibility(View.VISIBLE);
+                userId = getIntent().getIntExtra("userId", 0);
                 bindPhoneBinding = DataBindingUtil.bind(bindingView.vsBind.getRoot());
                 wechatUserInfo = new Gson().fromJson(getIntent().getStringExtra("data"), Response_WechatUserInfo.class);
                 bindPhoneBinding.tvWechat.setText("您的微信账号" + wechatUserInfo.getNickname() + "通过验证");
@@ -117,10 +118,10 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
                     ToastUtils.showToast("两次密码不一致！");
                     return;
                 }
-                HashMap<String, String> map = new HashMap<>();
+                HashMap<String, Object> map = new HashMap<>();
                 map.put("logonPassword", setPasswordBinding.etVerifySetPassword.getText().toString().trim());
                 map.put("logonAccount", logonAccount);
-                map.put("userId",userId);
+                map.put("userId", userId);
                 viewModel.setPassword(map, new onResponseListener<TResponse<UserInfoBean>>() {
                     @Override
                     public void onSuccess(TResponse<UserInfoBean> data) {
@@ -171,16 +172,17 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
                 map.put("nickname", wechatUserInfo.getNickname());
                 map.put("gopenId", wechatUserInfo.getOpenid());
                 map.put("gender", wechatUserInfo.getSex());
+                map.put("userId", userId);
                 viewModel.bindPhone(map, bindPhoneBinding.etBindCode.getText().toString().trim(), new onResponseListener<TResponse<UserInfoBean>>() {
                     @Override
                     public void onSuccess(TResponse<UserInfoBean> bean) {
-                        if (bean.getCode() == 201) {
+                        if (bean.getCode() == 201 || bean.getCode() == 202) {
                             //微信绑定成功，但是绑定账号未设置密码！
                             ToastUtils.showToast("该手机未注册，请设置密码！");
                             Intent intent = new Intent(UserHandleActivity.this, UserHandleActivity.class);
                             intent.putExtra("type", 2);
                             intent.putExtra("logonAccount", bean.getData().getLogonAccount());
-                            intent.putExtra("userId",bean.getData().getUserId());
+                            intent.putExtra("userId", bean.getData().getUserId());
                             startActivity(intent);
                         } else if (bean.getCode() == 200) {
                             //如果为200则绑定账号成功，而且绑定账号已设置密码，直接退出
@@ -239,9 +241,13 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
                 viewModel.register(map, regBinding.etRegisterCode.getText().toString().trim(), new onResponseListener<TResponse<UserInfoBean>>() {
                     @Override
                     public void onSuccess(TResponse<UserInfoBean> data) {
-                        ShareUtils.putUserInfo(data.getData());
-                        setResult(RESULT_OK);
-                        onBackPressed();
+                        if (data.getCode() == 200) {
+                            ShareUtils.putUserInfo(data.getData());
+                            setResult(RESULT_OK);
+                            finish();
+                        }else{
+                            ToastUtils.showToast(data.getMsg());
+                        }
                     }
 
                     @Override

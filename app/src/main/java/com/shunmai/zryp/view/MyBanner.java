@@ -119,6 +119,7 @@ public class MyBanner extends FrameLayout implements OnPageChangeListener {
     public void MyOption(){
         viewPager.setPageMargin(30);
         viewPager.setOffscreenPageLimit(5);
+        viewPager.setClipChildren(false);
     }
     private void handleTypedArray(Context context, AttributeSet attrs) {
         if (attrs == null) {

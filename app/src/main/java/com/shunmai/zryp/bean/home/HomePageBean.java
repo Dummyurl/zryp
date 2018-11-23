@@ -1,6 +1,7 @@
 package com.shunmai.zryp.bean.home;
 
-import com.shunmai.zryp.bean.TResponse;
+import com.shunmai.zryp.bean.goods.GoodsBean;
+import com.shunmai.zryp.bean.goods.PromotionGoodsBean;
 
 import java.util.List;
 
@@ -18,22 +19,34 @@ public class HomePageBean{
      */
 
     private GoodInfoBean goodInfo;
-    private List<GuessYouLikeBean> guessYouLike;
+    private List<GoodsBean> guessYouLike;
+    /**
+     * centerPostion : {"spoStarttime":0,"spoEndtime":0,"poId":63,"pageNum":0,"pageSize":0,"sort":2,"poName":"广告位","poDefault":1,"poStarttime":1542102000000,"poStarttimeDT":"0001-01-01 00:00:00","poEndtime":1542106800000,"poEndtimeDT":"0001-01-01 00:00:00","poPostion":"top","poDesc":null,"status":0,"sysIsEnable":1,"imgsList":[{"imgId":218,"postionId":63,"imgSort":1,"imgPrimary":3,"imgSrc":"http://pic0.gzcfe.net/goodspic/2018/1113/4990092413855180968.jpg","imgUrlMini":"imgUrlMini_3","imgUrlAndroid":"imgUrlAndroid_4","imgUrlIos":"imgUrlIos_5","imgUrlM":"imgUrlM_6","imgUrlpc":null,"imgUrlDefault":"mgUrlDefault_8","urlType":"2","url":"","sysCreateTime":1542106187000}],"sysCreateTime":1542101078000}
+     */
+
+    private CenterPostionBean centerPostion;
 
     public GoodInfoBean getGoodInfo() {
         return goodInfo;
     }
-
     public void setGoodInfo(GoodInfoBean goodInfo) {
         this.goodInfo = goodInfo;
     }
 
-    public List<GuessYouLikeBean> getGuessYouLike() {
+    public List<GoodsBean> getGuessYouLike() {
         return guessYouLike;
     }
 
-    public void setGuessYouLike(List<GuessYouLikeBean> guessYouLike) {
+    public void setGuessYouLike(List<GoodsBean> guessYouLike) {
         this.guessYouLike = guessYouLike;
+    }
+
+    public CenterPostionBean getCenterPostion() {
+        return centerPostion;
+    }
+
+    public void setCenterPostion(CenterPostionBean centerPostion) {
+        this.centerPostion = centerPostion;
     }
 
     public static class GoodInfoBean {
@@ -48,6 +61,12 @@ public class HomePageBean{
         private GroupProBean groupPro;
         private TopicProBean topicPro;
         private List<SecKillAndScoreProBean> secKillAndScorePro;
+        /**
+         * prePro : {"prId":728,"isPriceType":0,"promotionGoods":[{"goodsId":79,"goodsName":"爱心逆颜补水乳液","defalutPhotoURL":"http://pic.gzcfe.net/brand/2018/0412/4843210078154231242","price":218,"marketPrice":298,"mscore":2518,"promotionPrice":0,"skuId":2,"goSalenum":0,"salenumMode":0,"manualSalenum":0,"goLimit":0,"goStock":0,"channelId":"0","goodsPropery":null},{"goodsId":78,"goodsName":"0号黑糖红枣黑糖","defalutPhotoURL":"http://pic.gzcfe.net/brand/2018/0409/4645894863773343962.jpg","price":68.8,"marketPrice":76,"mscore":626,"promotionPrice":0,"skuId":1,"goSalenum":0,"salenumMode":0,"manualSalenum":0,"goLimit":0,"goStock":0,"channelId":"0","goodsPropery":null}]}
+         */
+
+        private PreProBean prePro;
+
 
         public RecProBean getRecPro() {
             return recPro;
@@ -79,6 +98,14 @@ public class HomePageBean{
 
         public void setSecKillAndScorePro(List<SecKillAndScoreProBean> secKillAndScorePro) {
             this.secKillAndScorePro = secKillAndScorePro;
+        }
+
+        public PreProBean getPrePro() {
+            return prePro;
+        }
+
+        public void setPrePro(PreProBean prePro) {
+            this.prePro = prePro;
         }
 
         public static class RecProBean {
@@ -126,101 +153,6 @@ public class HomePageBean{
                 this.promotionGoods = promotionGoods;
             }
 
-            public static class PromotionGoodsBean {
-                /**
-                 * goodsId : 276
-                 * goodsName : 宝宝金水驱蚊喷雾 蚊怕水套装 宝宝驱蚊水婴儿防蚊水
-                 * keywords : 宝宝金水驱蚊喷雾 蚊怕水套装 宝宝驱蚊水婴儿防蚊水
-                 * goodsTitle : 宝宝金水驱蚊喷雾 蚊怕水套装 宝宝驱蚊水婴儿防蚊水
-                 * defalutPhotoURL : http://pic.gzcfe.net/brand/2018/0426/5148605869525243310.jpg
-                 * price : 55.0
-                 * mscore : 231
-                 * promotionPrice : 55.0
-                 * skuId : 199
-                 */
-
-                private int goodsId;
-                private String goodsName;
-                private String keywords;
-                private String goodsTitle;
-                private String defalutPhotoURL;
-                private double price;
-                private int mscore;
-                private double promotionPrice;
-                private int skuId;
-
-                public int getGoodsId() {
-                    return goodsId;
-                }
-
-                public void setGoodsId(int goodsId) {
-                    this.goodsId = goodsId;
-                }
-
-                public String getGoodsName() {
-                    return goodsName;
-                }
-
-                public void setGoodsName(String goodsName) {
-                    this.goodsName = goodsName;
-                }
-
-                public String getKeywords() {
-                    return keywords;
-                }
-
-                public void setKeywords(String keywords) {
-                    this.keywords = keywords;
-                }
-
-                public String getGoodsTitle() {
-                    return goodsTitle;
-                }
-
-                public void setGoodsTitle(String goodsTitle) {
-                    this.goodsTitle = goodsTitle;
-                }
-
-                public String getDefalutPhotoURL() {
-                    return defalutPhotoURL;
-                }
-
-                public void setDefalutPhotoURL(String defalutPhotoURL) {
-                    this.defalutPhotoURL = defalutPhotoURL;
-                }
-
-                public double getPrice() {
-                    return price;
-                }
-
-                public void setPrice(double price) {
-                    this.price = price;
-                }
-
-                public int getMscore() {
-                    return mscore;
-                }
-
-                public void setMscore(int mscore) {
-                    this.mscore = mscore;
-                }
-
-                public double getPromotionPrice() {
-                    return promotionPrice;
-                }
-
-                public void setPromotionPrice(double promotionPrice) {
-                    this.promotionPrice = promotionPrice;
-                }
-
-                public int getSkuId() {
-                    return skuId;
-                }
-
-                public void setSkuId(int skuId) {
-                    this.skuId = skuId;
-                }
-            }
         }
 
         public static class GroupProBean {
@@ -390,101 +322,376 @@ public class HomePageBean{
                 this.points = points;
             }
         }
+
+        public static class PreProBean {
+            /**
+             * prId : 728
+             * isPriceType : 0
+             * promotionGoods : [{"goodsId":79,"goodsName":"爱心逆颜补水乳液","defalutPhotoURL":"http://pic.gzcfe.net/brand/2018/0412/4843210078154231242","price":218,"marketPrice":298,"mscore":2518,"promotionPrice":0,"skuId":2,"goSalenum":0,"salenumMode":0,"manualSalenum":0,"goLimit":0,"goStock":0,"channelId":"0","goodsPropery":null},{"goodsId":78,"goodsName":"0号黑糖红枣黑糖","defalutPhotoURL":"http://pic.gzcfe.net/brand/2018/0409/4645894863773343962.jpg","price":68.8,"marketPrice":76,"mscore":626,"promotionPrice":0,"skuId":1,"goSalenum":0,"salenumMode":0,"manualSalenum":0,"goLimit":0,"goStock":0,"channelId":"0","goodsPropery":null}]
+             */
+
+            private int prId;
+            private int isPriceType;
+            private List<GoodsBean> promotionGoods;
+
+            public int getPrId() {
+                return prId;
+            }
+
+            public void setPrId(int prId) {
+                this.prId = prId;
+            }
+
+            public int getIsPriceType() {
+                return isPriceType;
+            }
+
+            public void setIsPriceType(int isPriceType) {
+                this.isPriceType = isPriceType;
+            }
+
+            public List<GoodsBean> getPromotionGoods() {
+                return promotionGoods;
+            }
+
+            public void setPromotionGoods(List<GoodsBean> promotionGoods) {
+                this.promotionGoods = promotionGoods;
+            }
+
+
+        }
     }
 
-    public static class GuessYouLikeBean {
+
+    public static class CenterPostionBean {
         /**
-         * price : 1169.0
-         * defalutPhotourl : http://pic.gzcfe.net/brand/2018/0509/5094349447918821571.jpg
-         * marketPrice : 1286.0
-         * sysIdString : 10090961176431434
-         * goodsName : 电动跑步机家用免安装多功能迷你超静音小型跑步机健身器材
-         * goodsTitle : 电动跑步机家用免安装多功能迷你超静音小型跑步机健身器材
-         * platgoodsId :
-         * goodsPropery : 1
-         * goodsId : 512
+         * spoStarttime : 0
+         * spoEndtime : 0
+         * poId : 63
+         * pageNum : 0
+         * pageSize : 0
+         * sort : 2
+         * poName : 广告位
+         * poDefault : 1
+         * poStarttime : 1542102000000
+         * poStarttimeDT : 0001-01-01 00:00:00
+         * poEndtime : 1542106800000
+         * poEndtimeDT : 0001-01-01 00:00:00
+         * poPostion : top
+         * poDesc : null
+         * status : 0
+         * sysIsEnable : 1
+         * imgsList : [{"imgId":218,"postionId":63,"imgSort":1,"imgPrimary":3,"imgSrc":"http://pic0.gzcfe.net/goodspic/2018/1113/4990092413855180968.jpg","imgUrlMini":"imgUrlMini_3","imgUrlAndroid":"imgUrlAndroid_4","imgUrlIos":"imgUrlIos_5","imgUrlM":"imgUrlM_6","imgUrlpc":null,"imgUrlDefault":"mgUrlDefault_8","urlType":"2","url":"","sysCreateTime":1542106187000}]
+         * sysCreateTime : 1542101078000
          */
 
-        private double price;
-        private String defalutPhotourl;
-        private double marketPrice;
-        private String sysIdString;
-        private String goodsName;
-        private String goodsTitle;
-        private String platgoodsId;
-        private int goodsPropery;
-        private int goodsId;
+        private int spoStarttime;
+        private int spoEndtime;
+        private int poId;
+        private int pageNum;
+        private int pageSize;
+        private int sort;
+        private String poName;
+        private int poDefault;
+        private long poStarttime;
+        private String poStarttimeDT;
+        private long poEndtime;
+        private String poEndtimeDT;
+        private String poPostion;
+        private Object poDesc;
+        private int status;
+        private int sysIsEnable;
+        private long sysCreateTime;
+        private List<ImgsListBean> imgsList;
 
-        public double getPrice() {
-            return price;
+        public int getSpoStarttime() {
+            return spoStarttime;
         }
 
-        public void setPrice(double price) {
-            this.price = price;
+        public void setSpoStarttime(int spoStarttime) {
+            this.spoStarttime = spoStarttime;
         }
 
-        public String getDefalutPhotourl() {
-            return defalutPhotourl;
+        public int getSpoEndtime() {
+            return spoEndtime;
         }
 
-        public void setDefalutPhotourl(String defalutPhotourl) {
-            this.defalutPhotourl = defalutPhotourl;
+        public void setSpoEndtime(int spoEndtime) {
+            this.spoEndtime = spoEndtime;
         }
 
-        public double getMarketPrice() {
-            return marketPrice;
+        public int getPoId() {
+            return poId;
         }
 
-        public void setMarketPrice(double marketPrice) {
-            this.marketPrice = marketPrice;
+        public void setPoId(int poId) {
+            this.poId = poId;
         }
 
-        public String getSysIdString() {
-            return sysIdString;
+        public int getPageNum() {
+            return pageNum;
         }
 
-        public void setSysIdString(String sysIdString) {
-            this.sysIdString = sysIdString;
+        public void setPageNum(int pageNum) {
+            this.pageNum = pageNum;
         }
 
-        public String getGoodsName() {
-            return goodsName;
+        public int getPageSize() {
+            return pageSize;
         }
 
-        public void setGoodsName(String goodsName) {
-            this.goodsName = goodsName;
+        public void setPageSize(int pageSize) {
+            this.pageSize = pageSize;
         }
 
-        public String getGoodsTitle() {
-            return goodsTitle;
+        public int getSort() {
+            return sort;
         }
 
-        public void setGoodsTitle(String goodsTitle) {
-            this.goodsTitle = goodsTitle;
+        public void setSort(int sort) {
+            this.sort = sort;
         }
 
-        public String getPlatgoodsId() {
-            return platgoodsId;
+        public String getPoName() {
+            return poName;
         }
 
-        public void setPlatgoodsId(String platgoodsId) {
-            this.platgoodsId = platgoodsId;
+        public void setPoName(String poName) {
+            this.poName = poName;
         }
 
-        public int getGoodsPropery() {
-            return goodsPropery;
+        public int getPoDefault() {
+            return poDefault;
         }
 
-        public void setGoodsPropery(int goodsPropery) {
-            this.goodsPropery = goodsPropery;
+        public void setPoDefault(int poDefault) {
+            this.poDefault = poDefault;
         }
 
-        public int getGoodsId() {
-            return goodsId;
+        public long getPoStarttime() {
+            return poStarttime;
         }
 
-        public void setGoodsId(int goodsId) {
-            this.goodsId = goodsId;
+        public void setPoStarttime(long poStarttime) {
+            this.poStarttime = poStarttime;
+        }
+
+        public String getPoStarttimeDT() {
+            return poStarttimeDT;
+        }
+
+        public void setPoStarttimeDT(String poStarttimeDT) {
+            this.poStarttimeDT = poStarttimeDT;
+        }
+
+        public long getPoEndtime() {
+            return poEndtime;
+        }
+
+        public void setPoEndtime(long poEndtime) {
+            this.poEndtime = poEndtime;
+        }
+
+        public String getPoEndtimeDT() {
+            return poEndtimeDT;
+        }
+
+        public void setPoEndtimeDT(String poEndtimeDT) {
+            this.poEndtimeDT = poEndtimeDT;
+        }
+
+        public String getPoPostion() {
+            return poPostion;
+        }
+
+        public void setPoPostion(String poPostion) {
+            this.poPostion = poPostion;
+        }
+
+        public Object getPoDesc() {
+            return poDesc;
+        }
+
+        public void setPoDesc(Object poDesc) {
+            this.poDesc = poDesc;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
+
+        public int getSysIsEnable() {
+            return sysIsEnable;
+        }
+
+        public void setSysIsEnable(int sysIsEnable) {
+            this.sysIsEnable = sysIsEnable;
+        }
+
+        public long getSysCreateTime() {
+            return sysCreateTime;
+        }
+
+        public void setSysCreateTime(long sysCreateTime) {
+            this.sysCreateTime = sysCreateTime;
+        }
+
+        public List<ImgsListBean> getImgsList() {
+            return imgsList;
+        }
+
+        public void setImgsList(List<ImgsListBean> imgsList) {
+            this.imgsList = imgsList;
+        }
+
+        public static class ImgsListBean {
+            /**
+             * imgId : 218
+             * postionId : 63
+             * imgSort : 1
+             * imgPrimary : 3
+             * imgSrc : http://pic0.gzcfe.net/goodspic/2018/1113/4990092413855180968.jpg
+             * imgUrlMini : imgUrlMini_3
+             * imgUrlAndroid : imgUrlAndroid_4
+             * imgUrlIos : imgUrlIos_5
+             * imgUrlM : imgUrlM_6
+             * imgUrlpc : null
+             * imgUrlDefault : mgUrlDefault_8
+             * urlType : 2
+             * url :
+             * sysCreateTime : 1542106187000
+             */
+
+            private int imgId;
+            private int postionId;
+            private int imgSort;
+            private int imgPrimary;
+            private String imgSrc;
+            private String imgUrlMini;
+            private String imgUrlAndroid;
+            private String imgUrlIos;
+            private String imgUrlM;
+            private Object imgUrlpc;
+            private String imgUrlDefault;
+            private String urlType;
+            private String url;
+            private long sysCreateTime;
+
+            public int getImgId() {
+                return imgId;
+            }
+
+            public void setImgId(int imgId) {
+                this.imgId = imgId;
+            }
+
+            public int getPostionId() {
+                return postionId;
+            }
+
+            public void setPostionId(int postionId) {
+                this.postionId = postionId;
+            }
+
+            public int getImgSort() {
+                return imgSort;
+            }
+
+            public void setImgSort(int imgSort) {
+                this.imgSort = imgSort;
+            }
+
+            public int getImgPrimary() {
+                return imgPrimary;
+            }
+
+            public void setImgPrimary(int imgPrimary) {
+                this.imgPrimary = imgPrimary;
+            }
+
+            public String getImgSrc() {
+                return imgSrc;
+            }
+
+            public void setImgSrc(String imgSrc) {
+                this.imgSrc = imgSrc;
+            }
+
+            public String getImgUrlMini() {
+                return imgUrlMini;
+            }
+
+            public void setImgUrlMini(String imgUrlMini) {
+                this.imgUrlMini = imgUrlMini;
+            }
+
+            public String getImgUrlAndroid() {
+                return imgUrlAndroid;
+            }
+
+            public void setImgUrlAndroid(String imgUrlAndroid) {
+                this.imgUrlAndroid = imgUrlAndroid;
+            }
+
+            public String getImgUrlIos() {
+                return imgUrlIos;
+            }
+
+            public void setImgUrlIos(String imgUrlIos) {
+                this.imgUrlIos = imgUrlIos;
+            }
+
+            public String getImgUrlM() {
+                return imgUrlM;
+            }
+
+            public void setImgUrlM(String imgUrlM) {
+                this.imgUrlM = imgUrlM;
+            }
+
+            public Object getImgUrlpc() {
+                return imgUrlpc;
+            }
+
+            public void setImgUrlpc(Object imgUrlpc) {
+                this.imgUrlpc = imgUrlpc;
+            }
+
+            public String getImgUrlDefault() {
+                return imgUrlDefault;
+            }
+
+            public void setImgUrlDefault(String imgUrlDefault) {
+                this.imgUrlDefault = imgUrlDefault;
+            }
+
+            public String getUrlType() {
+                return urlType;
+            }
+
+            public void setUrlType(String urlType) {
+                this.urlType = urlType;
+            }
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+
+            public long getSysCreateTime() {
+                return sysCreateTime;
+            }
+
+            public void setSysCreateTime(long sysCreateTime) {
+                this.sysCreateTime = sysCreateTime;
+            }
         }
     }
 }

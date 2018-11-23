@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.shunmai.zryp.bean.Bean;
+import com.shunmai.zryp.bean.GoodsCategoryBean;
 import com.shunmai.zryp.R;
 
 import java.util.ArrayList;
@@ -24,12 +24,12 @@ public class AdapterRight extends RecyclerView.Adapter {
 
     private static final String TAG = AdapterRight.class.getSimpleName();
     private Context mContext;
-    private ArrayList<Bean> mDataList;
+    private ArrayList<GoodsCategoryBean> mDataList;
     private ArrayList<Integer> mTitleIntList;
     private RecyclerView mRecyclerView;
     private boolean mShouldScroll = false;
 
-    public AdapterRight(Context context, ArrayList<Bean> dataList, ArrayList<Integer> titleIntList, RecyclerView recyclerView) {
+    public AdapterRight(Context context, ArrayList<GoodsCategoryBean> dataList, ArrayList<Integer> titleIntList, RecyclerView recyclerView) {
         mContext = context;
         mDataList = dataList;
         mTitleIntList = titleIntList;

@@ -1,5 +1,6 @@
 package com.shunmai.zryp.app;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -7,6 +8,7 @@ import android.content.res.Resources;
 import android.os.Handler;
 import android.support.v7.app.AppCompatDelegate;
 
+import com.facebook.stetho.Stetho;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.LogcatLogStrategy;
@@ -23,16 +25,17 @@ import com.shunmai.zryp.utils.ShareUtils;
 import com.shunmai.zryp.R;
 import com.squareup.leakcanary.LeakCanary;
 
+
+
 /**
  * Created by yushengyang.
  * Date: 2018/8/23.
  */
 
-public class MyApplication extends Application {
+public class MyApplication extends Application{
     private static MyApplication myApplication;
     protected static int mainThreadId;
     protected static Handler handler;
-
     static {
         //启用矢量图兼容
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -41,7 +44,7 @@ public class MyApplication extends Application {
             //全局设置（优先级最低）
             layout.setEnableLoadMore(false);
             layout.setEnableAutoLoadMore(true);
-            layout.setEnableOverScrollDrag(false);
+            layout.setEnableOverScrollDrag(true);
             layout.setEnableOverScrollBounce(true);
             layout.setEnableLoadMoreWhenContentNotFull(true);
             layout.setEnableScrollContentWhenRefreshed(true);
@@ -72,6 +75,10 @@ public class MyApplication extends Application {
         LeakCanary.install(this);
         mainThreadId = android.os.Process.myTid();
         handler = new Handler();
+
+//        DaggerAppCompone
+//        DaggerAppCompatActivity
+//        DaggerappCompon
     }
 
     /**
@@ -97,19 +104,19 @@ public class MyApplication extends Application {
     }
 
     private void initStetho() {
-//        Stetho.initialize(
-//                Stetho.newInitializerBuilder(this)
-//                        .enableDumpapp(
-//                                Stetho.defaultDumperPluginsProvider(this))
-//                        .enableWebKitInspector(
-//                                Stetho.defaultInspectorModulesProvider(this))
-//                        .build());build
+        Stetho.initialize(
+                Stetho.newInitializerBuilder(this)
+                        .enableDumpapp(
+                                Stetho.defaultDumperPluginsProvider(this))
+                        .enableWebKitInspector(
+                                Stetho.defaultInspectorModulesProvider(this))
+                        .build());
         FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
                 .showThreadInfo(false)  // (Optional) Whether to show thread info or not. Default true
                 .methodCount(0)         // (Optional) How many method line to show. Default 2
                 .methodOffset(7)        // (Optional) Hides internal method calls up to offset. Default 5
                 .logStrategy(new LogcatLogStrategy()) // (Optional) Changes the log strategy to print out. Default LogCat
-                .tag("OkHttp")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
+                .tag("okhttp")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
                 .build();
         Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy));
 

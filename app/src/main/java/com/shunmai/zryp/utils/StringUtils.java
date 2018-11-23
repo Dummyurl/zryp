@@ -29,6 +29,9 @@ public class StringUtils {
         return retStrFormatNowDate;
     }
 
+    public static boolean isToday(String time) {
+        return time.split(" ")[0].equals(getFormatNowDate().split(" ")[0]);
+    }
 
     /**
      * 判断字符串是否没有值
@@ -103,5 +106,17 @@ public class StringUtils {
 
     public static String DoubleFormat(double num) {
         return String.format("%.2f", num);
+    }
+
+    public static String DoubleOneFormat(double num) {
+        return String.format("%.1f", num);
+    }
+
+    public static String LargeCountFormat(int count) {
+        if (count > 10000) {
+            return StringUtils.DoubleOneFormat((double) count / 10000) + "万";
+        } else {
+            return count + "";
+        }
     }
 }

@@ -42,10 +42,10 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         databinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         initWindow(this);
+        overridePendingTransition(0, 0);
         initContentFragment();
         initTabView();
         initListener();
-//
         checkVersion();
 
     }

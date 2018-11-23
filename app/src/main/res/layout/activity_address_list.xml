@@ -29,7 +29,7 @@
         app:srlEnablePreviewInEditMode="true">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rc_address"
-        android:background="@color/backgroundColor"
+        android:background="@color/withe"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="never"

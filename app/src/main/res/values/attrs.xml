@@ -32,4 +32,7 @@
         <attr name="ios" format="boolean"/>
         <attr name="leftSwipe" format="boolean"/>
     </declare-styleable>
+    <declare-styleable name="SnapUpCountDownTimerView">
+        <attr name="viewSize" format="integer"/>
+    </declare-styleable>
 </resources>

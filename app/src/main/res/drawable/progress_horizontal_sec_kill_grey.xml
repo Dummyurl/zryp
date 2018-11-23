@@ -1,0 +1,16 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+
+        <shape>
+            <corners android:radius="10dip" />
+            <solid android:color="#F6F6F6" />
+
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+
+        <clip>
+            <bitmap android:src="@mipmap/img_sec_progessbar_grey" />
+        </clip>
+    </item>
+</layer-list>

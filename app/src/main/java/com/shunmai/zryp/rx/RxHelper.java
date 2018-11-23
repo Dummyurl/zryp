@@ -22,7 +22,7 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by xianglanzuo on 2018/1/2.
+ * Created by ysy on 2018/1/2.
  */
 
 public class RxHelper {
@@ -39,7 +39,7 @@ public class RxHelper {
                                                     final Consumer<Throwable> onError) {
         Disposable disposable = observable
                 .flatMap(t -> {
-                    if (t.getCode()==200||t.getCode()==0||t.getCode()==201) {
+                    if (t.getCode()==200||t.getCode()==0||t.getCode()==202||t.getCode()==201||t.getCode()==402||t.getCode()==404||t.getCode()==401) {
                         return Observable.just(t);
                     } else {
                         TaskException taskException = new TaskException(t.getCode(), t.getMsg());

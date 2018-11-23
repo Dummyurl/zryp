@@ -6,12 +6,21 @@ import java.util.List;
  * Created by zyf on 2017/5/8.
  */
 
-public class Bean {
+public class GoodsCategoryBean {
 
     private String title;
     private List<GoodsBean> goods;
+    private String tag;
 //    private List<good> goodsImgs;
-    public Bean() {
+    public GoodsCategoryBean() {
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     public String getTitle() {
@@ -32,7 +41,7 @@ public class Bean {
 
     @Override
     public String toString() {
-        return "Bean{" +
+        return "GoodsCategoryBean{" +
                 "title='" + title + '\'' +
                 ", text='" + goods + '\'' +
                 '}';

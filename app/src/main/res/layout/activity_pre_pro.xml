@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="title"
+            type="com.shunmai.zryp.bean.TitleBean" />
+
+        <variable
+            name="handler"
+            type="com.shunmai.zryp.eventhandler.goods.GoodsPromotionHandler" />
+
+        <variable
+            name="bean"
+            type="com.shunmai.zryp.bean.goods.GoodsPromotionBean" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/withe"
+        android:orientation="vertical"
+        tools:context=".ui.goods.GoodsPromotionActivity">
+
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:onBack="@{true}"
+            app:centerText="智融优选"
+            titlebar:centerType="textView"
+            titlebar:fillStatusBar="false"
+            titlebar:leftDrawable="@color/withe"
+            titlebar:leftType="imageButton"
+            titlebar:showBottomLine="false" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#C5012D">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.shunmai.zryp.view.AutoSizeImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:displayImgEmpty="@{bean.getBannerImgUrl()}" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="16dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/bac_prepro" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="智融优选"
+                        android:textColor="@color/withe"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_promotion"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="7dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

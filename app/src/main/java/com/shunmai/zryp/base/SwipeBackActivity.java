@@ -199,4 +199,5 @@ public abstract class SwipeBackActivity<SV extends ViewDataBinding> extends Base
 
     }
 
+
 }

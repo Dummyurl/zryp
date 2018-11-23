@@ -57,9 +57,6 @@ public class SkuDialog {
         customDialog.init();
     }
 
-    public CustomDialog getCustomDialog() {
-        return customDialog;
-    }
 
     public void show() {
         customDialog.show();
@@ -73,6 +70,7 @@ public class SkuDialog {
         private List<String> skuItems = new ArrayList<>();
         private LayoutDialogSkuBinding databing;
         private StringBuffer skuDescription;
+        String[] defaultSku;
         //购买数量
         private int count = 1;
 
@@ -82,13 +80,14 @@ public class SkuDialog {
 
         private void setSkus(GoodsDetailBean.DataBean Skus) {
             DialogGoodsBean = Skus;
+            defaultSku = DialogGoodsBean.getSku().getSeekGoodsSkuVOS().get(0).getNormIds().split("-");
         }
 
         private void init() {
             databing = DataBindingUtil.inflate(((Activity) context).getLayoutInflater(), R.layout.layout_dialog_sku, null, false);
             setContentView(databing.getRoot());
             setCancelable(true);
-            setCanceledOnTouchOutside(true);
+            setCanceledOnTouchOutside(false);
             getWindow().setGravity(Gravity.BOTTOM);
             getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
             container = databing.container;
@@ -112,8 +111,10 @@ public class SkuDialog {
                     layoutParams.setMargins(0, DevicesUtils.dip2px(context, 10), DevicesUtils.dip2px(context, 10), 0);
                     rb.setLayoutParams(layoutParams);
                     rg_sku.addView(rb);
-                    if (j == 0) {
-                        rb.setChecked(true);
+                    for (int k = 0; k < defaultSku.length; k++) {
+                        if (DialogGoodsBean.getSku().getSeekGoodsItemVOS().get(i).getNorms().get(j).getSysIdString().equals(defaultSku[k])) {
+                            rb.setChecked(true);
+                        }
                     }
                     rg_sku.setOnCheckedChangeListener((group, checkedId) -> {
                         databing.setBean(getSkuVos());
@@ -138,8 +139,10 @@ public class SkuDialog {
                         }
                     }
                 }
-                skuDescription.append(skuItems.get(i) + ":" + ((RadioButton) radioGroups.get(i).findViewById(radioGroups.get(i).getCheckedRadioButtonId())).getText().toString().trim() + ",");
-                buffer.append("\"" + ((RadioButton) radioGroups.get(i).findViewById(radioGroups.get(i).getCheckedRadioButtonId())).getText().toString().trim() + "\"");
+                if (radioGroups.get(i).findViewById(radioGroups.get(i).getCheckedRadioButtonId()) != null) {
+                    skuDescription.append(skuItems.get(i) + ":" + ((RadioButton) radioGroups.get(i).findViewById(radioGroups.get(i).getCheckedRadioButtonId())).getText().toString().trim() + ",");
+                    buffer.append("\"" + ((RadioButton) radioGroups.get(i).findViewById(radioGroups.get(i).getCheckedRadioButtonId())).getText().toString().trim() + "\"");
+                }
             }
             databing.tvSkuType.setText("已选：" + buffer.toString());
             for (GoodsDetailBean.DataBean.SkuBean.SeekGoodsSkuVOSBean bean : DialogGoodsBean.getSku().getSeekGoodsSkuVOS()) {

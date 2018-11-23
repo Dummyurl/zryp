@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.home.child.VipGuideFragment">
+
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            titlebar:centerText="VIP导购专区"
+            titlebar:centerType="textView"
+            titlebar:fillStatusBar="false"
+            titlebar:showBottomLine="false" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="270dp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="194dp"
+                        android:background="@mipmap/bac_vip_guide" />
+
+                    <com.shunmai.zryp.view.CircleImageView
+                        android:id="@+id/iv_user_icon"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/iv_user_icon"
+                        android:layout_marginEnd="13dp"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/shape_vip_guide_bac"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="UserName"
+                            android:textColor="@color/withe"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="10dp"
+                            android:background="@mipmap/icon_type_bac_white"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="Lv潜力用户"
+                            android:textColor="@color/withe"
+                            android:textSize="8dp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="15dp"
+                            android:background="@color/withe" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="end"
+                            android:text="总积分:"
+                            android:textColor="@color/withe"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="end"
+                            android:text="1000"
+                            android:textColor="#CE9F60"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="start"
+                            android:text="分"
+                            android:textColor="@color/withe"
+                            android:textSize="14dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="142dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="13dp"
+                        android:layout_marginStart="13dp"
+                        android:background="@mipmap/bac_vip_guide_card"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll_level_up"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="13dp"
+                            android:layout_marginStart="13dp"
+                            android:layout_marginTop="18dp"
+                            android:clipChildren="false"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:visibility="visible">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:layout_marginTop="30dp"
+
+                                android:drawablePadding="4dp"
+                                android:drawableStart="@mipmap/icon_lv"
+                                android:gravity="bottom"
+                                android:text="潜力用户"
+                                android:textColor="@color/fontBlack"
+                                android:textSize="12dp" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="6dp"
+                                android:layout_weight="1"
+                                android:clipChildren="false"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="30dp"
+                                    android:orientation="horizontal">
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="1dp"
+                                        android:layout_weight="55" />
+
+                                    <TextView
+                                        android:layout_width="40dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="-20dp"
+                                        android:layout_marginStart="-20dp"
+                                        android:background="@mipmap/icon_prop_bottom"
+                                        android:gravity="center"
+                                        android:paddingBottom="3dp"
+                                        android:paddingTop="8dp"
+                                        android:textColor="@color/withe"
+                                        android:textSize="12dp" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="1dp"
+                                        android:layout_weight="45" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center">
+
+                                    <ProgressBar
+                                        android:id="@+id/pb_flash_sale"
+                                        style="?android:attr/progressBarStyleHorizontal"
+                                        android:layout_width="0dp"
+                                        android:layout_height="10dp"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:max="100"
+                                        android:progress='55'
+                                        android:progressDrawable="@drawable/progress_horizontal_mine" />
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:layout_marginLeft="6dp"
+                                android:layout_marginTop="30dp"
+                                android:drawablePadding="4dp"
+                                android:drawableStart="@mipmap/icon_lv"
+                                android:gravity="bottom"
+                                android:text="VIP导购"
+                                android:textColor="@color/fontBlack"
+                                android:textSize="11dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginEnd="13dp"
+                            android:layout_marginStart="13dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_weight="5"
+                            android:background="@drawable/shape_circular_vip_guide_grey"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:drawablePadding="6dp"
+                                android:drawableRight="@mipmap/icon_double_arrow_white"
+                                android:gravity="center"
+                                android:text="快速升级VIP导购"
+                                android:textColor="@color/withe"
+                                android:textSize="16dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/shape_shadow"
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="42dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="我的收入"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorLineItem" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="115dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/withe"
+                        android:orientation="horizontal"
+                        android:paddingBottom="15dp"
+                        android:paddingTop="5dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text='535.25'
+                                android:textColor="@color/black"
+                                android:textSize="22dp" />
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:text="今日收入"
+                                android:textColor="@color/fontNormal"
+                                android:textSize="13dp" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            android:background="#ffe8e8e8" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text='846.67'
+                                android:textColor="@color/black"
+                                android:textSize="22dp" />
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:text="本月收入"
+                                android:textColor="@color/fontNormal"
+                                android:textSize="13dp" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            android:background="#ffe8e8e8" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text='1298.85'
+                                android:textColor="@color/black"
+                                android:textSize="22dp" />
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:text="累计收入"
+                                android:textColor="@color/fontNormal"
+                                android:textSize="13dp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/shape_shadow"
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:gravity="center"
+                            android:text="可提现金额"
+                            android:textColor="@color/fontGrey"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center"
+                            android:text="￥"
+                            android:textColor="@color/fontBlack"
+                            android:textSize="22dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="2dp"
+                            android:gravity="center"
+                            android:text="4535.25"
+                            android:textColor="@color/fontBlack"
+                            android:textSize="22dp" />
+                    </LinearLayout>
+
+                    <com.shunmai.zryp.view.DashLine
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="15dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginStart="35dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_circle_stroke_grey"
+                            android:gravity="center"
+                            android:paddingBottom="7dp"
+                            android:paddingTop="7dp"
+                            android:text="提现记录"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="35dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_circle_solid_gold"
+                            android:gravity="center"
+                            android:paddingBottom="7dp"
+                            android:paddingTop="7dp"
+                            android:text="提现"
+                            android:textColor="@color/withe"
+                            android:textSize="16dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="13dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="10dp"
+                    android:padding="2dp"
+                    android:background="@drawable/shape_shadow_soild_grey"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="14dp"
+                        android:paddingStart="14dp"
+                        android:paddingTop="14dp"
+                        android:text="核心数据"
+                        android:textColor="@color/fontBlack"
+                        android:textSize="18dp"
+                        android:background="@color/withe"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="1dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/withe"
+                            android:orientation="vertical"
+                            >
+                            <TextView
+                                android:layout_marginTop="19dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20dp"
+                                android:gravity="center"
+                                android:textColor="@color/fontBlack"
+                                android:text="123"
+                                android:textStyle="bold"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_marginTop="14dp"
+                                android:layout_marginBottom="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="@color/fontGrey"
+                                android:text="我的推荐人"
+                                />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="1dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/withe"
+                            android:orientation="vertical"
+                            >
+                            <TextView
+                                android:layout_marginTop="19dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20dp"
+                                android:gravity="center"
+                                android:textColor="@color/fontBlack"
+                                android:text="123"
+                                android:textStyle="bold"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_marginTop="14dp"
+                                android:layout_marginBottom="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="@color/fontGrey"
+                                android:text="直接推荐人"
+                                />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="1dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/withe"
+                            android:orientation="vertical"
+                            >
+                            <TextView
+                                android:layout_marginTop="19dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20dp"
+                                android:gravity="center"
+                                android:textColor="@color/fontBlack"
+                                android:text="123"
+                                android:textStyle="bold"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_marginTop="14dp"
+                                android:layout_marginBottom="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="@color/fontGrey"
+                                android:text="团队VIP总人数"
+                                />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="1dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/withe"
+                            android:orientation="vertical"
+                            >
+                            <TextView
+                                android:layout_marginTop="19dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20dp"
+                                android:gravity="center"
+                                android:textColor="@color/fontBlack"
+                                android:text="123"
+                                android:textStyle="bold"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_marginTop="14dp"
+                                android:layout_marginBottom="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="@color/fontGrey"
+                                android:text="今日新增VIP"
+                                />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="1dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/withe"
+                            android:orientation="vertical"
+                            >
+                            <TextView
+                                android:layout_marginTop="19dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20dp"
+                                android:gravity="center"
+                                android:textColor="@color/fontBlack"
+                                android:text="123"
+                                android:textStyle="bold"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_marginTop="14dp"
+                                android:layout_marginBottom="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="@color/fontGrey"
+                                android:text="本月新增VIP"
+                                />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="1dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/withe"
+                            android:orientation="vertical"
+                            >
+                            <TextView
+                                android:layout_marginTop="19dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20dp"
+                                android:gravity="center"
+                                android:textColor="@color/fontBlack"
+                                android:text="123"
+                                android:textStyle="bold"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_marginTop="14dp"
+                                android:layout_marginBottom="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="@color/fontGrey"
+                                android:text="团队总人数"
+                                />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="1dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/withe"
+                            android:orientation="vertical"
+                            >
+                            <TextView
+                                android:layout_marginTop="19dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20dp"
+                                android:gravity="center"
+                                android:textColor="@color/fontBlack"
+                                android:text="123"
+                                android:textStyle="bold"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_marginTop="14dp"
+                                android:layout_marginBottom="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="@color/fontGrey"
+                                android:text="直接总监"
+                                />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="1dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/withe"
+                            android:orientation="vertical"
+                            >
+                            <TextView
+                                android:layout_marginTop="19dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20dp"
+                                android:gravity="center"
+                                android:textColor="@color/fontBlack"
+                                android:text="123"
+                                android:textStyle="bold"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_marginTop="14dp"
+                                android:layout_marginBottom="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="@color/fontGrey"
+                                android:text="团队总监"
+                                />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="1dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/withe"
+                            android:orientation="vertical"
+                            >
+                            <TextView
+                                android:layout_marginTop="19dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20dp"
+                                android:gravity="center"
+                                android:textColor="@color/fontBlack"
+                                android:text="123"
+                                android:textStyle="bold"/>
+                            <TextView
+                                android:gravity="center"
+                                android:layout_marginTop="14dp"
+                                android:layout_marginBottom="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="@color/fontGrey"
+                                android:text="本月新增总监"
+                                />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="13dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_shadow"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="14dp"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="14dp"
+                        android:text="会员权益"
+                        android:textColor="@color/fontBlack"
+                        android:textSize="18dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@drawable/shape_line" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@mipmap/icon_vip_guide_01" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="购物省钱"
+                                android:textColor="@color/fontBlack"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="bottom"
+                                android:text="邀请好友成为VIP导购，得创业礼包分红"
+                                android:textColor="@color/fontGrey"
+                                android:textSize="16dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="34dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@mipmap/icon_vip_guide_02" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="分享赚钱"
+                                android:textColor="@color/fontBlack"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="bottom"
+                                android:text="被邀请人购买课程，你直接分课费分成"
+                                android:textColor="@color/fontGrey"
+                                android:textSize="16dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="31dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="34dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@mipmap/icon_vip_guide_03" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="邀请有奖"
+                                android:textColor="@color/fontBlack"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="bottom"
+                                android:text="自买课程可以返还佣金，买的多返的多"
+                                android:textColor="@color/fontGrey"
+                                android:textSize="16dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <TextView
+                    style="@style/mimecenterbt"
+                    android:layout_marginEnd="13dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_shadow"
+                    android:drawableLeft="@mipmap/icon_wechat_vip_guide"
+                    android:drawablePadding="9dp"
+                    android:paddingBottom="15dp"
+                    android:paddingStart="15dp"
+                    android:paddingTop="15dp"
+                    android:text="专属客服微信：swlikely"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

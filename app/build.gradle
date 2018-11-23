@@ -78,7 +78,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
     implementation 'com.github.bumptech.glide:annotations:4.7.1'
     //titleBar
-    //    implementation 'com.wuhenzhizao:titlebar:1.1.3'
     implementation 'com.wuhenzhizao:titlebar:1.1.3'
     //添加头部recycleView
     implementation 'com.kevin:wraprecyclerview:1.0.7'
@@ -101,10 +100,21 @@ dependencies {
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
     //分块加载Imageview
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
-    implementation 'com.google.dagger:dagger:2.17'
+    //dagger2
+    implementation 'com.google.dagger:dagger:2.11'
+    implementation 'com.google.dagger:dagger-android:2.11'
+    implementation 'com.google.dagger:dagger-android-support:2.11'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.11'
+//    implementation deps.dagger.dagger
+//    implementation deps.dagger.android
+//    implementation deps.dagger.android_support
+//    annotationProcessor deps.dagger.android_processor
+//    annotationProcessor deps.dagger.compiler
     //Rxpermission
     implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
-
     implementation project(':appupdate')
     implementation project(':LoadingDialog')
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
 }

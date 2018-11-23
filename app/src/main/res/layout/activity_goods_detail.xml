@@ -90,7 +90,7 @@
                         android:id="@+id/tv_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text='@{""+detailBean.getData().getGoods().getPrice()}'
+                        android:text='@{detailBean.getData().getGoods().getPriceSection()}'
                         android:textColor="@color/fontRed"
                         android:textSize="24sp" />
 
@@ -99,7 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="12dp"
-                        android:text='@{""+detailBean.getData().getGoods().getMarketPrice()}'
+                        android:text='@{detailBean.getData().getGoods().getMallPriceSection()}'
                         android:textColor="@color/fontNormal"
                         android:textSize="14sp" />
 
@@ -157,21 +157,22 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_width="match_parent"
-                    android:setVisibility="@{detailBean.getData().getGoods().getDescription()}"
+                    android:setVisibility="@{detailBean.getData().getGoods().getMiniDetails()}"
                     android:layout_height="1.5dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_marginBottom="21dp"
+                    android:layout_marginBottom="11dp"
                     android:layout_marginTop="10dp"
-                    android:setVisibility="@{detailBean.getData().getGoods().getDescription()}"
-                    android:text="@{detailBean.getData().getGoods().getDescription()}"
+                    android:setVisibility="@{detailBean.getData().getGoods().getMiniDetails()}"
+                    android:text="@{detailBean.getData().getGoods().getMiniDetails()}"
                     android:textColor="@color/fontNormal" />
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
+                    android:layout_marginTop="10dp"
                     android:background="@color/backgroundColor"
                      />
                 <LinearLayout

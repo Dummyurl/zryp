@@ -11,9 +11,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.shunmai.zryp.bean.Bean;
 import com.shunmai.zryp.bean.userinfo.FootprintBean;
-import com.shunmai.zryp.ui.userinfo.account.FootPrintActivity;
 import com.shunmai.zryp.R;
 
 import java.util.ArrayList;

@@ -11,7 +11,6 @@ import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.bean.UserInfoBean;
 import com.shunmai.zryp.bean.userinfo.Response_WechatUserInfo;
 import com.shunmai.zryp.databinding.ActivityLoginBinding;
-import com.shunmai.zryp.exception.TaskException;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.ui.userinfo.account.UserHandleActivity;
 import com.shunmai.zryp.utils.ShareUtils;
@@ -20,10 +19,6 @@ import com.shunmai.zryp.utils.wechatutils.WechatLoginHelper;
 import com.shunmai.zryp.viewmodel.LoginViewModel;
 
 import java.util.HashMap;
-
-import javax.inject.Inject;
-
-import dagger.Component;
 
 /**
  * Created by yushengyang.
@@ -85,9 +80,13 @@ public class LoginHandler extends BaseEventHandler {
         viewModel.Login(map, new onResponseListener<TResponse<UserInfoBean>>() {
             @Override
             public void onSuccess(TResponse<UserInfoBean> bean) {
-                ShareUtils.putUserInfo(bean.getData());
-                ToastUtils.showToast("登录成功");
-                ((Activity) mContext).onBackPressed();
+                if (bean.getCode() == 200) {
+                    ShareUtils.putUserInfo(bean.getData());
+                    ToastUtils.showToast("登录成功");
+                    ((Activity) mContext).onBackPressed();
+                }else{
+                    ToastUtils.showToast(bean.getMsg());
+                }
             }
 
             @Override
@@ -121,29 +120,30 @@ public class LoginHandler extends BaseEventHandler {
                         Intent intent = new Intent(mContext, UserHandleActivity.class);
                         intent.putExtra("type", 2);
                         intent.putExtra("logonAccount", bean.getData().getLogonAccount());
-                        intent.putExtra("userId",bean.getData().getUserId()+"");
+                        intent.putExtra("userId", bean.getData().getUserId());
                         mContext.startActivity(intent);
                     } else if (bean.getCode() == 200) {
                         ShareUtils.putUserInfo(bean.getData());
                         ToastUtils.showToast("登录成功！");
+                    } else if (bean.getCode() == 401 || bean.getCode() == 404) {
+                        Intent intent = new Intent(mContext, UserHandleActivity.class);
+                        intent.putExtra("type", 3);
+                        intent.putExtra("data", new Gson().toJson(data));
+                        if (bean.getData() != null) {
+                            intent.putExtra("userId", bean.getData().getUserId());
+                        } else {
+                            intent.putExtra("userId", 0);
+                        }
+                        mContext.startActivity(intent);
+                        ((Activity) mContext).finish();
                     }
+
                     ((Activity) mContext).finish();
                 }
 
                 @Override
                 public void onFailed(Throwable throwable) {
-                    if (throwable != null && throwable instanceof TaskException) {
-                        if (((TaskException) throwable).getErrorCode() == 401) {
-                            ToastUtils.showToast("请先绑定手机号！");
-                            Intent intent = new Intent(mContext, UserHandleActivity.class);
-                            intent.putExtra("type", 3);
-                            intent.putExtra("data", new Gson().toJson(data));
-                            mContext.startActivity(intent);
-                            ((Activity) mContext).finish();
-                        } else {
-                            ToastUtils.showToast(throwable.getMessage());
-                        }
-                    }
+
                 }
             });
         }

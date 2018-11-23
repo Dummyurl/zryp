@@ -39,14 +39,18 @@ public class GoodsBean extends BaseObservable {
      * miniDetails : null
      * seekGoodsImgsVOS : null
      */
+    private String priceSection;
+    private String mallPriceSection;
     private int goodsId;
     private double price;
     private int channelId;
     private String defalutPhotourl;
+    private String defalutPhotoURL;
     private double marketPrice;
     private long sysIdString;
     private String goodsName;
     private String goodsTitle;
+    private String miniDetails;
     private String platgoodsId;
     private int goodsPropery;
     private double mscore;
@@ -194,6 +198,37 @@ public class GoodsBean extends BaseObservable {
             this.photoUrl = photoUrl;
         }
 
+    }
 
+    public String getDefalutPhotoURL() {
+        return defalutPhotoURL;
+    }
+
+    public void setDefalutPhotoURL(String defalutPhotoURL) {
+        this.defalutPhotoURL = defalutPhotoURL;
+    }
+
+    public String getPriceSection() {
+        return priceSection;
+    }
+
+    public void setPriceSection(String priceSection) {
+        this.priceSection = priceSection;
+    }
+
+    public String getMallPriceSection() {
+        return mallPriceSection;
+    }
+
+    public void setMallPriceSection(String mallPriceSection) {
+        this.mallPriceSection = mallPriceSection;
+    }
+
+    public String getMiniDetails() {
+        return miniDetails;
+    }
+
+    public void setMiniDetails(String miniDetails) {
+        this.miniDetails = miniDetails;
     }
 }

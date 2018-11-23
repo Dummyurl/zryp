@@ -9,48 +9,28 @@
         android:background="@drawable/shape_shadow"
         android:orientation="vertical">
 
-        <ImageView
-            android:padding="3dp"
+        <com.shunmai.zryp.view.RoundAngleImageView
             android:id="@+id/iv_goods"
-            android:layout_width="175dp"
+            android:layout_width="match_parent"
             android:layout_height="190dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
             android:layout_gravity="center"
-            android:layout_marginTop="9dp"
+            android:background="@drawable/shape_shadow_img"
             android:scaleType="centerCrop"
             android:src="@mipmap/img_placeholder_loading_1"
             />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="2dp"
-            android:background="#ffdddddd" />
 
-        <TextView
-            android:id="@+id/tv_self_support"
-            android:layout_margin="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="11sp"
-            android:gravity="center"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"
-            android:textColor="#EE2215"
-            android:background="@mipmap/background_font_red"
-            android:text="自营"
-            />
+
         <TextView
             android:id="@+id/tv_goods_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:maxLines="2"
+            android:lineSpacingMultiplier="1.3"
+            android:layout_marginTop="11dp"
             android:ellipsize="end"
             android:layout_marginRight="8dp"
             android:textColor="#ff666666"
@@ -63,7 +43,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="¥14.2"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="14dp"
+
+            android:layout_marginBottom="12dp"
             android:textColor="#E30D0D"
             android:textSize="18sp" />
     </LinearLayout>

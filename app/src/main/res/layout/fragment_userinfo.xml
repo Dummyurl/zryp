@@ -381,7 +381,6 @@
 
                                 <TextView
                                     android:layout_width="wrap_content"
-
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="top"
                                     android:layout_marginTop="5dp"
@@ -724,13 +723,13 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:drawablePadding="-8dp"
+                                android:drawablePadding="-6dp"
                                 android:drawableTop="@mipmap/icon_order_1"
                                 android:gravity="center"
                                 android:onClick="@{view->handler.toOerderAcitvity(view,1)}"
                                 android:text="待付款"
                                 android:textColor="@color/fontNormal"
-                                android:textSize="14dp" />
+                                android:textSize="12dp" />
 
 
                             <TextView
@@ -738,11 +737,12 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:drawablePadding="-8dp"
+                                android:drawablePadding="-6dp"
                                 android:drawableTop="@mipmap/icon_order_2"
                                 android:gravity="center"
                                 android:onClick="@{view->handler.toOerderAcitvity(view,2)}"
                                 android:text="待发货"
+                                android:textSize="12dp"
                                 android:textColor="@color/fontNormal" />
 
                             <TextView
@@ -750,11 +750,12 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:drawablePadding="-8dp"
+                                android:drawablePadding="-6dp"
                                 android:drawableTop="@mipmap/icon_order_3"
                                 android:gravity="center"
                                 android:onClick="@{view->handler.toOerderAcitvity(view,3)}"
                                 android:text="已发货"
+                                android:textSize="12dp"
                                 android:textColor="@color/fontNormal" />
 
                             <TextView
@@ -762,11 +763,12 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:drawablePadding="-8dp"
+                                android:drawablePadding="-6dp"
                                 android:drawableTop="@mipmap/icon_order_4"
                                 android:gravity="center"
                                 android:onClick="@{view->handler.toOerderAcitvity(view,4)}"
                                 android:text="已完成"
+                                android:textSize="12dp"
                                 android:textColor="@color/fontNormal" />
                         </LinearLayout>
 

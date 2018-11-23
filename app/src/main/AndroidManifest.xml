@@ -23,7 +23,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.open.WelcomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.WelcomeStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,7 +33,7 @@
         <activity
             android:name=".ui.home.HomeActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.Base" />
         <activity
             android:name=".ui.goods.GoodsDetailActivity"
             android:hardwareAccelerated="true"
@@ -105,8 +105,14 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".ui.userinfo.account.CollectActivity" />
-        <activity android:name=".GoodsPromotionActivity"></activity>
+        <activity
+            android:name=".ui.userinfo.account.CollectActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".ui.goods.GoodsPromotionActivity" />
+        <activity android:name=".ui.goods.GoodsSecKillActivity" />
+        <activity android:name=".ui.goods.PreProActivity" />
+        <activity android:name=".ui.goods.VipGoodsActivity" />
+        <activity android:name=".ui.goods.GoodsPaySuccessActivity"></activity>
     </application>
 
 </manifest>

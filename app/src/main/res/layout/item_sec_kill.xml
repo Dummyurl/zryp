@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:padding="3dp"
+        android:background="@drawable/shape_shadow"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_goods"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="3dp"
+            android:padding="3dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="3dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="9dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_goods_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="SHISEIDO资生堂 洗颜专科 洁净保湿泡沫面膜 150ml"
+                android:textColor="@color/fontBlack"
+                android:textSize="14dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="￥"
+                    android:textColor="@color/fontRed"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_goods_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:text="69.00"
+                    android:textColor="@color/fontRed"
+                    android:textSize="18dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="37dp"
+                    android:layout_gravity="bottom"
+                    android:id="@+id/ll_bac"
+                    android:background="@mipmap/btn_sec_kill_red"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_buy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="3dp"
+                        android:drawableEnd="@mipmap/icon_sec_kill_arrow"
+                        android:drawablePadding="-3dp"
+                        android:gravity="center"
+                        android:text="马上抢"
+                        android:textColor="@color/withe"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_goods_market_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="￥129"
+                    android:textColor="@color/fontGrey"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已售"
+                    android:textColor="@color/fontGrey"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_per"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="56"
+                    android:textColor="@color/fontGrey"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="%"
+                    android:textColor="@color/fontGrey"
+                    android:textSize="12dp" />
+
+                <ProgressBar
+                    android:id="@+id/pb_sec_kill"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="68dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="7dp"
+                    android:max="100"
+                    android:progress="56"
+                    android:progressDrawable="@drawable/progress_horizontal_sec_kill" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

@@ -206,7 +206,9 @@ public class GlideCacheUtil {
     public static void LoadImage(Context context, ImageView imageView, String url) {
         Glide.with(context).load(url).apply(new RequestOptions().placeholder(R.mipmap.img_placeholder_loading_1).error(R.mipmap.img_placeholder_loading_1).skipMemoryCache(false).diskCacheStrategy(DiskCacheStrategy.ALL)).into(imageView);
     }
-
+    public static void LoadImageWithEmpty(Context context, ImageView imageView, String url) {
+        Glide.with(context).load(url).apply(new RequestOptions().skipMemoryCache(false).diskCacheStrategy(DiskCacheStrategy.ALL)).into(imageView);
+    }
     /**
      * @param context
      * @param imageView

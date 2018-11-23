@@ -18,7 +18,10 @@ import com.shunmai.zryp.bean.UserInfoBean;
 import com.shunmai.zryp.databinding.FragmentUserinfoBinding;
 import com.shunmai.zryp.eventhandler.home.UserInfoHandler;
 import com.shunmai.zryp.listener.onResponseListener;
+import com.shunmai.zryp.utils.Dev;
+import com.shunmai.zryp.utils.DevicesUtils;
 import com.shunmai.zryp.utils.ShareUtils;
+import com.shunmai.zryp.utils.Utils;
 import com.shunmai.zryp.viewmodel.UserInfoFragmentViewModel;
 
 /**
@@ -92,10 +95,10 @@ public class UserInfoFragment extends BaseFragment<FragmentUserinfoBinding> impl
 
     private void shrinkBac(double size) {
         ViewGroup.LayoutParams layoutParams = bindingView.rlBackground.getLayoutParams();
-        layoutParams.height = (int) (dp2px(getActivity(), 300) * size);
+        layoutParams.height = (int) (Dev.dp2px(getActivity(), 300) * size);
         bindingView.rlBackground.setLayoutParams(layoutParams);
         ViewGroup.LayoutParams v_layout = bindingView.vBac.getLayoutParams();
-        v_layout.height = (int) (dp2px(getActivity(), 240) * size);
+        v_layout.height = (int) (Dev.dp2px(getActivity(), 240) * size);
         bindingView.vBac.setLayoutParams(v_layout);
     }
 
@@ -103,14 +106,5 @@ public class UserInfoFragment extends BaseFragment<FragmentUserinfoBinding> impl
     public void onRefresh(@NonNull RefreshLayout refreshLayout) {
         loadData();
     }
-
-    /**
-     * dp转换成px
-     */
-    private int dp2px(Context context, float dpValue) {
-        float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
-
 
 }

@@ -21,7 +21,7 @@ public class UserHandleRepository extends BaseRepository<Object> {
     public void bindPhone(HashMap<String,Object> map,String code,onResponseListener<TResponse<UserInfoBean>> listener){
         sendRequest(RetrofitClient.getInstance().getService(HttpService.class).bindPhone(map, code), wechatLoginBean -> listener.onSuccess(wechatLoginBean), throwable -> listener.onFailed(throwable));
     }
-    public void setPassword(HashMap<String,String> map,onResponseListener<TResponse<UserInfoBean>> listener){
+    public void setPassword(HashMap<String,Object> map,onResponseListener<TResponse<UserInfoBean>> listener){
         sendRequest(RetrofitClient.getInstance().getService(HttpService.class).SetNewPassword(map), setPasswordBean -> listener.onSuccess(setPasswordBean), throwable -> listener.onFailed(throwable));
     }
     public void register(HashMap<String,String> map,String code,onResponseListener<TResponse<UserInfoBean>> listener){

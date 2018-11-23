@@ -1,6 +1,6 @@
 package com.shunmai.zryp.network;
 
-import android.util.Log;
+
 
 
 import com.shunmai.zryp.AppConfig;
@@ -13,27 +13,32 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by xianglanzuo on 2018/1/2.
+ * Created by ysy on 2018/9/2.
  */
 
 public final class RetrofitClient {
 
     private static final String BASE_URL;
 
+    public static final String MiNi_Program_URL;
     static {
         switch (AppConfig.ONLINE_SERVER) {
             case AppConfig.OTHER: {
                 BASE_URL = "http://192.168.1.50:8080/boss-web/";
+                MiNi_Program_URL=AppConfig.miniProAddress;
                 break;
             }
             case AppConfig.DEBUG:
                 BASE_URL = "http://47.94.145.183:8780/";
+                MiNi_Program_URL=AppConfig.miniProTestAddress;
                 break;
             case AppConfig.RELEASE:
-                BASE_URL = "https://api.gzcfe.net/";
+                BASE_URL = "https://api.gzcfe.net/app/";
+                MiNi_Program_URL=AppConfig.miniProAddress;
                 break;
             default:
-                BASE_URL = "https://www.baidu.com/";
+                BASE_URL = "https://api.gzcfe.net/app/";
+                MiNi_Program_URL=AppConfig.miniProAddress;
                 break;
         }
     }

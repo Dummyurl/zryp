@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.goods.VipGoodsActivity">
+
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:onBack="@{true}"
+            titlebar:centerType="textView"
+            titlebar:fillStatusBar="false"
+            titlebar:leftDrawable="@color/withe"
+            titlebar:leftType="imageButton"
+            titlebar:showBottomLine="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="520dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/bac_vip_goods" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="51dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginEnd="13dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawablePadding="3dp"
+                    android:drawableStart="@mipmap/icon_vip_goods_logo"
+                    android:text="智融优品"
+                    android:textColor="@color/fontBlack"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:text="消费即共建 分享即共有"
+                    android:textColor="@color/fontGrey"
+                    android:textSize="10dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="11dp"
+                    android:src="@mipmap/icon_vip_equity" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:text="VIP可享有以下会员权益"
+                    android:textColor="@color/fontNormal"
+                    android:textSize="14dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="17dp"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="23dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@mipmap/icon_vip_introduce_1"
+                        android:gravity="center"
+                        android:text="购物省钱" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@mipmap/icon_vip_introduce_2"
+                        android:gravity="center"
+                        android:text="分享赚钱" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@mipmap/icon_vip_introduce_3"
+                        android:gravity="center"
+                        android:text="邀请有奖" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@mipmap/icon_vip_introduce_4"
+                        android:gravity="center"
+                        android:text="更多权益" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="32dp"
+                    android:background="@mipmap/bac_vip_story"
+                    android:gravity="center"
+                    android:text="品牌故事"
+                    android:textColor="@color/fontBlack"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="41dp"
+                    android:layout_marginStart="41dp"
+                    android:layout_marginTop="18dp"
+                    android:text="智融优品是全球社交电商大众首选创业平台，由腾讯战略投资，百万精选商品，遍布全球的尖货买手，一首货源，正品保障,商品佣金10%-30%,真正做到自买自省钱，推广赚钱。" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="56dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/bac_vip_goods_detail" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="礼包详情"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/fontBlack" />
+                </RelativeLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

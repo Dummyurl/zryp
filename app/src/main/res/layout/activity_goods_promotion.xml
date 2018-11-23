@@ -1,9 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".GoodsPromotionActivity">
+<layout>
 
-</android.support.constraint.ConstraintLayout>
+    <data>
+        <variable
+            name="title"
+            type="com.shunmai.zryp.bean.TitleBean" />
+        <variable
+            name="handler"
+            type="com.shunmai.zryp.eventhandler.goods.GoodsPromotionHandler" />
+        <variable
+            name="bean"
+            type="com.shunmai.zryp.bean.goods.GoodsPromotionBean" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/withe"
+        android:orientation="vertical"
+        tools:context=".ui.goods.GoodsPromotionActivity">
+
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:onBack="@{true}"
+            android:setTitle="@{title.title}"
+            titlebar:centerType="textView"
+            titlebar:fillStatusBar="false"
+            titlebar:leftDrawable="@color/withe"
+            titlebar:leftType="imageButton"
+            titlebar:showBottomLine="false" />
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/ns_pro"
+        android:layout_width="match_parent"
+        android:background="#CF1734"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+
+            <com.shunmai.zryp.view.AutoSizeImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:displayImg="@{bean.getBannerImgUrl()}"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+Dd
+                <TextView
+                    android:id="@+id/tv_description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:text="爆赚积分赚不停"
+                    android:textColor="@color/withe" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="距本场结束"
+                    android:textColor="@color/withe" />
+
+                <com.shunmai.zryp.view.SnapUpCountDownTimerView
+                    android:id="@+id/timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:setTimer="@{bean.getCountDown()}"
+                    app:viewSize="12" />
+            </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_promotion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="7dp"
+            android:layout_marginStart="7dp"
+            android:layout_weight="1" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

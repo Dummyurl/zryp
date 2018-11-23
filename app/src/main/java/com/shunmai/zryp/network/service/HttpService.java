@@ -1,5 +1,6 @@
 package com.shunmai.zryp.network.service;
 
+import com.shunmai.zryp.bean.GoodsSecKillBean;
 import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.bean.UserInfoBean;
 import com.shunmai.zryp.bean.addrbean.RegionBean;
@@ -9,7 +10,9 @@ import com.shunmai.zryp.bean.goods.GoodsDetailBean;
 import com.shunmai.zryp.bean.goods.GoodsHotWordBean;
 import com.shunmai.zryp.bean.goods.GoodsListBean;
 import com.shunmai.zryp.bean.goods.GoodsOrderListBean;
+import com.shunmai.zryp.bean.goods.GoodsPromotionBean;
 import com.shunmai.zryp.bean.goods.OderInfoBean;
+import com.shunmai.zryp.bean.goods.PromotionGoodsBean;
 import com.shunmai.zryp.bean.home.CheckVersionBean;
 import com.shunmai.zryp.bean.home.HomePageBean;
 import com.shunmai.zryp.bean.underling.UnderlingBean;
@@ -19,6 +22,7 @@ import com.shunmai.zryp.bean.userinfo.FootprintBean;
 import com.shunmai.zryp.bean.userinfo.Response_Wechat;
 import com.shunmai.zryp.bean.userinfo.Response_WechatUserInfo;
 import com.shunmai.zryp.bean.userinfo.WechatLoginBean;
+import com.shunmai.zryp.network.RetrofitClient;
 
 import java.util.HashMap;
 import java.util.List;
@@ -50,7 +54,7 @@ public interface HttpService {
      *
      * @return
      */
-    @GET("/home/index")
+    @GET("home/index")
     Observable<TResponse<HomePageBean>> HomePageInfo();
 
     /**
@@ -61,7 +65,7 @@ public interface HttpService {
      * @param sort
      * @return
      */
-    @GET("/goods/QueryGoodsEntityByCatlaog")
+    @GET("goods/QueryGoodsEntityByCatlaog")
     Observable<GoodsListBean> GoodsList(@Query("page") int page, @Query("catlaogMobileId") long sysid, @Query("sortRule") int sort);
 
     /**
@@ -69,7 +73,7 @@ public interface HttpService {
      *
      * @return
      */
-    @GET("/Category")
+    @GET("Category")
     Observable<CategoryBean> CategoryList();
 
     /**
@@ -80,7 +84,7 @@ public interface HttpService {
      * @param prType
      * @return
      */
-    @GET("/goods/QueryGoodsEntityByCatlaog")
+    @GET("goods/QueryGoodsEntityByCatlaog")
     Observable<GoodsListBean> GoodsList(@Query("page") int page, @Query("sortRule") int sort, @Query("prType") int prType);
 
     /**
@@ -88,7 +92,7 @@ public interface HttpService {
      *
      * @return
      */
-    @GET("/goods/GetHotSearchGoods")
+    @GET("goods/GetHotSearchGoods")
     Observable<GoodsHotWordBean> GetSearchKeyWord();
 
     /**
@@ -97,7 +101,7 @@ public interface HttpService {
      * @param id
      * @return
      */
-    @GET("/goods")
+    @GET("goods")
     Observable<GoodsDetailBean> GetGoodsDetail(@Query("id") long id);
 
     /**
@@ -109,7 +113,7 @@ public interface HttpService {
      * @param isOutAddress 地址所属平台(1：自营或楚楚街用的地址；2：京东收货地址)
      * @return
      */
-    @GET("/address")
+    @GET("address")
     Observable<AddressListBean> GetAddressList(@Query("userid") int userId, @Query("page") int page, @Query("pageSize") int pageSize, @Query("isOutAddress") int isOutAddress);
 
     /**
@@ -118,7 +122,7 @@ public interface HttpService {
      * @param id
      * @return
      */
-    @GET("/address/delete")
+    @GET("address/delete")
     Observable<TResponse<String>> DeleteAddress(@Query("id") int id);
 
     /**
@@ -127,7 +131,7 @@ public interface HttpService {
      * @param map
      * @return
      */
-    @POST("/address/default")
+    @POST("address/default")
     Observable<TResponse<String>> ChangeDefaultAddress(@Body Map<String, Integer> map);
 
     /**
@@ -136,7 +140,7 @@ public interface HttpService {
      * @param data
      * @return
      */
-    @PUT("/address/put")
+    @PUT("address/put")
     Observable<TResponse<String>> AddAddress(@Body Map<String, Object> data);
 
     /**
@@ -145,7 +149,7 @@ public interface HttpService {
      * @param data
      * @return
      */
-    @POST("/address/p")
+    @POST("address/p")
     Observable<TResponse<String>> ChangeAddress(@Body Map<String, Object> data);
 
     /**
@@ -153,7 +157,7 @@ public interface HttpService {
      *
      * @return
      */
-    @GET("/user/index")
+    @GET("user/index")
     Observable<TResponse<UserInfoBean>> GetUserInfo();
 
     /**
@@ -209,7 +213,7 @@ public interface HttpService {
      * @param map
      * @return
      */
-    @POST("/user/WeChat")
+    @POST("user/WeChat")
     Observable<TResponse<UserInfoBean>> WeChatLogin(@Body() HashMap<String, String> map);
 
     /**
@@ -219,7 +223,7 @@ public interface HttpService {
      * @param phoneNum
      * @return
      */
-    @GET("/sms/send")
+    @GET("sms/send")
     Observable<TResponse<String>> GetSmsCode(@Query("type") int type, @Query("phone") String phoneNum);
 
     /**
@@ -228,7 +232,7 @@ public interface HttpService {
      * @param map
      * @return
      */
-    @PUT("/user/Binding")
+    @PUT("user/Binding")
     Observable<TResponse<UserInfoBean>> bindPhone(@Body() HashMap<String, Object> map, @Query("VerifyCode") String code);
 
     /**
@@ -238,7 +242,7 @@ public interface HttpService {
      * @param code
      * @return
      */
-    @POST("/user/Authentication")
+    @POST("user/Authentication")
     Observable<TResponse<String>> ApproveUser(@Body() HashMap<String, String> map, @Query("VerifyCode") String code);
 
     /**
@@ -247,8 +251,8 @@ public interface HttpService {
      * @param map
      * @return
      */
-    @POST("/user/password")
-    Observable<TResponse<UserInfoBean>> SetNewPassword(@Body() HashMap<String, String> map);
+    @POST("user/password")
+    Observable<TResponse<UserInfoBean>> SetNewPassword(@Body() HashMap<String, Object> map);
 
     /**
      * 用户注册
@@ -256,7 +260,7 @@ public interface HttpService {
      * @param map
      * @return
      */
-    @PUT("/user")
+    @PUT("user")
     Observable<TResponse<UserInfoBean>> Register(@Body() HashMap<String, String> map, @Query("VerifyCode") String code);
 
     /**
@@ -265,7 +269,7 @@ public interface HttpService {
      * @param map
      * @return
      */
-    @POST("/user/login")
+    @POST("user/login")
     Observable<TResponse<UserInfoBean>> Login(@Body() HashMap<String, String> map);
 
     /**
@@ -277,7 +281,7 @@ public interface HttpService {
      * @param sortRule
      * @return
      */
-    @GET("/goods/SearchGoods")
+    @GET("goods/SearchGoods")
     Observable<GoodsListBean> SearchGoods(@Query("page") int page, @Query("keywords") String keywords, @Query("goodsName") String goodsName, @Query("sortRule") int sortRule);
 
     /**
@@ -288,7 +292,8 @@ public interface HttpService {
      * @param geshu
      * @return
      */
-    @GET("http://testapi.gzcfe.net/testshop/NewOrders/GetPostCost")
+    @Headers({"Domain-Name: miniProgram"})
+    @GET("NewOrders/GetPostCost")
     Observable<TResponse<Double>> GetPostCost(@Query("goods_id") long goods_id, @Query("sku_id") int sku_id, @Query("geshu") int geshu);
 
     /**
@@ -296,7 +301,7 @@ public interface HttpService {
      *
      * @return
      */
-    @GET("/address/default")
+    @GET("address/default")
     Observable<TResponse<AddressListBean.DataBean>> GetDefaultAddress(@Query("isOutAddress") int isOutAddress);
 
     /**
@@ -308,7 +313,8 @@ public interface HttpService {
      * @param type   购买类型0：单独购买 1：拼团
      * @return
      */
-    @POST("http://testapi.gzcfe.net/testshop/NewOrders/submit")
+    @Headers({"Domain-Name: miniProgram"})
+    @POST("/NewOrders/submit")
     Observable<TResponse<OderInfoBean>> GetOderInfo(@Body() HashMap<String, Object> map, @Query("addrid") int addrid, @Query("num") int num, @Query("type") int type);
 
     /**
@@ -318,7 +324,8 @@ public interface HttpService {
      * @param page
      * @return
      */
-    @GET("http://testapi.gzcfe.net/testshop/Orders/MyAppOrders")
+    @Headers({"Domain-Name: miniProgram"})
+    @GET("/Orders/MyAppOrders")
     Observable<TResponse<List<GoodsOrderListBean>>> GetOrderList(@Query("tab") int tab, @Query("page") int page);
 
     /**
@@ -327,7 +334,8 @@ public interface HttpService {
      * @param oid
      * @return
      */
-    @GET("http://testapi.gzcfe.net/testshop/Orders/Delivery")
+    @Headers({"Domain-Name: miniProgram"})
+    @GET("/Orders/Delivery")
     Observable<TResponse<String>> OrdersDelivery(@Query("oid") long oid);
 
     /**
@@ -336,7 +344,7 @@ public interface HttpService {
      * @param adrId
      * @return
      */
-    @GET("/Address/GetSingle")
+    @GET("Address/GetSingle")
     Observable<TResponse<AddressListBean.DataBean>> GetAddressById(@Query("addressId") int adrId);
 
     /**
@@ -345,7 +353,7 @@ public interface HttpService {
      * @param vDevice
      * @return
      */
-    @POST("/Version/getlatestversion")
+    @POST("Version/getlatestversion")
     Observable<TResponse<CheckVersionBean>> CheckVersion(@Query("vDevice") String vDevice);
 
     /**
@@ -357,17 +365,18 @@ public interface HttpService {
      *            行政区划所属平台类型，1：自营和楚楚街使用；2：京东使用
      * @return
      */
-    @POST("/address/GetRegionList")
+    @POST("address/GetRegionList")
     Observable<TResponse<List<RegionBean>>> GetRegionList(@Body() HashMap<String, String> map);
 
     /**
      * 获取猜你喜欢商品
      *
-     * @param page
+     * @param start
+     * @param limit
      * @return
      */
-    @GET("/home/GuessYouLike")
-    Observable<TResponse<List<GoodsBean>>> GuessYouLike(@Query("pageNum") int page);
+    @GET("home/GuessYouLike")
+    Observable<TResponse<List<GoodsBean>>> GuessYouLike(@Query("start") int start, @Query("limit") int limit);
 
     /**
      * 获取用户收藏列表
@@ -377,25 +386,75 @@ public interface HttpService {
      * @param userId
      * @return
      */
-    @GET("/GoodsCollection/GetGoodsList")
+    @GET("GoodsCollection/GetGoodsList")
     Observable<TResponse<List<CollectBean>>> GetCollectGoods(@Query("pageNum") int page, @Query("pageSize") int pageSize, @Query("userId") int userId);
 
     /**
      * 用户取消收藏
+     *
      * @param collectId
      * @return
      */
-    @GET("/GoodsCollection/GetGoodsCancel")
+    @GET("GoodsCollection/GetGoodsCancel")
     Observable<TResponse<String>> DeleteCollectItem(@Query("collectId") int collectId);
 
     /**
      * 用户收藏商品
+     *
      * @param goodsId
      * @param skuId
      * @param userId
      * @return
      */
-    @GET("/GoodsCollection/GetGoodsStart")
+    @GET("GoodsCollection/GetGoodsStart")
     Observable<TResponse<String>> CollectGoodsItem(@Query("goodsId") int goodsId, @Query("skuId") int skuId, @Query("userId") int userId);
+
+    /**
+     * 获取爆赚积分活动详情
+     *
+     * @param prId 活动id
+     * @return
+     */
+    @GET("promotion/detail/nonsecondkill")
+    Observable<TResponse<GoodsPromotionBean>> GetScorePromotion(@Query("prId") int prId);
+
+    /**
+     * 获取商品秒杀信息
+     *
+     * @return
+     */
+    @GET("goods/seckill")
+    Observable<TResponse<List<GoodsSecKillBean>>> GetSeckill();
+
+    /**
+     * 根据活动Id获取商品
+     *
+     * @param prId
+     * @param isPriceType
+     * @param pageNum
+     * @param pageSize
+     * @param dataStatus
+     * @return
+     */
+    @GET("goods/getactivitygoods")
+    Observable<TResponse<List<PromotionGoodsBean>>> GetActivityGoods(@Query("prId") int prId, @Query("isPriceType") int isPriceType, @Query("pageNum") int pageNum, @Query("pageSize") int pageSize, @Query("dataStatus") int dataStatus);
+
+    /**
+     * 获取智融优品活动页面
+     *
+     * @param prId
+     * @return
+     */
+    @GET("goods/preference")
+    Observable<TResponse<GoodsPromotionBean>> GetPrePro(@Query("prId") int prId);
+
+    /**
+     * 获取顶部轮播图
+     *
+     * @return
+     */
+    @Headers({"Domain-Name: miniProgram"})
+    @GET("/index/main")
+    Observable<TResponse<String>> GetMainAd();
 
 }

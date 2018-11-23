@@ -41,9 +41,9 @@ public class GoodsSearchActivity extends SwipeBackActivity<ActivityGoodsSearchBi
         DevicesUtils.setWindowStatusBarColor(this, R.color.white);
         Utils.setStatusTextColor(true, this);
 //        hotData.observe(this, goodsHotWordBean -> {
-//            bindingView.setBean(goodsHotWordBean);
-//            showContentView();
-//        });
+////            bindingView.setBean(goodsHotWordBean);
+////            showContentView();
+////        });
         showContentView();
         historyData.observe(this, goodsHotWordBean -> bindingView.setHistory(goodsHotWordBean));
         viewModel = ViewModelProviders.of(this).get(SearchActivityViewModel.class);
@@ -80,21 +80,19 @@ public class GoodsSearchActivity extends SwipeBackActivity<ActivityGoodsSearchBi
             startActivity(intent);
             bindingView.etSearch.setText("");
             return true;
-        }else{
-            ToastUtils.showToast("请输入搜索内容！");
-        }
-        return false;
+        } else {
 
+            return false;
+        }
     }
 
     private void initListener() {
         mReceiver = new PayBroadcastReceiver();
         IntentFilter intentFilter = new IntentFilter(AppConfig.PaySuccess);
         LocalBroadcastManager.getInstance(this).registerReceiver(mReceiver, intentFilter);
-        bindingView.tvSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                doSearch();
+        bindingView.tvSearch.setOnClickListener(v -> {
+            if (!doSearch()) {
+                ToastUtils.showToast("请输入搜索内容！");
             }
         });
     }

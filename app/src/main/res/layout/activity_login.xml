@@ -97,6 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+
                 android:orientation="horizontal">
 
                 <CheckBox
@@ -111,13 +112,16 @@
                 <View
                     android:layout_width="0dp"
                     android:layout_weight="1"
+                    android:visibility="gone"
                     android:layout_height="match_parent" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:onClick="@{view->handler.toUserHandler(1)}"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:text="忘记密码？"
+
                     android:textColor="@color/fontRed" />
             </LinearLayout>
         </LinearLayout>

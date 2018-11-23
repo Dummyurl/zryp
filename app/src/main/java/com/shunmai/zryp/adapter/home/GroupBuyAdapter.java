@@ -18,11 +18,23 @@ import java.util.List;
  */
 
 public class GroupBuyAdapter extends CommonViewAdapter<HomePageBean> {
-   private int groupNum;
+
     public GroupBuyAdapter(Context context, List<HomePageBean> datas) {
-        super(context, datas,  R.layout.item_group_buy);
+        super(context, datas, R.layout.item_goods_fragment_item);
     }
 
+    @Override
+    public int getDataSize() {
+        if (mDatas != null) {
+            if (mDatas.size() > 6) {
+                return 6;
+            } else {
+                return mDatas.size();
+            }
+        } else {
+            return 0;
+        }
+    }
 
     @Override
     public void convert(ViewHolder holder, HomePageBean item) {

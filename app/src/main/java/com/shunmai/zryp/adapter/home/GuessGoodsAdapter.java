@@ -2,6 +2,10 @@ package com.shunmai.zryp.adapter.home;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ImageSpan;
 import android.widget.TextView;
 
 import com.shunmai.zryp.adapter.CommonViewAdapter;
@@ -10,6 +14,7 @@ import com.shunmai.zryp.bean.goods.GoodsBean;
 import com.shunmai.zryp.ui.goods.GoodsDetailActivity;
 import com.shunmai.zryp.utils.GlideCacheUtil;
 import com.shunmai.zryp.R;
+import com.shunmai.zryp.view.MyImageSpan;
 
 import java.util.List;
 
@@ -27,16 +32,20 @@ public class GuessGoodsAdapter extends CommonViewAdapter<GoodsBean> {
 
     @Override
     public void convert(ViewHolder holder, GoodsBean item) {
+        //商品前加上红标
         GlideCacheUtil.LoadImage(mContext, holder.getView(R.id.iv_goods), item.getDefalutPhotourl(), 1, 0);
-//        if (item.get)
-//        ImageSpan imageSpan=new ImageSpan(getContext(),R.menu)
-        ((TextView) holder.getView(R.id.tv_goods_name)).setText(item.getGoodsName());
-        ((TextView) holder.getView(R.id.tv_price)).setText("¥" + item.getMarketPrice());
-        holder.getView(R.id.ll_item).setOnClickListener(v -> GoodsDetailActivity.navigate(mContext, item.getSysIdString()));
+        MyImageSpan span = new MyImageSpan(mContext, R.mipmap.icon_locals);
         if (item.getGoodsPropery() == 2&&item.getChannelId()==1) {
-            ((TextView) holder.getView(R.id.tv_self_support)).setText("京东");
+            span = new MyImageSpan(mContext, R.mipmap.icon_jd);
         }else if (item.getGoodsPropery() == 2&&item.getChannelId()==2){
-            ((TextView) holder.getView(R.id.tv_self_support)).setText("楚楚街");
+            span = new MyImageSpan(mContext, R.mipmap.icon_ccj);
         }
+        SpannableString spanStr = new SpannableString("   "+item.getGoodsName());
+        spanStr.setSpan(span, 0, 2, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        ((TextView) holder.getView(R.id.tv_goods_name)).setText(spanStr);
+        ((TextView) holder.getView(R.id.tv_price)).setText("¥" + item.getMarketPrice());
+        holder.getView(R.id.ll_item).setOnClickListener(v -> GoodsDetailActivity.navigate(mContext, item.getGoodsId()));
+
+
     }
 }
