@@ -1,12 +1,12 @@
 package com.shunmai.zryp.bean.userinfo;
 
-import com.shunmai.zryp.bean.TResponse;
+import com.ysy.commonlib.base.TResponse;
 
 /**
  * Created by ysy on 2018/2/2.
  */
 
-public class Response_Wechat extends TResponse{
+public class Response_Wechat extends TResponse {
     private String openid;
     private String access_token;
 

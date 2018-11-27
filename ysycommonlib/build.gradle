@@ -1,0 +1,73 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api rootProject.ext.dependencies["appcompat_v7"]
+    api rootProject.ext.dependencies["support_v4"]
+    api rootProject.ext.dependencies["support_design"]
+    api rootProject.ext.dependencies["support_constraint"]
+    //lifecycle
+    api rootProject.ext.dependencies["lifecycle_extensions"]
+    api rootProject.ext.dependencies["lifecycle_reactivestreams"]
+    //pull_to_refresh
+    api rootProject.ext.dependencies["smartrefresh"]
+    api rootProject.ext.dependencies["smartrefresh_header"]
+    //banner
+    api rootProject.ext.dependencies["banner"]
+    //retrofit
+    api rootProject.ext.dependencies["retrofit2"]
+    api rootProject.ext.dependencies["retrofit2_converter_gson"]
+    api rootProject.ext.dependencies["retrofit2_adapter_rxjava2"]
+    //rxjava
+    api rootProject.ext.dependencies["rxjava2"]
+    api rootProject.ext.dependencies["rxandroid"]
+    //okhttp
+    api rootProject.ext.dependencies["okhttp3"]
+    api rootProject.ext.dependencies["okhttp_logging_interceptor"]
+    //gson
+    api rootProject.ext.dependencies["gson"]
+    //logger
+    api rootProject.ext.dependencies["logger"]
+    //facebook_stetho
+    api rootProject.ext.dependencies["stetho"]
+    api rootProject.ext.dependencies["stetho_okhttp"]
+    api rootProject.ext.dependencies["swipeback"]
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //dialog
+    api 'com.afollestad.material-dialogs:core:0.9.4.5'
+    api 'com.afollestad.material-dialogs:commons:0.9.4.5'
+}

@@ -133,7 +133,7 @@
                         android:layout_marginStart="9dp"
                         android:background="@drawable/shape_circle_left"
                         android:padding="1dp"
-                        homePage:setSecTime="@{bean}"
+                        android:setSecTime="@{bean}"
                         android:textColor="@color/withe"
                         android:textSize="12dp" />
 
@@ -148,7 +148,7 @@
                         android:text="00:00:00"
                         android:textColor="@color/fontRed"
                         android:textSize="12dp"
-                        homePage:setTime="@{bean.getGoodInfo().getSecKillAndScorePro().size()==0?0:bean.getGoodInfo().getSecKillAndScorePro().get(0).getCountDown()}" />
+                        android:setTime="@{bean.getGoodInfo().getSecKillAndScorePro().size()==0?0:bean.getGoodInfo().getSecKillAndScorePro().get(0).getCountDown()}" />
                 </LinearLayout>
 
                 <ImageView
@@ -173,9 +173,9 @@
                         android:layout_height="81dp"
                         android:layout_weight="1"
                         android:paddingTop="3dp"
-                        homePage:HomeBean="@{bean}"
-                        homePage:beanIndex="@{0}"
-                        homePage:isMarket="@{false}" />
+                        android:HomeBean="@{bean}"
+                        android:beanIndex="@{0}"
+                        android:isMarket="@{false}" />
 
                     <View
                         android:layout_width="1dp"
@@ -187,9 +187,9 @@
                         android:layout_height="81dp"
                         android:layout_weight="1"
                         android:paddingTop="3dp"
-                        homePage:HomeBean="@{bean}"
-                        homePage:beanIndex="@{1}"
-                        homePage:isMarket="@{false}" />
+                        android:HomeBean="@{bean}"
+                        android:beanIndex="@{1}"
+                        android:isMarket="@{false}" />
 
                 </LinearLayout>
 
@@ -209,9 +209,9 @@
                         android:paddingTop="13dp"
                         android:textColor="#999999"
                         android:textSize="12dp"
-                        homePage:HomeBean="@{bean}"
-                        homePage:beanIndex="@{0}"
-                        homePage:isMarket="@{true}" />
+                        android:HomeBean="@{bean}"
+                        android:beanIndex="@{0}"
+                        android:isMarket="@{true}" />
 
                     <View
                         android:layout_width="1dp"
@@ -228,9 +228,9 @@
                         android:paddingTop="13dp"
                         android:textColor="#999999"
                         android:textSize="12dp"
-                        homePage:HomeBean="@{bean}"
-                        homePage:beanIndex="@{1}"
-                        homePage:isMarket="@{true}" />
+                        android:HomeBean="@{bean}"
+                        android:beanIndex="@{1}"
+                        android:isMarket="@{true}" />
 
 
                 </LinearLayout>
@@ -254,9 +254,9 @@
                         android:textColor="@color/fontRed"
                         android:textSize="18dp"
                         android:textStyle="bold"
-                        homePage:HomeBean="@{bean}"
-                        homePage:beanIndex="@{0}"
-                        homePage:isMarket="@{false}" />
+                        android:HomeBean="@{bean}"
+                        android:beanIndex="@{0}"
+                        android:isMarket="@{false}" />
 
                     <View
                         android:layout_width="1dp"
@@ -274,9 +274,9 @@
                         android:textColor="@color/fontRed"
                         android:textSize="18dp"
                         android:textStyle="bold"
-                        homePage:HomeBean="@{bean}"
-                        homePage:beanIndex="@{1}"
-                        homePage:isMarket="@{false}" />
+                        android:HomeBean="@{bean}"
+                        android:beanIndex="@{1}"
+                        android:isMarket="@{false}" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -342,9 +342,9 @@
                         android:layout_height="81dp"
                         android:layout_weight="1"
                         android:paddingTop="3dp"
-                        homePage:HomeBean="@{bean}"
-                        homePage:beanIndex="@{2}"
-                        homePage:isMarket="@{false}" />
+                        android:HomeBean="@{bean}"
+                        android:beanIndex="@{2}"
+                        android:isMarket="@{false}" />
 
                     <View
                         android:layout_width="1dp"
@@ -356,9 +356,9 @@
                         android:layout_height="81dp"
                         android:layout_weight="1"
                         android:paddingTop="3dp"
-                        homePage:HomeBean="@{bean}"
-                        homePage:beanIndex="@{3}"
-                        homePage:isMarket="@{false}" />
+                        android:HomeBean="@{bean}"
+                        android:beanIndex="@{3}"
+                        android:isMarket="@{false}" />
 
                 </LinearLayout>
 
@@ -377,9 +377,9 @@
                         android:paddingTop="13dp"
                         android:textColor="#999999"
                         android:textSize="12dp"
-                        homePage:HomeBean="@{bean}"
-                        homePage:beanIndex="@{2}"
-                        homePage:isMarket="@{true}" />
+                        android:HomeBean="@{bean}"
+                        android:beanIndex="@{2}"
+                        android:isMarket="@{true}" />
 
                     <View
                         android:layout_width="1dp"
@@ -396,9 +396,9 @@
                         android:paddingTop="13dp"
                         android:textColor="#999999"
                         android:textSize="12dp"
-                        homePage:HomeBean="@{bean}"
-                        homePage:beanIndex="@{3}"
-                        homePage:isMarket="@{true}" />
+                        android:HomeBean="@{bean}"
+                        android:beanIndex="@{3}"
+                        android:isMarket="@{true}" />
 
                 </LinearLayout>
 
@@ -420,9 +420,9 @@
                         android:textColor="@color/fontRed"
                         android:textSize="18dp"
                         android:textStyle="bold"
-                        homePage:HomeBean="@{bean}"
-                        homePage:beanIndex="@{2}"
-                        homePage:isMarket="@{false}" />
+                        android:HomeBean="@{bean}"
+                        android:beanIndex="@{2}"
+                        android:isMarket="@{false}" />
 
                     <View
                         android:layout_width="1dp"
@@ -440,9 +440,9 @@
                         android:textColor="@color/fontRed"
                         android:textSize="18dp"
                         android:textStyle="bold"
-                        homePage:HomeBean="@{bean}"
-                        homePage:beanIndex="@{3}"
-                        homePage:isMarket="@{false}" />
+                        android:HomeBean="@{bean}"
+                        android:beanIndex="@{3}"
+                        android:isMarket="@{false}" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -462,7 +462,7 @@
             app:indicator_margin="3dp"
             app:indicator_width="9dp"
             app:is_auto_play="true"
-            homePage:setCenterBanner="@{bean}" />
+            android:setCenterBanner="@{bean}" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -565,7 +565,7 @@
                 android:paddingBottom="5dp"
                 android:paddingEnd="8dp"
                 android:paddingStart="8dp"
-                homePage:setPrePro="@{bean}" />
+                android:setPrePro="@{bean}" />
         </LinearLayout>
 
 

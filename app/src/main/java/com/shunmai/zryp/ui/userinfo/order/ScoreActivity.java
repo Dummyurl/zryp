@@ -5,7 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
 
-import com.shunmai.zryp.base.SwipeBackActivity;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.R;
 import com.shunmai.zryp.databinding.ActivityScoreBinding;
 

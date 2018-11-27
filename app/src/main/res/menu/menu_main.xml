@@ -13,12 +13,12 @@
         android:icon="@drawable/selector_maintab2_icon"
         android:title="分类"
         app:showAsAction="ifRoom" />
-    <!--<item-->
-        <!--android:id="@+id/tab3"-->
-        <!--android:enabled="true"-->
-        <!--android:icon="@drawable/selector_maintab3_icon"-->
-        <!--android:title="积分兑换"-->
-        <!--app:showAsAction="ifRoom"/>-->
+    <item
+        android:id="@+id/tab3"
+        android:enabled="true"
+        android:icon="@drawable/selector_maintab3_icon"
+        android:title="VIP导购专区"
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/tab4"
         android:enabled="true"

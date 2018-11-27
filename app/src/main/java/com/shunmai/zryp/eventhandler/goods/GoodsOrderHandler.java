@@ -2,12 +2,9 @@ package com.shunmai.zryp.eventhandler.goods;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.databinding.BindingAdapter;
 import android.view.View;
-import android.widget.TextView;
 
-import com.shunmai.zryp.base.BaseEventHandler;
-import com.shunmai.zryp.bean.userinfo.AddressListBean;
+import com.ysy.commonlib.base.BaseEventHandler;
 import com.shunmai.zryp.ui.userinfo.account.AddressListActivity;
 
 /**

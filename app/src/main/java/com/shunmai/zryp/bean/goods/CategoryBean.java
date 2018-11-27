@@ -1,6 +1,6 @@
 package com.shunmai.zryp.bean.goods;
 
-import com.shunmai.zryp.bean.TResponse;
+import com.ysy.commonlib.base.TResponse;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  * Date: 2018/9/20.
  */
 
-public class CategoryBean extends TResponse<List<CategoryBean.DataBean>>{
+public class CategoryBean extends TResponse<List<CategoryBean.DataBean>> {
 
     public static class DataBean {
         /**

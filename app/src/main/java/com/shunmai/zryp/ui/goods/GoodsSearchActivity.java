@@ -15,7 +15,7 @@ import android.view.inputmethod.EditorInfo;
 import com.google.gson.Gson;
 import com.shunmai.zryp.AppConfig;
 import com.shunmai.zryp.repository.SearchActivityRepository;
-import com.shunmai.zryp.base.SwipeBackActivity;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.goods.GoodsHotWordBean;
 import com.shunmai.zryp.eventhandler.goods.GoodsSearchHandler;
 import com.shunmai.zryp.utils.DevicesUtils;

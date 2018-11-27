@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.shunmai.zryp.R;
-import com.shunmai.zryp.base.SwipeBackActivity;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.databinding.ActivityExchangeScoreBinding;
 import com.shunmai.zryp.utils.ShareUtils;
 

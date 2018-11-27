@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/LoadingDialog" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/appupdate" />
+            <option value="$PROJECT_DIR$/ysycommonlib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

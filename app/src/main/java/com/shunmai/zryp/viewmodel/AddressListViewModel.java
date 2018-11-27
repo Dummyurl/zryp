@@ -3,9 +3,9 @@ package com.shunmai.zryp.viewmodel;
 import android.arch.lifecycle.ViewModel;
 
 import com.shunmai.zryp.repository.AddressListRepository;
-import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.bean.userinfo.AddressListBean;
 import com.shunmai.zryp.listener.onResponseListener;
+import com.ysy.commonlib.base.TResponse;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class AddressListViewModel extends ViewModel {
     public void deleteAddress(onResponseListener<TResponse<String>> listener,int id){
         repository.deleteAddress(listener,id);
     }
-    public void changeDefaultAddress(onResponseListener<TResponse<String>> listener,int id){
+    public void changeDefaultAddress(onResponseListener<TResponse<String>> listener, int id){
         repository.changeDefaultAddress(listener,id);
     }
 }

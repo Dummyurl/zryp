@@ -1,7 +1,6 @@
 package com.shunmai.zryp.bean.userinfo;
 
-import com.google.gson.annotations.SerializedName;
-import com.shunmai.zryp.bean.TResponse;
+import com.ysy.commonlib.base.TResponse;
 
 /**
  * Created by yushengyang.

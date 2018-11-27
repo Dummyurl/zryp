@@ -4,13 +4,11 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.shunmai.zryp.base.SwipeBackActivity;
-import com.shunmai.zryp.bean.TResponse;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.UserInfoBean;
 import com.shunmai.zryp.bean.userinfo.Response_WechatUserInfo;
 import com.shunmai.zryp.databinding.LayoutBindPhoneBinding;
@@ -23,6 +21,7 @@ import com.shunmai.zryp.utils.PatternUtils;
 import com.shunmai.zryp.utils.ShareUtils;
 import com.shunmai.zryp.utils.ToastUtils;
 import com.shunmai.zryp.viewmodel.UserHandleViewModel;
+import com.ysy.commonlib.base.TResponse;
 
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;

@@ -112,7 +112,7 @@
         <activity android:name=".ui.goods.GoodsSecKillActivity" />
         <activity android:name=".ui.goods.PreProActivity" />
         <activity android:name=".ui.goods.VipGoodsActivity" />
-        <activity android:name=".ui.goods.GoodsPaySuccessActivity"></activity>
+        <activity android:name=".ui.goods.GoodsPaySuccessActivity"/>
     </application>
 
 </manifest>

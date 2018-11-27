@@ -4,13 +4,13 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 
 import com.shunmai.zryp.R;
-import com.shunmai.zryp.base.SwipeBackActivity;
-import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.databinding.ActivityUserApproveBinding;
 import com.shunmai.zryp.eventhandler.userinfo.ApproveHandler;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.utils.ToastUtils;
 import com.shunmai.zryp.viewmodel.ApproveViewModel;
+import com.ysy.commonlib.base.SwipeBackActivity;
+import com.ysy.commonlib.base.TResponse;
 
 public class UserApproveActivity extends SwipeBackActivity<ActivityUserApproveBinding> implements onResponseListener<TResponse<String>> {
     private ApproveHandler handler;

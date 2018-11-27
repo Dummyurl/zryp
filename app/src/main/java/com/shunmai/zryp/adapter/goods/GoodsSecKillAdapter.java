@@ -2,6 +2,7 @@ package com.shunmai.zryp.adapter.goods;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -9,6 +10,7 @@ import com.shunmai.zryp.R;
 import com.shunmai.zryp.adapter.CommonViewAdapter;
 import com.shunmai.zryp.adapter.ViewHolder;
 import com.shunmai.zryp.bean.goods.PromotionGoodsBean;
+import com.shunmai.zryp.ui.goods.GoodsDetailActivity;
 import com.shunmai.zryp.utils.GlideCacheUtil;
 
 import java.util.List;
@@ -37,6 +39,7 @@ public class GoodsSecKillAdapter extends CommonViewAdapter<PromotionGoodsBean> {
             ((TextView) holder.getView(R.id.tv_buy)).setText("即将开抢");
             holder.getView(R.id.ll_bac).setBackgroundResource(R.mipmap.btn_sec_kill_green);
         } else if (item.getStatus() == 200) {
+            holder.getView(R.id.ll_item).setOnClickListener(v -> GoodsDetailActivity.navigate(mContext,item.getGoodsId()));
         } else {
             ((TextView) holder.getView(R.id.tv_buy)).setText("已结束");
             holder.getView(R.id.ll_bac).setBackgroundResource(R.mipmap.btn_sec_kill_grey);

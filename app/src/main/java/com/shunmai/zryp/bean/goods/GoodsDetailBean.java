@@ -4,7 +4,7 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.shunmai.zryp.BR;
-import com.shunmai.zryp.bean.TResponse;
+import com.ysy.commonlib.base.TResponse;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * Date: 2018/9/29.
  */
 
-public class GoodsDetailBean extends TResponse<GoodsDetailBean.DataBean>{
+public class GoodsDetailBean extends TResponse<GoodsDetailBean.DataBean> {
 
     public static class DataBean extends BaseObservable {
         /**

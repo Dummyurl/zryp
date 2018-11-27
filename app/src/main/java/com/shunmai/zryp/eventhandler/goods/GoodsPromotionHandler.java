@@ -1,12 +1,9 @@
 package com.shunmai.zryp.eventhandler.goods;
 
 import android.databinding.BindingAdapter;
-import android.widget.TextView;
 
-import com.shunmai.zryp.base.BaseEventHandler;
+import com.ysy.commonlib.base.BaseEventHandler;
 import com.shunmai.zryp.view.SnapUpCountDownTimerView;
-
-import java.text.SimpleDateFormat;
 
 /**
  * Created by yushengyang.

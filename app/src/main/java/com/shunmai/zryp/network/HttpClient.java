@@ -1,7 +1,8 @@
 package com.shunmai.zryp.network;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.shunmai.zryp.network.retrofiturlmanager.RetrofitUrlManager;
+import com.ysy.commonlib.network.HttpLogFactory;
+import com.ysy.commonlib.network.retrofiturlmanager.RetrofitUrlManager;
 
 import java.util.concurrent.TimeUnit;
 

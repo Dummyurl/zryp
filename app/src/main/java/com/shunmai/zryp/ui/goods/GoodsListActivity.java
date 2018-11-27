@@ -20,7 +20,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.shunmai.zryp.AppConfig;
 import com.shunmai.zryp.repository.GoodsListRepository;
 import com.shunmai.zryp.adapter.goods.RecGoodsListAdapter;
-import com.shunmai.zryp.base.SwipeBackActivity;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.TitleBean;
 import com.shunmai.zryp.utils.ToastUtils;
 import com.shunmai.zryp.viewmodel.GoodsListActivityViewModel;

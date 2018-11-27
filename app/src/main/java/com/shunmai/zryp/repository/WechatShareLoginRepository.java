@@ -3,12 +3,12 @@ package com.shunmai.zryp.repository;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.shunmai.zryp.base.BaseRepository;
 import com.shunmai.zryp.bean.userinfo.Response_Wechat;
 import com.shunmai.zryp.network.RetrofitClient;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.network.service.HttpService;
 import com.shunmai.zryp.utils.wechatutils.WechatLoginHelper;
+import com.ysy.commonlib.base.BaseRepository;
 
 import java.util.HashMap;
 import java.util.Map;

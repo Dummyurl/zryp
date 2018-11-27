@@ -6,8 +6,8 @@ import android.support.v7.widget.GridLayoutManager;
 
 import com.shunmai.zryp.R;
 import com.shunmai.zryp.adapter.home.GroupBuyAdapter;
-import com.shunmai.zryp.base.BaseFragment;
 import com.shunmai.zryp.databinding.FragmentGoodsItemBinding;
+import com.ysy.commonlib.base.BaseFragment;
 
 import java.util.ArrayList;
 

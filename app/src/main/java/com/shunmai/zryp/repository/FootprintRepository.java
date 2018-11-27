@@ -1,10 +1,10 @@
 package com.shunmai.zryp.repository;
 
-import com.shunmai.zryp.base.BaseRepository;
 import com.shunmai.zryp.bean.userinfo.FootprintBean;
 import com.shunmai.zryp.network.RetrofitClient;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.network.service.HttpService;
+import com.ysy.commonlib.base.BaseRepository;
 
 /**
  * Created by yushengyang.

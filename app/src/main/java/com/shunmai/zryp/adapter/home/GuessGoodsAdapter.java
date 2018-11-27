@@ -43,7 +43,7 @@ public class GuessGoodsAdapter extends CommonViewAdapter<GoodsBean> {
         SpannableString spanStr = new SpannableString("   "+item.getGoodsName());
         spanStr.setSpan(span, 0, 2, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
         ((TextView) holder.getView(R.id.tv_goods_name)).setText(spanStr);
-        ((TextView) holder.getView(R.id.tv_price)).setText("¥" + item.getMarketPrice());
+        ((TextView) holder.getView(R.id.tv_price)).setText("¥" + item.getPrice());
         holder.getView(R.id.ll_item).setOnClickListener(v -> GoodsDetailActivity.navigate(mContext, item.getGoodsId()));
 
 

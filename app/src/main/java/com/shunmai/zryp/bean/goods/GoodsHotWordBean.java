@@ -1,6 +1,6 @@
 package com.shunmai.zryp.bean.goods;
 
-import com.shunmai.zryp.bean.TResponse;
+import com.ysy.commonlib.base.TResponse;
 
 import java.util.List;
 

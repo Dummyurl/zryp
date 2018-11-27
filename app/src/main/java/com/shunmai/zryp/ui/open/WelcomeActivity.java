@@ -10,11 +10,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.shunmai.zryp.R;
-import com.shunmai.zryp.base.BaseActivity;
-import com.shunmai.zryp.base.SwipeBackActivity;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.databinding.ActivityWelcomeBinding;
 import com.shunmai.zryp.ui.home.HomeActivity;
 import com.shunmai.zryp.utils.Utils;
+import com.ysy.commonlib.base.BaseActivity;
 
 import java.util.concurrent.TimeUnit;
 

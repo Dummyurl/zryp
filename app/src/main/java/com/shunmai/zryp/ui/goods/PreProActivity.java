@@ -9,7 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import com.shunmai.zryp.R;
 import com.shunmai.zryp.adapter.goods.GoodsPromotionAdapter;
 import com.shunmai.zryp.adapter.home.FlashSaleRecAdapter;
-import com.shunmai.zryp.base.SwipeBackActivity;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.goods.GoodsPromotionBean;
 import com.shunmai.zryp.databinding.ActivityPreProBinding;
 import com.shunmai.zryp.listener.onResponseListener;

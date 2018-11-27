@@ -1,7 +1,6 @@
 package com.shunmai.zryp.network.service;
 
 import com.shunmai.zryp.bean.GoodsSecKillBean;
-import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.bean.UserInfoBean;
 import com.shunmai.zryp.bean.addrbean.RegionBean;
 import com.shunmai.zryp.bean.goods.CategoryBean;
@@ -21,8 +20,7 @@ import com.shunmai.zryp.bean.userinfo.CollectBean;
 import com.shunmai.zryp.bean.userinfo.FootprintBean;
 import com.shunmai.zryp.bean.userinfo.Response_Wechat;
 import com.shunmai.zryp.bean.userinfo.Response_WechatUserInfo;
-import com.shunmai.zryp.bean.userinfo.WechatLoginBean;
-import com.shunmai.zryp.network.RetrofitClient;
+import com.ysy.commonlib.base.TResponse;
 
 import java.util.HashMap;
 import java.util.List;
@@ -31,7 +29,6 @@ import java.util.Map;
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.HTTP;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;

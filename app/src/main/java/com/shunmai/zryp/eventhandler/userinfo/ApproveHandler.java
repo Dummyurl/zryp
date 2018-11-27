@@ -4,12 +4,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.shunmai.zryp.R;
-import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.databinding.ActivityUserApproveBinding;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.utils.PatternUtils;
 import com.shunmai.zryp.utils.ToastUtils;
 import com.shunmai.zryp.viewmodel.ApproveViewModel;
+import com.ysy.commonlib.base.TResponse;
 
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;

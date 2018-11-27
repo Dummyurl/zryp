@@ -3,12 +3,12 @@ package com.shunmai.zryp.repository;
 import android.arch.lifecycle.MutableLiveData;
 
 import com.google.gson.Gson;
-import com.shunmai.zryp.base.BaseRepository;
 import com.shunmai.zryp.bean.goods.GoodsHotWordBean;
 import com.shunmai.zryp.network.RetrofitClient;
 import com.shunmai.zryp.listener.onResponseFailedListener;
 import com.shunmai.zryp.network.service.HttpService;
 import com.shunmai.zryp.utils.ShareUtils;
+import com.ysy.commonlib.base.BaseRepository;
 
 import java.util.ArrayList;
 

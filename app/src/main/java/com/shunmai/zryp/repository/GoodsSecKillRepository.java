@@ -1,11 +1,11 @@
 package com.shunmai.zryp.repository;
 
-import com.shunmai.zryp.base.BaseRepository;
 import com.shunmai.zryp.bean.GoodsSecKillBean;
-import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.network.RetrofitClient;
 import com.shunmai.zryp.network.service.HttpService;
+import com.ysy.commonlib.base.BaseRepository;
+import com.ysy.commonlib.base.TResponse;
 
 import java.util.List;
 

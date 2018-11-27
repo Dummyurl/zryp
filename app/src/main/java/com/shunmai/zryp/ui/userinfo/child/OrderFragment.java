@@ -11,11 +11,11 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.shunmai.zryp.R;
 import com.shunmai.zryp.adapter.account.OrderListAdapter;
-import com.shunmai.zryp.base.BaseFragment;
 import com.shunmai.zryp.bean.goods.GoodsOrderListBean;
 import com.shunmai.zryp.databinding.FragmentOrderBinding;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.viewmodel.OrderFragmentViewModel;
+import com.ysy.commonlib.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

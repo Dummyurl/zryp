@@ -2,24 +2,18 @@ package com.shunmai.zryp.ui.goods;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
-import com.scwang.smartrefresh.layout.api.RefreshHeader;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.shunmai.zryp.R;
 import com.shunmai.zryp.adapter.goods.GoodsSecKillAdapter;
-import com.shunmai.zryp.base.BaseFragment;
 import com.shunmai.zryp.bean.GoodsSecKillBean;
 import com.shunmai.zryp.bean.goods.PromotionGoodsBean;
 import com.shunmai.zryp.databinding.FragmentSecondKillBinding;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.viewmodel.GoodsSecKillFragmentViewModel;
+import com.ysy.commonlib.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

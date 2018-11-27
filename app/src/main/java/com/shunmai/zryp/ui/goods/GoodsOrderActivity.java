@@ -12,7 +12,7 @@ import android.view.View;
 
 import com.google.gson.Gson;
 import com.shunmai.zryp.AppConfig;
-import com.shunmai.zryp.base.SwipeBackActivity;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.R;
 import com.shunmai.zryp.bean.goods.GoodsOrderBean;
 import com.shunmai.zryp.bean.goods.OderInfoBean;

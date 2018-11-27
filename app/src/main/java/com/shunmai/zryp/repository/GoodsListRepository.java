@@ -3,10 +3,10 @@ package com.shunmai.zryp.repository;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 
-import com.shunmai.zryp.base.BaseRepository;
 import com.shunmai.zryp.bean.goods.GoodsListBean;
 import com.shunmai.zryp.network.RetrofitClient;
 import com.shunmai.zryp.network.service.HttpService;
+import com.ysy.commonlib.base.BaseRepository;
 
 /**
  * Created by yushengyang.

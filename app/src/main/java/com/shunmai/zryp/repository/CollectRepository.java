@@ -1,16 +1,13 @@
 package com.shunmai.zryp.repository;
 
-import com.shunmai.zryp.base.BaseRepository;
-import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.bean.userinfo.CollectBean;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.network.RetrofitClient;
 import com.shunmai.zryp.network.service.HttpService;
 import com.shunmai.zryp.utils.ShareUtils;
+import com.ysy.commonlib.base.BaseRepository;
 
 import java.util.List;
-
-import io.reactivex.functions.Consumer;
 
 /**
  * Created by yushengyang.

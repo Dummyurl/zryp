@@ -2,10 +2,10 @@ package com.shunmai.zryp.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
 
-import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.bean.addrbean.RegionBean;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.repository.AddressDetailRepository;
+import com.ysy.commonlib.base.TResponse;
 
 import java.util.HashMap;
 import java.util.List;

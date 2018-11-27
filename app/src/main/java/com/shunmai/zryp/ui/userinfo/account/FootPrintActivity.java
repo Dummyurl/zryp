@@ -6,7 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 
 import com.shunmai.zryp.adapter.account.FootprintAdapter;
 import com.shunmai.zryp.adapter.account.FootprintItemDecoration;
-import com.shunmai.zryp.base.SwipeBackActivity;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.userinfo.FootprintBean;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.viewmodel.FootprintViewModel;

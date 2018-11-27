@@ -2,7 +2,6 @@ package com.shunmai.zryp.ui.home.child;
 
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,17 +11,15 @@ import android.view.ViewGroup;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.shunmai.zryp.R;
-import com.shunmai.zryp.base.BaseFragment;
-import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.bean.UserInfoBean;
 import com.shunmai.zryp.databinding.FragmentUserinfoBinding;
 import com.shunmai.zryp.eventhandler.home.UserInfoHandler;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.utils.Dev;
-import com.shunmai.zryp.utils.DevicesUtils;
 import com.shunmai.zryp.utils.ShareUtils;
-import com.shunmai.zryp.utils.Utils;
 import com.shunmai.zryp.viewmodel.UserInfoFragmentViewModel;
+import com.ysy.commonlib.base.BaseFragment;
+import com.ysy.commonlib.base.TResponse;
 
 /**
  * A simple {@link Fragment} subclass.

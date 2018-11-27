@@ -1,27 +1,24 @@
 package com.shunmai.zryp.adapter.account;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
-import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.shunmai.zryp.adapter.CommonViewAdapter;
 import com.shunmai.zryp.adapter.ViewHolder;
-import com.shunmai.zryp.bean.TResponse;
 import com.shunmai.zryp.bean.userinfo.AddressListBean;
 import com.shunmai.zryp.listener.onResponseListener;
-import com.shunmai.zryp.ui.goods.GoodsDetailActivity;
 import com.shunmai.zryp.ui.userinfo.account.AddressDetailActivity;
 import com.shunmai.zryp.utils.ToastUtils;
 import com.shunmai.zryp.view.MyAlertDialog;
 import com.shunmai.zryp.viewmodel.AddressListViewModel;
 import com.shunmai.zryp.R;
+import com.ysy.commonlib.base.TResponse;
 import com.zyao89.view.zloading.ZLoadingDialog;
 import com.zyao89.view.zloading.Z_TYPE;
 

@@ -5,13 +5,11 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.google.gson.Gson;
-import com.shunmai.zryp.base.SwipeBackActivity;
-import com.shunmai.zryp.bean.TResponse;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.addrbean.RegionBean;
 import com.shunmai.zryp.bean.userinfo.AddressListBean;
 import com.shunmai.zryp.listener.onResponseListener;
@@ -32,6 +30,7 @@ import com.shunmai.zryp.view.wheel.adapters.RevertAddressEntity;
 import com.shunmai.zryp.viewmodel.AddressDetailViewModel;
 import com.shunmai.zryp.R;
 import com.shunmai.zryp.databinding.ActivityAddressDetailBinding;
+import com.ysy.commonlib.base.TResponse;
 
 import java.io.InputStream;
 import java.util.HashMap;

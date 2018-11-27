@@ -1,7 +1,7 @@
 package com.shunmai.zryp.bean.userinfo;
 
 
-import com.shunmai.zryp.bean.TResponse;
+import com.ysy.commonlib.base.TResponse;
 
 import java.util.List;
 

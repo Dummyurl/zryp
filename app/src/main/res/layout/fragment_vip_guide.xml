@@ -30,7 +30,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="270dp">
+                    android:layout_height="275dp">
 
                     <View
                         android:layout_width="match_parent"
@@ -251,7 +251,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginEnd="13dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="14dp"
                     android:background="@drawable/shape_shadow"
@@ -389,7 +389,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginEnd="13dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="14dp"
                     android:background="@drawable/shape_shadow"
@@ -491,7 +491,7 @@
                         android:text="核心数据"
                         android:textColor="@color/fontBlack"
                         android:textSize="18dp"
-                        android:background="@color/withe"/>
+                        android:background="@drawable/shape_radis_top"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -556,7 +556,6 @@
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginEnd="1dp"
                             android:layout_height="wrap_content"
                             android:background="@color/withe"
                             android:orientation="vertical"
@@ -646,7 +645,7 @@
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginEnd="1dp"
+
                             android:layout_height="wrap_content"
                             android:background="@color/withe"
                             android:orientation="vertical"
@@ -682,7 +681,7 @@
                             android:layout_weight="1"
                             android:layout_marginEnd="1dp"
                             android:layout_height="wrap_content"
-                            android:background="@color/withe"
+                            android:background="@drawable/shape_radis_bottom_left"
                             android:orientation="vertical"
                             >
                             <TextView
@@ -736,9 +735,8 @@
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginEnd="1dp"
                             android:layout_height="wrap_content"
-                            android:background="@color/withe"
+                            android:background="@drawable/shape_radis_bottom_right"
                             android:orientation="vertical"
                             >
                             <TextView

@@ -8,25 +8,19 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.databinding.BindingAdapter;
 import android.net.Uri;
-import android.util.TypedValue;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.DatePicker;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.shunmai.zryp.R;
-import com.shunmai.zryp.base.BaseEventHandler;
+import com.ysy.commonlib.base.BaseEventHandler;
 import com.shunmai.zryp.ui.userinfo.account.AddressListActivity;
 import com.shunmai.zryp.ui.userinfo.account.CollectActivity;
 import com.shunmai.zryp.ui.userinfo.account.FootPrintActivity;
 import com.shunmai.zryp.ui.userinfo.order.OrderActivity;
-import com.shunmai.zryp.ui.userinfo.score.ExchangeScoreActivity;
 import com.shunmai.zryp.ui.userinfo.underling.MyUnderlingActivity;
 import com.shunmai.zryp.utils.ShareUtils;
 import com.shunmai.zryp.utils.ToastUtils;
@@ -76,34 +70,34 @@ public class UserInfoHandler extends BaseEventHandler {
 
     public void showDialog(View view) {
         ToastUtils.showToast("升级功能暂未开放！");
-//        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(), R.style.AlertDialogStyle);
-//        View inflate = ((Activity) view.getContext()).getLayoutInflater().inflate(R.layout.layout_not_level_up_dialog, null);
-//        AlertDialog alertDialog = builder.create();
-//        alertDialog.show();
-//        alertDialog.setContentView(inflate);
-//        alertDialog.getWindow().setGravity(Gravity.CENTER);
-//        Window win = alertDialog.getWindow();
-//        win.getDecorView().setPadding(0, 0, 0, 0);
-//        WindowManager.LayoutParams lp = win.getAttributes();
-//        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-//        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-//        win.setAttributes(lp);
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(), R.style.AlertDialogStyle);
+        View inflate = ((Activity) view.getContext()).getLayoutInflater().inflate(R.layout.layout_not_level_up_dialog, null);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        alertDialog.setContentView(inflate);
+        alertDialog.getWindow().setGravity(Gravity.CENTER);
+        Window win = alertDialog.getWindow();
+        win.getDecorView().setPadding(0, 0, 0, 0);
+        WindowManager.LayoutParams lp = win.getAttributes();
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        win.setAttributes(lp);
     }
 
     public void showLightDialog(View view) {
         ToastUtils.showToast("升级功能暂未开放！");
-//        AlertDialog.Builder builder=new AlertDialog.Builder(view.getContext(),R.style.AlertDialogStyle);
-//        View inflate = ((Activity) view.getContext()).getLayoutInflater().inflate(R.layout.layout_level_up_dialog, null);
-//        AlertDialog alertDialog = builder.create();
-//        alertDialog.show();
-//        alertDialog.setContentView(inflate);
-//        alertDialog.getWindow().setGravity(Gravity.CENTER);
-//        Window win = alertDialog.getWindow();
-//        win.getDecorView().setPadding(0, 0, 0, 0);
-//        WindowManager.LayoutParams lp = win.getAttributes();
-//        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-//        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-//        win.setAttributes(lp);
+        AlertDialog.Builder builder=new AlertDialog.Builder(view.getContext(),R.style.AlertDialogStyle);
+        View inflate = ((Activity) view.getContext()).getLayoutInflater().inflate(R.layout.layout_level_up_dialog, null);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        alertDialog.setContentView(inflate);
+        alertDialog.getWindow().setGravity(Gravity.CENTER);
+        Window win = alertDialog.getWindow();
+        win.getDecorView().setPadding(0, 0, 0, 0);
+        WindowManager.LayoutParams lp = win.getAttributes();
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        win.setAttributes(lp);
     }
 
     public void toAddressListActivity(View view) {

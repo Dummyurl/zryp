@@ -12,7 +12,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.shunmai.zryp.R;
 import com.shunmai.zryp.adapter.ItemDecoration;
 import com.shunmai.zryp.adapter.account.CollectAdapter;
-import com.shunmai.zryp.base.SwipeBackActivity;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.userinfo.CollectBean;
 import com.shunmai.zryp.databinding.ActivityCollectBinding;
 import com.shunmai.zryp.listener.onResponseListener;

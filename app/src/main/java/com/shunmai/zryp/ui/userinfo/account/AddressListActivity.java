@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.shunmai.zryp.adapter.SpaceItemDecoration;
 import com.shunmai.zryp.adapter.account.AddressListAdapter;
-import com.shunmai.zryp.base.SwipeBackActivity;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.userinfo.AddressListBean;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.viewmodel.AddressListViewModel;

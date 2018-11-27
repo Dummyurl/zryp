@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 
-import com.shunmai.zryp.base.SwipeBackActivity;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.R;
 import com.shunmai.zryp.databinding.ActivityLoginBinding;
 import com.shunmai.zryp.eventhandler.userinfo.LoginHandler;

@@ -19,7 +19,7 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.shunmai.zryp.AppConfig;
 import com.shunmai.zryp.R;
 import com.shunmai.zryp.adapter.home.GuessGoodsAdapter;
-import com.shunmai.zryp.base.SwipeBackActivity;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.goods.GoodsDetailBean;
 import com.shunmai.zryp.bean.userinfo.TabEntity;
 import com.shunmai.zryp.databinding.ActivityGoodsDetailBinding;

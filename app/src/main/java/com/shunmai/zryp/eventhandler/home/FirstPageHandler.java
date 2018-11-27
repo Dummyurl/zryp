@@ -58,7 +58,7 @@ public class FirstPageHandler {
             view.getContext().startActivity(intent);
         }
     }
-    @BindingAdapter({"homePage:setSecTime"})
+    @BindingAdapter({"android:setSecTime"})
     public static void setSecTime(TextView textView,HomePageBean bean){
         if ( bean.getGoodInfo().getSecKillAndScorePro().size()!=0&&bean.getGoodInfo().getSecKillAndScorePro().get(0)!=null&&bean.getGoodInfo().getSecKillAndScorePro().get(0).getPoints()!=null){
             textView.setText(bean.getGoodInfo().getSecKillAndScorePro().get(0).getPoints()+"点场");
@@ -71,7 +71,7 @@ public class FirstPageHandler {
         view.getContext().startActivity(intent);
     }
 
-    @BindingAdapter({"homePage:HomeBean", "homePage:beanIndex", "homePage:isMarket"})
+    @BindingAdapter({"android:HomeBean", "android:beanIndex", "android:isMarket"})
     public static void setPromotion(View view, HomePageBean bean, int index, boolean isMarket) {
         if (bean.getGoodInfo().getRecPro() == null || bean.getGoodInfo().getRecPro().getPromotionGoods().size() <= index) {
             if (bean.getGoodInfo().getRecPro().getPromotionGoods().size() == 0) {
@@ -94,13 +94,13 @@ public class FirstPageHandler {
         }
     }
 
-    @BindingAdapter({"homePage:setTime"})
+    @BindingAdapter({"android:setTime"})
     public static void setTime(CountdownTextView countdownTextView, long second) {
         countdownTextView.init("%s", second / 1000);
         countdownTextView.start(0);
     }
 
-    @BindingAdapter({"homePage:setCenterBanner"})
+    @BindingAdapter({"android:setCenterBanner"})
     public static void setCenterBanner(MyBanner banner, HomePageBean bean) {
         if (bean.getCenterPostion() != null) {
             List<String> images = new ArrayList<>();
@@ -118,7 +118,7 @@ public class FirstPageHandler {
         }
     }
 
-    @BindingAdapter({"homePage:setPrePro"})
+    @BindingAdapter({"android:setPrePro"})
     public static void setPrePro(LinearLayout container, HomePageBean bean) {
         container.removeAllViews();
         for (GoodsBean goodsBean : bean.getGoodInfo().getPrePro().getPromotionGoods()) {

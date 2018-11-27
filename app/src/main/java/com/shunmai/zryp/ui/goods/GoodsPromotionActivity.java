@@ -8,7 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 
 import com.shunmai.zryp.R;
 import com.shunmai.zryp.adapter.goods.GoodsPromotionAdapter;
-import com.shunmai.zryp.base.SwipeBackActivity;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.TitleBean;
 import com.shunmai.zryp.bean.goods.GoodsPromotionBean;
 import com.shunmai.zryp.databinding.ActivityGoodsPromotionBinding;

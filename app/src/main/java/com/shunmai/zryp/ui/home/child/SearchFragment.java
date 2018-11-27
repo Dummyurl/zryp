@@ -19,13 +19,13 @@ import com.shunmai.zryp.repository.CategoryRepository;
 import com.shunmai.zryp.adapter.ItemDecoration;
 import com.shunmai.zryp.adapter.search.AdapterLeft;
 import com.shunmai.zryp.adapter.search.AdapterRight;
-import com.shunmai.zryp.base.BaseFragment;
 import com.shunmai.zryp.bean.GoodsBean;
 import com.shunmai.zryp.bean.goods.CategoryBean;
 import com.shunmai.zryp.ui.goods.GoodsSearchActivity;
 import com.shunmai.zryp.viewmodel.SearchFragmentViewModel;
 import com.shunmai.zryp.R;
 import com.shunmai.zryp.databinding.FragmentSearchBinding;
+import com.ysy.commonlib.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

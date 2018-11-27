@@ -1,10 +1,6 @@
 package com.shunmai.zryp.app;
 
-import android.app.Activity;
 import android.app.Application;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Handler;
 import android.support.v7.app.AppCompatDelegate;
 
@@ -15,16 +11,12 @@ import com.orhanobut.logger.LogcatLogStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
-import com.scwang.smartrefresh.layout.api.RefreshFooter;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.shunmai.zryp.R;
 import com.shunmai.zryp.utils.DynamicTimeFormat;
 import com.shunmai.zryp.utils.ShareUtils;
-import com.shunmai.zryp.R;
 import com.squareup.leakcanary.LeakCanary;
-
 
 
 /**
@@ -32,10 +24,12 @@ import com.squareup.leakcanary.LeakCanary;
  * Date: 2018/8/23.
  */
 
-public class MyApplication extends Application{
+public class MyApplication extends Application {
+
     private static MyApplication myApplication;
     protected static int mainThreadId;
     protected static Handler handler;
+
     static {
         //启用矢量图兼容
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -66,7 +60,6 @@ public class MyApplication extends Application{
         super.onCreate();
         myApplication = this;
         init();
-
     }
 
     private void init() {
@@ -75,8 +68,6 @@ public class MyApplication extends Application{
         LeakCanary.install(this);
         mainThreadId = android.os.Process.myTid();
         handler = new Handler();
-
-
     }
 
     /**

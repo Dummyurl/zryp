@@ -7,7 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.shunmai.zryp.adapter.home.UnderlingAdapter;
-import com.shunmai.zryp.base.SwipeBackActivity;
+import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.TitleBean;
 import com.shunmai.zryp.bean.underling.UnderlingBean;
 import com.shunmai.zryp.listener.onResponseListener;

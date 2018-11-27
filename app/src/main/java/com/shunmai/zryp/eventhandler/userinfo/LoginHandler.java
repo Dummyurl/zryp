@@ -6,8 +6,7 @@ import android.content.Intent;
 import android.view.View;
 
 import com.google.gson.Gson;
-import com.shunmai.zryp.base.BaseEventHandler;
-import com.shunmai.zryp.bean.TResponse;
+import com.ysy.commonlib.base.BaseEventHandler;
 import com.shunmai.zryp.bean.UserInfoBean;
 import com.shunmai.zryp.bean.userinfo.Response_WechatUserInfo;
 import com.shunmai.zryp.databinding.ActivityLoginBinding;
@@ -17,6 +16,7 @@ import com.shunmai.zryp.utils.ShareUtils;
 import com.shunmai.zryp.utils.ToastUtils;
 import com.shunmai.zryp.utils.wechatutils.WechatLoginHelper;
 import com.shunmai.zryp.viewmodel.LoginViewModel;
+import com.ysy.commonlib.base.TResponse;
 
 import java.util.HashMap;
 
