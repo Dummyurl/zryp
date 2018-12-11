@@ -38,6 +38,17 @@ public class TResponse<Data> extends BaseObservable implements Serializable {
     private int pageSize;
     private int pageCount;
     private int totalCount;
+    private double totalAmount;
+    private int status;
+
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
     @Bindable
     private Data data;
 
@@ -94,6 +105,14 @@ public class TResponse<Data> extends BaseObservable implements Serializable {
         this.mainad = mainad;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     public static class MainadBean {
         /**
          * pic : http://pic0.gzcfe.net/article/2018/1012/4774429120548128628.jpg
@@ -128,5 +147,7 @@ public class TResponse<Data> extends BaseObservable implements Serializable {
         public void setLink_type(String link_type) {
             this.link_type = link_type;
         }
+
+
     }
 }

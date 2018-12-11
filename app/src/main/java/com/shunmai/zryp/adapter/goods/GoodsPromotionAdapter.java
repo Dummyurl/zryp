@@ -7,11 +7,10 @@ import android.widget.TextView;
 import com.shunmai.zryp.R;
 import com.shunmai.zryp.adapter.CommonViewAdapter;
 import com.shunmai.zryp.adapter.ViewHolder;
-import com.shunmai.zryp.bean.goods.GoodsPromotionBean;
 import com.shunmai.zryp.bean.goods.PromotionGoodsBean;
 import com.shunmai.zryp.ui.goods.GoodsDetailActivity;
 import com.shunmai.zryp.utils.GlideCacheUtil;
-import com.shunmai.zryp.utils.StringUtils;
+import com.ysy.commonlib.utils.StringUtils;
 
 import java.util.List;
 

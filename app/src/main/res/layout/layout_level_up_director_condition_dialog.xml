@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="bean"
+            type="com.shunmai.zryp.bean.userinfo.VipGuideIndexBean.VipUpgradeProgressBean"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="277.5dp"
+            android:layout_height="360dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="12.5dp"
+                android:background="@drawable/shape_circle_soild_white"
+                android:layout_marginEnd="12.5dp"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/iv_bac"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/bac_vip_progress" />
+            <ImageView
+                android:id="@+id/iv_cancel"
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="6dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/btn_vip_guide_positive" />
+
+        <LinearLayout
+            android:layout_above="@+id/iv_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:clipChildren="false"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:textSize="11dp"
+                    android:gravity="end"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/fontBlack"
+                    android:text="直属VIP导购:"/>
+                <LinearLayout
+                    android:layout_width="118dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:clipChildren="false"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pb_1"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="6dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:max="100"
+                            android:progress="@{bean.getDirectlyVipCnt()}"
+                            android:progressDrawable="@drawable/progress_horizontal_vip" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:id="@+id/view_pro_1"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="50"
+                            android:setWeightPercent="@{bean.getDirectlyVipCnt()}"/>
+
+                        <TextView
+                            android:id="@+id/tv_pro_num_1"
+                            android:layout_width="40dp"
+                            android:layout_height="25dp"
+                            android:layout_marginEnd="-20dp"
+                            android:layout_marginStart="-20dp"
+                            android:background="@mipmap/bac_pop_gold"
+                            android:gravity="center"
+                            android:paddingBottom="3dp"
+                            android:paddingTop="8dp"
+                            android:text='@{bean.getDirectlyVipCnt()+"%"}'
+                            android:textColor="#BC8E48"
+                            android:textSize="12dp" />
+
+                        <View
+                            android:id="@+id/view_pro_2"
+                            android:layout_width="0dp"
+                            android:setWeightPercent="@{100-bean.getDirectlyVipCnt()}"
+                            android:layout_height="1dp"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_pro_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text='@{bean.getDirectlyVipCntConfig()+""}'
+                    android:textColor="@color/fontBlack"
+                    android:textSize="11dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:clipChildren="false"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:textSize="11dp"
+                    android:gravity="end"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/fontBlack"
+                    android:text="团队总VIP导购:"/>
+                <LinearLayout
+                    android:layout_width="118dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:clipChildren="false"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pb_2"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="6dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:max="100"
+                            android:progress="@{bean.getTeamVipCount()}"
+                            android:progressDrawable="@drawable/progress_horizontal_vip" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:id="@+id/view_pro_3"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:setWeightPercent="@{bean.getTeamVipCount()}"
+                            android:layout_weight="50" />
+
+                        <TextView
+                            android:id="@+id/tv_pro_num_2"
+                            android:layout_width="40dp"
+                            android:layout_height="25dp"
+                            android:layout_marginEnd="-20dp"
+                            android:layout_marginStart="-20dp"
+                            android:background="@mipmap/bac_pop_gold"
+                            android:gravity="center"
+                            android:paddingBottom="3dp"
+                            android:paddingTop="8dp"
+                            android:text='@{bean.getTeamVipCount()+"%"}'
+                            android:textColor="#BC8E48"
+                            android:textSize="12dp" />
+
+                        <View
+                            android:id="@+id/view_pro_4"
+                            android:layout_width="0dp"
+                            android:setWeightPercent="@{100-bean.getTeamVipCount()}"
+                            android:layout_height="1dp"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_pro_2"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:textSize="11dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/fontBlack"
+                    android:text='@{bean.getTeamVipCountConfig()+""}'
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:clipChildren="false"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:textSize="11dp"
+                    android:gravity="end"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/fontBlack"
+                    android:text="个人总积分:"/>
+                <LinearLayout
+                    android:layout_width="118dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:clipChildren="false"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        >
+
+                        <ProgressBar
+                            android:id="@+id/pb_3"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="6dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:max="100"
+                            android:progress="@{bean.getDirectorIntegral()}"
+                            android:progressDrawable="@drawable/progress_horizontal_vip" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:id="@+id/view_pro_5"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:setWeightPercent="@{bean.getDirectorIntegral()}"
+                            android:layout_weight="50" />
+
+                        <TextView
+                            android:id="@+id/tv_pro_num_3"
+                            android:layout_width="40dp"
+                            android:layout_height="25dp"
+                            android:layout_marginEnd="-20dp"
+                            android:layout_marginStart="-20dp"
+                            android:background="@mipmap/bac_pop_gold"
+                            android:gravity="center"
+                            android:paddingBottom="3dp"
+                            android:paddingTop="8dp"
+                            android:text='@{bean.getDirectorIntegral()+"%"}'
+                            android:textColor="#BC8E48"
+                            android:textSize="12dp" />
+
+                        <View
+                            android:id="@+id/view_pro_6"
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:setWeightPercent="@{100-bean.getDirectorIntegral()}"
+                  />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_pro_3"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:textSize="11dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/fontBlack"
+                    android:text='@{bean.getDirectorIntegralConfig()+""}'
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="258dp"
+                android:layout_height="67dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="34.5dp"
+                android:src="@mipmap/title_a_bit" />
+        </RelativeLayout>
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/icon_close_gold" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</layout>

@@ -9,7 +9,12 @@ import java.util.regex.PatternSyntaxException;
  */
 
 public class PatternUtils {
-
+    /**
+     * 手机号验证
+     * @param str
+     * @return
+     * @throws PatternSyntaxException
+     */
     public static boolean isChinaPhoneLegal(String str) throws PatternSyntaxException {
         String regExp = "^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}$";
         Pattern p = Pattern.compile(regExp);
@@ -17,6 +22,12 @@ public class PatternUtils {
         return m.matches();
     }
 
+    /**
+     * 6位验证码验证
+     * @param str
+     * @return
+     * @throws PatternSyntaxException
+     */
     public static boolean isCode(String str) throws PatternSyntaxException {
         String regExp = "^\\d{6}$";
         Pattern p = Pattern.compile(regExp);
@@ -24,6 +35,20 @@ public class PatternUtils {
         return m.matches();
     }
 
+    /**
+     * 银行卡验证（长度大于16位）
+     * @param str
+     * @return
+     * @throws PatternSyntaxException
+     */
+    public static boolean isBankCard(String str) throws PatternSyntaxException {
+        Pattern p = Pattern.compile("\\d{16,19}");
+        Matcher m = p.matcher(str);
+        if(m.matches()){
+            return true;
+        }
+        return false;
+    }
     public static boolean isPassword(String str) throws PatternSyntaxException {
         String regExp = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$";
         Pattern p = Pattern.compile(regExp);
@@ -90,6 +115,27 @@ public class PatternUtils {
         }
         return matches;
     }
-
-
+    /**
+     * 利用正则表达式判断字符串是否是数字
+     * @param str
+     * @return
+     */
+    public static boolean isNumeric(String str){
+        Pattern pattern = Pattern.compile("[0-9]*");
+        Matcher isNum = pattern.matcher(str);
+        if( !isNum.matches() ){
+            return false;
+        }
+        return true;
+    }
+   public static boolean isDouble(String str)
+    {
+        try
+        {
+            Double.parseDouble(str);
+            return true;
+        }
+        catch(NumberFormatException ex){}
+        return false;
+    }
 }

@@ -18,7 +18,7 @@ import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.GoodsSecKillBean;
 import com.shunmai.zryp.databinding.ActivityGoodsSecKillBinding;
 import com.shunmai.zryp.listener.onResponseListener;
-import com.shunmai.zryp.utils.StringUtils;
+import com.ysy.commonlib.utils.StringUtils;
 import com.shunmai.zryp.utils.ToastUtils;
 import com.shunmai.zryp.viewmodel.GoodsSecKillViewModel;
 

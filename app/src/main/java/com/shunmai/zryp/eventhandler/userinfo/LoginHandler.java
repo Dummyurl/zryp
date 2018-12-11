@@ -119,7 +119,7 @@ public class LoginHandler extends BaseEventHandler {
                         ToastUtils.showToast("手机号未设置密码，请先设置密码！");
                         Intent intent = new Intent(mContext, UserHandleActivity.class);
                         intent.putExtra("type", 2);
-                        intent.putExtra("logonAccount", bean.getData().getLogonAccount());
+//                        intent.putExtra("logonAccount", bean.getData().getLogonAccount());
                         intent.putExtra("userId", bean.getData().getUserId());
                         mContext.startActivity(intent);
                     } else if (bean.getCode() == 200) {

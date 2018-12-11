@@ -28,7 +28,7 @@
                     android:id="@+id/img_err"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/load_err" />
+                    android:src="@drawable/load_err" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
                     android:id="@+id/img_empty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/img_empty" />
+                    android:src="@drawable/lib_img_empty" />
 
                 <TextView
                     android:layout_width="wrap_content"

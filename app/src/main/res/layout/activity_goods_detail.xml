@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
     >
 
@@ -33,7 +34,7 @@
             titlebar:fillStatusBar="false"
             titlebar:leftDrawable="@color/withe"
             titlebar:leftType="imageButton"
-            titlebar:showBottomLine="true" />
+            titlebar:showBottomLine="false" />
 
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/tl_goods"
@@ -60,16 +61,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.shunmai.zryp.view.AutoSizeImageView
-                    android:id="@+id/iv_main"
+                <com.youth.banner.Banner
+                    android:id="@+id/banner_goods_detail"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:displayImg="@{detailBean.getData().getGoods().getDefalutPhotourl()}"
-                    android:scaleType="centerCrop"
-                    android:transitionName="extraImage" />
-
-
+                    android:layout_height="375dp"
+                    android:background="@color/withe"
+                    app:image_scale_type="fit_xy"
+                    app:indicator_drawable_selected="@drawable/shape_circle_background"
+                    app:indicator_drawable_unselected="@drawable/shape_indicator"
+                    app:indicator_height="5dp"
+                    app:indicator_margin="4dp"
+                    app:indicator_width="12dp"
+                    app:is_auto_play="false"
+                    android:setBanner="@{detailBean.getData().getGoods().getSeekGoodsImgsVOSPart()}"
+                    android:setBannerDefaultImg="@{detailBean.getData().getGoods().getDefalutPhotourl()}"/>
 
 
                 <LinearLayout
@@ -248,16 +253,17 @@
                     android:layout_marginBottom="15dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:background="@mipmap/icon_title_bk5"
                     android:gravity="center"
-                    android:text="猜你喜欢"
+                    android:text="为你推荐"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_guess_like"
+                    android:layout_marginBottom="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

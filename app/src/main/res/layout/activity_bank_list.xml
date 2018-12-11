@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout >
+
+    <LinearLayout
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/withe"
+        >
+
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            titlebar:centerText="银行名称"
+            titlebar:centerType="textView"
+            titlebar:fillStatusBar="false"
+            android:fitsSystemWindows="true"
+            android:onBack="@{true}"
+            titlebar:leftDrawable="@color/withe"
+            titlebar:leftType="imageButton"
+            titlebar:showBottomLine="false" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:RecDivisionType="@{1}"
+            android:RecRowCount="@{1}"
+            android:background="@color/backgroundColor"
+            android:paddingTop="5dp"
+            />
+    </LinearLayout>
+</layout>

@@ -47,7 +47,6 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
     private int type;
     //首页进入界面类型
     private int HomePage;
-    private String keyword;
     private String goodsName;
     private PayBroadcastReceiver mReceiver;
 
@@ -61,8 +60,6 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
         type = getIntent().getIntExtra("type", -1);
         catlaogMobileId = getIntent().getLongExtra("catlaogMobileId", -1);
         HomePage = getIntent().getIntExtra("HomePage", -1);
-//        initRec(false);
-        keyword = getIntent().getStringExtra("keyword");
         goodsName = getIntent().getStringExtra("goodsName");
         goodsListAdapter = new RecGoodsListAdapter(this, new ArrayList<>());
         bindingView.rvGoodsList.setAdapter(goodsListAdapter);
@@ -106,24 +103,7 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
         refreshLayout.setOnRefreshListener(refreshLayout -> {
             getData(true);
         });
-        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                getData(false);
-            }
-        });
-//        //触发自动刷新
-//        refreshLayout.autoRefresh();
-//        //点击测试
-//        RefreshFooter footer = refreshLayout.getRefreshFooter();
-//        if (footer != null) {
-//            refreshLayout.getRefreshFooter().getView().findViewById(ClassicsFooter.ID_TEXT_TITLE).setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Toast.makeText(getActivity().getBaseContext(), "点击测试", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        }
+        refreshLayout.setOnLoadMoreListener(refreshLayout -> getData(false));
     }
 
     private void getData(boolean refresh) {
@@ -175,7 +155,7 @@ public class GoodsListActivity extends SwipeBackActivity<ActivityGoodsListBindin
                 break;
             }
             case SEARCH: {
-                viewModel.searchGoods(page++, keyword, goodsName, sortType).observe(this, goodsListBean -> {
+                viewModel.searchGoods(page++, goodsName, sortType).observe(this, goodsListBean -> {
                     refreshLayout.finishRefresh();
                     if (goodsListBean != null) {
                         if (goodsListBean.getPageNum() == goodsListBean.getPageCount()) {

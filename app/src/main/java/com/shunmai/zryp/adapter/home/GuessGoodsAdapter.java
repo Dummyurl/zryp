@@ -34,11 +34,13 @@ public class GuessGoodsAdapter extends CommonViewAdapter<GoodsBean> {
     public void convert(ViewHolder holder, GoodsBean item) {
         //商品前加上红标
         GlideCacheUtil.LoadImage(mContext, holder.getView(R.id.iv_goods), item.getDefalutPhotourl(), 1, 0);
-        MyImageSpan span = new MyImageSpan(mContext, R.mipmap.icon_locals);
+        MyImageSpan span;
         if (item.getGoodsPropery() == 2&&item.getChannelId()==1) {
             span = new MyImageSpan(mContext, R.mipmap.icon_jd);
         }else if (item.getGoodsPropery() == 2&&item.getChannelId()==2){
             span = new MyImageSpan(mContext, R.mipmap.icon_ccj);
+        }else{
+            span = new MyImageSpan(mContext, R.mipmap.icon_locals);
         }
         SpannableString spanStr = new SpannableString("   "+item.getGoodsName());
         spanStr.setSpan(span, 0, 2, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);

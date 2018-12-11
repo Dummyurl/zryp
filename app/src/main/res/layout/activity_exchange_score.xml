@@ -4,6 +4,9 @@
         <variable
             name="userInfo"
             type="com.shunmai.zryp.bean.UserInfoBean"/>
+        <variable
+            name="bean"
+            type="com.shunmai.zryp.bean.wallet.ScoreDataBean"/>
     </data>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:titlebar="http://schemas.android.com/apk/res-auto"
@@ -52,17 +55,17 @@
                 android:paddingTop="21dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="当前可用积分:"
-                    android:textColor="@color/fontNormal"
-                    android:textSize="14dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="当前可用积分:"
+                android:textColor="@color/fontNormal"
+                android:textSize="14dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:text='@{userInfo.getCashbscore()+""}'
+                    android:text="@{bean.total}"
                     android:textColor="@color/black"
                     android:textSize="26dp" />
             </LinearLayout>
@@ -96,9 +99,10 @@
                     android:textSize="14dp" />
 
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="50"
+                    android:text="@{bean.minExchangeNum}"
                     android:textColor="@color/fontRed"
                     android:textSize="14dp" />
 
@@ -117,7 +121,6 @@
                 android:layout_marginTop="29dp"
                 android:gravity="center_vertical"
                 android:background="@null"
-                android:hint='@{"可兑换积分数"+userInfo.getCashbscore()}'
                 android:paddingBottom="25dp" />
             <View
                 android:layout_width="match_parent"
@@ -129,12 +132,17 @@
                 android:layout_marginStart="13dp"
                 android:layout_marginTop="12dp"
                 android:orientation="horizontal">
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{bean.rateNum}"
+                    android:textColor="@color/fontNormal"
+                    android:textSize="14dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="5积分可兑换1贵人通"
+                    android:text="积分可兑换1个SDT"
                     android:textColor="@color/fontNormal"
                     android:textSize="14dp" />
 
@@ -158,23 +166,17 @@
             android:orientation="vertical"
             android:padding="13dp">
 
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="请填写手机号"
-                android:textColor="@color/fontNormal"
-                android:textSize="14dp" />
-            <EditText
+                android:text="@{userInfo.mobile}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone"
                 android:maxLength="11"
-                android:layout_marginTop="29dp"
+                android:layout_marginTop="19dp"
                 android:gravity="center_vertical"
                 android:background="@null"
                 android:textSize="24dp"
                 android:textColor="@color/black"
-                android:hint="请输入手机号"
                 android:paddingBottom="18dp" />
             <View
                 android:layout_width="match_parent"
@@ -194,6 +196,7 @@
                 android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
             <EditText
+                android:id="@+id/et_pass_code"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -219,7 +222,20 @@
                     android:textColor="@color/fontRed"
                     android:textSize="14dp" />
             </LinearLayout>
+
         </LinearLayout>
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorLineDeep"
+            android:text="立即兑换"
+            android:textColor="@color/withe"
+            android:textSize="18dp" />
     </LinearLayout>
     </LinearLayout>
 </layout>

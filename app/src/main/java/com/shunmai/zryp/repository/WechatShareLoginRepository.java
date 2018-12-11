@@ -30,14 +30,18 @@ public class WechatShareLoginRepository extends BaseRepository<Response_Wechat> 
             sendRequest(RetrofitClient.getInstance().getService(HttpService.class).WeChatUserInfo(toaken_map), userInfo -> {
                 listener.onSuccess("");
                 WechatLoginHelper.loginCallBack.onSuccess(userInfo);
-            }, throwable -> {
-                WechatLoginHelper.loginCallBack.onFailure();
-                listener.onFailed(throwable);
-            });
+            }
+//            , throwable -> {
+//                WechatLoginHelper.loginCallBack.onFailure();
+//                listener.onFailed(throwable);
+//            }
+            );
 
-        }, throwable -> {
-            listener.onFailed(throwable);
-            WechatLoginHelper.loginCallBack.onFailure();
-        });
+        }
+//        , throwable -> {
+//            listener.onFailed(throwable);
+//            WechatLoginHelper.loginCallBack.onFailure();
+//        }
+        );
     }
 }

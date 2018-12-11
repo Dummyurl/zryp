@@ -26,7 +26,7 @@ public class PromotionGoodsBean {
      * progress : 0
      */
 
-    private int goodsId;
+    private long goodsId;
     private String goodsName;
     private String keywords;
     private String goodsTitle;
@@ -42,12 +42,13 @@ public class PromotionGoodsBean {
     private int goStock;
     private int status;
     private int progress;
+    private double proScore;
 
-    public int getGoodsId() {
+    public long getGoodsId() {
         return goodsId;
     }
 
-    public void setGoodsId(int goodsId) {
+    public void setGoodsId(long goodsId) {
         this.goodsId = goodsId;
     }
 
@@ -169,6 +170,14 @@ public class PromotionGoodsBean {
 
     public void setProgress(int progress) {
         this.progress = progress;
+    }
+
+    public double getProScore() {
+        return proScore;
+    }
+
+    public void setProScore(double proScore) {
+        this.proScore = proScore;
     }
 }
 

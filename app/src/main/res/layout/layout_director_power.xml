@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="277.5dp"
+            android:layout_height="425.5dp">
+
+            <ImageView
+                android:id="@+id/iv_bac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12.5dp"
+                android:background="@mipmap/bac_dialog_gold_long" />
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/icon_close_gold" />
+            <LinearLayout
+                android:layout_marginStart="21dp"
+                android:layout_above="@+id/iv_cancel"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="33.5dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_width="3dp"
+                        android:layout_height="13dp"
+                        android:layout_gravity="center"
+                        android:background="#DEB87F"/>
+                    <TextView
+                        android:layout_marginStart="10dp"
+                        android:layout_width="wrap_content"
+                        android:textSize="16dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="升级条件"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/fontNormal"
+                    android:textSize="14dp"
+                    android:text="1.直招有效VIP导购15人以上；\n2.团队有效VIP达到60人及以上（含60人）；"/>
+                <LinearLayout
+                    android:layout_marginTop="14dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_width="3dp"
+                        android:layout_height="13dp"
+                        android:layout_gravity="center"
+                        android:background="#DEB87F"/>
+                    <TextView
+                        android:id="@+id/tv_identity"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="wrap_content"
+                        android:textSize="16dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="总监特权"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_power"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/fontNormal"
+                    android:textSize="14dp"
+                    android:text="1.自购商品返积分；\n2.推荐注册奖励积分；\n3.团队购买返积分；\n4.招募VIP享培训奖励；\n5.成功培养总监返积分奖励"/>
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_cancel"
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="13dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/btn_vip_guide_positive" />
+           
+            
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</layout>

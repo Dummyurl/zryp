@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/ll_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/shape_shadow_shallow"
+        android:orientation="horizontal">
+
+        <com.shunmai.zryp.view.RoundAngleImageView
+            android:id="@+id/iv_goods"
+            android:layout_width="137dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_height="131dp"
+            android:scaleType="centerCrop"
+            />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_goods_name"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:text="【注册VIP赠品】宝嘉丽床除Dior 美妆机密破解 Dior 美妆机密破解 "
+                android:maxLines="2"
+                android:textColor="@color/fontNormal"
+                android:textSize="17dp" />
+            <TextView
+                android:id="@+id/tv_goods_score"
+                android:layout_marginTop="9dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="赚500积分"
+                android:textColor="@color/fontRed"
+                android:textSize="14dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="6dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="￥"
+                    android:textColor="#C59067"
+                    android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/tv_goods_price"
+                    android:layout_width="0dp"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="bottom"
+                    android:text="399"
+                    android:textColor="#C59067"
+                    android:textSize="19dp" />
+                <TextView
+                    android:layout_width="90dp"
+                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/withe"
+                    android:background="@drawable/shape_circle_solid_red"
+                    android:layout_gravity="bottom"
+                    android:layout_height="30dp"
+                    android:text="立即购买"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

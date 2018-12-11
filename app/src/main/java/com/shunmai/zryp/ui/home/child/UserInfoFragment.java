@@ -39,6 +39,9 @@ public class UserInfoFragment extends BaseFragment<FragmentUserinfoBinding> impl
         bindingView.setHandler(new UserInfoHandler());
         initRefresh();
         showContentView();
+        if (ShareUtils.getUserInfo()!=null){
+            bindingView.setBean(ShareUtils.getUserInfo());
+        }
     }
 
 

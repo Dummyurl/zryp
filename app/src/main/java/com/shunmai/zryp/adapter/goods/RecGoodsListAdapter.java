@@ -46,7 +46,7 @@ public class RecGoodsListAdapter extends CommonViewAdapter<GoodsBean> {
         ((TextView) holder.getView(R.id.tv_past_price)).setText("原价"+item.getMarketPrice());
         ((TextView) holder.getView(R.id.tv_past_price)).getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG);  // 设置中划线并加清晰 ;
         GlideCacheUtil.LoadImage(mContext,holder.getView(R.id.iv_goods),item.getDefalutPhotourl());
-        holder.getView(R.id.ll_item).setOnClickListener(v -> GoodsDetailActivity.navigate(mContext,item.getSysIdString()));
+        holder.getView(R.id.ll_item).setOnClickListener(v -> GoodsDetailActivity.navigate(mContext,item.getGoodsId()));
 
     }
 }

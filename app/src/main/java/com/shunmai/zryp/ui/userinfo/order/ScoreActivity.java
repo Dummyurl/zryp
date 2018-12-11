@@ -1,10 +1,9 @@
 package com.shunmai.zryp.ui.userinfo.order;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.view.View;
 
+import com.shunmai.zryp.ui.userinfo.account.UserApproveActivity;
 import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.R;
 import com.shunmai.zryp.databinding.ActivityScoreBinding;

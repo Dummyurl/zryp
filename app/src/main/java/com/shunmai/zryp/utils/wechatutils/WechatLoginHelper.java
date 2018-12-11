@@ -85,6 +85,7 @@ public class WechatLoginHelper {
     public interface WechatLoginCallBack {
         void onSuccess(Response_WechatUserInfo info);
 
+
         void onFailure();
     }
 

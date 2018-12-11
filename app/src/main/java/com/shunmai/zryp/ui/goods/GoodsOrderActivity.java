@@ -20,13 +20,12 @@ import com.shunmai.zryp.bean.userinfo.AddressListBean;
 import com.shunmai.zryp.databinding.ActivityGoodsOrderBinding;
 import com.shunmai.zryp.eventhandler.goods.GoodsOrderHandler;
 import com.shunmai.zryp.listener.onResponseListener;
-import com.shunmai.zryp.utils.StringUtils;
+import com.ysy.commonlib.utils.StringUtils;
 import com.shunmai.zryp.utils.ToastUtils;
 import com.shunmai.zryp.utils.Utils;
 import com.shunmai.zryp.utils.wechatutils.WechatPayHelper;
 import com.shunmai.zryp.viewmodel.GoodsOrderViewModel;
 
-import java.text.DecimalFormat;
 import java.util.HashMap;
 
 public class GoodsOrderActivity extends SwipeBackActivity<ActivityGoodsOrderBinding> implements View.OnClickListener {
@@ -215,6 +214,11 @@ public class GoodsOrderActivity extends SwipeBackActivity<ActivityGoodsOrderBind
     protected void onDestroy() {
         super.onDestroy();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mReceiver);
+    }
+
+    @Override
+    public boolean supportRequestWindowFeature(int featureId) {
+        return super.supportRequestWindowFeature(featureId);
     }
 
     private class PayBroadcastReceiver extends BroadcastReceiver {

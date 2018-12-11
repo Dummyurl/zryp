@@ -79,7 +79,6 @@ public class MyBanner extends FrameLayout implements OnPageChangeListener {
     private DisplayMetrics dm;
 
     private WeakHandler handler = new WeakHandler();
-
     public MyBanner(Context context) {
         this(context, null);
     }
@@ -121,6 +120,12 @@ public class MyBanner extends FrameLayout implements OnPageChangeListener {
         viewPager.setOffscreenPageLimit(5);
         viewPager.setClipChildren(false);
     }
+
+    @Override
+    public boolean onInterceptHoverEvent(MotionEvent event) {
+        return true;
+    }
+
     private void handleTypedArray(Context context, AttributeSet attrs) {
         if (attrs == null) {
             return;

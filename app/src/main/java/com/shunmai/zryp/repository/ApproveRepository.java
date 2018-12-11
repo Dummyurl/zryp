@@ -14,11 +14,12 @@ import java.util.HashMap;
  */
 
 public class ApproveRepository extends BaseRepository<Object> {
+
+    public void ApproveUser(HashMap<String,Object> map,onResponseListener<TResponse<Object>> listener){
+        sendRequest(RetrofitClient.getInstance().getService(HttpService.class).ApproveUser(map), data -> listener.onSuccess(data), throwable -> listener.onFailed(throwable));
+    }
     public void getCode(int type, String phoneNum, onResponseListener<TResponse<String>> listener){
         sendRequest(RetrofitClient.getInstance().getService(HttpService.class).GetSmsCode(type, phoneNum), stringTResponse -> listener.onSuccess(stringTResponse), throwable -> listener.onFailed(throwable));
-    }
-    public void ApproveUser(HashMap<String,String> map,String code,onResponseListener<TResponse<String>> listener){
-        sendRequest(RetrofitClient.getInstance().getService(HttpService.class).ApproveUser(map, code), data -> listener.onSuccess(data), throwable -> listener.onFailed(throwable));
     }
 }
 

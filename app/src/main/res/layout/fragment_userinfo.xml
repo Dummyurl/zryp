@@ -115,7 +115,6 @@
                                         android:layout_height="wrap_content"
                                         android:layout_below="@+id/tv_score"
                                         android:layout_marginTop="2dp"
-                                        android:text='@{bean.getCashbscore()+""}'
                                         android:textColor="#E9CB97"
                                         android:textSize="28dp" />
                                 </LinearLayout>
@@ -166,7 +165,7 @@
                                         android:layout_gravity="center"
                                         android:layout_weight="1"
                                         android:gravity="center"
-                                        android:text='@{bean.getTotalbscore()+""}'
+                                        android:text='@{bean. getTotalScore()+""}'
                                         android:textColor="#E9CB97"
                                         android:textSize="14dp" />
 
@@ -199,7 +198,7 @@
                                         android:layout_gravity="center"
                                         android:layout_weight="1"
                                         android:gravity="center"
-                                        android:text='@{bean.getFrozenBscore()+""}'
+                                        android:text='@{bean.getFrozenScore()+""}'
                                         android:textColor="#E9CB97"
                                         android:textSize="14dp" />
 
@@ -265,10 +264,10 @@
                                 android:layout_alignParentTop="true"
                                 android:layout_marginStart="14dp"
                                 android:displayHeadImg="@{bean.getPic()}"
-                                android:setGender="@{bean.getGender()}"
+                                android:setGender="@{1}"
                                 android:src="@mipmap/user" />
                             <TextView
-                                android:layout_marginTop="6dp"
+                                android:layout_marginTop="4dp"
                                 android:layout_width="wrap_content"
                                 android:layout_marginStart="16dp"
                                 android:layout_height="wrap_content"
@@ -308,10 +307,22 @@
                                         android:background="@mipmap/icon_type_bac"
                                         android:gravity="center"
                                         android:padding="5dp"
-                                        android:text="Lv潜力用户"
+                                        android:text="@{bean.usertypeName}"
                                         android:textColor="@color/withe"
                                         android:textSize="10dp"
-                                        android:visibility="@{bean.getUserType()==0?View.VISIBLE : View.GONE}" />
+                                     />
+                                    <ImageView
+                                        android:visibility="@{bean.isVerification?View.VISIBLE:View.GONE}"
+                                        android:layout_width="44dp"
+                                        android:src="@mipmap/icon_verif"
+                                        android:layout_marginStart="5dp"
+                                        android:layout_height="match_parent" />
+                                    <ImageView
+                                        android:visibility="@{bean.isVerification?View.GONE:View.VISIBLE}"
+                                        android:layout_width="44dp"
+                                        android:layout_marginStart="5dp"
+                                        android:src="@mipmap/icon_not_verif"
+                                        android:layout_height="match_parent" />
                                 </LinearLayout>
 
 
@@ -327,6 +338,9 @@
                                     android:setVisibility="@{bean.getInviteMe()}"
                                     android:text='@{"我的推荐人："+bean.getInviteMe()}'
                                     android:textColor="#fff"
+                                    android:drawableEnd="@mipmap/icon_edit"
+                                    android:onClick="@{view->handler.editRecommend(view,bean.canUpgrade)}"
+                                    android:drawablePadding="10dp"
                                     android:textSize="13dp" />
 
                                 <LinearLayout
@@ -793,9 +807,9 @@
                             android:paddingTop="10dp"
                             android:layout_marginTop="10dp"
                             style="@style/mimecenterbt"
-                            android:drawableLeft='@mipmap/icon_userinfo_5'
-                            android:onClick="@{view->handler.toUnderlingActivity(view)}"
-                            android:text="  我推荐的人"
+                            android:drawableLeft='@mipmap/icon_verification'
+                            android:onClick="@{view->handler.VerificationUser(view)}"
+                            android:text="  身份认证"
                             android:textColor="@color/black" />
 
                         <TextView

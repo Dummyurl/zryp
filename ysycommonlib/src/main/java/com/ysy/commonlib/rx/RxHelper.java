@@ -38,7 +38,7 @@ public class RxHelper {
                                                     final Consumer<Throwable> onError) {
         Disposable disposable = observable
                 .flatMap(t -> {
-                    if (t.getCode()==200||t.getCode()==0||t.getCode()==202||t.getCode()==201||t.getCode()==402||t.getCode()==404||t.getCode()==401) {
+                    if (t.getCode()==0||t.getCode()==200) {
                         return Observable.just(t);
                     } else {
                         TaskException taskException = new TaskException(t.getCode(), t.getMsg());

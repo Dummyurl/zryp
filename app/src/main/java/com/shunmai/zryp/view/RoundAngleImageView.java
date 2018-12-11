@@ -14,13 +14,15 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 
 import com.shunmai.zryp.R;
+import com.shunmai.zryp.utils.Dev;
+import com.ysy.commonlib.utils.Utils;
 
 /**
  * Created by yushengyang.
  * Date: 2018/8/27.
  */
 
-public class RoundAngleImageView extends ImageView {
+public class RoundAngleImageView extends android.support.v7.widget.AppCompatImageView {
 
     private Paint paint;
     /**
@@ -28,8 +30,8 @@ public class RoundAngleImageView extends ImageView {
      *
      * 这两个都是画圆的半径
      */
-    private int roundWidth = 10;
-    private int roundHeight = 10;
+    private int roundWidth = Dev.dp2px(getContext(),5);
+    private int roundHeight = Dev.dp2px(getContext(),5);
     private Paint paint2;
 
     public RoundAngleImageView(Context context, AttributeSet attrs, int defStyle) {

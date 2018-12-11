@@ -13,8 +13,8 @@ import com.shunmai.zryp.repository.GoodsPromotionRepository;
 
 public class GoodsPromotionViewModel extends ViewModel {
     GoodsPromotionRepository repository=new GoodsPromotionRepository();
-    public void GetScorePromotion(int prId, onResponseListener<GoodsPromotionBean> listener) {
-        repository.GetScorePromotion(prId,listener);
+    public void GetScorePromotion(int prId, int pageNum,int pageSize,onResponseListener<GoodsPromotionBean> listener) {
+        repository.GetScorePromotion(prId,pageNum,pageSize,listener);
     }
     public void GetPrePro(int prId, onResponseListener<GoodsPromotionBean> listener) {
         repository.GetPrePro(prId,listener);

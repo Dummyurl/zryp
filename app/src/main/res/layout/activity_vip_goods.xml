@@ -15,12 +15,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:onBack="@{true}"
+            titlebar:centerText="礼包详情"
             titlebar:centerType="textView"
             titlebar:fillStatusBar="false"
             titlebar:leftDrawable="@color/withe"
             titlebar:leftType="imageButton"
             titlebar:showBottomLine="true" />
-
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/ns_pro"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -34,7 +43,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="51dp"
+                android:layout_marginTop="45dp"
                 android:layout_marginStart="13dp"
                 android:layout_marginEnd="13dp"
                 android:orientation="vertical">
@@ -79,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="17dp"
                     android:layout_marginStart="17dp"
-                    android:layout_marginTop="23dp"
+                    android:layout_marginTop="12dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -118,26 +127,35 @@
                         android:gravity="center"
                         android:text="更多权益" />
                 </LinearLayout>
-
+                <RelativeLayout
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/bac_vip_story"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:layout_gravity="center"
-                    android:layout_marginTop="32dp"
-                    android:background="@mipmap/bac_vip_story"
                     android:gravity="center"
                     android:text="品牌故事"
                     android:textColor="@color/fontBlack"
                     android:textSize="15dp" />
+                </RelativeLayout>
 
-                <TextView
+                <com.ysy.commonlib.widget.AlignTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="41dp"
                     android:layout_marginStart="41dp"
-                    android:layout_marginTop="18dp"
-                    android:text="智融优品是全球社交电商大众首选创业平台，由腾讯战略投资，百万精选商品，遍布全球的尖货买手，一首货源，正品保障,商品佣金10%-30%,真正做到自买自省钱，推广赚钱。" />
+                    android:layout_marginTop="10dp"
+                    android:textSize="10dp"
+                    android:text="智融优品是国内首家真正意义上的区块链社交电商平台，其以独特创新数化融合的运营机制，在 2018 下 半年异军突起，成为价值电商的领军开拓者。 它通过“消费即共建，分享即共有”的运作模式，让平台消费者、平台分享者以及平台运营者等三方，以 区块链共票经济为核心，最终实现新电商场景的共建、共享、共治和共有。 通俗来讲，就是将价值消费融入电商运营中，让用户在购买商品的同时参与平台的建设和发展。在其他电 商平台消费，除了获得等价商品之外一无所获，而在智融优品，消费即投资，你购买的每一单商品，都将 获取一定的积分返利，你消费的每一个订单，都将为平台的运营贡献价值，而平台也将为你的价值报以最 大的回馈。" />
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -162,11 +180,16 @@
                         android:textColor="@color/fontBlack" />
                 </RelativeLayout>
                 <android.support.v7.widget.RecyclerView
+                    android:id="@+id/vip_goods_rec"
+                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:RecRowCount="@{1}"
+                    android:RecDivisionType="@{0}"
                     android:layout_weight="1"/>
             </LinearLayout>
         </RelativeLayout>
-
+        </android.support.v4.widget.NestedScrollView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 </layout>

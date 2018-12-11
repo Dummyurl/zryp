@@ -22,6 +22,8 @@ public class PreProActivity extends SwipeBackActivity<ActivityPreProBinding> {
     GoodsPromotionViewModel viewModel;
     private int prId;
     private FlashSaleRecAdapter adapter;
+    int pageNum = 1;
+    int pageSize = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +37,17 @@ public class PreProActivity extends SwipeBackActivity<ActivityPreProBinding> {
 
     private void initView() {
         bindingView.rvPromotion.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        adapter= new FlashSaleRecAdapter(this,new ArrayList<>());
+        adapter = new FlashSaleRecAdapter(this, new ArrayList<>());
         bindingView.rvPromotion.setAdapter(adapter);
         getData();
     }
+
     private void getData() {
         if (prId == -1) {
             ToastUtils.showToast("活动错误！");
             showError();
         } else {
-            viewModel.GetScorePromotion(prId, new onResponseListener<GoodsPromotionBean>() {
+            viewModel.GetScorePromotion(prId, pageNum, pageSize, new onResponseListener<GoodsPromotionBean>() {
                 @Override
                 public void onSuccess(GoodsPromotionBean goodsPromotionBean) {
                     bindingView.setBean(goodsPromotionBean);

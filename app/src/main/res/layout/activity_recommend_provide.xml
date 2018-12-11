@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.userinfo.account.RecommendProvideActivity">
+
+    <com.wuhenzhizao.titlebar.widget.CommonTitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:onBack="@{true}"
+        app:centerText="请输入邀请码"
+        titlebar:centerType="textView"
+        titlebar:fillStatusBar="false"
+        titlebar:leftDrawable="@color/withe"
+        titlebar:leftType="imageButton"
+        titlebar:showBottomLine="true" />
+
+    <EditText
+        android:id="@+id/et_invitation_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:digits="1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:layout_marginTop="60dp"
+        android:background="@color/withe"
+        android:maxLength="8"
+        android:hint="请输入8位有效邀请码(区分大小写)"
+        android:maxLines="1"
+        android:textSize="14dp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/backgroundColor" />
+    <TextView
+        android:id="@+id/tv_alert"
+        android:visibility="invisible"
+        android:drawableStart="@mipmap/icon_alert"
+        android:layout_marginStart="13dp"
+        android:textColor="@color/fontRed"
+        android:layout_width="match_parent"
+        android:drawablePadding="3dp"
+        android:layout_height="wrap_content"
+        android:text="该邀请码没有指定明确的推荐人，请确认后重新输入"/>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/shape_rect_red_gradient"
+        android:text="保存"
+        android:textColor="@color/withe"
+        android:textSize="18dp" />
+
+</LinearLayout></layout>

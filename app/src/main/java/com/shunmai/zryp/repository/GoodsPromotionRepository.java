@@ -12,8 +12,8 @@ import com.ysy.commonlib.base.BaseRepository;
  */
 
 public class GoodsPromotionRepository extends BaseRepository<Object> {
-    public void GetScorePromotion(int prId, onResponseListener<GoodsPromotionBean> listener) {
-        sendRequest(RetrofitClient.getInstance().getService(HttpService.class).GetScorePromotion(prId), goodsPromotionBeanTResponse -> listener.onSuccess(goodsPromotionBeanTResponse.getData()), throwable -> listener.onFailed(throwable));
+    public void GetScorePromotion(int prId,int pageNum,int pageSize, onResponseListener<GoodsPromotionBean> listener) {
+        sendRequest(RetrofitClient.getInstance().getService(HttpService.class).GetScorePromotion(prId,pageNum, pageSize), goodsPromotionBeanTResponse -> listener.onSuccess(goodsPromotionBeanTResponse.getData()), throwable -> listener.onFailed(throwable));
     }
     public void GetPrePro(int prId, onResponseListener<GoodsPromotionBean> listener) {
         sendRequest(RetrofitClient.getInstance().getService(HttpService.class).GetPrePro(prId), goodsPromotionBeanTResponse -> listener.onSuccess(goodsPromotionBeanTResponse.getData()), throwable -> listener.onFailed(throwable));

@@ -238,7 +238,7 @@ public class SwipeMenuLayout extends ViewGroup {
         }
         setMeasuredDimension(getPaddingLeft() + getPaddingRight() + contentWidth,
                 mHeight + getPaddingTop() + getPaddingBottom());//宽度取第一个Item(Content)的宽度
-        mLimit = mRightMenuWidths * 4 / 10;//滑动判断的临界值
+        mLimit = mRightMenuWidths * 3 / 10;//滑动判断的临界值
         //Log.d(TAG, "onMeasure() called with: " + "mRightMenuWidths = [" + mRightMenuWidths);
         if (isNeedMeasureChildHeight) {//如果子View的height有MatchParent属性的，设置子View高度
             forceUniformHeight(childCount, widthMeasureSpec);

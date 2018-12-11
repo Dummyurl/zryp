@@ -27,6 +27,8 @@ public class GoodsPromotionActivity extends SwipeBackActivity<ActivityGoodsPromo
     private GoodsPromotionAdapter adapter;
     GoodsPromotionViewModel viewModel;
     int type;
+    int pageNum = 1;
+    int pageSize = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class GoodsPromotionActivity extends SwipeBackActivity<ActivityGoodsPromo
 
     private void initView() {
         bindingView.rvPromotion.setLayoutManager(new GridLayoutManager(this, 3));
-        adapter = new GoodsPromotionAdapter(this, new ArrayList<>(),type);
+        adapter = new GoodsPromotionAdapter(this, new ArrayList<>(), type);
         bindingView.rvPromotion.setAdapter(adapter);
         getData();
     }
@@ -64,7 +66,7 @@ public class GoodsPromotionActivity extends SwipeBackActivity<ActivityGoodsPromo
             ToastUtils.showToast("活动错误！");
             showError();
         } else {
-            viewModel.GetScorePromotion(prId, new onResponseListener<GoodsPromotionBean>() {
+            viewModel.GetScorePromotion(prId, pageNum, pageSize, new onResponseListener<GoodsPromotionBean>() {
                 @Override
                 public void onSuccess(GoodsPromotionBean goodsPromotionBean) {
                     adapter.add(goodsPromotionBean.getPromotionGoods());

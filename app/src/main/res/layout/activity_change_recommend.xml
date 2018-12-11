@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="handler"
+            type="com.ysy.commonlib.base.BaseEventHandler"/>
+        <variable
+            name="reBean"
+            type="com.shunmai.zryp.bean.userinfo.ReferrerNameBean"/>
+        <variable
+            name="queryBean"
+            type="com.shunmai.zryp.bean.userinfo.ReferrerNameBean"/>
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.userinfo.account.ChangeRecommendActivity">
+
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:onBack="@{true}"
+            titlebar:centerText="修改推荐人"
+            titlebar:centerType="textView"
+            titlebar:fillStatusBar="false"
+            titlebar:leftDrawable="@color/withe"
+            titlebar:leftType="imageButton"
+            titlebar:showBottomLine="true" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundColor"
+            android:orientation="vertical"
+            android:paddingEnd="13dp"
+            android:paddingStart="13dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_shadow"
+                android:orientation="vertical"
+                android:paddingBottom="20dp"
+                android:paddingEnd="13dp"
+                android:paddingStart="13dp"
+                android:paddingTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="14dp"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="3dp"
+                        android:layout_height="13dp"
+                        android:layout_gravity="center"
+                        android:background="#C6A36B" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:text="当前推荐人信息"
+                        android:textColor="@color/fontBlack"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorLineItem" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="20dp"
+                    android:text='@{"推荐人："+reBean.nickname}'
+                    android:textColor="@color/fontNormal"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="20dp"
+                    android:text='@{"推荐人ID："+reBean.id}'
+                    android:textColor="@color/fontNormal"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_shadow"
+                android:orientation="vertical"
+                android:paddingBottom="20dp"
+                android:paddingEnd="13dp"
+                android:paddingStart="13dp"
+                android:paddingTop="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginBottom="14dp"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="3dp"
+                        android:layout_height="13dp"
+                        android:layout_gravity="center"
+                        android:background="#C6A36B" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:text="修改推荐人信息"
+                        android:textColor="@color/fontBlack"
+                        android:textSize="16dp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorLineItem" />
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:textColor="@color/fontRed"
+                    android:background="#FEE7E7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="温馨提示：您的推荐人信息仅支持修改一次，修改后将永久不能修改，请谨慎操作。"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="26dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="推荐ID"
+                        android:textColor="@color/fontNormal"
+                        android:textSize="18dp"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/et_query_num"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        android:paddingStart="11dp"
+                        android:maxLength="10"
+                        android:paddingEnd="11dp"
+                        android:hint="请输入ID" android:background="@drawable/shape_rect_stroke_grey"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:inputType="number"
+                        />
+                        <Button
+                            android:id="@+id/tv_query"
+                            android:textColor="@color/withe"
+                            android:textSize="16dp"
+                            android:paddingStart="24dp"
+                            android:paddingEnd="24dp"
+                            android:paddingTop="14dp"
+                            android:paddingBottom="14dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorLineDeep"
+                            android:text="查询推荐人"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/fontRed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="*请填写有效数字  *不可以填写自己的ID"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorLineItem" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="搜索结果："
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/fontNormal"
+                    android:textSize="18dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:visibility="@{queryBean==null?View.VISIBLE:View.GONE}"
+                    android:layout_width="wrap_content"
+                    android:text="未搜索到该用户，请核实推荐人ID是否有误。"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/fontNormal"
+                    android:textSize="18dp"
+                    android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:visibility="@{queryBean==null?View.GONE:View.VISIBLE}"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="姓名："
+                            android:textSize="18dp"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/tv_query_user_name"
+                            android:layout_width="wrap_content"
+                            android:text="@{queryBean.nickname}"
+                            android:textSize="18dp"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="ID："
+                            android:layout_marginStart="33dp"
+                            android:textSize="18dp"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/tv_query_user_id"
+                            android:layout_width="wrap_content"
+                            android:text='@{queryBean.id+""}'
+                            android:textSize="18dp"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_change"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="确认修改"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textSize="20dp"
+                    android:background="@drawable/shape_rect_grey"
+                    android:gravity="center"
+                    android:textColor="@color/withe"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="7dp"/>
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="取消修改"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:onClick="@{view->handler.finishActivity(view)}"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:textColor="@color/withe"
+                    android:background="@drawable/shape_rect_grey"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"/>
+            </LinearLayout>
+        </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

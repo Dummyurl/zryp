@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.WebViewActivity">
-
-</android.support.constraint.ConstraintLayout>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.WebViewActivity">
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
+            android:id="@+id/lib_title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onBack="@{true}"
+            titlebar:leftDrawable="@color/lib_withe"
+            android:layout_marginTop="15dp"
+            titlebar:showBottomLine="true"
+            titlebar:centerText="编辑收货地址"
+            titlebar:centerType="textView"
+            titlebar:fillStatusBar="false"
+            titlebar:leftType="imageButton" />
+        <WebView
+            android:id="@+id/web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</layout>

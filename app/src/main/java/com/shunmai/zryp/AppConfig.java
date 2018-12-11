@@ -3,17 +3,28 @@ package com.shunmai.zryp;
 import android.os.Debug;
 
 /**
- * Created by xianglanzuo on 2018/1/2.
+ * Created by ysy on 2018/9/2.
  */
 
 public class AppConfig {
-
+    /**
+     * 其他版本
+     */
     public static final int OTHER = 0;
 
+    /**
+     * 测试版本
+     */
     public static final int DEBUG = 1;
 
+    /**
+     * 正式版本
+     */
     public static final int RELEASE = 2;
 
+    /**
+     * 是否RELEASE版本不开启日志
+     */
     public static boolean DEBUG_LOG = true;
 
     /**

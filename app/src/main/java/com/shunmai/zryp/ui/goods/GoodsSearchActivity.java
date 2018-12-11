@@ -74,7 +74,7 @@ public class GoodsSearchActivity extends SwipeBackActivity<ActivityGoodsSearchBi
             viewModel.getHistory(historyData);
             Intent intent = new Intent(GoodsSearchActivity.this, GoodsListActivity.class);
             intent.putExtra("type", 3);
-            intent.putExtra("keyword", bindingView.etSearch.getText().toString().trim());
+//            intent.putExtra("keyword", bindingView.etSearch.getText().toString().trim());
             intent.putExtra("goodsName", bindingView.etSearch.getText().toString().trim());
             intent.putExtra("title", bindingView.etSearch.getText().toString().trim());
             startActivity(intent);

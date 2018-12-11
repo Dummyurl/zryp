@@ -16,6 +16,8 @@ import android.view.WindowManager;
 import android.widget.DatePicker;
 
 import com.shunmai.zryp.R;
+import com.shunmai.zryp.ui.userinfo.account.ChangeRecommendActivity;
+import com.shunmai.zryp.ui.userinfo.account.UserApproveActivity;
 import com.ysy.commonlib.base.BaseEventHandler;
 import com.shunmai.zryp.ui.userinfo.account.AddressListActivity;
 import com.shunmai.zryp.ui.userinfo.account.CollectActivity;
@@ -57,11 +59,13 @@ public class UserInfoHandler extends BaseEventHandler {
             view.getContext().startActivity(new Intent(view.getContext(), FootPrintActivity.class));
         }
     }
+
     public void toCollectActivity(View view) {
         if (Utils.checkLogin(view.getContext())) {
             view.getContext().startActivity(new Intent(view.getContext(), CollectActivity.class));
         }
     }
+
     public void toExchangeScoreActivity(View view) {
         ToastUtils.showToast("积分功能暂未开放！");
 //        Intent intent = new Intent(view.getContext(), ExchangeScoreActivity.class);
@@ -86,7 +90,7 @@ public class UserInfoHandler extends BaseEventHandler {
 
     public void showLightDialog(View view) {
         ToastUtils.showToast("升级功能暂未开放！");
-        AlertDialog.Builder builder=new AlertDialog.Builder(view.getContext(),R.style.AlertDialogStyle);
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(), R.style.AlertDialogStyle);
         View inflate = ((Activity) view.getContext()).getLayoutInflater().inflate(R.layout.layout_level_up_dialog, null);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
@@ -133,21 +137,17 @@ public class UserInfoHandler extends BaseEventHandler {
                 view.getContext().startActivity(intent);
             }
         });
-
-
     }
 
-    public void showDate(View view) {
-        Calendar ca = Calendar.getInstance();
-        int mYear = ca.get(Calendar.YEAR);
-        int mMonth = ca.get(Calendar.MONTH);
-        int mDay = ca.get(Calendar.DAY_OF_MONTH);
-        new DatePickerDialog(view.getContext(), new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                ToastUtils.showToast(year + "年" + month + "月" + dayOfMonth + "日");
-            }
-        }, mYear, mMonth, mDay).show();
+    public void VerificationUser(View view) {
+        view.getContext().startActivity(new Intent(view.getContext(), UserApproveActivity.class));
     }
 
+    public void editRecommend(View view, boolean canChange) {
+        if (canChange) {
+            view.getContext().startActivity(new Intent(view.getContext(), ChangeRecommendActivity.class));
+        }else {
+            ToastUtils.showToast("推荐人只能修改一次！");
+        }
+    }
 }

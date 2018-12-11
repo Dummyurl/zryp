@@ -86,6 +86,7 @@ public abstract class SwipeBackActivity<SV extends ViewDataBinding> extends Base
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SwipeBackHelper.onCreate(this);
+        SwipeBackHelper.getCurrentPage(this).setSwipeEdgePercent((float) 0.25);
         changeBackMode();
     }
     public void changeBackMode(){

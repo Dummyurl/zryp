@@ -1,5 +1,7 @@
 package com.shunmai.zryp.network.service;
 
+import com.shunmai.zryp.bean.BankBean;
+import com.shunmai.zryp.bean.BankCardBean;
 import com.shunmai.zryp.bean.GoodsSecKillBean;
 import com.shunmai.zryp.bean.UserInfoBean;
 import com.shunmai.zryp.bean.addrbean.RegionBean;
@@ -12,14 +14,19 @@ import com.shunmai.zryp.bean.goods.GoodsOrderListBean;
 import com.shunmai.zryp.bean.goods.GoodsPromotionBean;
 import com.shunmai.zryp.bean.goods.OderInfoBean;
 import com.shunmai.zryp.bean.goods.PromotionGoodsBean;
+import com.shunmai.zryp.bean.goods.RestBean;
 import com.shunmai.zryp.bean.home.CheckVersionBean;
 import com.shunmai.zryp.bean.home.HomePageBean;
 import com.shunmai.zryp.bean.underling.UnderlingBean;
 import com.shunmai.zryp.bean.userinfo.AddressListBean;
 import com.shunmai.zryp.bean.userinfo.CollectBean;
 import com.shunmai.zryp.bean.userinfo.FootprintBean;
+import com.shunmai.zryp.bean.userinfo.ReferrerNameBean;
 import com.shunmai.zryp.bean.userinfo.Response_Wechat;
 import com.shunmai.zryp.bean.userinfo.Response_WechatUserInfo;
+import com.shunmai.zryp.bean.userinfo.VipGuideIndexBean;
+import com.shunmai.zryp.bean.wallet.ScoreDataBean;
+import com.shunmai.zryp.bean.wallet.WalletListBean;
 import com.ysy.commonlib.base.TResponse;
 
 import java.util.HashMap;
@@ -32,6 +39,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
@@ -216,8 +224,8 @@ public interface HttpService {
     /**
      * 获取验证码
      *
-     * @param type
-     * @param phoneNum
+     * @param type     短信类型（1 注册; 2 找回密码; 3 通用类型，适合于大部分情况）
+     * @param phoneNum 有效的手机号码
      * @return
      */
     @GET("sms/send")
@@ -236,11 +244,10 @@ public interface HttpService {
      * 用户身份验证
      *
      * @param map
-     * @param code
      * @return
      */
-    @POST("user/Authentication")
-    Observable<TResponse<String>> ApproveUser(@Body() HashMap<String, String> map, @Query("VerifyCode") String code);
+    @PUT("User/UserAuthentication")
+    Observable<TResponse<Object>> ApproveUser(@Body() HashMap<String, Object> map);
 
     /**
      * 设置密码
@@ -272,14 +279,13 @@ public interface HttpService {
     /**
      * 搜索商品
      *
-     * @param page
-     * @param keywords
+     * @param pageNum
      * @param goodsName
      * @param sortRule
      * @return
      */
-    @GET("goods/SearchGoods")
-    Observable<GoodsListBean> SearchGoods(@Query("page") int page, @Query("keywords") String keywords, @Query("goodsName") String goodsName, @Query("sortRule") int sortRule);
+    @GET("goods/SearchGoodsByName")
+    Observable<GoodsListBean> SearchGoods(@Query("pageNum") int pageNum, @Query("goodsName") String goodsName, @Query("sortRule") int sortRule, @Query("pageSize") int pageSize);
 
     /**
      * 获取商品邮费
@@ -407,13 +413,13 @@ public interface HttpService {
     Observable<TResponse<String>> CollectGoodsItem(@Query("goodsId") int goodsId, @Query("skuId") int skuId, @Query("userId") int userId);
 
     /**
-     * 获取爆赚积分活动详情
+     * 获取活动详情
      *
      * @param prId 活动id
      * @return
      */
     @GET("promotion/detail/nonsecondkill")
-    Observable<TResponse<GoodsPromotionBean>> GetScorePromotion(@Query("prId") int prId);
+    Observable<TResponse<GoodsPromotionBean>> GetScorePromotion(@Query("prId") int prId, @Query("pageNum") int pageNum, @Query("pageSize") int pageSize);
 
     /**
      * 获取商品秒杀信息
@@ -454,4 +460,127 @@ public interface HttpService {
     @GET("/index/main")
     Observable<TResponse<String>> GetMainAd();
 
+    /**
+     * 获取VIP导购首页
+     *
+     * @return
+     */
+    @GET("ShoppingGuide/GetShoppingGuideIndex")
+    Observable<TResponse<VipGuideIndexBean>> GetShoppingGuideIndex();
+
+    /**
+     * 获取礼包活动
+     *
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @GET("promotion/detail/nonsecondkill")
+    Observable<TResponse<GoodsPromotionBean>> GetVipGoods(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize);
+
+    /**
+     * VIP升级
+     *
+     * @return
+     */
+    @GET("ShoppingGuide/UserIdentityUpgrade")
+    Observable<TResponse<String>> Upgrade();
+
+    /**
+     * 获取可提现金额
+     *
+     * @return
+     */
+    @GET("wallet/amount/rest")
+    Observable<TResponse<RestBean>> WalletAmount();
+
+    /**
+     * 获取银行列表信息
+     *
+     * @return
+     */
+    @GET("config/bank/list")
+    Observable<TResponse<List<BankBean>>> GetBankList();
+
+    /**
+     * 修改用户提现银行卡
+     *
+     * @param map
+     * @return
+     */
+    @PUT("user/card")
+    Observable<TResponse<BankCardBean>> UpdateBankCardInfo(@Body() HashMap<String, String> map);
+
+    /**
+     * 用户提现
+     *
+     * @param map
+     * @return
+     */
+    @POST("wallet/withdraw")
+    Observable<TResponse<String>> UserWithdraw(@Body() HashMap<String, Object> map);
+
+    /**
+     * 用户提现列表
+     *
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @GET("wallet/withdraw/list")
+    Observable<TResponse<List<WalletListBean>>> GetWithdrawList(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize);
+
+    /**
+     * 1.查询自己的推荐人 2.根据用户id查询用户信息
+     *
+     * @param userId 查询Id
+     * @param type   type:1.查询自己的推荐人，2.查询推荐人用户信息
+     * @return
+     */
+    @GET("User/GetReferrerName")
+    Observable<TResponse<ReferrerNameBean>> ReferrerName(@Query("userId") int userId, @Query("type") int type);
+
+    /**
+     * 修改推荐人
+     *
+     * @param map
+     * @return
+     */
+    @PUT("User/UpdateReferrer")
+    Observable<TResponse<String>> UpdateReferrer(@Body() HashMap<String, Integer> map);
+
+    /**
+     * 判断是否已经认证
+     *
+     * @param unionId
+     * @return
+     */
+    @GET("user/IsAuthentication/{unionId}")
+    Observable<TResponse<UserInfoBean>> WechatLogin(@Path("unionId") String unionId);
+
+    /**
+     * 判断邀请码是否有效
+     *
+     * @param invitationCode
+     * @return
+     */
+    @GET("user/IsInvitationCodeEnable/{invitationCode}")
+    Observable<TResponse<Integer>> IsAuthentication(@Path("invitationCode") String invitationCode);
+
+    /**
+     * 绑定手机，并注册用户
+     *
+     * @param map
+     * @return
+     */
+    @POST("user/AppRegistAuthentication/{verifyCode}/{invitationCode}")
+    Observable<TResponse<UserInfoBean>> RegistAuthentication(@Body() HashMap<String, Object> map, @Path("verifyCode") String verifyCode, @Path("invitationCode") String invitationCode);
+
+    /**
+     * 获取钱包兑换页面数据
+     *
+     * @return
+     */
+    @GET("wallet/integral/exchangeData")
+    Observable<TResponse<ScoreDataBean>> GetExchangeData();
 }

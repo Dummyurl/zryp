@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="bean"
+            type="com.shunmai.zryp.bean.userinfo.VipGuideIndexBean" />
+
+        <variable
+            name="userBean"
+            type="com.shunmai.zryp.bean.UserInfoBean" />
+
+        <variable
+            name="handler"
+            type="com.shunmai.zryp.eventhandler.userinfo.VipGuideIndexHandler" />
+    </data>
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:titlebar="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/withe"
         android:orientation="vertical"
         tools:context=".ui.home.child.VipGuideFragment">
 
@@ -21,7 +39,8 @@
 
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/backgroundColor">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -30,7 +49,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="275dp">
+                    android:layout_height="262dp">
 
                     <View
                         android:layout_width="match_parent"
@@ -43,6 +62,8 @@
                         android:layout_height="60dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
+                        android:displayHeadImg="@{bean.getPic()}"
+                        android:setGender="@{0}"
                         android:src="@mipmap/ic_launcher" />
 
                     <LinearLayout
@@ -61,7 +82,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:gravity="end"
-                            android:text="UserName"
+                            android:text='@{userBean.getNickname()}'
                             android:textColor="@color/withe"
                             android:textSize="14dp" />
 
@@ -73,7 +94,8 @@
                             android:background="@mipmap/icon_type_bac_white"
                             android:gravity="center"
                             android:padding="5dp"
-                            android:text="Lv潜力用户"
+                            android:text='@{"LV:"+bean.getCurrentUserTypeStr()}'
+
                             android:textColor="@color/withe"
                             android:textSize="8dp"
                             android:textStyle="bold" />
@@ -101,7 +123,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:gravity="end"
-                            android:text="1000"
+                            android:text='@{bean.getCashbScore()+""}'
                             android:textColor="#CE9F60"
                             android:textSize="14dp" />
 
@@ -118,12 +140,152 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="142dp"
+                        android:layout_height="130dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="13dp"
+                        android:layout_marginStart="15dp"
+                        android:background="@drawable/shape_shadow"
+                        android:orientation="vertical"
+                        android:padding="4dp"
+                        android:visibility="@{bean.getCurrentUserType()==1?View.VISIBLE:View.GONE}">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="42dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:text="我的收入"
+
+                            android:textColor="@color/black"
+                            android:textSize="16dp" />
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorLineItem" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="77dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/withe"
+                            android:orientation="horizontal"
+                            android:paddingBottom="15dp"
+                            android:paddingTop="5dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text='@{bean.getDayIncome()+""}'
+                                    android:textColor="@color/black"
+                                    android:textSize="22dp" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:text="今日收入"
+                                    android:textColor="@color/fontNormal"
+                                    android:textSize="13dp" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:background="#ffe8e8e8" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text='@{bean.getMonthIncome()+""}'
+                                    android:textColor="@color/black"
+                                    android:textSize="22dp" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:text="本月收入"
+                                    android:textColor="@color/fontNormal"
+                                    android:textSize="13dp" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:background="#ffe8e8e8" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text='@{bean.getGrandTotalIncome()+""}'
+                                    android:textColor="@color/black"
+                                    android:textSize="22dp" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:text="累计收入"
+                                    android:textColor="@color/fontNormal"
+                                    android:textSize="13dp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="129dp"
                         android:layout_alignParentBottom="true"
                         android:layout_marginEnd="13dp"
                         android:layout_marginStart="13dp"
                         android:background="@mipmap/bac_vip_guide_card"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:visibility="@{bean.getCurrentUserType()==1?View.GONE:View.VISIBLE}">
 
                         <LinearLayout
                             android:id="@+id/ll_level_up"
@@ -141,12 +303,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="top"
-                                android:layout_marginTop="30dp"
-
+                                android:layout_marginTop="17dp"
                                 android:drawablePadding="4dp"
                                 android:drawableStart="@mipmap/icon_lv"
                                 android:gravity="bottom"
-                                android:text="潜力用户"
+                                android:paddingBottom="3dp"
+                                android:text='@{bean.getCurrentUserTypeStr()}'
                                 android:textColor="@color/fontBlack"
                                 android:textSize="12dp" />
 
@@ -161,30 +323,35 @@
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="30dp"
+                                    android:layout_height="17dp"
                                     android:orientation="horizontal">
 
                                     <View
                                         android:layout_width="0dp"
                                         android:layout_height="1dp"
-                                        android:layout_weight="55" />
+                                        android:setWeightPercent='@{bean.getProgress()}' />
 
-                                    <TextView
-                                        android:layout_width="40dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginEnd="-20dp"
-                                        android:layout_marginStart="-20dp"
+                                    <RelativeLayout
+                                        android:layout_width="28dp"
+                                        android:layout_height="17dp"
+                                        android:layout_marginEnd="-10dp"
+                                        android:layout_marginStart="-10dp"
                                         android:background="@mipmap/icon_prop_bottom"
-                                        android:gravity="center"
-                                        android:paddingBottom="3dp"
-                                        android:paddingTop="8dp"
                                         android:textColor="@color/withe"
-                                        android:textSize="12dp" />
+                                        android:textSize="12dp">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerHorizontal="true"
+                                            android:text='@{bean.getProgress()+"%"}'
+                                            android:textSize="10dp" />
+                                    </RelativeLayout>
 
                                     <View
                                         android:layout_width="0dp"
                                         android:layout_height="1dp"
-                                        android:layout_weight="45" />
+                                        android:setWeightPercent='@{100-bean.getProgress()}' />
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -196,11 +363,11 @@
                                         android:id="@+id/pb_flash_sale"
                                         style="?android:attr/progressBarStyleHorizontal"
                                         android:layout_width="0dp"
-                                        android:layout_height="10dp"
+                                        android:layout_height="14dp"
                                         android:layout_gravity="center"
                                         android:layout_weight="1"
                                         android:max="100"
-                                        android:progress='55'
+                                        android:progress='@{bean.getProgress()}'
                                         android:progressDrawable="@drawable/progress_horizontal_mine" />
                                 </LinearLayout>
 
@@ -212,552 +379,766 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="top"
                                 android:layout_marginLeft="6dp"
-                                android:layout_marginTop="30dp"
+                                android:layout_marginTop="17dp"
                                 android:drawablePadding="4dp"
                                 android:drawableStart="@mipmap/icon_lv"
                                 android:gravity="bottom"
-                                android:text="VIP导购"
+                                android:paddingBottom="3dp"
+                                android:text='@{bean.getNextUserTypeStr()}'
                                 android:textColor="@color/fontBlack"
                                 android:textSize="11dp" />
                         </LinearLayout>
 
                         <LinearLayout
+
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="0dp"
                             android:layout_marginBottom="10dp"
                             android:layout_marginEnd="13dp"
                             android:layout_marginStart="13dp"
                             android:layout_marginTop="15dp"
-                            android:layout_weight="5"
-                            android:background="@drawable/shape_circular_vip_guide_grey"
-                            android:orientation="vertical">
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:drawablePadding="6dp"
-                                android:drawableRight="@mipmap/icon_double_arrow_white"
-                                android:gravity="center"
-                                android:text="快速升级VIP导购"
-                                android:textColor="@color/withe"
-                                android:textSize="16dp" />
-                        </LinearLayout>
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_circular_vip_guide_grey"
 
+                                android:currentType="@{bean}"
+                                android:isAlways="@{false}"
+                                android:onClick="@{view->handler.toVipGoods(view)}"
+                                android:orientation="vertical"
+                                android:vipIsFull="@{false}"
+                                android:vipType="@{0}">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:drawablePadding="6dp"
+                                    android:drawableRight="@mipmap/icon_double_arrow_white"
+                                    android:gravity="center"
+                                    android:text="快速升级VIP导购"
+                                    android:textColor="@color/withe"
+                                    android:textSize="16dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_circular_vip_guide_red"
+                                android:currentType="@{bean}"
+                                android:isAlways="@{false}"
+                                android:onClick="@{view->handler.showVipGuideDialog(view,0)}"
+                                android:orientation="vertical"
+                                android:vipIsFull="@{true}"
+                                android:vipType="@{0}">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:drawablePadding="6dp"
+                                    android:drawableRight="@mipmap/icon_double_arrow_white"
+                                    android:gravity="center"
+                                    android:text="升级VIP导购"
+
+                                    android:textColor="@color/withe"
+                                    android:textSize="16dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_circular_vip_guide_brown"
+                                android:currentType="@{bean}"
+                                android:isAlways="@{true}"
+                                android:onClick="@{view->handler.directorPowerDialog(view,0)}"
+                                android:orientation="vertical"
+                                android:vipIsFull="@{true}"
+
+                                android:vipType="@{3}">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:drawablePadding="6dp"
+                                    android:drawableRight="@mipmap/icon_double_arrow_white"
+                                    android:gravity="center"
+                                    android:text="总监特权"
+                                    android:textColor="@color/withe"
+                                    android:textSize="16dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="3dp"
+                                android:layout_weight="1" android:background="@drawable/shape_circular_vip_guide_grey"
+                                android:currentType="@{bean}"
+                                android:isAlways="@{false}"
+                                android:onClick="@{view->handler.directorProgressDialog(view,bean.getVipUpgradeProgress())}"
+                                android:orientation="vertical"
+                                android:vipIsFull="@{false}"
+                                android:vipType="@{3}">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:drawablePadding="6dp"
+                                    android:drawableRight="@mipmap/icon_double_arrow_white"
+                                    android:gravity="center"
+                                    android:text="去升级 GO"
+                                    android:textColor="@color/withe"
+                                    android:textSize="16dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_circular_vip_guide_red"
+                                android:currentType="@{bean}"
+                                android:isAlways="@{false}"
+                                android:orientation="vertical"
+                                android:vipIsFull="@{true}"
+                                android:vipType="@{3}">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:drawablePadding="6dp"
+                                    android:drawableRight="@mipmap/icon_double_arrow_white"
+                                    android:gravity="center"
+                                    android:onClick="@{view->handler.showVipGuideDialog(view,1)}"
+                                    android:text="去升级 GO"
+                                    android:textColor="@color/withe"
+                                    android:textSize="16dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_circular_vip_guide_brown"
+                                android:currentType="@{bean}"
+                                android:isAlways="@{true}"
+                                android:orientation="vertical"
+                                android:vipIsFull="@{false}"
+                                android:onClick="@{view->handler.directorPowerDialog(view,1)}"
+                                android:vipType="@{2}">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:drawablePadding="6dp"
+                                    android:drawableRight="@mipmap/icon_double_arrow_white"
+                                    android:gravity="center"
+                                    android:text="总经理特权"
+                                    android:textColor="@color/withe"
+
+                                    android:textSize="16dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_circular_vip_guide_grey"
+                                android:currentType="@{bean}"
+                                android:isAlways="@{false}"
+                                android:onClick="@{view->handler.managerProgressDialog(view,bean.getDirectorUpgradeProgress())}"
+                                android:orientation="vertical"
+                                android:vipIsFull="@{false}"
+                                android:vipType="@{2}">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:drawablePadding="6dp"
+                                    android:drawableRight="@mipmap/icon_double_arrow_white"
+                                    android:gravity="center"
+                                    android:text="去升级 GO"
+                                    android:textColor="@color/withe"
+                                    android:textSize="16dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="3dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_circular_vip_guide_red"
+                                android:currentType="@{bean}"
+                                android:isAlways="@{false}"
+                                android:orientation="vertical"
+                                android:vipIsFull="@{true}"
+                                android:vipType="@{2}"
+                                android:onClick="@{view->handler.showVipGuideDialog(view,2)}">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:drawablePadding="6dp"
+                                    android:drawableRight="@mipmap/icon_double_arrow_white"
+                                    android:gravity="center"
+                                    android:text="去升级 GO"
+                                    android:textColor="@color/withe"
+                                    android:textSize="16dp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginEnd="13dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="14dp"
-                    android:background="@drawable/shape_shadow"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:orientation="vertical"
-                    android:padding="4dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="42dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="5dp"
-                        android:gravity="center"
-                        android:padding="8dp"
-                        android:text="我的收入"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
-
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/colorLineItem" />
+                    android:visibility="@{bean.getCurrentUserType()==0?View.GONE:View.VISIBLE}">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="115dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/withe"
-                        android:orientation="horizontal"
-                        android:paddingBottom="15dp"
-                        android:paddingTop="5dp">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text='535.25'
-                                android:textColor="@color/black"
-                                android:textSize="22dp" />
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:text="今日收入"
-                                android:textColor="@color/fontNormal"
-                                android:textSize="13dp" />
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="25dp"
-                            android:layout_gravity="center"
-                            android:background="#ffe8e8e8" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text='846.67'
-                                android:textColor="@color/black"
-                                android:textSize="22dp" />
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:text="本月收入"
-                                android:textColor="@color/fontNormal"
-                                android:textSize="13dp" />
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="25dp"
-                            android:layout_gravity="center"
-                            android:background="#ffe8e8e8" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text='1298.85'
-                                android:textColor="@color/black"
-                                android:textSize="22dp" />
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:text="累计收入"
-                                android:textColor="@color/fontNormal"
-                                android:textSize="13dp" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginEnd="13dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="14dp"
-                    android:background="@drawable/shape_shadow"
-                    android:orientation="vertical"
-                    android:padding="4dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
+                        android:layout_height="130dp"
+                        android:layout_marginEnd="13dp"
                         android:layout_marginStart="15dp"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/shape_shadow"
+                        android:orientation="vertical"
+                        android:padding="4dp"
+                        android:visibility="@{bean.getCurrentUserType()==1?View.GONE:View.VISIBLE}">
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
+                            android:layout_height="42dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
                             android:gravity="center"
-                            android:text="可提现金额"
-                            android:textColor="@color/fontGrey"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:gravity="center"
-                            android:text="￥"
-                            android:textColor="@color/fontBlack"
-                            android:textSize="22dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="2dp"
-                            android:gravity="center"
-                            android:text="4535.25"
-                            android:textColor="@color/fontBlack"
-                            android:textSize="22dp" />
-                    </LinearLayout>
-
-                    <com.shunmai.zryp.view.DashLine
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginStart="15dp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="15dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginStart="35dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/shape_circle_stroke_grey"
-                            android:gravity="center"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:text="提现记录"
+                            android:padding="8dp"
+                            android:text="我的收入"
+                            android:textColor="@color/black"
                             android:textSize="16dp" />
 
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorLineItem" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="77dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/withe"
+                            android:orientation="horizontal"
+                            android:paddingBottom="15dp"
+                            android:paddingTop="5dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text='@{bean.getDayIncome()+""}'
+                                    android:textColor="@color/black"
+                                    android:textSize="22dp" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:text="今日收入"
+                                    android:textColor="@color/fontNormal"
+                                    android:textSize="13dp" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:background="#ffe8e8e8" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text='@{bean.getMonthIncome()+""}'
+                                    android:textColor="@color/black"
+                                    android:textSize="22dp" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:text="本月收入"
+                                    android:textColor="@color/fontNormal"
+                                    android:textSize="13dp" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:background="#ffe8e8e8" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text='@{bean.getGrandTotalIncome()+""}'
+                                    android:textColor="@color/black"
+                                    android:textSize="22dp" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:text="累计收入"
+                                    android:textColor="@color/fontNormal"
+                                    android:textSize="13dp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="13dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/shape_shadow"
+                        android:orientation="vertical"
+                        android:padding="4dp"
+                        android:visibility="@{bean.getCurrentUserType()==0?View.GONE:View.VISIBLE}">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:gravity="center"
+                                android:text="可提现金额"
+                                android:textColor="@color/fontGrey"
+                                android:textSize="14dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:gravity="center"
+                                android:text="￥"
+                                android:textColor="@color/fontBlack"
+                                android:textSize="22dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="2dp"
+                                android:gravity="center"
+                                android:text='@{bean.canWithdrawMoney+""}'
+                                android:textColor="@color/fontBlack"
+                                android:textSize="22dp" />
+                        </LinearLayout>
+
+                        <com.shunmai.zryp.view.DashLine
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="15dp" />
+
+                        <LinearLayout
+                            android:onClick="@{view->handler.toListWithDraw(view,bean.isWithdrawalInformation)}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginStart="35dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_circle_stroke_grey"
+                                android:gravity="center"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:text="提现记录"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="35dp"
+                                android:layout_marginStart="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_circle_solid_gold"
+                                android:gravity="center"
+                                android:paddingBottom="7dp"
+                                android:paddingTop="7dp"
+                                android:text="提现"
+                                android:onClick="@{view->handler.toWallet(view,bean.isWithdrawalInformation)}"
+                                android:textColor="@color/withe"
+                                android:textSize="16dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="13dp"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/shape_shadow_soild_grey"
+                        android:orientation="vertical"
+                        android:padding="2dp"
+                        android:visibility="@{bean.getCurrentUserType()==0?View.GONE:View.VISIBLE}">
+
                         <TextView
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="35dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/shape_circle_solid_gold"
-                            android:gravity="center"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:text="提现"
-                            android:textColor="@color/withe"
+                            android:background="@drawable/shape_radis_top"
+                            android:paddingBottom="14dp"
+                            android:paddingStart="14dp"
+                            android:paddingTop="14dp"
+                            android:text="核心数据"
+                            android:textColor="@color/fontBlack"
                             android:textSize="16dp" />
-                    </LinearLayout>
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="13dp"
-                    android:layout_marginStart="13dp"
-                    android:layout_marginTop="10dp"
-                    android:padding="2dp"
-                    android:background="@drawable/shape_shadow_soild_grey"
-                    android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="14dp"
-                        android:paddingStart="14dp"
-                        android:paddingTop="14dp"
-                        android:text="核心数据"
-                        android:textColor="@color/fontBlack"
-                        android:textSize="18dp"
-                        android:background="@drawable/shape_radis_top"/>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:orientation="horizontal">
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="1dp"
-                            android:layout_height="wrap_content"
-                            android:background="@color/withe"
-                            android:orientation="vertical"
-                            >
-                            <TextView
-                                android:layout_marginTop="19dp"
-                                android:layout_width="match_parent"
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textSize="20dp"
-                                android:gravity="center"
-                                android:textColor="@color/fontBlack"
-                                android:text="123"
-                                android:textStyle="bold"/>
-                            <TextView
-                                android:gravity="center"
-                                android:layout_marginTop="14dp"
-                                android:layout_marginBottom="20dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="14dp"
-                                android:textColor="@color/fontGrey"
-                                android:text="我的推荐人"
-                                />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="1dp"
-                            android:layout_height="wrap_content"
-                            android:background="@color/withe"
-                            android:orientation="vertical"
-                            >
-                            <TextView
-                                android:layout_marginTop="19dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="20dp"
-                                android:gravity="center"
-                                android:textColor="@color/fontBlack"
-                                android:text="123"
-                                android:textStyle="bold"/>
-                            <TextView
-                                android:gravity="center"
-                                android:layout_marginTop="14dp"
-                                android:layout_marginBottom="20dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="14dp"
-                                android:textColor="@color/fontGrey"
-                                android:text="直接推荐人"
-                                />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:background="@color/withe"
-                            android:orientation="vertical"
-                            >
-                            <TextView
-                                android:layout_marginTop="19dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="20dp"
-                                android:gravity="center"
-                                android:textColor="@color/fontBlack"
-                                android:text="123"
-                                android:textStyle="bold"/>
-                            <TextView
-                                android:gravity="center"
-                                android:layout_marginTop="14dp"
-                                android:layout_marginBottom="20dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="14dp"
-                                android:textColor="@color/fontGrey"
-                                android:text="团队VIP总人数"
-                                />
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:orientation="horizontal">
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="1dp"
-                            android:layout_height="wrap_content"
-                            android:background="@color/withe"
-                            android:orientation="vertical"
-                            >
-                            <TextView
-                                android:layout_marginTop="19dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="20dp"
-                                android:gravity="center"
-                                android:textColor="@color/fontBlack"
-                                android:text="123"
-                                android:textStyle="bold"/>
-                            <TextView
-                                android:gravity="center"
-                                android:layout_marginTop="14dp"
-                                android:layout_marginBottom="20dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="14dp"
-                                android:textColor="@color/fontGrey"
-                                android:text="今日新增VIP"
-                                />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="1dp"
-                            android:layout_height="wrap_content"
-                            android:background="@color/withe"
-                            android:orientation="vertical"
-                            >
-                            <TextView
-                                android:layout_marginTop="19dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="20dp"
-                                android:gravity="center"
-                                android:textColor="@color/fontBlack"
-                                android:text="123"
-                                android:textStyle="bold"/>
-                            <TextView
-                                android:gravity="center"
-                                android:layout_marginTop="14dp"
-                                android:layout_marginBottom="20dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="14dp"
-                                android:textColor="@color/fontGrey"
-                                android:text="本月新增VIP"
-                                />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
+                                android:layout_marginEnd="1dp"
+                                android:layout_weight="1"
+                                android:background="@color/withe"
+                                android:orientation="vertical">
 
-                            android:layout_height="wrap_content"
-                            android:background="@color/withe"
-                            android:orientation="vertical"
-                            >
-                            <TextView
-                                android:layout_marginTop="19dp"
-                                android:layout_width="match_parent"
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="19dp"
+                                    android:gravity="center"
+                                    android:text='@{bean.getMyReferrer()+""}'
+                                    android:textColor="@color/fontBlack"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="20dp"
+                                    android:layout_marginTop="14dp"
+                                    android:gravity="center"
+                                    android:text="我的推荐人"
+                                    android:textColor="@color/fontGrey"
+                                    android:textSize="14dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textSize="20dp"
-                                android:gravity="center"
-                                android:textColor="@color/fontBlack"
-                                android:text="123"
-                                android:textStyle="bold"/>
-                            <TextView
-                                android:gravity="center"
-                                android:layout_marginTop="14dp"
-                                android:layout_marginBottom="20dp"
-                                android:layout_width="match_parent"
+                                android:layout_marginEnd="1dp"
+                                android:layout_weight="1"
+                                android:background="@color/withe"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="19dp"
+                                    android:gravity="center"
+                                    android:text='@{bean.getDirectReferrer()+""}'
+                                    android:textColor="@color/fontBlack"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="20dp"
+                                    android:layout_marginTop="14dp"
+                                    android:gravity="center"
+                                    android:text="直接推荐人"
+                                    android:textColor="@color/fontGrey"
+                                    android:textSize="14dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textSize="14dp"
-                                android:textColor="@color/fontGrey"
-                                android:text="团队总人数"
-                                />
+                                android:layout_weight="1"
+                                android:background="@color/withe"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="19dp"
+                                    android:gravity="center"
+                                    android:text='@{""+bean.getTeamVipTotalPeople()}'
+                                    android:textColor="@color/fontBlack"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="20dp"
+                                    android:layout_marginTop="14dp"
+                                    android:gravity="center"
+                                    android:text="团队VIP总人数"
+                                    android:textColor="@color/fontGrey"
+                                    android:textSize="14dp" />
+                            </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:orientation="horizontal">
+
                         <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="1dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/shape_radis_bottom_left"
-                            android:orientation="vertical"
-                            >
-                            <TextView
-                                android:layout_marginTop="19dp"
-                                android:layout_width="match_parent"
+                            android:layout_marginTop="1dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textSize="20dp"
-                                android:gravity="center"
-                                android:textColor="@color/fontBlack"
-                                android:text="123"
-                                android:textStyle="bold"/>
-                            <TextView
-                                android:gravity="center"
-                                android:layout_marginTop="14dp"
-                                android:layout_marginBottom="20dp"
-                                android:layout_width="match_parent"
+                                android:layout_marginEnd="1dp"
+                                android:layout_weight="1"
+                                android:background="@color/withe"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="19dp"
+                                    android:gravity="center"
+                                    android:text='@{""+bean.getDayAddVipPeople()}'
+                                    android:textColor="@color/fontBlack"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="20dp"
+                                    android:layout_marginTop="14dp"
+                                    android:gravity="center"
+                                    android:text="今日新增VIP"
+                                    android:textColor="@color/fontGrey"
+                                    android:textSize="14dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textSize="14dp"
-                                android:textColor="@color/fontGrey"
-                                android:text="直接总监"
-                                />
+                                android:layout_marginEnd="1dp"
+                                android:layout_weight="1"
+                                android:background="@color/withe"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="19dp"
+                                    android:gravity="center"
+                                    android:text='@{""+bean.getMonthAddVipPeople()}'
+                                    android:textColor="@color/fontBlack"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="20dp"
+                                    android:layout_marginTop="14dp"
+                                    android:gravity="center"
+                                    android:text="本月新增VIP"
+                                    android:textColor="@color/fontGrey"
+                                    android:textSize="14dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+
+                                android:layout_weight="1"
+                                android:background="@color/withe"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="19dp"
+                                    android:gravity="center"
+                                    android:text='@{""+bean.getTeamTotalPeople()}'
+                                    android:textColor="@color/fontBlack"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="20dp"
+                                    android:layout_marginTop="14dp"
+                                    android:gravity="center"
+                                    android:text="团队总人数"
+                                    android:textColor="@color/fontGrey"
+                                    android:textSize="14dp" />
+                            </LinearLayout>
                         </LinearLayout>
+
                         <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="1dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/withe"
-                            android:orientation="vertical"
-                            >
-                            <TextView
-                                android:layout_marginTop="19dp"
-                                android:layout_width="match_parent"
+                            android:layout_marginTop="1dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textSize="20dp"
-                                android:gravity="center"
-                                android:textColor="@color/fontBlack"
-                                android:text="123"
-                                android:textStyle="bold"/>
-                            <TextView
-                                android:gravity="center"
-                                android:layout_marginTop="14dp"
-                                android:layout_marginBottom="20dp"
-                                android:layout_width="match_parent"
+                                android:layout_marginEnd="1dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_radis_bottom_left"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="19dp"
+                                    android:gravity="center"
+                                    android:text='@{""+bean.getDirectDirectorPeople()}'
+                                    android:textColor="@color/fontBlack"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="20dp"
+                                    android:layout_marginTop="14dp"
+                                    android:gravity="center"
+                                    android:text="直接总监"
+                                    android:textColor="@color/fontGrey"
+                                    android:textSize="14dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textSize="14dp"
-                                android:textColor="@color/fontGrey"
-                                android:text="团队总监"
-                                />
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/shape_radis_bottom_right"
-                            android:orientation="vertical"
-                            >
-                            <TextView
-                                android:layout_marginTop="19dp"
-                                android:layout_width="match_parent"
+                                android:layout_marginEnd="1dp"
+                                android:layout_weight="1"
+                                android:background="@color/withe"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="19dp"
+                                    android:gravity="center"
+                                    android:text='@{""+bean.getTeamDirectorPeople()}'
+                                    android:textColor="@color/fontBlack"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="20dp"
+                                    android:layout_marginTop="14dp"
+                                    android:gravity="center"
+                                    android:text="团队总监"
+                                    android:textColor="@color/fontGrey"
+                                    android:textSize="14dp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textSize="20dp"
-                                android:gravity="center"
-                                android:textColor="@color/fontBlack"
-                                android:text="123"
-                                android:textStyle="bold"/>
-                            <TextView
-                                android:gravity="center"
-                                android:layout_marginTop="14dp"
-                                android:layout_marginBottom="20dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="14dp"
-                                android:textColor="@color/fontGrey"
-                                android:text="本月新增总监"
-                                />
+                                android:layout_weight="1"
+                                android:background="@drawable/shape_radis_bottom_right"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="19dp"
+                                    android:gravity="center"
+                                    android:text='@{""+bean.getMonthAddDirectorPeople()}'
+                                    android:textColor="@color/fontBlack"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="20dp"
+                                    android:layout_marginTop="14dp"
+                                    android:gravity="center"
+                                    android:text="本月新增总监"
+                                    android:textColor="@color/fontGrey"
+                                    android:textSize="14dp" />
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -769,7 +1150,8 @@
                     android:layout_marginStart="13dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/shape_shadow"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="@{bean.getCurrentUserType()==0?View.VISIBLE:View.GONE}">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -779,7 +1161,7 @@
                         android:layout_marginTop="14dp"
                         android:text="会员权益"
                         android:textColor="@color/fontBlack"
-                        android:textSize="18dp" />
+                        android:textSize="16dp" />
 
                     <View
                         android:layout_width="match_parent"
@@ -817,10 +1199,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:ellipsize="end"
                                 android:gravity="bottom"
-                                android:text="邀请好友成为VIP导购，得创业礼包分红"
+                                android:maxLines="1"
+                                android:text="自购商品每单均返高额积分。"
                                 android:textColor="@color/fontGrey"
-                                android:textSize="16dp" />
+                                android:textSize="13dp" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -855,10 +1239,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:ellipsize="end"
                                 android:gravity="bottom"
-                                android:text="被邀请人购买课程，你直接分课费分成"
+                                android:maxLines="1"
+                                android:text="分享他人购买商品，交易成功得推荐积分奖励。"
                                 android:textColor="@color/fontGrey"
-                                android:textSize="16dp" />
+                                android:textSize="13dp" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -894,17 +1280,20 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:ellipsize="end"
                                 android:gravity="bottom"
-                                android:text="自买课程可以返还佣金，买的多返的多"
+                                android:maxLines="1"
+                                android:text="每邀请1人购买VIP大礼包，最高得培训奖励100元。"
                                 android:textColor="@color/fontGrey"
-                                android:textSize="16dp" />
+                                android:textSize="13dp" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
 
 
                 <TextView
-                    style="@style/mimecenterbt"
+                    style="@style/mimecenterbt_no_draw"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginEnd="13dp"
                     android:layout_marginStart="13dp"
                     android:layout_marginTop="10dp"
@@ -914,7 +1303,7 @@
                     android:paddingBottom="15dp"
                     android:paddingStart="15dp"
                     android:paddingTop="15dp"
-                    android:text="专属客服微信：swlikely"
+                    android:text='@{"专属客服微信："+bean. getWxValue()}'
                     android:textColor="@color/black" />
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>

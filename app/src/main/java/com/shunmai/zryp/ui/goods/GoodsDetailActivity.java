@@ -16,9 +16,14 @@ import android.widget.Toast;
 
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.jude.swipbackhelper.SwipeBackHelper;
 import com.shunmai.zryp.AppConfig;
 import com.shunmai.zryp.R;
+import com.shunmai.zryp.adapter.goods.GuessGoodsDetailAdapter;
 import com.shunmai.zryp.adapter.home.GuessGoodsAdapter;
+import com.yanyusong.y_divideritemdecoration.Y_Divider;
+import com.yanyusong.y_divideritemdecoration.Y_DividerBuilder;
+import com.yanyusong.y_divideritemdecoration.Y_DividerItemDecoration;
 import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.bean.goods.GoodsDetailBean;
 import com.shunmai.zryp.bean.userinfo.TabEntity;
@@ -40,7 +45,7 @@ import java.util.List;
 public class GoodsDetailActivity extends SwipeBackActivity<ActivityGoodsDetailBinding> {
 
     private GoodsDetailViewModel viewModel;
-    private GuessGoodsAdapter guessGoodsAdapter;
+    private GuessGoodsDetailAdapter guessGoodsAdapter;
     GoodsDetailHandler handler;
     private long goodsId;
     private PayBroadcastReceiver mReceiver;
@@ -65,6 +70,7 @@ public class GoodsDetailActivity extends SwipeBackActivity<ActivityGoodsDetailBi
         GoodsDetailActivityManager.getInstance().putActivity(this);
         initListener();
         getData();
+
     }
 
     private void getData() {
@@ -108,6 +114,7 @@ public class GoodsDetailActivity extends SwipeBackActivity<ActivityGoodsDetailBi
                                         dialog.close();
                                         bindingView.getDetailBean().getData().getSku().setCollectId("0");
                                     }
+
                                     @Override
                                     public void onFailed(Throwable throwable) {
                                         dialog.close();
@@ -116,7 +123,7 @@ public class GoodsDetailActivity extends SwipeBackActivity<ActivityGoodsDetailBi
                                     }
                                 });
                             }
-                        }else{
+                        } else {
                             bindingView.cbCollect.setChecked(false);
                         }
                     });
@@ -152,9 +159,10 @@ public class GoodsDetailActivity extends SwipeBackActivity<ActivityGoodsDetailBi
     }
 
     private void initRec(RecyclerView recHome) {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         recHome.setLayoutManager(gridLayoutManager);
-        guessGoodsAdapter = new GuessGoodsAdapter(this, new ArrayList<>());
+        recHome.addItemDecoration(new DividerItemDecoration(this));
+        guessGoodsAdapter = new GuessGoodsDetailAdapter(this, new ArrayList<>());
         recHome.setAdapter(guessGoodsAdapter);
         recHome.setNestedScrollingEnabled(false);
         titles.add("商品");
@@ -228,6 +236,55 @@ public class GoodsDetailActivity extends SwipeBackActivity<ActivityGoodsDetailBi
         @Override
         public void onReceive(Context context, Intent intent) {
             finish();
+        }
+    }
+
+    @Override
+    public void onContentChanged() {
+        super.onContentChanged();
+    }
+
+    private class DividerItemDecoration extends Y_DividerItemDecoration {
+
+        private DividerItemDecoration(Context context) {
+            super(context);
+        }
+
+        @Override
+        public Y_Divider getDivider(int itemPosition) {
+            Y_Divider divider = null;
+            switch (itemPosition % 3) {
+                case 0:
+                case 1:
+                    if (itemPosition < 3) {
+                        divider = new Y_DividerBuilder()
+                                .setRightSideLine(true, 0xffEBEBEB, 1, 0, 0)
+                                .setBottomSideLine(true, 0xffEBEBEB, 1, 0, 0).setTopSideLine(true, 0xffEBEBEB, 1, 0, 0)
+                                .create();
+                    } else {
+                        //每一行第一个和第二个显示rignt和bottom
+                        divider = new Y_DividerBuilder()
+                                .setRightSideLine(true, 0xffEBEBEB, 1, 0, 0)
+                                .setBottomSideLine(true, 0xffEBEBEB, 1, 0, 0)
+                                .create();
+                    }
+                    break;
+                case 2:
+                    if (itemPosition < 3) {
+                        divider = new Y_DividerBuilder()
+                                .setBottomSideLine(true, 0xffEBEBEB, 1, 0, 0).setTopSideLine(true, 0xffEBEBEB, 1, 0, 0)
+                                .create();
+                    } else {
+                        //最后一个只显示bottom
+                        divider = new Y_DividerBuilder()
+                                .setBottomSideLine(true, 0xffEBEBEB, 1, 0, 0)
+                                .create();
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return divider;
         }
     }
 }

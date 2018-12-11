@@ -53,6 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textSize="13dp"
                     android:drawableTop="@mipmap/icon_new_user_gift"
                     android:gravity="center"
                     android:text="新人福利" />
@@ -60,6 +61,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="13dp"
                     android:layout_weight="1"
                     android:drawableTop="@mipmap/icon_share"
                     android:gravity="center"
@@ -68,6 +70,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="13dp"
                     android:layout_weight="1"
                     android:drawableTop="@mipmap/icon_sign"
                     android:gravity="center"
@@ -76,6 +79,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="13dp"
                     android:layout_weight="1"
                     android:drawableTop="@mipmap/icon_you_xuan"
                     android:gravity="center"
@@ -85,6 +89,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="13dp"
                     android:layout_weight="1"
                     android:drawableTop="@mipmap/icon_saleoff"
                     android:gravity="center"
@@ -598,7 +603,7 @@
                 android:gravity="center"
                 android:text="猜你喜欢"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="18dp" />
 
 
         </RelativeLayout>

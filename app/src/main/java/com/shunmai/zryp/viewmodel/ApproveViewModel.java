@@ -20,7 +20,7 @@ public class ApproveViewModel extends ViewModel {
         repository.getCode(type, phoneNum, listener);
     }
 
-    public void ApproveUser(HashMap<String, String> map, String code, onResponseListener<TResponse<String>> listener) {
-        repository.ApproveUser(map,code,listener);
+    public void ApproveUser(HashMap<String, Object> map, onResponseListener<TResponse<Object>> listener) {
+        repository.ApproveUser(map,listener);
     }
 }

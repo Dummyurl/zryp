@@ -14,7 +14,7 @@ import com.shunmai.zryp.bean.addrbean.RegionBean;
 import com.shunmai.zryp.bean.userinfo.AddressListBean;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.utils.ShareUtils;
-import com.shunmai.zryp.utils.StringUtils;
+import com.ysy.commonlib.utils.StringUtils;
 import com.shunmai.zryp.utils.ToastUtils;
 import com.shunmai.zryp.view.addressdialog.AddressSelector;
 import com.shunmai.zryp.view.addressdialog.BottomDialog;

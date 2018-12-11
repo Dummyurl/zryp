@@ -180,7 +180,7 @@ public class UserHandleActivity extends SwipeBackActivity<ActivityUserHandleBind
                             ToastUtils.showToast("该手机未注册，请设置密码！");
                             Intent intent = new Intent(UserHandleActivity.this, UserHandleActivity.class);
                             intent.putExtra("type", 2);
-                            intent.putExtra("logonAccount", bean.getData().getLogonAccount());
+//                            intent.putExtra("logonAccount", bean.getData().getLogonAccount());
                             intent.putExtra("userId", bean.getData().getUserId());
                             startActivity(intent);
                         } else if (bean.getCode() == 200) {

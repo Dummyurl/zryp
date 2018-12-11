@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.BindingAdapter;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.view.View;
@@ -17,7 +18,7 @@ import com.shunmai.zryp.bean.goods.GoodsOrderBean;
 import com.shunmai.zryp.ui.goods.GoodsOrderActivity;
 import com.shunmai.zryp.ui.home.HomeActivity;
 import com.shunmai.zryp.utils.FileUtils;
-import com.shunmai.zryp.utils.StringUtils;
+import com.ysy.commonlib.utils.StringUtils;
 import com.shunmai.zryp.utils.ToastUtils;
 import com.shunmai.zryp.utils.Utils;
 import com.shunmai.zryp.utils.wechatutils.WechatLoginHelper;
@@ -60,7 +61,6 @@ public class GoodsDetailHandler extends BaseEventHandler {
                     dialog1.dismiss();
                 });
         dialog.show();
-
     }
 
     public void ToHomeActivity(View view) {

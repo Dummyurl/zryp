@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="277.5dp"
+            android:layout_height="221.5dp">
+
+            <ImageView
+                android:id="@+id/iv_bac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12.5dp"
+                android:background="@mipmap/bac_dialog_gold" />
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/icon_close_gold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="13dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/btn_vip_guide_negative" />
+
+                <ImageView
+                    android:id="@+id/iv_level_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/btn_vip_guide_positive" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="133.5dp"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="升级成VIP导购，需要扣除您"
+                    android:textColor="@color/fontBlack"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="500积分"
+                    android:textColor="@color/fontRed"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="哟"
+                    android:textColor="@color/fontBlack"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="258dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="34.5dp"
+                android:src="@mipmap/title_vip_guide" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</layout>

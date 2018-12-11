@@ -25,7 +25,7 @@ public class GoodsDetailBean extends TResponse<GoodsDetailBean.DataBean> {
         private GoodsBean goods;
         @Bindable
         private SkuBean sku;
-        private List<com.shunmai.zryp.bean.goods.GoodsBean> list;
+        private List<GoodsBean> list;
 
         public GoodsBean getGoods() {
             return goods;

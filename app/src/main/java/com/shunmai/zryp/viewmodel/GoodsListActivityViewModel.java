@@ -26,8 +26,8 @@ public class GoodsListActivityViewModel extends ViewModel {
     public LiveData<GoodsListBean> getFistPageData(int page,  int sortType,int prType){
         return repository.getFirstPageData(page, sortType,prType);
     }
-    public LiveData<GoodsListBean> searchGoods(int page,String keyword,String goodsName,int sortType) {
-        return  repository.searchGoods(keyword,goodsName,page,sortType);
+    public LiveData<GoodsListBean> searchGoods(int page,String goodsName,int sortType) {
+        return  repository.searchGoods(goodsName,page,sortType);
     }
     @Override
     protected void onCleared() {

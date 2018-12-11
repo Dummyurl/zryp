@@ -31,10 +31,14 @@ import com.shunmai.zryp.eventhandler.home.FirstPageHandler;
 import com.shunmai.zryp.listener.onResponseListener;
 import com.shunmai.zryp.network.RetrofitClient;
 import com.shunmai.zryp.network.service.HttpService;
+import com.shunmai.zryp.utils.ToastUtils;
 import com.shunmai.zryp.viewmodel.HomePageViewModel;
+import com.youth.banner.listener.OnBannerListener;
+import com.ysy.commonlib.activity.WebViewActivity;
 import com.ysy.commonlib.base.BaseFragment;
 import com.ysy.commonlib.base.TResponse;
 import com.ysy.commonlib.network.retrofiturlmanager.RetrofitUrlManager;
+import com.ysy.commonlib.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,6 +89,7 @@ public class HomePageFragment extends BaseFragment<FragmentHomePageBinding> {
             @Override
             public void onFailed(Throwable throwable) {
                 refreshLayout.finishRefresh(false);
+                showError();
             }
         });
     }
@@ -109,7 +114,7 @@ public class HomePageFragment extends BaseFragment<FragmentHomePageBinding> {
 
     @Override
     protected void onRefresh() {
-//        getData();
+        getData();
     }
 
     private void initHeader() {
@@ -188,6 +193,16 @@ public class HomePageFragment extends BaseFragment<FragmentHomePageBinding> {
                     topImages.add(ad.getPic());
                 }
                 firstpageBinding.banner.setImageLoader(new GlideImageLoader()).setImages(topImages).start();
+                firstpageBinding.banner.setOnBannerListener(new OnBannerListener() {
+                    @Override
+                    public void OnBannerClick(int position) {
+                        if (!StringUtils.isEmptyString(response.getMainad().get(position).getUrl())){
+                            WebViewActivity.toWebView(getActivity(),"首页活动",response.getMainad().get(position).getUrl());
+                        }else{
+                            WebViewActivity.toWebView(getActivity(),"首页活动","http://www.baidu.com");
+                        }
+                    }
+                });
             }
 
             @Override

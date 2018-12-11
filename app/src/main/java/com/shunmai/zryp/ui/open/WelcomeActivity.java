@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.shunmai.zryp.R;
+import com.shunmai.zryp.ui.userinfo.account.WechatLoginActivity;
+import com.shunmai.zryp.utils.ShareUtils;
 import com.ysy.commonlib.base.SwipeBackActivity;
 import com.shunmai.zryp.databinding.ActivityWelcomeBinding;
 import com.shunmai.zryp.ui.home.HomeActivity;
@@ -37,7 +39,7 @@ public class WelcomeActivity extends BaseActivity {
         Utils.setStatusTextColor(true, this);
         ToHome();
         bindingView.btnSkip.setOnClickListener(v -> {
-            startActivity(new Intent(WelcomeActivity.this, HomeActivity.class));
+            toNextPage();
             overridePendingTransition(0,android.R.anim.fade_out);
             finish();
         });
@@ -47,7 +49,7 @@ public class WelcomeActivity extends BaseActivity {
         Observable<Long> interval = Observable.interval(1, TimeUnit.SECONDS);
         disposable = interval.take(5).map(aLong -> 5 - aLong).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(aLong -> {
             if (aLong == 1) {
-                startActivity(new Intent(WelcomeActivity.this, HomeActivity.class));
+                toNextPage();
                 overridePendingTransition(0,android.R.anim.fade_out);
                 finish();
             } else {
@@ -55,7 +57,13 @@ public class WelcomeActivity extends BaseActivity {
             }
         });
     }
-
+    private void toNextPage(){
+        if (ShareUtils.getUserInfo()==null){
+            startActivity(new Intent(WelcomeActivity.this, WechatLoginActivity.class));
+        }else{
+            startActivity(new Intent(WelcomeActivity.this, HomeActivity.class));
+        }
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

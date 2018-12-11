@@ -48,6 +48,7 @@ public class GoodsBean extends BaseObservable {
     private String defalutPhotoURL;
     private double marketPrice;
     private long sysIdString;
+    @Bindable
     private String goodsName;
     private String goodsTitle;
     private String miniDetails;
@@ -56,7 +57,8 @@ public class GoodsBean extends BaseObservable {
     private double mscore;
     private String description;
     private List<SeekGoodsImgsVOSBean> seekGoodsImgsVOS;
-
+    private List<String>  seekGoodsImgsVOSPart;
+    private String proDescription;
     public int getChannelId() {
         return channelId;
     }
@@ -230,5 +232,21 @@ public class GoodsBean extends BaseObservable {
 
     public void setMiniDetails(String miniDetails) {
         this.miniDetails = miniDetails;
+    }
+
+    public String getProDescription() {
+        return proDescription;
+    }
+
+    public void setProDescription(String proDescription) {
+        this.proDescription = proDescription;
+    }
+
+    public List<String> getSeekGoodsImgsVOSPart() {
+        return seekGoodsImgsVOSPart;
+    }
+
+    public void setSeekGoodsImgsVOSPart(List<String> seekGoodsImgsVOSPart) {
+        this.seekGoodsImgsVOSPart = seekGoodsImgsVOSPart;
     }
 }

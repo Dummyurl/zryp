@@ -39,6 +39,7 @@
                 android:paddingBottom="5dp"
                 android:paddingLeft="8dp"
                 android:paddingTop="5dp"
+                android:textSize="14dp"
                 android:clickToActivity='@{"com.shunmai.zryp.ui.goods.GoodsSearchActivity"}'
                 android:text="请输入商品名称" />
         </RelativeLayout>

@@ -1,39 +1,12 @@
 package com.shunmai.zryp.utils.wechatutils;
 
 import android.app.Activity;
-import android.os.AsyncTask;
-import android.util.Log;
-import android.util.Xml;
 
-import com.shunmai.zryp.bean.goods.GoodsOrderBean;
 import com.shunmai.zryp.bean.goods.OderInfoBean;
-import com.shunmai.zryp.utils.StringUtils;
 import com.shunmai.zryp.utils.ToastUtils;
-import com.tencent.mm.opensdk.constants.Build;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.conn.util.InetAddressUtils;
-import org.apache.http.message.BasicNameValuePair;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by ysy on 2016/9/28.

@@ -52,7 +52,7 @@
             android:label="@string/title_activity_score"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.userinfo.order.UserApproveActivity"
+            android:name=".ui.userinfo.account.UserApproveActivity"
             android:label="@string/title_activity_user_approve"
             android:theme="@style/AppTheme" />
         <activity
@@ -112,7 +112,16 @@
         <activity android:name=".ui.goods.GoodsSecKillActivity" />
         <activity android:name=".ui.goods.PreProActivity" />
         <activity android:name=".ui.goods.VipGoodsActivity" />
-        <activity android:name=".ui.goods.GoodsPaySuccessActivity"/>
+        <activity android:name=".ui.goods.GoodsPaySuccessActivity" />
+        <activity android:name=".ui.userinfo.account.ChangeRecommendActivity" />
+        <activity android:name=".ui.wallet.WithDrawInfoActivity" />
+        <activity android:name=".ui.wallet.BankListActivity" />
+        <activity android:name=".ui.wallet.WithdrawActivity" />
+        <activity android:name=".ui.wallet.WithdrawDetailActivity" />
+        <activity android:name=".ui.wallet.WithdrawListActivity" />
+        <activity android:name=".ui.userinfo.account.WechatLoginActivity" />
+        <activity android:name=".ui.userinfo.account.RecommendProvideActivity" />
+        <activity android:name=".ui.userinfo.account.BindPhoneActivity"></activity>
     </application>
 
 </manifest>

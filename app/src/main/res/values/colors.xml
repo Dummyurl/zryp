@@ -5,10 +5,12 @@
     <color name="colorAccent">#FF4081</color>
     <color name="withe">#FFFFFF</color>
     <color name="fontRed"> #FFF82933</color>
+    <color name="fontPink">#F88B8B</color>
     <color name="backgroundColor">#FFF2F2F2</color>
     <color name="fontNormal">#ff333333</color>
     <color name="fontGrey">#ff999999</color>
     <color name="fontBlack">#ff222222</color>
+    <color name="fontGold">#DEB57E</color>
     <color name="divider">#ffdddddd</color>
     <color name="fontOrange">#FFFF7900</color>
     <!--页面背景的颜色-->
